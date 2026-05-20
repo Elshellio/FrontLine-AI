@@ -1,835 +1,1118 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Frontline AI · Change Control Procedure</title>
-  <style>
-    :root{
-      --bg:#050914;
-      --ink:#f8fbff;
-      --muted:#aeb9cc;
-      --soft:#748197;
-      --line:rgba(255,255,255,.14);
-      --glass:rgba(255,255,255,.075);
-      --glass2:rgba(255,255,255,.045);
-      --blue:#5d95ff;
-      --cyan:#6ef5ff;
-      --gold:#f5c76b;
-      --gold2:#ffe8a8;
-      --green:#79f2b1;
-      --red:#ff8f8f;
-      --purple:#bca7ff;
-      --shadow:0 32px 90px rgba(0,0,0,.44);
-    }
-
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-
-    body{
-      margin:0;
-      min-height:100vh;
-      color:var(--ink);
-      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 18% 0%, rgba(93,149,255,.30), transparent 34%),
-        radial-gradient(circle at 84% 8%, rgba(110,245,255,.14), transparent 32%),
-        radial-gradient(circle at 50% 92%, rgba(245,199,107,.12), transparent 40%),
-        linear-gradient(135deg,#02040a,#071126 46%,#050812);
-      overflow-x:hidden;
-    }
-
-    body:before{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:
-        linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
-      background-size:46px 46px;
-      mask-image:linear-gradient(to bottom, rgba(0,0,0,.72), transparent 78%);
-      pointer-events:none;
-    }
-
-    body:after{
-      content:"";
-      position:fixed;
-      inset:0;
-      background:url('/assets/9.png') center bottom / cover no-repeat;
-      opacity:.12;
-      mix-blend-mode:screen;
-      pointer-events:none;
-    }
-
-    a{color:inherit;text-decoration:none}
-    .wrap{width:min(1180px, calc(100% - 44px));margin:0 auto;position:relative;z-index:2}
-
-    header{
-      position:sticky;
-      top:0;
-      z-index:20;
-      backdrop-filter:blur(20px);
-      background:linear-gradient(to bottom, rgba(3,7,18,.90), rgba(3,7,18,.56));
-      border-bottom:1px solid rgba(255,255,255,.08);
-    }
-
-    .nav{
-      height:80px;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:18px;
-    }
-
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-      min-width:0;
-    }
-
-    .brandBadge{
-      width:48px;
-      height:48px;
-      border-radius:17px;
-      object-fit:cover;
-      box-shadow:0 0 34px rgba(93,149,255,.28);
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.06);
-    }
-
-    .brandWords{
-      display:flex;
-      flex-direction:column;
-      gap:2px;
-    }
-
-    .brandWords b{
-      font-size:15px;
-      letter-spacing:.01em;
-    }
-
-    .brandWords span{
-      color:var(--muted);
-      font-size:12px;
-    }
-
-    .navlinks{
-      display:flex;
-      gap:18px;
-      color:var(--muted);
-      font-size:14px;
-    }
-
-    .navlinks a:hover{color:white}
-
-    .navPill{
-      padding:10px 14px;
-      border-radius:999px;
-      color:#dff7ff;
-      background:rgba(93,149,255,.10);
-      border:1px solid rgba(110,245,255,.20);
-      font-size:13px;
-      font-weight:900;
-      white-space:nowrap;
-    }
-
-    .hero{
-      min-height:680px;
-      display:grid;
-      grid-template-columns:1.02fr .98fr;
-      gap:38px;
-      align-items:center;
-      padding:72px 0 48px;
-    }
-
-    .eyebrow{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      padding:9px 12px;
-      border-radius:999px;
-      border:1px solid rgba(110,245,255,.22);
-      background:rgba(93,149,255,.10);
-      color:#dff7ff;
-      font-size:12px;
-      font-weight:950;
-      letter-spacing:.12em;
-      text-transform:uppercase;
-    }
-
-    .pulse{
-      width:8px;
-      height:8px;
-      border-radius:999px;
-      background:var(--green);
-      box-shadow:0 0 20px var(--green);
-    }
-
-    h1{
-      font-size:clamp(44px,6.1vw,78px);
-      line-height:.94;
-      letter-spacing:-.065em;
-      margin:22px 0 20px;
-      max-width:800px;
-    }
-
-    .grad{
-      background:linear-gradient(90deg,#fff,#dff7ff,var(--cyan));
-      -webkit-background-clip:text;
-      background-clip:text;
-      color:transparent;
-    }
-
-    .lead{
-      margin:0;
-      max-width:720px;
-      font-size:20px;
-      line-height:1.56;
-      color:#d8e2f1;
-    }
-
-    .heroActions{
-      display:flex;
-      gap:14px;
-      flex-wrap:wrap;
-      margin-top:28px;
-    }
-
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap:10px;
-      padding:15px 18px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.14);
-      font-weight:950;
-      cursor:pointer;
-    }
-
-    .btn.primary{
-      background:linear-gradient(135deg,#62b8ff,#3357ff);
-      color:white;
-      box-shadow:0 20px 45px rgba(93,149,255,.25);
-    }
-
-    .btn.secondary{
-      background:rgba(255,255,255,.07);
-      color:#eef6ff;
-    }
-
-    .heroProof{
-      display:grid;
-      grid-template-columns:repeat(3,1fr);
-      gap:12px;
-      margin-top:30px;
-      max-width:740px;
-    }
-
-    .mini{
-      padding:15px;
-      border-radius:18px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.052);
-    }
-
-    .mini b{display:block;font-size:17px;margin-bottom:5px}
-    .mini span{display:block;color:var(--muted);font-size:13px;line-height:1.38}
-
-    .visual{
-      position:relative;
-      min-height:560px;
-      border-radius:34px;
-      overflow:hidden;
-      border:1px solid rgba(255,255,255,.14);
-      background:#061022;
-      box-shadow:var(--shadow);
-    }
-
-    .visual:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        linear-gradient(90deg, rgba(2,6,18,.92), rgba(2,6,18,.45), rgba(2,6,18,.78)),
-        url("/assets/7.png") center / cover no-repeat;
-      transform:scale(1.02);
-    }
-
-    .visualCard{
-      position:absolute;
-      left:24px;
-      right:24px;
-      bottom:24px;
-      z-index:2;
-      border-radius:26px;
-      padding:18px;
-      background:rgba(3,8,22,.74);
-      border:1px solid rgba(255,255,255,.14);
-      backdrop-filter:blur(20px);
-    }
-
-    .visualTop{
-      position:absolute;
-      z-index:2;
-      left:24px;
-      top:24px;
-      display:flex;
-      align-items:center;
-      gap:12px;
-      padding:12px 14px;
-      border-radius:20px;
-      background:rgba(3,8,22,.68);
-      border:1px solid rgba(255,255,255,.13);
-      backdrop-filter:blur(18px);
-    }
-
-    .visualTop img{
-      width:42px;
-      height:42px;
-      border-radius:14px;
-      object-fit:cover;
-    }
-
-    .visualTop b{display:block;font-size:14px}
-    .visualTop span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-
-    .checkline{
-      display:grid;
-      grid-template-columns:40px 1fr auto;
-      gap:12px;
-      align-items:center;
-      padding:12px;
-      border-radius:16px;
-      background:rgba(255,255,255,.06);
-      border:1px solid rgba(255,255,255,.10);
-      margin-top:10px;
-    }
-
-    .num{
-      height:40px;
-      border-radius:14px;
-      display:grid;
-      place-items:center;
-      background:rgba(93,149,255,.13);
-      border:1px solid rgba(110,245,255,.22);
-      color:var(--cyan);
-      font-weight:1000;
-      font-size:12px;
-    }
-
-    .checkline b{display:block;font-size:14px}
-    .checkline span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
-    .ok{font-size:11px;color:var(--green);font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
-    .hold{font-size:11px;color:var(--gold2);font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
-
-    section{padding:64px 0}
-
-    .sectionHead{
-      display:flex;
-      justify-content:space-between;
-      align-items:end;
-      gap:22px;
-      margin-bottom:24px;
-    }
-
-    .sectionHead h2{
-      margin:0;
-      max-width:760px;
-      font-size:clamp(30px,4.2vw,50px);
-      line-height:1.03;
-      letter-spacing:-.05em;
-    }
-
-    .sectionHead p{
-      margin:0;
-      max-width:540px;
-      color:var(--muted);
-      line-height:1.55;
-      font-size:16px;
-    }
-
-    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
-    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-
-    .card{
-      border:1px solid var(--line);
-      border-radius:26px;
-      padding:24px;
-      background:linear-gradient(155deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
-      box-shadow:0 22px 56px rgba(0,0,0,.19);
-    }
-
-    .card:hover{
-      transform:translateY(-2px);
-      border-color:rgba(110,245,255,.25);
-      transition:.22s ease;
-      box-shadow:0 28px 68px rgba(0,0,0,.28);
-    }
-
-    .icon{
-      width:46px;
-      height:46px;
-      border-radius:16px;
-      display:grid;
-      place-items:center;
-      margin-bottom:16px;
-      background:rgba(93,149,255,.13);
-      border:1px solid rgba(110,245,255,.22);
-      color:#dff7ff;
-      font-weight:1000;
-    }
-
-    .icon.gold{
-      background:rgba(245,199,107,.12);
-      border-color:rgba(245,199,107,.24);
-      color:var(--gold2);
-    }
-
-    .icon.green{
-      background:rgba(121,242,177,.10);
-      border-color:rgba(121,242,177,.22);
-      color:var(--green);
-    }
-
-    .card h3{margin:0 0 10px;font-size:20px}
-    .card p{margin:0;color:var(--muted);line-height:1.55}
-
-    .procedure{
-      display:grid;
-      gap:14px;
-      counter-reset:item;
-    }
-
-    .step{
-      display:grid;
-      grid-template-columns:70px 1fr;
-      gap:18px;
-      padding:18px;
-      border-radius:24px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.055);
-      overflow:hidden;
-    }
-
-    .step:before{
-      counter-increment:item;
-      content:counter(item, decimal-leading-zero);
-      width:58px;
-      height:58px;
-      border-radius:20px;
-      display:grid;
-      place-items:center;
-      font-weight:1000;
-      background:linear-gradient(135deg,rgba(93,149,255,.28),rgba(110,245,255,.12));
-      border:1px solid rgba(255,255,255,.18);
-      color:#fff;
-    }
-
-    .step h3{margin:0 0 7px;font-size:19px}
-    .step p{margin:0;color:var(--muted);line-height:1.55}
-
-    .cmd{
-      margin-top:12px;
-      border-radius:16px;
-      border:1px solid rgba(255,255,255,.12);
-      background:#07101f;
-      overflow:hidden;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-      font-size:13px;
-    }
-
-    .cmd b{
-      display:block;
-      padding:10px 13px;
-      background:rgba(255,255,255,.055);
-      color:#d8e2f1;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      font-family:Inter, ui-sans-serif, system-ui, sans-serif;
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-
-    .cmd pre{
-      margin:0;
-      padding:13px;
-      overflow:auto;
-      color:#dbe7f7;
-      line-height:1.65;
-      white-space:pre-wrap;
-    }
-
-    .reviewBox{
-      border-radius:30px;
-      border:1px solid rgba(188,167,255,.30);
-      background:
-        radial-gradient(circle at 18% 0%, rgba(188,167,255,.18), transparent 34%),
-        linear-gradient(155deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
-      padding:26px;
-      box-shadow:var(--shadow);
-    }
-
-    .reviewBox h3{
-      margin:0 0 10px;
-      font-size:28px;
-      letter-spacing:-.025em;
-    }
-
-    .reviewPrompt{
-      margin-top:18px;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background:rgba(3,7,18,.74);
-      overflow:hidden;
-      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
-    }
-
-    .reviewPrompt div{
-      padding:10px 13px;
-      background:rgba(255,255,255,.055);
-      color:#d8ccff;
-      border-bottom:1px solid rgba(255,255,255,.08);
-      font-weight:950;
-      font-family:Inter, ui-sans-serif, system-ui, sans-serif;
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-    }
-
-    .reviewPrompt pre{
-      margin:0;
-      padding:14px;
-      overflow:auto;
-      color:#dbe7f7;
-      line-height:1.65;
-      white-space:pre-wrap;
-      font-size:13px;
-    }
-
-    .traffic{
-      display:grid;
-      grid-template-columns:repeat(5,1fr);
-      gap:12px;
-    }
-
-    .light{
-      min-height:126px;
-      padding:16px;
-      border-radius:20px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.052);
-    }
-
-    .light b{display:block;margin-bottom:8px}
-    .light span{display:block;color:var(--muted);font-size:13px;line-height:1.45}
-
-    .greenLine{border-color:rgba(121,242,177,.30)}
-    .goldLine{border-color:rgba(245,199,107,.32)}
-    .redLine{border-color:rgba(255,143,143,.30)}
-
-    .final{
-      padding:48px;
-      border-radius:34px;
-      border:1px solid rgba(110,245,255,.20);
-      background:
-        linear-gradient(90deg,rgba(2,6,18,.94),rgba(2,6,18,.58)),
-        url("/assets/8.png") center / cover no-repeat;
-      box-shadow:var(--shadow);
-      display:grid;
-      grid-template-columns:1fr auto;
-      gap:24px;
-      align-items:center;
-      overflow:hidden;
-    }
-
-    .final h2{
-      margin:0 0 12px;
-      font-size:40px;
-      line-height:1.05;
-      letter-spacing:-.05em;
-      max-width:800px;
-    }
-
-    .final p{
-      margin:0;
-      color:#d8e2f1;
-      font-size:17px;
-      line-height:1.55;
-      max-width:780px;
-    }
-
-    footer{
-      padding:34px 0 54px;
-      color:var(--soft);
-      font-size:13px;
-      text-align:center;
-    }
-
-    @media(max-width:980px){
-      .hero,.grid2{grid-template-columns:1fr}
-      .grid3{grid-template-columns:1fr}
-      .traffic{grid-template-columns:1fr 1fr}
-      .final{grid-template-columns:1fr}
-      .navlinks{display:none}
-    }
-
-    @media(max-width:620px){
-      .wrap{width:min(100% - 28px,1180px)}
-      .hero{padding-top:48px}
-      h1{font-size:43px}
-      .heroProof,.traffic{grid-template-columns:1fr}
-      .sectionHead{display:block}
-      .sectionHead p{margin-top:12px}
-      .step{grid-template-columns:1fr}
-      .navPill{display:none}
-      .final{padding:30px}
-      .final h2{font-size:31px}
-    }
-  </style>
-  <link rel="stylesheet" href="/assets/frontline-menu.css">
-  <link rel="stylesheet" href="/assets/frontline-document-skin.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Change Control Procedure | Frontline AI</title>
+<meta name="description" content="Frontline AI uses a controlled change process to protect client websites, AI workers, chatbots, portals and automation builds from rushed edits, hidden mistakes and uncontrolled changes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#020610;
+  --panel:rgba(6,14,29,.76);
+  --panel2:rgba(10,24,48,.72);
+  --line:rgba(255,255,255,.13);
+  --line2:rgba(91,183,255,.38);
+  --blue:#1478ff;
+  --blue2:#37a7ff;
+  --soft:#d7e2f2;
+  --muted:#aebed2;
+  --green:#6ee7b7;
+  --gold:#f6d365;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+html,body{margin:0;background:var(--bg);color:#fff;font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif}
+body:before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    radial-gradient(circle at 74% 8%,rgba(20,120,255,.24),transparent 34%),
+    radial-gradient(circle at 10% 80%,rgba(55,167,255,.13),transparent 34%),
+    url('/assets/9.png') center top/cover no-repeat;
+  opacity:.52;
+  pointer-events:none;
+}
+a{color:inherit;text-decoration:none}
+.page{position:relative;z-index:1;min-height:100vh}
+.wrap{max-width:1320px;margin:0 auto;padding:42px 34px 80px}
+.hero{
+  position:relative;
+  overflow:hidden;
+  min-height:520px;
+  border:1px solid var(--line2);
+  border-radius:36px;
+  padding:54px;
+  background:
+    linear-gradient(115deg,rgba(4,12,28,.96),rgba(4,12,28,.82) 52%,rgba(20,120,255,.12)),
+    rgba(4,12,28,.76);
+  box-shadow:0 42px 130px rgba(0,0,0,.46),0 0 80px rgba(20,120,255,.14),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.hero:after{
+  content:"";
+  position:absolute;
+  right:-120px;
+  top:-130px;
+  width:620px;
+  height:620px;
+  border-radius:999px;
+  background:
+    radial-gradient(circle,rgba(55,167,255,.24),transparent 34%),
+    repeating-radial-gradient(circle,rgba(91,183,255,.12) 0 2px,transparent 2px 46px);
+  opacity:.75;
+}
+/* FRONTLINE_CHANGE_CONTROL_HERO_ASSETS_V1 */
+.heroCopy{position:relative;z-index:2;max-width:690px}
+.heroVisual{
+  position:absolute;
+  right:42px;
+  top:48px;
+  width:min(470px,38vw);
+  z-index:2;
+  pointer-events:none;
+}
+.heroVisual img{
+  width:100%;
+  height:auto;
+  display:block;
+  border-radius:30px;
+  filter:drop-shadow(0 0 46px rgba(20,120,255,.32));
+}
+.stat{
+  display:grid;
+  grid-template-columns:58px 1fr;
+  gap:14px;
+  align-items:center;
+}
+.statIcon{
+  width:48px;
+  height:48px;
+  border-radius:16px;
+  object-fit:cover;
+  box-shadow:0 0 26px rgba(20,120,255,.22);
+}
+@media(max-width:1180px){
+  .heroVisual{
+    position:relative;
+    right:auto;
+    top:auto;
+    width:100%;
+    max-width:560px;
+    margin:34px auto 0;
+  }
+}
+@media(max-width:720px){
+  .stat{
+    grid-template-columns:46px 1fr;
+  }
+  .statIcon{
+    width:40px;
+    height:40px;
+    border-radius:13px;
+  }
+}
+
+.kicker{
+  color:#77baff;
+  text-transform:uppercase;
+  letter-spacing:.24em;
+  font-size:13px;
+  font-weight:900;
+  margin-bottom:18px;
+}
+h1{
+  margin:0;
+  font-size:74px;
+  line-height:.93;
+  letter-spacing:-.045em;
+  font-weight:800;
+}
+.grad{color:var(--blue);text-shadow:0 0 34px rgba(20,120,255,.34)}
+.lead{
+  max-width:820px;
+  margin:28px 0 32px;
+  color:#d7e2f2;
+  font-size:22px;
+  line-height:1.5;
+}
+.actions{display:flex;gap:14px;flex-wrap:wrap}
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:50px;
+  padding:0 22px;
+  border-radius:15px;
+  border:1px solid rgba(125,205,255,.38);
+  background:rgba(255,255,255,.06);
+  color:#fff;
+  font-weight:800;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.14);
+  backdrop-filter:blur(16px);
+}
+.btn.primary{
+  border-color:rgba(137,210,255,.76);
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  box-shadow:0 0 34px rgba(20,120,255,.28),inset 0 1px 0 rgba(255,255,255,.22);
+}
+.heroStats{
+  position:relative;
+  z-index:3;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:14px;
+  margin-top:60px;
+}
+.stat{
+  border:1px solid rgba(91,183,255,.24);
+  border-radius:22px;
+  padding:18px;
+  background:rgba(2,8,20,.50);
+  backdrop-filter:blur(16px);
+}
+.stat b{display:block;font-size:20px}
+.stat span{display:block;color:#9db0c9;font-size:13px;line-height:1.4;margin-top:6px}
+section{margin-top:54px}
+.sectionHead{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:42px;
+  align-items:end;
+  margin-bottom:22px;
+}
+.sectionHead h2{
+  margin:0;
+  font-size:46px;
+  line-height:1;
+  letter-spacing:-.04em;
+}
+.sectionHead p{
+  margin:0;
+  color:#bdc9db;
+  font-size:18px;
+  line-height:1.55;
+}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(91,183,255,.26);
+  border-radius:28px;
+  padding:26px;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(20,120,255,.16),transparent 34%),
+    linear-gradient(180deg,rgba(10,24,48,.80),rgba(3,8,18,.90));
+  box-shadow:0 28px 86px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.10);
+}
+.card .icon{
+  width:52px;
+  height:52px;
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin-bottom:18px;
+  border:1px solid rgba(125,205,255,.34);
+  background:rgba(2,6,16,.46);
+  color:#dff4ff;
+  font-weight:900;
+  box-shadow:0 0 30px rgba(20,120,255,.18);
+}
+.card h3{margin:0 0 10px;font-size:25px;line-height:1.08;letter-spacing:-.02em}
+.card p{margin:0;color:#bac9dc;font-size:16px;line-height:1.5}
+.steps{
+  display:grid;
+  gap:14px;
+}
+.step{
+  display:grid;
+  grid-template-columns:70px 1fr;
+  gap:22px;
+  align-items:start;
+  border:1px solid rgba(91,183,255,.26);
+  border-radius:26px;
+  padding:24px;
+  background:linear-gradient(90deg,rgba(10,24,48,.76),rgba(3,8,18,.82));
+  box-shadow:0 24px 74px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.num{
+  width:50px;
+  height:50px;
+  border-radius:17px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  font-weight:900;
+  box-shadow:0 0 28px rgba(20,120,255,.34);
+}
+.step h3{margin:0 0 8px;font-size:24px}
+.step p{margin:0;color:#bac9dc;line-height:1.55;font-size:16px}
+.panel{
+  border:1px solid var(--line2);
+  border-radius:30px;
+  padding:34px;
+  background:
+    linear-gradient(135deg,rgba(20,120,255,.16),rgba(255,255,255,.04)),
+    rgba(4,12,26,.80);
+  box-shadow:0 34px 100px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.12);
+}
+.panel h2{margin:0 0 14px;font-size:40px;letter-spacing:-.035em}
+.panel p{margin:0;color:#d0dced;font-size:18px;line-height:1.58;max-width:940px}
+.lights{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.light{
+  border-radius:26px;
+  padding:24px;
+  border:1px solid rgba(255,255,255,.14);
+  background:rgba(255,255,255,.045);
+}
+.light b{display:block;font-size:22px;margin-bottom:8px}
+.light span{color:#bac9dc;line-height:1.5}
+.green{border-color:rgba(110,231,183,.38)}
+.amber{border-color:rgba(246,211,101,.38)}
+.red{border-color:rgba(252,165,165,.38)}
+.footerCta{
+  display:flex;
+  justify-content:space-between;
+  gap:30px;
+  align-items:center;
+  border:1px solid var(--line2);
+  border-radius:30px;
+  padding:34px;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(20,120,255,.18),transparent 34%),
+    linear-gradient(135deg,rgba(10,24,48,.86),rgba(3,8,18,.92));
+}
+.footerCta h2{margin:0;font-size:40px;letter-spacing:-.035em}
+.footerCta p{margin:10px 0 0;color:#c6d4e8;font-size:18px;line-height:1.5}
+/* FRONTLINE_CHANGE_CONTROL_STEP_NUMBER_POLISH_V1 */
+.steps{
+  gap:16px;
+}
+
+.step{
+  grid-template-columns:86px 1fr;
+  align-items:center;
+  padding:26px 30px;
+  background:
+    radial-gradient(circle at 5% 50%,rgba(20,120,255,.10),transparent 22%),
+    linear-gradient(90deg,rgba(7,18,38,.82),rgba(3,8,18,.84));
+}
+
+.num{
+  position:relative;
+  width:58px;
+  height:58px;
+  border-radius:20px;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.10),rgba(20,120,255,.10)),
+    rgba(3,12,29,.72);
+  border:1px solid rgba(125,205,255,.42);
+  color:#dff3ff;
+  font-size:13px;
+  letter-spacing:.08em;
+  box-shadow:
+    0 0 28px rgba(20,120,255,.18),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+.num:before{
+  content:"STEP";
+  position:absolute;
+  left:50%;
+  top:-18px;
+  transform:translateX(-50%);
+  color:#6eb8ff;
+  font-size:9px;
+  letter-spacing:.18em;
+  font-weight:900;
+  opacity:.72;
+}
+
+.num:after{
+  content:"";
+  position:absolute;
+  inset:10px;
+  border-radius:15px;
+  border:1px solid rgba(91,183,255,.18);
+  pointer-events:none;
+}
+
+.step h3{
+  font-size:25px;
+  letter-spacing:-.018em;
+}
+
+.step p{
+  max-width:920px;
+  color:#c1cede;
+}
+
+@media(max-width:720px){
+  .step{
+    grid-template-columns:1fr;
+    padding:24px;
+  }
+
+  .num{
+    width:54px;
+    height:54px;
+  }
+}
+
+/* FRONTLINE_CHANGE_CONTROL_REACTIVITY_V1 */
+.btn,
+.card,
+.step,
+.stat,
+.light,
+.panel,
+.footerCta{
+  transition:
+    transform .22s ease,
+    border-color .22s ease,
+    box-shadow .22s ease,
+    background .22s ease,
+    filter .22s ease;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+  border-color:rgba(137,210,255,.72);
+  box-shadow:
+    0 18px 46px rgba(20,120,255,.24),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.btn.primary:hover{
+  box-shadow:
+    0 22px 54px rgba(20,120,255,.36),
+    0 0 38px rgba(55,167,255,.22),
+    inset 0 1px 0 rgba(255,255,255,.24);
+}
+
+.card:hover{
+  transform:translateY(-7px);
+  border-color:rgba(125,205,255,.68);
+  box-shadow:
+    0 40px 120px rgba(0,0,0,.52),
+    0 0 62px rgba(20,120,255,.20),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+.card:hover .icon{
+  border-color:rgba(125,205,255,.62);
+  box-shadow:
+    0 0 34px rgba(20,120,255,.34),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+.step:hover{
+  transform:translateY(-4px);
+  border-color:rgba(125,205,255,.58);
+  box-shadow:
+    0 34px 100px rgba(0,0,0,.42),
+    0 0 48px rgba(20,120,255,.16),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.stat:hover{
+  transform:translateY(-4px);
+  border-color:rgba(125,205,255,.55);
+  background:rgba(8,22,48,.62);
+  box-shadow:
+    0 24px 70px rgba(0,0,0,.34),
+    0 0 34px rgba(20,120,255,.16),
+    inset 0 1px 0 rgba(255,255,255,.11);
+}
+
+.stat:hover .statIcon{
+  filter:saturate(1.18) brightness(1.08);
+  box-shadow:0 0 34px rgba(20,120,255,.34);
+}
+
+.light:hover{
+  transform:translateY(-5px);
+  background:rgba(255,255,255,.065);
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.38),
+    inset 0 1px 0 rgba(255,255,255,.12);
+}
+
+.panel:hover,
+.footerCta:hover{
+  transform:translateY(-4px);
+  border-color:rgba(125,205,255,.62);
+  box-shadow:
+    0 42px 120px rgba(0,0,0,.46),
+    0 0 58px rgba(20,120,255,.18),
+    inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+.heroVisual img{
+  transition:transform .28s ease, filter .28s ease;
+}
+
+.hero:hover .heroVisual img{
+  transform:translateY(-4px) scale(1.015);
+  filter:drop-shadow(0 0 58px rgba(20,120,255,.42));
+}
+
+/* FRONTLINE_CHANGE_CONTROL_PROTECTS_POPUPS_V1 */
+.protectCard{
+  min-height:238px;
+  padding:30px;
+  cursor:pointer;
+}
+
+.protectCard:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 14% 0%,rgba(91,183,255,.17),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.035),transparent 44%);
+  opacity:.68;
+  pointer-events:none;
+}
+
+.protectLabel{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 13px;
+  margin-bottom:24px;
+  border-radius:999px;
+  border:1px solid rgba(125,205,255,.38);
+  background:rgba(2,8,20,.48);
+  color:#77baff;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:11px;
+  font-weight:900;
+  box-shadow:0 0 24px rgba(20,120,255,.12), inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.protectCard h3,
+.protectCard p{
+  position:relative;
+  z-index:2;
+}
+
+.protectCard h3{
+  font-size:27px;
+  margin-bottom:13px;
+}
+
+.protectCard:hover .protectLabel{
+  border-color:rgba(125,205,255,.68);
+  color:#dff4ff;
+  box-shadow:0 0 34px rgba(20,120,255,.26), inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+/* FRONTLINE_CHANGE_CONTROL_BENEFIT_POPUPS_V1 */
+.benefitCard{
+  min-height:245px;
+  padding:30px;
+  cursor:pointer;
+}
+
+.benefitCard:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 12% 0%,rgba(91,183,255,.18),transparent 34%),
+    linear-gradient(180deg,rgba(255,255,255,.035),transparent 42%);
+  opacity:.65;
+  pointer-events:none;
+}
+
+.benefitLabel{
+  position:relative;
+  z-index:2;
+  display:inline-flex;
+  align-items:center;
+  min-height:34px;
+  padding:0 13px;
+  margin-bottom:26px;
+  border-radius:999px;
+  border:1px solid rgba(125,205,255,.38);
+  background:rgba(2,8,20,.48);
+  color:#77baff;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:11px;
+  font-weight:900;
+  box-shadow:0 0 24px rgba(20,120,255,.12), inset 0 1px 0 rgba(255,255,255,.10);
+}
+
+.benefitCard h3,
+.benefitCard p,
+.benefitOpen{
+  position:relative;
+  z-index:2;
+}
+
+.benefitCard h3{
+  font-size:28px;
+  margin-bottom:14px;
+}
+
+.benefitCard p{
+  max-width:420px;
+}
+
+.benefitOpen{
+  display:inline-flex;
+  align-items:center;
+  margin-top:24px;
+  min-height:36px;
+  padding:0 14px;
+  border-radius:999px;
+  border:1px solid rgba(125,205,255,.34);
+  background:rgba(2,6,16,.38);
+  color:#d9f1ff;
+  font-size:13px;
+  font-weight:900;
+  backdrop-filter:blur(14px);
+}
+
+.benefitCard:hover .benefitLabel{
+  border-color:rgba(125,205,255,.68);
+  color:#dff4ff;
+  box-shadow:0 0 34px rgba(20,120,255,.26), inset 0 1px 0 rgba(255,255,255,.16);
+}
+
+.benefitCard:hover .benefitOpen{
+  border-color:rgba(125,205,255,.62);
+  background:rgba(20,120,255,.14);
+}
+
+/* FRONTLINE_CHANGE_CONTROL_POPUPS_V1 */
+.modalTrigger{cursor:pointer}
+.modalTrigger:focus-visible{outline:2px solid rgba(125,205,255,.82);outline-offset:4px}
+
+.changeModalBackdrop{
+  position:fixed;
+  inset:0;
+  z-index:20000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:28px;
+  background:rgba(0,0,0,.68);
+  backdrop-filter:blur(18px);
+}
+.changeModalBackdrop.open{display:flex}
+.changeModal{
+  position:relative;
+  width:min(1080px,94vw);
+  max-height:88vh;
+  overflow:hidden;
+  border:1px solid rgba(120,205,255,.50);
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 18% 10%,rgba(112,190,255,.20),transparent 31%),
+    linear-gradient(145deg,rgba(255,255,255,.12),rgba(255,255,255,.04) 38%,rgba(20,120,255,.10)),
+    rgba(4,12,26,.92);
+  box-shadow:
+    0 45px 150px rgba(0,0,0,.74),
+    0 0 100px rgba(20,120,255,.24),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+.changeModalInner{
+  display:grid;
+  grid-template-columns:.82fr 1.18fr;
+  gap:30px;
+  padding:34px;
+}
+.changeModalVisual{
+  min-height:430px;
+  border-radius:28px;
+  overflow:hidden;
+  border:1px solid rgba(125,205,255,.22);
+  background:rgba(2,8,20,.60);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10);
+}
+.changeModalVisual img{
+  width:min(320px,78%);
+  height:auto;
+  display:block;
+  filter:drop-shadow(0 0 42px rgba(20,120,255,.38));
+}
+.changeModalKicker{
+  color:#77baff;
+  text-transform:uppercase;
+  letter-spacing:.22em;
+  font-weight:900;
+  font-size:12px;
+  margin-bottom:16px;
+}
+.changeModalContent h3{
+  margin:0;
+  font-size:44px;
+  line-height:1;
+  letter-spacing:-.045em;
+}
+.changeModalLead{
+  margin:20px 0 22px;
+  color:#d7e2f2;
+  font-size:18px;
+  line-height:1.58;
+}
+.changeUseCases{
+  display:grid;
+  gap:12px;
+  margin:0 0 24px;
+  padding:0;
+  list-style:none;
+}
+.changeUseCases li{
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:18px;
+  padding:15px 16px;
+  background:rgba(255,255,255,.055);
+  color:#c6d4e8;
+  line-height:1.45;
+}
+.changeUseCases b{color:#fff}
+.changeChips{display:flex;flex-wrap:wrap;gap:9px;margin:0 0 26px}
+.changeChip{
+  border:1px solid rgba(125,205,255,.36);
+  background:rgba(20,120,255,.12);
+  color:#d9f1ff;
+  border-radius:999px;
+  padding:9px 12px;
+  font-size:12px;
+  font-weight:900;
+}
+.changeModalActions{display:flex;gap:12px;flex-wrap:wrap}
+.changeModalClose{
+  position:absolute;
+  top:18px;
+  right:18px;
+  z-index:5;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.18);
+  background:rgba(2,6,16,.54);
+  color:#fff;
+  font-size:24px;
+  cursor:pointer;
+}
+@media(max-width:900px){
+  .changeModalBackdrop{padding:14px}
+  .changeModalInner{grid-template-columns:1fr;padding:22px}
+  .changeModalVisual{min-height:260px}
+  .changeModalContent h3{font-size:34px}
+}
+
+footer{padding:34px 0 0;color:#8194ad;font-size:13px}
+@media(max-width:1180px){
+  .wrap{padding:96px 22px 60px}
+  h1{font-size:56px}
+  .sectionHead{grid-template-columns:1fr}
+  .heroStats,.grid4{grid-template-columns:repeat(2,1fr)}
+  .grid3,.lights{grid-template-columns:1fr}
+}
+@media(max-width:720px){
+  .wrap{padding:92px 16px 50px}
+  .hero{padding:28px;border-radius:28px;min-height:auto}
+  h1{font-size:42px}
+  .lead{font-size:18px}
+  .heroStats,.grid4{grid-template-columns:1fr}
+  .step{grid-template-columns:1fr}
+  .footerCta{display:block}
+  .footerCta .btn{margin-top:22px}
+}
+</style>
+<link rel="stylesheet" href="/assets/frontline-menu.css">
 </head>
 <body class="frontline-doc-page">
-  <header>
-    <div class="wrap nav">
-      <a class="brand" href="/controlled-build-method.html">
-        <img class="brandBadge" src="/assets/5.png" alt="Frontline AI F logo" />
-        <div class="brandWords">
-          <span>Change control procedure</span>
-        </div>
-      </a>
-      <nav class="navlinks">
-        <a href="#procedure">Procedure</a>
-        <a href="#review">ChatGPT Review</a>
-        <a href="#commands">Commands</a>
-        <a href="#lights">Decision Lights</a>
-      </nav>
-      <div class="navPill">Server → Git → Review → GitHub</div>
-    </div>
-  </header>
-
+<div class="page">
   <main class="wrap">
+
     <section class="hero">
-      <div>
-        <div class="eyebrow"><span class="pulse"></span> LawFlow online help · controlled delivery</div>
-        <h1>Change control for LawFlow, <span class="grad">without mystery edits.</span></h1>
-        <p class="lead">This is the exact operating procedure for changing LawFlow safely: start clean, inspect first, make one narrow change, review the Git diff with ChatGPT, test, commit locally, then push to the private GitHub repository.</p>
-
-        <div class="heroActions">
-          <a class="btn primary" href="#procedure">Follow the procedure →</a>
-          <a class="btn secondary" href="#review">Use ChatGPT review gate</a>
-        </div>
-
-        <div class="heroProof">
-          <div class="mini"><b>Live server</b><span>Working code remains on /opt/lawflow.</span></div>
-          <div class="mini"><b>Git history</b><span>Accepted changes become local commits.</span></div>
-          <div class="mini"><b>GitHub backup</b><span>Push after review and testing only.</span></div>
+      <div class="heroCopy">
+        <div class="kicker">Client confidence · controlled delivery</div>
+        <h1>Change control that protects your <span class="grad">AI build.</span></h1>
+        <p class="lead">Frontline AI builds websites, AI workers, chatbots, portals and automations under a controlled change process. That means changes are planned, reviewed, tested and accepted before they become part of your live system.</p>
+        <div class="actions">
+          <a class="btn primary" href="/book-demo.html">Book Fact-Find →</a>
+          <a class="btn" href="/controlled-build-method.html">View Build Method</a>
         </div>
       </div>
 
-      <div class="visual">
-        <div class="visualTop">
-          <img src="/assets/5.png" alt="Frontline AI F" />
-          <div><b>Frontline AI Control</b><span>Inspect · Diff · Review · Commit</span></div>
-        </div>
+      <div class="heroVisual" aria-hidden="true">
+        <img src="/assets/change-control-shield.png" alt="">
+      </div>
 
-        <div class="visualCard">
-          <div class="checkline"><div class="num">01</div><div><b>Start from clean Git state</b><span>Confirm no unfinished work before a change.</span></div><div class="ok">Clean</div></div>
-          <div class="checkline"><div class="num">02</div><div><b>Make one targeted change</b><span>Codex or set script changes only the intended area.</span></div><div class="hold">Narrow</div></div>
-          <div class="checkline"><div class="num">03</div><div><b>ChatGPT reviews the diff</b><span>Check scope, risk, syntax and test plan before commit.</span></div><div class="hold">Gate</div></div>
-          <div class="checkline"><div class="num">04</div><div><b>Commit and push</b><span>Local Git commit first, then GitHub private backup.</span></div><div class="ok">Safe</div></div>
+      <div class="heroStats">
+        <div class="stat modalTrigger" data-modal="changePlanned" tabindex="0" role="button" aria-label="Explore planned change control">
+          <img class="statIcon" src="/assets/change-planned-icon.png" alt="">
+          <div><b>Planned</b><span>Changes start with scope, value and cost-saving potential.</span></div>
+        </div>
+        <div class="stat modalTrigger" data-modal="changeReviewed" tabindex="0" role="button" aria-label="Explore reviewed change control">
+          <img class="statIcon" src="/assets/change-reviewed-icon.png" alt="">
+          <div><b>Reviewed</b><span>Work is checked before it becomes permanent.</span></div>
+        </div>
+        <div class="stat modalTrigger" data-modal="changeTested" tabindex="0" role="button" aria-label="Explore tested change control">
+          <img class="statIcon" src="/assets/change-tested-icon.png" alt="">
+          <div><b>Tested</b><span>Important behaviour is tested against the intended outcome.</span></div>
+        </div>
+        <div class="stat modalTrigger" data-modal="changeRecoverable" tabindex="0" role="button" aria-label="Explore recoverable change control">
+          <img class="statIcon" src="/assets/change-recoverable-icon.png" alt="">
+          <div><b>Recoverable</b><span>Accepted changes are tracked so the build stays controlled.</span></div>
         </div>
       </div>
     </section>
 
     <section>
       <div class="sectionHead">
-        <h2>The non-negotiable rules</h2>
-        <p>These rules keep LawFlow recoverable and stop broad accidental edits from becoming permanent.</p>
+        <h2>Why change control matters.</h2>
+        <p>Fast development is useful only when the work remains understandable, reviewable and safe. Change control prevents rushed edits, hidden mistakes and unclear decisions from damaging your website, AI workflow or business process.</p>
       </div>
-
       <div class="grid3">
-        <div class="card"><div class="icon green">✓</div><h3>One change at a time</h3><p>Each fix or feature must be small enough to inspect, test, review and roll back cleanly.</p></div>
-        <div class="card"><div class="icon">⌁</div><h3>Inspect before editing</h3><p>Never guess the file structure. Inspect the current page, route, backend block or Git state first.</p></div>
-        <div class="card"><div class="icon gold">AI</div><h3>ChatGPT review before commit</h3><p>Paste the actual Git diff into ChatGPT before committing, especially when Codex made the change.</p></div>
+        <div class="card benefitCard modalTrigger" data-modal="benefitRisk" tabindex="0" role="button" aria-label="Explore how change control reduces risk">
+          <div class="benefitLabel">Risk control</div>
+          <h3>Less risk</h3>
+          <p>Changes are made in clear, limited steps so problems can be spotted before they spread across the project.</p>
+          <span class="benefitOpen">Explore benefit →</span>
+        </div>
+        <div class="card benefitCard modalTrigger" data-modal="benefitRecovery" tabindex="0" role="button" aria-label="Explore clear recovery benefits">
+          <div class="benefitLabel">Recovery point</div>
+          <h3>Clear recovery</h3>
+          <p>Accepted versions are tracked, making it easier to understand what changed and recover from unwanted behaviour.</p>
+          <span class="benefitOpen">Explore benefit →</span>
+        </div>
+        <div class="card benefitCard modalTrigger" data-modal="benefitDecisions" tabindex="0" role="button" aria-label="Explore better decision-making benefits">
+          <div class="benefitLabel">Decision quality</div>
+          <h3>Better decisions</h3>
+          <p>You get a build process that favours evidence, review and useful outcomes rather than random edits.</p>
+          <span class="benefitOpen">Explore benefit →</span>
+        </div>
       </div>
     </section>
 
     <section id="procedure">
       <div class="sectionHead">
-        <h2>Standard change control procedure</h2>
-        <p>Use this sequence for Codex, ChatGPT-generated scripts or direct server changes.</p>
+        <h2>The client-facing procedure.</h2>
+        <p>This is the practical sequence used to keep a project under control from first request through to live acceptance.</p>
       </div>
 
-      <div class="procedure">
-        <div class="step">
-          <div>
-            <h3>Start clean</h3>
-            <p>Before editing anything, confirm the working tree is clean. If Git is already dirty, stop and understand why.</p>
-            <div class="cmd"><b>Command</b><pre>cd /opt/lawflow
-git status
-git log --oneline -3</pre></div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div>
-            <h3>Inspect the target</h3>
-            <p>Find the exact file, route, UI block or backend function being changed. Codex should inspect first before writing.</p>
-            <div class="cmd"><b>Examples</b><pre>grep -n "target text" /opt/lawflow/public/page.html
-grep -n "route name" /opt/lawflow/api/server.js
-node --check /opt/lawflow/api/server.js</pre></div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div>
-            <h3>Make one narrow change</h3>
-            <p>Change only the intended target. Do not combine unrelated UI, backend, database, nginx or styling changes in one pass.</p>
-            <div class="cmd"><b>Rule</b><pre>One change = one reason = one diff = one review = one commit.</pre></div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div>
-            <h3>Review the Git diff</h3>
-            <p>Look at what actually changed. This catches accidental broad replacements, wrong files and generated clutter.</p>
-            <div class="cmd"><b>Commands</b><pre>cd /opt/lawflow
-git status
-git diff --stat
-git diff -- path/to/changed-file</pre></div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div>
-            <h3>ChatGPT review gate</h3>
-            <p>Before committing, paste the diff summary and target diff into ChatGPT. Ask for a scope/risk/test review.</p>
-            <div class="cmd"><b>Minimum review pack</b><pre>git status
-git diff --stat
-git diff -- path/to/changed-file</pre></div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div>
-            <h3>Test the changed area</h3>
-            <p>Use the browser, curl, endpoint runner or live workflow test depending on what changed. Backend edits must pass syntax check.</p>
-            <div class="cmd"><b>Common tests</b><pre>node --check /opt/lawflow/api/server.js
-curl -I http://188.245.92.195/change-control-procedure.html
-pm2 status</pre></div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div>
-            <h3>Commit locally</h3>
-            <p>Only commit after the diff has been reviewed and the relevant test has passed.</p>
-            <div class="cmd"><b>Commands</b><pre>cd /opt/lawflow
-git add path/to/changed-file
-git commit -m "Clear description of the change"
-git status</pre></div>
-          </div>
-        </div>
-
-        <div class="step">
-          <div>
-            <h3>Push to GitHub</h3>
-            <p>GitHub is the private off-server backup and review trail. It only updates when you push.</p>
-            <div class="cmd"><b>Command</b><pre>cd /opt/lawflow
-git push</pre></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="review">
-      <div class="reviewBox">
-        <h3>ChatGPT review before commit</h3>
-        <p class="lead" style="font-size:17px;margin:0;color:#d8e2f1">This is the quality gate between “a file changed” and “the change is accepted”. Use it before every commit, especially after Codex edits.</p>
-
-        <div class="reviewPrompt">
-          <div>Prompt to paste into ChatGPT</div>
-          <pre>Please review this LawFlow Git diff before I commit.
-
-Goal of the change:
-[describe the intended change in one sentence]
-
-I need you to check:
-1. Did the diff only touch the intended target area?
-2. Are there accidental broad replacements or unrelated file changes?
-3. Is there any obvious syntax, routing, UI, data or security risk?
-4. What exact test should I run before commit?
-5. Is this safe to commit, or should I stop?
-
-Here is the output:
-
-[PASTE git status]
-[PASTE git diff --stat]
-[PASTE git diff for the changed file]</pre>
-        </div>
-      </div>
-    </section>
-
-    <section id="commands">
-      <div class="sectionHead">
-        <h2>Command cheat sheet</h2>
-        <p>The common commands for the LawFlow server, local Git history and GitHub backup workflow.</p>
-      </div>
-
-      <div class="grid2">
-        <div class="card"><div class="icon">G</div><h3>Before changing anything</h3><div class="cmd"><b>Clean start</b><pre>cd /opt/lawflow
-git status
-git pull --ff-only
-git log --oneline -5</pre></div></div>
-
-        <div class="card"><div class="icon gold">D</div><h3>Review after change</h3><div class="cmd"><b>Diff review</b><pre>cd /opt/lawflow
-git status
-git diff --stat
-git diff -- path/to/changed-file</pre></div></div>
-
-        <div class="card"><div class="icon green">T</div><h3>Test before commit</h3><div class="cmd"><b>Common tests</b><pre>node --check /opt/lawflow/api/server.js
-curl -I http://188.245.92.195/
-pm2 status</pre></div></div>
-
-        <div class="card"><div class="icon">↑</div><h3>Commit and push</h3><div class="cmd"><b>Accepted change</b><pre>cd /opt/lawflow
-git add path/to/changed-file
-git commit -m "Describe the accepted change"
-git push</pre></div></div>
-      </div>
-    </section>
-
-    <section id="lights">
-      <div class="sectionHead">
-        <h2>Decision lights</h2>
-        <p>Use this simple model when deciding whether to commit and push.</p>
-      </div>
-
-      <div class="traffic">
-        <div class="light greenLine"><b>Green</b><span>Diff is narrow, test passes, ChatGPT review has no blockers. Commit and push.</span></div>
-        <div class="light goldLine"><b>Amber</b><span>Diff is larger than expected or test coverage is weak. Review again before commit.</span></div>
-        <div class="light redLine"><b>Red</b><span>Unexpected files changed, syntax failed, or behaviour is unclear. Do not commit.</span></div>
-        <div class="light goldLine"><b>Rollback</b><span>If uncommitted, restore the file. If committed, use a revert commit.</span></div>
-        <div class="light greenLine"><b>Checkpoint</b><span>After commit and push, GitHub becomes the latest off-server recovery point.</span></div>
+      <div class="steps">
+        <div class="step"><div class="num">01</div><div><h3>Define the change</h3><p>We clarify what is being changed, why it matters, what outcome is expected and what should not be touched.</p></div></div>
+        <div class="step"><div class="num">02</div><div><h3>Inspect the current state</h3><p>Before editing, we check the current page, workflow, form, API, design or behaviour so the change is based on reality.</p></div></div>
+        <div class="step"><div class="num">03</div><div><h3>Make one controlled change</h3><p>Work is kept narrow. A design change is not mixed with unrelated backend, content, server or data changes unless agreed.</p></div></div>
+        <div class="step"><div class="num">04</div><div><h3>Review what changed</h3><p>The actual difference is checked so accidental removals, broad rewrites or unrelated edits can be caught early.</p></div></div>
+        <div class="step"><div class="num">05</div><div><h3>Test the result</h3><p>The changed area is tested in the browser, form, workflow or live route depending on what the change affects.</p></div></div>
+        <div class="step"><div class="num">06</div><div><h3>Accept and record</h3><p>Once the change is approved, it becomes part of the controlled build history so future work starts from a stable point.</p></div></div>
       </div>
     </section>
 
     <section>
-      <div class="final">
-        <div>
-          <h2>The rule: no mystery changes.</h2>
-          <p>Every LawFlow change should have a reason, a visible diff, a ChatGPT review, a test result, a local commit and a GitHub backup.</p>
-        </div>
-        <a class="btn primary" href="/controlled-build-method.html">View delivery method</a>
+      <div class="panel">
+        <h2>Designed for AI systems, not just websites.</h2>
+        <p>AI workers, chatbots and workflow automations need more control than a normal brochure site. A small wording change, routing change or form change can affect leads, bookings, customer messages, records and handovers. That is why Frontline AI treats change control as part of the product, not an afterthought.</p>
       </div>
     </section>
-  </main>
 
-  <footer>
-    Frontline AI · LawFlow Change Control Procedure · Inspect first · Review diff · Test · Commit · Push to GitHub
-  </footer>
-  <script defer src="/assets/frontline-menu.js?v=20260520-demoportal"></script>
+    <section>
+      <div class="sectionHead">
+        <h2>What this protects.</h2>
+        <p>The same process applies whether we are building a marketing page, an AI receptionist, a booking journey, a client portal or a document-aware assistant.</p>
+      </div>
+      <div class="grid4">
+        <div class="card protectCard modalTrigger" data-modal="protectWebsites" tabindex="0" role="button" aria-label="Explore website change control">
+          <div class="protectLabel">Websites</div>
+          <h3>Websites</h3>
+          <p>Design, content, navigation, landing pages, forms, SEO structure and conversion journeys.</p>
+          <span class="benefitOpen">Explore protection →</span>
+        </div>
+        <div class="card protectCard modalTrigger" data-modal="protectAiWorkers" tabindex="0" role="button" aria-label="Explore AI worker change control">
+          <div class="protectLabel">AI workers</div>
+          <h3>AI workers</h3>
+          <p>Reception, sales, booking, follow-up and custom workflow workers that handle real enquiries.</p>
+          <span class="benefitOpen">Explore protection →</span>
+        </div>
+        <div class="card protectCard modalTrigger" data-modal="protectChatbots" tabindex="0" role="button" aria-label="Explore chatbot change control">
+          <div class="protectLabel">Chatbots</div>
+          <h3>Chatbots</h3>
+          <p>Website assistants that answer questions, qualify visitors and route enquiries toward action.</p>
+          <span class="benefitOpen">Explore protection →</span>
+        </div>
+        <div class="card protectCard modalTrigger" data-modal="protectRag" tabindex="0" role="button" aria-label="Explore RAG assistant change control">
+          <div class="protectLabel">RAG assistants</div>
+          <h3>RAG assistants</h3>
+          <p>Document-aware systems that answer from business content, policies, FAQs and knowledge bases.</p>
+          <span class="benefitOpen">Explore protection →</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionHead">
+        <h2>Decision lights.</h2>
+        <p>Every change should be easy to classify. If the result is unclear, we pause rather than pushing uncertainty into the live system.</p>
+      </div>
+      <div class="lights">
+        <div class="light green"><b>Green</b><span>The change is understood, tested and accepted. It can move into the controlled build history.</span></div>
+        <div class="light amber"><b>Amber</b><span>The change works, but needs review, copy adjustment, design polish or a follow-up decision.</span></div>
+        <div class="light red"><b>Red</b><span>The change is unclear, too broad, breaks expected behaviour or affects something outside scope.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="footerCta">
+        <div>
+          <h2>No mystery changes.</h2>
+          <p>Your build should not rely on blind edits or unexplained changes. Frontline AI keeps work visible, controlled and reviewable from the first page to the final workflow.</p>
+        </div>
+        <a class="btn primary" href="/book-demo.html">Book Fact-Find →</a>
+      </div>
+    </section>
+
+    <footer>
+      Frontline AI · Client-facing change control procedure · Planned changes · Reviewable delivery · Controlled outcomes
+    </footer>
+
+  </main>
+</div>
+
+<div class="changeModalBackdrop" id="changeControlModal" aria-hidden="true">
+  <div class="changeModal" role="dialog" aria-modal="true" aria-labelledby="changeModalTitle">
+    <button class="changeModalClose" type="button" aria-label="Close explanation">×</button>
+    <div class="changeModalInner">
+      <div class="changeModalVisual"><img id="changeModalImage" src="/assets/change-planned-icon.png" alt=""></div>
+      <div class="changeModalContent">
+        <div class="changeModalKicker" id="changeModalKicker">Change control</div>
+        <h3 id="changeModalTitle">Planned changes protect the build.</h3>
+        <p class="changeModalLead" id="changeModalLead"></p>
+        <ul class="changeUseCases" id="changeModalCases"></ul>
+        <div class="changeChips" id="changeModalChips"></div>
+        <div class="changeModalActions">
+          <a class="btn primary" href="/book-demo.html">Book Fact-Find →</a>
+          <button class="btn changeModalCloseSecondary" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  const data = {
+    protectWebsites: {
+      kicker: "Website protection",
+      title: "Change control protects the pages that generate enquiries.",
+      image: "/assets/change-control-shield.png",
+      lead: "A website is not just a design asset. It contains sales messages, forms, navigation, SEO structure and conversion journeys. Change control keeps updates focused so improvements do not accidentally weaken the route from visitor to enquiry.",
+      cases: [
+        ["What is protected", "Headlines, sections, forms, buttons, internal links, mobile layout, SEO structure and landing page flow."],
+        ["Why it matters", "A small page change can reduce clarity, break a form, bury a call-to-action or confuse the customer journey."],
+        ["Client benefit", "Your website can be improved quickly without losing the parts that already work."],
+        ["Commercial value", "Better-controlled website changes protect lead generation, brand trust and conversion performance."]
+      ],
+      chips: ["Landing Pages", "Forms", "SEO Structure", "Conversion Flow"]
+    },
+    protectAiWorkers: {
+      kicker: "AI worker protection",
+      title: "Change control protects AI workers that handle real enquiries.",
+      image: "/assets/change-control-shield.png",
+      lead: "AI workers need careful control because changes can affect what customers hear, what records are created, how enquiries are routed and whether a lead reaches the right next step.",
+      cases: [
+        ["What is protected", "Prompts, call flows, booking paths, lead qualification, callback handling, SMS/email handoffs and records."],
+        ["Why it matters", "AI behaviour can look simple on the surface but connect to important customer and operational outcomes."],
+        ["Client benefit", "Your AI worker can improve over time without breaking the enquiry, booking or follow-up process."],
+        ["Commercial value", "Controlled AI changes protect response speed, recovered leads, reduced admin time and customer experience."]
+      ],
+      chips: ["AI Reception", "Booking Flow", "Lead Routing", "Follow-Up"]
+    },
+    protectChatbots: {
+      kicker: "Chatbot protection",
+      title: "Change control protects chatbot journeys from becoming messy.",
+      image: "/assets/change-control-shield.png",
+      lead: "A chatbot should not become a random answer box. It needs controlled changes so answers, qualification questions, handoffs and calls-to-action keep moving visitors toward useful business outcomes.",
+      cases: [
+        ["What is protected", "Greeting logic, answer quality, qualification routes, escalation messages, booking links and enquiry capture."],
+        ["Why it matters", "Poor chatbot changes can create vague answers, wrong expectations or dead-end conversations."],
+        ["Client benefit", "The chatbot can become more useful without losing structure or commercial direction."],
+        ["Commercial value", "Controlled chatbot improvements support better visitor handling, stronger qualification and more useful enquiries."]
+      ],
+      chips: ["Visitor Questions", "Lead Capture", "Escalation", "Booking Links"]
+    },
+    protectRag: {
+      kicker: "RAG assistant protection",
+      title: "Change control protects knowledge-based AI answers.",
+      image: "/assets/change-control-shield.png",
+      lead: "RAG assistants answer from documents, policies, FAQs and knowledge bases. Change control matters because content, retrieval behaviour and answer framing must stay accurate, useful and trustworthy.",
+      cases: [
+        ["What is protected", "Source documents, FAQs, policy content, retrieval behaviour, answer style and escalation rules."],
+        ["Why it matters", "If knowledge content changes without control, the assistant can give outdated, weak or misleading answers."],
+        ["Client benefit", "Your document-aware assistant stays aligned with the information your business actually wants customers or staff to use."],
+        ["Commercial value", "Controlled RAG updates improve support quality, reduce repeated questions and protect trust in AI responses."]
+      ],
+      chips: ["Knowledge Base", "FAQs", "Policies", "Trusted Answers"]
+    },
+    benefitRisk: {
+      kicker: "Risk control",
+      title: "Controlled changes reduce the chance of expensive mistakes.",
+      image: "/assets/change-tested-icon.png",
+      lead: "Change control reduces risk by making each improvement small enough to understand, review and test. Instead of broad edits that may damage the page, workflow or customer journey, the work is broken into controlled changes with a clear purpose.",
+      cases: [
+        ["Reduced rework", "Smaller controlled changes are easier to correct before they become expensive problems."],
+        ["Protected journeys", "Important routes such as enquiry forms, booking pages, popups and CTAs are less likely to be accidentally weakened."],
+        ["Lower launch risk", "Changes are checked before they become part of the accepted live build."],
+        ["Client benefit", "You get progress without losing control of the site, workflow or AI behaviour."]
+      ],
+      chips: ["Lower Risk", "Less Rework", "Protected CTAs", "Safer Launch"]
+    },
+    benefitRecovery: {
+      kicker: "Recovery point",
+      title: "A clean checkpoint makes future changes safer.",
+      image: "/assets/change-recoverable-icon.png",
+      lead: "Clear recovery means the project always has a known accepted state. If a later change causes an issue, there is a stable point to compare against rather than guessing what changed or why something broke.",
+      cases: [
+        ["Stable checkpoints", "Accepted work becomes a reliable reference point for future improvements."],
+        ["Faster support", "Problems can be narrowed down more quickly because the change history is controlled."],
+        ["Less uncertainty", "The build does not depend on memory, scattered notes or hidden edits."],
+        ["Client benefit", "Your site or AI system can evolve without every new change feeling risky."]
+      ],
+      chips: ["Stable Version", "Faster Diagnosis", "Safer Iteration", "Controlled History"]
+    },
+    benefitDecisions: {
+      kicker: "Decision quality",
+      title: "Better decisions come from evidence, not random edits.",
+      image: "/assets/change-reviewed-icon.png",
+      lead: "A controlled process improves decision quality because changes are tied to purpose, expected value and evidence. That keeps the project focused on outcomes such as cost savings, revenue recovery, better conversion and reduced manual work.",
+      cases: [
+        ["Commercial focus", "Changes are judged by whether they support a real business outcome."],
+        ["Better prioritisation", "The most valuable improvements can be handled first instead of chasing random ideas."],
+        ["Cleaner client review", "It is easier to approve work when the purpose and expected impact are clear."],
+        ["Client benefit", "You get a smarter build process that protects time, budget and momentum."]
+      ],
+      chips: ["Evidence Led", "Cost Saving", "Better Priorities", "Commercial Focus"]
+    },
+    changePlanned: {
+      kicker: "Planned change",
+      title: "Every change starts with business value and cost-saving potential.",
+      image: "/assets/change-planned-icon.png",
+      lead: "Planning stops a build turning into random edits. Before anything changes, we identify the business purpose, expected value, likely cost saving or revenue gain, affected page or workflow, and the areas that should not be touched.",
+      cases: [
+        ["Why it matters", "A clear change request keeps design, content, automation and AI behaviour aligned with the business goal and the commercial upside."],
+        ["Client benefit", "You know what is being changed, why it matters and what saving or improvement it is expected to support."],
+        ["Conversion benefit", "Sales pages, forms and AI journeys are planned around measurable outcomes such as fewer missed leads, faster response or reduced admin time."],
+        ["Best used for", "New pages, copy changes, chatbot behaviour, booking flows, product demos and client portals."]
+      ],
+      chips: ["Clear Scope", "Cost Saving", "Business Goal", "Controlled Start"]
+    },
+    changeReviewed: {
+      kicker: "Reviewed change",
+      title: "Work is checked before it becomes permanent.",
+      image: "/assets/change-reviewed-icon.png",
+      lead: "Review catches accidental changes, broad rewrites, missing copy, broken layout and unclear behaviour before the work is accepted. It protects both the client and the build.",
+      cases: [
+        ["Why it matters", "Fast work still needs visible checks so mistakes are not hidden inside the project."],
+        ["Client benefit", "You can see that the requested area changed without unrelated sections being damaged."],
+        ["Conversion benefit", "Sales messages, CTAs and customer journeys are protected from accidental weakening."],
+        ["Best used for", "Homepage edits, service pages, demo portals, form journeys, AI prompts and content updates."]
+      ],
+      chips: ["Visible Review", "Quality Gate", "No Mystery Edits", "Client Confidence"]
+    },
+    changeTested: {
+      kicker: "Tested change",
+      title: "Important behaviour is tested against the intended outcome.",
+      image: "/assets/change-tested-icon.png",
+      lead: "Testing confirms the change works where it matters: buttons, links, forms, popups, mobile layout, booking paths, chatbot journeys and automation handoffs.",
+      cases: [
+        ["Why it matters", "A page can look finished but still fail at the point a customer tries to take action."],
+        ["Client benefit", "Key journeys are checked before the change is treated as done."],
+        ["Conversion benefit", "The route from interest to enquiry, booking or demo stays intact."],
+        ["Best used for", "Forms, CTAs, modal windows, booking pages, AI worker popups, hub links and mobile pages."]
+      ],
+      chips: ["Journey Testing", "CTA Checks", "Form Checks", "Behaviour Verified"]
+    },
+    changeRecoverable: {
+      kicker: "Recoverable change",
+      title: "Accepted changes are tracked so the build stays controlled.",
+      image: "/assets/change-recoverable-icon.png",
+      lead: "Recoverability means the project has a clean accepted state. If a future change causes problems, there is a known point to compare against instead of guessing what happened.",
+      cases: [
+        ["Why it matters", "Websites and AI systems evolve quickly, so each accepted improvement needs a stable checkpoint."],
+        ["Client benefit", "The build does not depend on memory or guesswork."],
+        ["Conversion benefit", "Successful sales pages and working customer journeys can be protected while new improvements are added."],
+        ["Best used for", "Live websites, demo hubs, booking systems, client portals, AI workflows and automation products."]
+      ],
+      chips: ["Stable Checkpoint", "Safer Iteration", "Version Confidence", "Protected Build"]
+    }
+  };
+
+  const modal = document.getElementById("changeControlModal");
+  if(!modal) return;
+
+  const title = document.getElementById("changeModalTitle");
+  const kicker = document.getElementById("changeModalKicker");
+  const lead = document.getElementById("changeModalLead");
+  const cases = document.getElementById("changeModalCases");
+  const chips = document.getElementById("changeModalChips");
+  const image = document.getElementById("changeModalImage");
+
+  function openModal(key){
+    const item = data[key];
+    if(!item) return;
+    kicker.textContent = item.kicker;
+    title.textContent = item.title;
+    lead.textContent = item.lead;
+    image.src = item.image;
+    image.alt = item.kicker + " icon";
+    cases.innerHTML = item.cases.map(([name, copy]) => `<li><b>${name}:</b> ${copy}</li>`).join("");
+    chips.innerHTML = item.chips.map(chip => `<span class="changeChip">${chip}</span>`).join("");
+    modal.classList.add("open");
+    modal.setAttribute("aria-hidden","false");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeModal(){
+    modal.classList.remove("open");
+    modal.setAttribute("aria-hidden","true");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll(".modalTrigger[data-modal]").forEach(card => {
+    card.addEventListener("click", () => openModal(card.dataset.modal));
+    card.addEventListener("keydown", event => {
+      if(event.key === "Enter" || event.key === " "){
+        event.preventDefault();
+        openModal(card.dataset.modal);
+      }
+    });
+  });
+
+  modal.addEventListener("click", event => {
+    if(event.target === modal) closeModal();
+  });
+
+  modal.querySelectorAll(".changeModalClose,.changeModalCloseSecondary").forEach(btn => {
+    btn.addEventListener("click", closeModal);
+  });
+
+  document.addEventListener("keydown", event => {
+    if(event.key === "Escape" && modal.classList.contains("open")) closeModal();
+  });
+})();
+</script>
+
+<script defer src="/assets/frontline-menu.js?v=20260520-menu-buttons-polish-v1"></script>
 </body>
 </html>

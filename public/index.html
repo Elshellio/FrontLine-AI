@@ -557,6 +557,298 @@ h1{
 }
 
 
+/* FRONTLINE_MONTHLY_SERVICE_INDUSTRY_POPUPS_V1 */
+.monthlyServiceSection .sectionHead p{
+  max-width:860px;
+}
+
+.monthlyServiceGrid .monthlyServiceCard{
+  cursor:pointer;
+}
+
+.monthlyServiceCard{
+  min-height:470px;
+}
+
+.monthlyServiceCard .cardImage{
+  height:100%;
+}
+
+.monthlyServiceCard .cardImage img{
+  filter:saturate(1.05) contrast(1.06);
+  transition:transform .28s ease, filter .28s ease;
+}
+
+.monthlyServiceCard:hover .cardImage img{
+  transform:scale(1.055);
+  filter:saturate(1.16) contrast(1.1) brightness(1.06);
+}
+
+.monthlyServiceCard .cardText{
+  left:24px;
+  right:24px;
+  bottom:24px;
+}
+
+.monthlyServiceCard .cardText p{
+  margin:12px 0 0;
+  color:#c4d1e4;
+  font-size:15px;
+  line-height:1.42;
+  max-width:260px;
+}
+
+.monthlyServiceCard .cardText span{
+  display:inline-flex;
+  align-items:center;
+  margin-top:18px;
+  min-height:34px;
+  padding:0 13px;
+  border-radius:999px;
+  border:1px solid rgba(125,205,255,.36);
+  background:rgba(2,6,16,.46);
+  color:#d9f1ff;
+  font-size:12px;
+  font-weight:900;
+  backdrop-filter:blur(14px);
+}
+
+.monthlyServiceCard:hover .cardText span{
+  border-color:rgba(125,205,255,.64);
+  background:rgba(20,120,255,.16);
+}
+
+.monthlyServiceCard:focus-visible{
+  outline:2px solid rgba(125,205,255,.82);
+  outline-offset:4px;
+}
+
+/* FRONTLINE_RAG_ICONS_V1 */
+.ragStepIcon{
+  position:relative;
+  z-index:2;
+  width:62px;
+  height:62px;
+  border-radius:20px;
+  object-fit:cover;
+  border:1px solid rgba(125,205,255,.36);
+  box-shadow:
+    0 0 34px rgba(20,120,255,.24),
+    inset 0 1px 0 rgba(255,255,255,.14);
+  margin-bottom:18px;
+  transition:transform .24s ease, filter .24s ease, box-shadow .24s ease;
+}
+
+.ragWebsiteSteps .step:hover .ragStepIcon{
+  transform:translateY(-2px) scale(1.04);
+  filter:saturate(1.12) brightness(1.06);
+  box-shadow:
+    0 0 44px rgba(20,120,255,.38),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+/* Hide old numbered span styling in this section if any old span remains. */
+.ragWebsiteSteps .step > span{
+  display:none;
+}
+
+/* FRONTLINE_RAG_WEBSITE_BUILDS_SECTION_V1 */
+.ragWebsiteSection .sectionHead p{
+  max-width:850px;
+}
+
+.ragWebsiteSteps .step{
+  min-height:250px;
+  cursor:pointer;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(20,120,255,.16),transparent 34%),
+    linear-gradient(180deg,rgba(10,24,48,.82),rgba(3,8,18,.92));
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+
+.ragWebsiteSteps .step:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.045),transparent 38%),
+    radial-gradient(circle at 84% 20%,rgba(91,183,255,.14),transparent 32%);
+  pointer-events:none;
+}
+
+.ragWebsiteSteps .step:hover{
+  transform:translateY(-7px);
+  border-color:rgba(125,205,255,.66);
+  box-shadow:
+    0 42px 120px rgba(0,0,0,.54),
+    0 0 70px rgba(20,120,255,.20),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.ragWebsiteSteps .step span,
+.ragWebsiteSteps .step h3,
+.ragWebsiteSteps .step p{
+  position:relative;
+  z-index:2;
+}
+
+.ragWebsiteSteps .step span{
+  width:42px;
+  height:42px;
+  border-radius:15px;
+  box-shadow:0 0 28px rgba(20,120,255,.30), inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.ragWebsiteSteps .step h3{
+  font-size:24px;
+  line-height:1.08;
+  margin:18px 0 12px;
+}
+
+.ragWebsiteSteps .step p{
+  color:#bac9dc;
+  font-size:16px;
+  line-height:1.5;
+}
+
+.ragWebsiteSteps .step:after{
+  content:"Explore →";
+  position:absolute;
+  left:26px;
+  bottom:22px;
+  z-index:3;
+  min-height:32px;
+  display:inline-flex;
+  align-items:center;
+  padding:0 12px;
+  border-radius:999px;
+  border:1px solid rgba(125,205,255,.32);
+  color:#d9f1ff;
+  background:rgba(2,6,16,.34);
+  font-size:12px;
+  font-weight:900;
+  opacity:.86;
+}
+
+.ragWebsiteSteps .step:hover:after{
+  border-color:rgba(125,205,255,.62);
+  background:rgba(20,120,255,.14);
+  opacity:1;
+}
+
+/* FRONTLINE_RESOURCES_IMAGE_CARDS_V1 */
+.resourceImageGrid{
+  align-items:stretch;
+}
+
+.resourceImageCard{
+  position:relative;
+  min-height:360px;
+  overflow:hidden;
+  padding:0;
+  border-radius:30px;
+  border:1px solid rgba(91,183,255,.30);
+  background:
+    radial-gradient(circle at 20% 0%,rgba(20,120,255,.16),transparent 34%),
+    linear-gradient(180deg,rgba(10,24,48,.82),rgba(3,8,18,.92));
+  box-shadow:
+    0 30px 90px rgba(0,0,0,.42),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+
+.resourceImageCard:hover{
+  transform:translateY(-7px);
+  border-color:rgba(125,205,255,.66);
+  box-shadow:
+    0 42px 120px rgba(0,0,0,.54),
+    0 0 70px rgba(20,120,255,.20),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+
+.resourceImage{
+  height:178px;
+  overflow:hidden;
+  background:#030916;
+  border-bottom:1px solid rgba(255,255,255,.10);
+}
+
+.resourceImage img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+  opacity:.94;
+  transform:scale(1.01);
+  transition:transform .28s ease, filter .28s ease;
+}
+
+.resourceImageCard:hover .resourceImage img{
+  transform:scale(1.06);
+  filter:saturate(1.14) brightness(1.06);
+}
+
+.resourceText{
+  position:relative;
+  z-index:2;
+  padding:24px 26px 26px;
+}
+
+.resourceText small{
+  display:block;
+  color:#71b8ff;
+  text-transform:uppercase;
+  letter-spacing:.16em;
+  font-size:11px;
+  font-weight:900;
+}
+
+.resourceText h3{
+  margin:12px 0 11px;
+  font-size:24px;
+  line-height:1.08;
+}
+
+.resourceText p{
+  margin:0;
+  color:#b9c7d8;
+  line-height:1.5;
+  font-size:16px;
+}
+
+.resourceText span{
+  display:inline-flex;
+  align-items:center;
+  margin-top:20px;
+  min-height:36px;
+  padding:0 14px;
+  border-radius:999px;
+  border:1px solid rgba(125,205,255,.36);
+  background:rgba(2,6,16,.38);
+  color:#d9f1ff;
+  font-size:13px;
+  font-weight:900;
+  backdrop-filter:blur(14px);
+}
+
+.resourceImageCard.featured .resourceText span{
+  border-color:rgba(128,205,255,.72);
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+  color:#fff;
+  box-shadow:0 0 28px rgba(35,124,255,.34), inset 0 1px 0 rgba(255,255,255,.20);
+}
+
+.resourceImageCard:hover .resourceText span{
+  border-color:rgba(125,205,255,.64);
+  background:rgba(20,120,255,.16);
+}
+
+.resourceImageCard.featured:hover .resourceText span{
+  background:linear-gradient(135deg,var(--blue),var(--blue2));
+}
+
 /* FRONTLINE_CAPACITY_MODALS_V1 */
 .capacityCard.modalTrigger,.op.modalTrigger,.workerCard.modalTrigger{cursor:pointer}
 .op.modalTrigger:focus-visible,.workerCard.modalTrigger:focus-visible{outline:2px solid rgba(125,205,255,.82);outline-offset:4px}
@@ -883,58 +1175,135 @@ h1{
       </div>
     </section>
 
-    <section class="section" id="industries">
+    <section class="section monthlyServiceSection" id="industries">
       <div class="shell">
         <div class="sectionHead">
-          <h2>Built for service businesses.</h2>
-          <p>Frontline AI fits around businesses that live or die by response speed, customer handling and consistent follow-up.</p>
+          <h2>Cloud AI support for <span class="blueText">service businesses.</span></h2>
+          <p>For businesses that do not need a full custom build, Frontline AI can provide a supported monthly service: enquiry handling, missed lead recovery, customer follow-up and a cloud dashboard with ongoing support. Book a call for pricing.</p>
         </div>
-        <div class="cards">
-          <div class="card"><div class="cardImage"><img src="/assets/10.png" alt="Legal AI"></div><div class="cardText"><small>AI Intake</small><b>Legal</b></div></div>
-          <div class="card"><div class="cardImage"><img src="/assets/11.png" alt="Garage AI"></div><div class="cardText"><small>AI Service Advisor</small><b>Garages</b></div></div>
-          <div class="card"><div class="cardImage"><img src="/assets/12.png" alt="Clinic AI"></div><div class="cardText"><small>AI Coordinator</small><b>Clinics</b></div></div>
-          <div class="card"><div class="cardImage"><img src="/assets/13.png" alt="Hospitality AI"></div><div class="cardText"><small>AI Concierge</small><b>Hospitality</b></div></div>
-          <div class="card"><div class="cardImage"><img src="/assets/14.png" alt="Estate Agent AI"></div><div class="cardText"><small>AI Enquiry Handler</small><b>Estate Agents</b></div></div>
+
+        <div class="cards monthlyServiceGrid">
+          <article class="card monthlyServiceCard modalTrigger" data-modal="industryLegal" tabindex="0" role="button" aria-label="Explore AI support for legal firms">
+            <div class="cardImage"><img src="/assets/10.png" alt="Legal AI intake support"></div>
+            <div class="cardText">
+              <small>AI Intake</small>
+              <b>Legal</b>
+              <p>Capture enquiries, callback requests and intake details before they are lost.</p>
+              <span>Who is this for? →</span>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard modalTrigger" data-modal="industryGarages" tabindex="0" role="button" aria-label="Explore AI support for garages">
+            <div class="cardImage"><img src="/assets/11.png" alt="Garage AI service advisor"></div>
+            <div class="cardText">
+              <small>AI Service Advisor</small>
+              <b>Garages</b>
+              <p>Recover missed calls, booking requests and service enquiries from busy workshops.</p>
+              <span>Who is this for? →</span>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard modalTrigger" data-modal="industryClinics" tabindex="0" role="button" aria-label="Explore AI support for clinics">
+            <div class="cardImage"><img src="/assets/12.png" alt="Clinic AI coordinator"></div>
+            <div class="cardText">
+              <small>AI Coordinator</small>
+              <b>Clinics</b>
+              <p>Support appointment enquiries, patient callbacks and follow-up requests.</p>
+              <span>Who is this for? →</span>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard modalTrigger" data-modal="industryHospitality" tabindex="0" role="button" aria-label="Explore AI support for hospitality businesses">
+            <div class="cardImage"><img src="/assets/13.png" alt="Hospitality AI concierge"></div>
+            <div class="cardText">
+              <small>AI Concierge</small>
+              <b>Hospitality</b>
+              <p>Handle booking questions, event enquiries and follow-up while staff are busy.</p>
+              <span>Who is this for? →</span>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard modalTrigger" data-modal="industryEstateAgents" tabindex="0" role="button" aria-label="Explore AI support for estate agents">
+            <div class="cardImage"><img src="/assets/14.png" alt="Estate agent AI enquiry handler"></div>
+            <div class="cardText">
+              <small>AI Enquiry Handler</small>
+              <b>Estate Agents</b>
+              <p>Capture viewing requests, valuation leads and property enquiries quickly.</p>
+              <span>Who is this for? →</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
-
-    <section class="section alt" id="how">
+    <section class="section alt ragWebsiteSection" id="how">
       <div class="shell">
         <div class="sectionHead">
-          <h2>Practical AI, built under control.</h2>
-          <p>We do not just drop a chatbot on your site. We map the job, build the workflow, test the routes and give you a controlled system you can trust.</p>
+          <h2>RAG assistants and <span class="blueText">integrated website builds.</span></h2>
+          <p>Frontline AI builds websites that do more than sit online. Your site can qualify visitors, answer from your documents, capture enquiries, book calls and connect into a controlled follow-up workflow.</p>
         </div>
-        <div class="steps">
-          <div class="step"><span>1</span><h3>Choose the first job</h3><p>Reception, sales, booking, follow-up or a specific process causing lost time or revenue.</p></div>
-          <div class="step"><span>2</span><h3>Map the workflow</h3><p>Questions, decisions, handoffs, records, alerts and success/failure routes.</p></div>
-          <div class="step"><span>3</span><h3>Build the worker</h3><p>Voice, SMS, email, forms, CRM-style records and business-specific logic.</p></div>
-          <div class="step"><span>4</span><h3>Test and improve</h3><p>Review outputs, fix gaps, add evidence and only then move toward live usage.</p></div>
+
+        <div class="steps ragWebsiteSteps">
+          <div class="step modalTrigger" data-modal="ragWebsiteBuild" tabindex="0" role="button" aria-label="Explore integrated AI website builds">
+            <img class="ragStepIcon" src="/assets/rag-website-build-icon.png" alt="">
+            <h3>Build the website around action</h3>
+            <p>Premium service-business pages, clear calls to action, enquiry routes and booking journeys built for conversion.</p>
+          </div>
+
+          <div class="step modalTrigger" data-modal="ragKnowledgeBase" tabindex="0" role="button" aria-label="Explore RAG knowledge base assistants">
+            <img class="ragStepIcon" src="/assets/rag-knowledge-assistant-icon.png" alt="">
+            <h3>Add a RAG knowledge assistant</h3>
+            <p>Give the site an assistant that can answer from your FAQs, service notes, PDFs, policies and business knowledge.</p>
+          </div>
+
+          <div class="step modalTrigger" data-modal="ragWorkflowIntegration" tabindex="0" role="button" aria-label="Explore website workflow integrations">
+            <img class="ragStepIcon" src="/assets/rag-workflow-integration-icon.png" alt="">
+            <h3>Connect forms, bookings and follow-up</h3>
+            <p>Turn website interest into structured enquiries, booking requests, email alerts, SMS follow-up or dashboard records.</p>
+          </div>
+
+          <div class="step modalTrigger" data-modal="ragControlledLaunch" tabindex="0" role="button" aria-label="Explore controlled testing and launch">
+            <img class="ragStepIcon" src="/assets/rag-controlled-launch-icon.png" alt="">
+            <h3>Test before it goes live</h3>
+            <p>Check the questions, routes, forms, responses and handovers before the system starts speaking to customers.</p>
+          </div>
         </div>
       </div>
     </section>
-
-    <section class="section" id="resources">
+<section class="section" id="resources">
       <div class="shell">
         <div class="sectionHead">
           <h2>Resources and proof.</h2>
           <p>These pages show the delivery method behind the build: controlled changes, test evidence, review checkpoints and clean handover.</p>
         </div>
-        <div class="resourceGrid">
-          <a class="resource" href="/controlled-build-method.html" target="_blank" rel="noopener">
-            <h3>Controlled Build Method</h3>
-            <p>How Frontline AI keeps fast builds controlled, reviewed and testable.</p>
-            <span class="btn">Open →</span>
+        <div class="resourceGrid resourceImageGrid">
+          <a class="resource resourceImageCard" href="/controlled-build-method.html">
+            <div class="resourceImage"><img src="/assets/menu-controlled-build.png" alt="Controlled Build Method"></div>
+            <div class="resourceText">
+              <small>Delivery method</small>
+              <h3>Controlled Build Method</h3>
+              <p>How Frontline AI keeps fast builds controlled, reviewed and testable.</p>
+              <span>Open →</span>
+            </div>
           </a>
-          <a class="resource" href="/change-control-procedure.html" target="_blank" rel="noopener">
-            <h3>Change Control Procedure</h3>
-            <p>Inspect first, diff review, test, commit and push before moving forward.</p>
-            <span class="btn">Open →</span>
+
+          <a class="resource resourceImageCard" href="/change-control-procedure.html">
+            <div class="resourceImage"><img src="/assets/menu-change-control.png" alt="Change Control Procedure"></div>
+            <div class="resourceText">
+              <small>Client confidence</small>
+              <h3>Change Control Procedure</h3>
+              <p>How changes are planned, reviewed, tested and accepted before becoming part of the live build.</p>
+              <span>Open →</span>
+            </div>
           </a>
-          <a class="resource" href="/book-demo.html">
-            <h3>Fact-Find Call</h3>
-            <p>See where AI workers could fit your business, including reception, sales, booking and follow-up.</p>
-            <span class="btn blue">Request Fact-Find →</span>
+
+          <a class="resource resourceImageCard featured" href="/book-demo.html">
+            <div class="resourceImage"><img src="/assets/menu-calendar.png" alt="Fact-Find Call"></div>
+            <div class="resourceText">
+              <small>Start here</small>
+              <h3>Fact-Find Call</h3>
+              <p>See where AI workers, RAG assistants, website builds or monthly support could fit your business.</p>
+              <span>Request Fact-Find →</span>
+            </div>
           </a>
         </div>
       </div>
@@ -982,6 +1351,123 @@ h1{
 <script>
 (function(){
   const data = {
+    industryLegal: {
+      kicker: "Monthly AI service · Legal",
+      title: "For firms that need faster enquiry handling without a full custom build.",
+      image: "/assets/10.png",
+      lead: "The monthly service is for firms that want structured enquiry capture, callback support and a cloud-based dashboard without commissioning a full bespoke platform first.",
+      cases: [
+        ["Who it is for", "Small and growing legal firms that miss calls, lose callbacks or need cleaner intake records."],
+        ["What it supports", "New enquiry capture, caller details, matter category, callback requests, urgency notes and follow-up prompts."],
+        ["Monthly service", "A cloud dashboard, supported setup, lead/callback visibility and agreed ongoing support."],
+        ["Commercial value", "Recover missed opportunities, reduce front-desk pressure and keep potential clients moving toward a conversation."]
+      ],
+      chips: ["Cloud Dashboard", "Callback Capture", "Monthly Support", "Book Call For Pricing"]
+    },
+    industryGarages: {
+      kicker: "Monthly AI service · Garages",
+      title: "Recover service enquiries while the workshop is busy.",
+      image: "/assets/11.png",
+      lead: "Garages often lose revenue because staff are on the tools, dealing with customers or unable to answer every call. The monthly service helps capture missed enquiries and turn them into visible follow-up.",
+      cases: [
+        ["Who it is for", "Independent garages, MOT centres, mobile mechanics and service businesses with missed calls or booking pressure."],
+        ["What it supports", "Missed calls, service requests, MOT enquiries, callback tasks, booking interest and customer follow-up."],
+        ["Monthly service", "A supported cloud dashboard showing enquiries, follow-ups and missed lead recovery activity."],
+        ["Commercial value", "More recovered work, fewer missed bookings and less dependency on someone answering every call live."]
+      ],
+      chips: ["Missed Calls", "Service Requests", "Garage Dashboard", "Monthly Support"]
+    },
+    industryClinics: {
+      kicker: "Monthly AI service · Clinics",
+      title: "Support appointment-heavy teams with cleaner enquiry handling.",
+      image: "/assets/12.png",
+      lead: "Clinics and appointment-led businesses need fast, consistent response. The monthly service helps capture enquiries, appointment intent and callback requests when the team is busy.",
+      cases: [
+        ["Who it is for", "Private clinics, wellness services, therapists, dental-style practices and appointment-led local businesses."],
+        ["What it supports", "Appointment enquiries, callback requests, follow-up reminders, service interest and basic intake notes."],
+        ["Monthly service", "Cloud dashboard access, supported configuration and a monthly support agreement for ongoing use."],
+        ["Commercial value", "Reduce admin leakage, respond faster and keep potential clients from drifting to another provider."]
+      ],
+      chips: ["Appointment Enquiries", "Callback Support", "Client Follow-Up", "Cloud Dashboard"]
+    },
+    industryHospitality: {
+      kicker: "Monthly AI service · Hospitality",
+      title: "Keep bookings and event enquiries moving when staff are busy.",
+      image: "/assets/13.png",
+      lead: "Hospitality teams are often too busy serving customers to handle every enquiry immediately. The monthly service helps capture booking questions, event interest and follow-up details.",
+      cases: [
+        ["Who it is for", "Restaurants, venues, hotels, event spaces and hospitality teams handling frequent customer questions."],
+        ["What it supports", "Booking enquiries, event requests, private hire interest, callback tasks and follow-up messages."],
+        ["Monthly service", "A cloud-based dashboard and supported customer enquiry process for agreed monthly pricing."],
+        ["Commercial value", "Reduce missed booking opportunities and give staff a structured way to follow up later."]
+      ],
+      chips: ["Booking Enquiries", "Event Leads", "Follow-Up", "Monthly Support"]
+    },
+    industryEstateAgents: {
+      kicker: "Monthly AI service · Estate Agents",
+      title: "Capture property enquiries before the lead goes cold.",
+      image: "/assets/14.png",
+      lead: "Estate agents live on speed of response. The monthly service helps capture viewing requests, valuation leads and property enquiries, then surfaces them in a supported cloud dashboard.",
+      cases: [
+        ["Who it is for", "Estate agents, letting agents, property managers and local property teams that rely on fast enquiry response."],
+        ["What it supports", "Viewing requests, valuation leads, landlord enquiries, buyer interest, tenant questions and callback follow-up."],
+        ["Monthly service", "Cloud dashboard access, supported setup and agreed monthly support instead of a full bespoke build."],
+        ["Commercial value", "Protect high-value leads, respond faster and reduce the chance of prospects moving to another agent."]
+      ],
+      chips: ["Viewing Requests", "Valuation Leads", "Property Enquiries", "Book Call For Pricing"]
+    },
+    ragWebsiteBuild: {
+      kicker: "Integrated website builds",
+      title: "A website should guide visitors toward action.",
+      image: "/assets/rag-website-build-icon.png",
+      lead: "Frontline AI websites are built around the job the site needs to do: generate enquiries, explain services, qualify visitors, book calls and support the customer journey. The website becomes part of the operating system, not just a brochure.",
+      cases: [
+        ["Who it is for", "Service businesses that want a premium site connected to enquiry capture, booking and follow-up."],
+        ["What it includes", "Landing pages, service pages, conversion copy, forms, booking routes, tracking-ready structure and clear calls to action."],
+        ["Why it matters", "A nice-looking page is not enough if visitors do not know what to do next."],
+        ["Commercial value", "Better enquiry flow, stronger conversion, faster follow-up and a site that supports sales instead of sitting idle."]
+      ],
+      chips: ["Website Builds", "Conversion Pages", "Forms", "Booking Journeys"]
+    },
+    ragKnowledgeBase: {
+      kicker: "RAG assistants",
+      title: "Let visitors ask questions your site can actually answer.",
+      image: "/assets/rag-knowledge-assistant-icon.png",
+      lead: "A RAG assistant can answer from approved business knowledge such as service descriptions, FAQs, documents, policies, guides and product information. That makes it more useful than a generic chatbot.",
+      cases: [
+        ["Who it is for", "Businesses with repeated questions, detailed services, policies, documents or technical knowledge customers need to understand."],
+        ["What it includes", "Knowledge preparation, answer structure, escalation rules and assistant behaviour designed around your content."],
+        ["Why it matters", "Customers often leave when they cannot find a clear answer quickly."],
+        ["Commercial value", "Reduce repeated questions, improve visitor confidence and move better-informed customers toward enquiry or booking."]
+      ],
+      chips: ["RAG", "Knowledge Base", "FAQs", "Document AI"]
+    },
+    ragWorkflowIntegration: {
+      kicker: "Website workflow integration",
+      title: "Connect customer interest to the next step.",
+      image: "/assets/rag-workflow-integration-icon.png",
+      lead: "The useful part of an AI website is what happens after someone shows interest. Forms, bookings, assistant conversations and calls to action can feed into email alerts, SMS follow-up, dashboard records or other workflows.",
+      cases: [
+        ["Who it is for", "Businesses that want fewer lost enquiries and a cleaner handover from website visit to follow-up."],
+        ["What it includes", "Forms, booking requests, enquiry capture, email notifications, SMS follow-up options and dashboard-ready records."],
+        ["Why it matters", "A lead is only useful if it reaches the right place with enough context to act on it."],
+        ["Commercial value", "Less manual chasing, fewer missed leads and faster response to warm prospects."]
+      ],
+      chips: ["Forms", "Bookings", "Email Alerts", "SMS Follow-Up"]
+    },
+    ragControlledLaunch: {
+      kicker: "Controlled testing",
+      title: "AI website journeys need testing before they face customers.",
+      image: "/assets/rag-controlled-launch-icon.png",
+      lead: "When a website includes AI, booking paths or enquiry workflows, testing matters. We check the routes, wording, forms, assistant behaviour and handovers before treating the page as ready.",
+      cases: [
+        ["Who it is for", "Any business launching an AI-enabled website, chatbot, RAG assistant or integrated enquiry journey."],
+        ["What it includes", "Route checks, form checks, popup checks, mobile review, response checks and controlled acceptance."],
+        ["Why it matters", "Small issues can block enquiries or create weak customer experiences."],
+        ["Commercial value", "Launch with more confidence, fewer broken journeys and clearer customer outcomes."]
+      ],
+      chips: ["Route Testing", "Mobile Review", "AI Checks", "Controlled Launch"]
+    },
     workerReception: {
       kicker: "AI Reception Worker",
       title: "Never let the first customer contact go cold.",
@@ -1229,6 +1715,6 @@ h1{
 })();
 </script>
 
-  <script defer src="/assets/frontline-menu.js?v=20260520-demoportal"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260520-menu-buttons-polish-v1"></script>
 </body>
 </html>
