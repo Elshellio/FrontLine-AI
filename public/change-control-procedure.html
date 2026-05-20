@@ -55,7 +55,7 @@
       content:"";
       position:fixed;
       inset:0;
-      background:url("assets/frontline-ai/9.png") center bottom / cover no-repeat;
+      background:url('/assets/9.png') center bottom / cover no-repeat;
       opacity:.12;
       mix-blend-mode:screen;
       pointer-events:none;
@@ -253,7 +253,7 @@
       inset:0;
       background:
         linear-gradient(90deg, rgba(2,6,18,.92), rgba(2,6,18,.45), rgba(2,6,18,.78)),
-        url("assets/frontline-ai/7.png") center / cover no-repeat;
+        url("/assets/7.png") center / cover no-repeat;
       transform:scale(1.02);
     }
 
@@ -535,7 +535,7 @@
       border:1px solid rgba(110,245,255,.20);
       background:
         linear-gradient(90deg,rgba(2,6,18,.94),rgba(2,6,18,.58)),
-        url("assets/frontline-ai/8.png") center / cover no-repeat;
+        url("/assets/8.png") center / cover no-repeat;
       box-shadow:var(--shadow);
       display:grid;
       grid-template-columns:1fr auto;
@@ -588,12 +588,14 @@
       .final h2{font-size:31px}
     }
   </style>
+  <link rel="stylesheet" href="/assets/frontline-menu.css">
+  <link rel="stylesheet" href="/assets/frontline-document-skin.css">
 </head>
-<body>
+<body class="frontline-doc-page">
   <header>
     <div class="wrap nav">
-      <a class="brand" href="/legal/controlled-build-method.html">
-        <img class="brandBadge" src="assets/frontline-ai/5.png" alt="Frontline AI F logo" />
+      <a class="brand" href="/controlled-build-method.html">
+        <img class="brandBadge" src="/assets/5.png" alt="Frontline AI F logo" />
         <div class="brandWords">
           <span>Change control procedure</span>
         </div>
@@ -629,7 +631,7 @@
 
       <div class="visual">
         <div class="visualTop">
-          <img src="assets/frontline-ai/5.png" alt="Frontline AI F" />
+          <img src="/assets/5.png" alt="Frontline AI F" />
           <div><b>Frontline AI Control</b><span>Inspect · Diff · Review · Commit</span></div>
         </div>
 
@@ -716,7 +718,7 @@ git diff -- path/to/changed-file</pre></div>
             <h3>Test the changed area</h3>
             <p>Use the browser, curl, endpoint runner or live workflow test depending on what changed. Backend edits must pass syntax check.</p>
             <div class="cmd"><b>Common tests</b><pre>node --check /opt/lawflow/api/server.js
-curl -I https://hub.missedcallsrecovered.co.uk/legal/change-control-procedure.html
+curl -I http://188.245.92.195/change-control-procedure.html
 pm2 status</pre></div>
           </div>
         </div>
@@ -789,7 +791,7 @@ git diff --stat
 git diff -- path/to/changed-file</pre></div></div>
 
         <div class="card"><div class="icon green">T</div><h3>Test before commit</h3><div class="cmd"><b>Common tests</b><pre>node --check /opt/lawflow/api/server.js
-curl -I https://hub.missedcallsrecovered.co.uk/legal/
+curl -I http://188.245.92.195/
 pm2 status</pre></div></div>
 
         <div class="card"><div class="icon">↑</div><h3>Commit and push</h3><div class="cmd"><b>Accepted change</b><pre>cd /opt/lawflow
@@ -820,7 +822,7 @@ git push</pre></div></div>
           <h2>The rule: no mystery changes.</h2>
           <p>Every LawFlow change should have a reason, a visible diff, a ChatGPT review, a test result, a local commit and a GitHub backup.</p>
         </div>
-        <a class="btn primary" href="/legal/controlled-build-method.html">View delivery method</a>
+        <a class="btn primary" href="/controlled-build-method.html">View delivery method</a>
       </div>
     </section>
   </main>
@@ -828,5 +830,6 @@ git push</pre></div></div>
   <footer>
     Frontline AI · LawFlow Change Control Procedure · Inspect first · Review diff · Test · Commit · Push to GitHub
   </footer>
+  <script defer src="/assets/frontline-menu.js"></script>
 </body>
 </html>

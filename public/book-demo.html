@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AI Worker Fact-Find | Frontline AI</title>
+<meta name="description" content="Choose a fact-find slot and tell Frontline AI which AI worker you want to explore first.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#020610;--panel:rgba(6,14,29,.78);--line:rgba(255,255,255,.13);--line2:rgba(91,183,255,.38);--blue:#1478ff;--blue2:#37a7ff;--muted:#aebed2;--soft:#d7e2f2;--ok:#6ee7b7;--bad:#fca5a5}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:#fff;font-family:Inter,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;background:url('/assets/9.png') center top/cover no-repeat;opacity:.35;pointer-events:none}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,.btn,label,.brand b,.slotDay,.kicker{font-family:Sora,Inter,Arial,sans-serif}
+.page{position:relative;z-index:1;min-height:100vh}
+.shell{max-width:1280px;margin:0 auto;padding:34px 26px 70px}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:34px}
+.brand{display:flex;align-items:center;gap:14px}
+.brand img{width:58px;height:58px;border-radius:18px;object-fit:cover;border:1px solid var(--line2)}
+.brand b{font-size:22px}
+.brand span{display:block;color:#77baff;font-size:11px;text-transform:uppercase;letter-spacing:.15em;font-weight:900;margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 22px;border-radius:14px;border:1px solid var(--line2);background:rgba(255,255,255,.06);font-size:14px;font-weight:900;cursor:pointer}
+.btn.blue{background:linear-gradient(135deg,var(--blue),var(--blue2))}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.heroIntro{border:1px solid var(--line);border-radius:30px;padding:30px 34px;background:linear-gradient(90deg,rgba(20,120,255,.17),rgba(255,255,255,.04));box-shadow:0 30px 100px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.1);margin-bottom:26px}
+.kicker{color:#77baff;text-transform:uppercase;letter-spacing:.22em;font-weight:900;font-size:12px;margin-bottom:16px}
+h1{font-size:50px;line-height:.98;letter-spacing:-.06em;margin:0 0 14px}
+.blueText{color:var(--blue);text-shadow:0 0 32px rgba(20,120,255,.35)}
+.heroIntro p{color:var(--soft);font-size:18px;line-height:1.55;margin:0;max-width:900px}
+.mainGrid{display:grid;grid-template-columns:.9fr 1.1fr;gap:26px;align-items:start}
+.panel{border:1px solid var(--line);border-radius:30px;background:rgba(4,12,26,.84);box-shadow:0 30px 100px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.1)}
+.calendar{padding:26px}
+.formCard{padding:26px;border-color:var(--line2)}
+.panelTitle{display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:20px}
+.panelTitle h2{margin:0;font-size:28px;letter-spacing:-.035em}
+.panelTitle p{margin:7px 0 0;color:var(--muted);line-height:1.45}
+.selectedBox{border:1px solid var(--line2);border-radius:18px;padding:14px;background:rgba(20,120,255,.12);min-width:215px}
+.selectedBox b{display:block}
+.selectedBox span{display:block;margin-top:6px;color:#c8d7ea}
+.slotGrid{display:grid;gap:14px;max-height:680px;overflow:auto;padding-right:4px}
+.dayCard{border:1px solid rgba(255,255,255,.12);border-radius:22px;padding:16px;background:rgba(255,255,255,.045)}
+.slotDay{font-size:16px;font-weight:900;margin-bottom:12px;color:#fff}
+.slotList{display:grid;grid-template-columns:repeat(3,1fr);gap:9px}
+.slot{border:1px solid rgba(91,183,255,.34);background:rgba(20,120,255,.08);color:#eaf4ff;border-radius:14px;padding:12px;font-weight:900;cursor:pointer;text-align:center}
+.slot:hover,.slot.active{background:linear-gradient(135deg,var(--blue),var(--blue2));border-color:rgba(255,255,255,.7)}
+.formGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.field{display:grid;gap:8px}
+.field.full{grid-column:1/-1}
+label{font-size:13px;font-weight:900;color:#e7f1ff}
+input,select,textarea{width:100%;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.055);color:#fff;border-radius:14px;padding:14px 14px;font:500 15px Inter,Arial,sans-serif;outline:none}
+select option{color:#0b1220}
+textarea{min-height:96px;resize:vertical}
+.hint{font-size:12px;color:#91a4bd;line-height:1.4}
+.actions{display:flex;gap:14px;align-items:center;margin-top:18px;flex-wrap:wrap}
+.status{color:#b9c7d8;font-weight:700}
+.status.ok{color:var(--ok)}
+.status.err{color:var(--bad)}
+.empty{padding:22px;border:1px dashed var(--line2);border-radius:20px;color:#b9c7d8}
+.bookingSummary{margin:0 0 18px;border:1px solid var(--line2);border-radius:20px;padding:16px;background:rgba(20,120,255,.12);display:none}
+.bookingSummary.show{display:block}
+.bookingSummary b{display:block}
+.bookingSummary span{display:block;color:#c8d7ea;margin-top:5px}
+@media(max-width:980px){.mainGrid,.formGrid{grid-template-columns:1fr}.top{align-items:flex-start;gap:16px}.shell{padding:22px 18px 60px}h1{font-size:40px}.panelTitle{display:block}.selectedBox{margin-top:16px}.slotList{grid-template-columns:repeat(2,1fr)}}
+</style>
+  <link rel="stylesheet" href="/assets/frontline-menu.css">
+</head>
+<body>
+<div class="page">
+  <div class="shell">
+    <header class="top">
+      <a class="brand" href="/">
+        <img src="/assets/4.png" alt="Frontline AI">
+        <div><b>Frontline AI</b><span>Book a practical fact-find</span></div>
+      </a>
+      <a class="btn" href="/">← Back to homepage</a>
+    </header>
+
+    <section class="heroIntro">
+      <div class="kicker">Start with the right AI worker</div>
+      <h1>Book a fact-find for your <span class="blueText">first AI worker.</span></h1>
+      <p>Pick a slot, then tell us what your business does, where time or leads are being lost, and which AI worker may create value first. This is a short discovery call, not a hard-sell demo. The goal is to understand the opportunity before suggesting the right AI worker.</p>
+    </section>
+
+    <main class="mainGrid">
+      <section class="panel calendar">
+        <div class="panelTitle">
+          <div>
+            <h2>Choose a fact-find slot</h2>
+            <p>30-minute UK-time slots. Once selected, the slot is reserved for your fact-find call.</p>
+          </div>
+          <div class="selectedBox">
+            <b>Selected slot</b>
+            <span id="selectedSlotLabel">No slot selected</span>
+          </div>
+        </div>
+        <div id="slotGrid" class="slotGrid"><div class="empty">Loading slots...</div></div>
+      </section>
+
+      <section class="panel formCard">
+        <div id="bookingSummary" class="bookingSummary"><b>Fact-find slot</b><span></span></div>
+
+        <form id="demoForm">
+          <input type="hidden" id="slot_start" name="slot_start">
+          <input type="hidden" id="slot_end" name="slot_end">
+
+          <div class="formGrid">
+            <div class="field">
+              <label for="name">Your name *</label>
+              <input id="name" name="name" autocomplete="name" required>
+            </div>
+
+            <div class="field">
+              <label for="company">Business name</label>
+              <input id="company" name="company" autocomplete="organization">
+            </div>
+
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" autocomplete="tel">
+            </div>
+
+            <div class="field">
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" autocomplete="email">
+              <div class="hint">Phone or email is required.</div>
+            </div>
+
+            <div class="field">
+              <label for="business_size">Business size *</label>
+              <select id="business_size" name="business_size" required>
+                <option value="">Choose...</option>
+                <option>One-person business</option>
+                <option>Small team</option>
+                <option>Growing business</option>
+                <option>Established company</option>
+                <option>Agency / consultancy</option>
+                <option>Other</option>
+              </select>
+            </div>
+
+            <div class="field">
+              <label for="product_interest">AI worker/product *</label>
+              <select id="product_interest" name="product_interest" required>
+                <option value="">Choose...</option>
+                <option>AI Reception Worker</option>
+                <option>AI Sales Worker</option>
+                <option>AI Booking Worker</option>
+                <option>AI Missed Lead Worker</option>
+                <option>AI Legal Intake Worker</option>
+                <option>Custom AI Worker</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="website">Website or main business link</label>
+              <input id="website" name="website" placeholder="https://...">
+            </div>
+
+            <div class="field full">
+              <label for="business_links">Other useful links</label>
+              <textarea id="business_links" name="business_links" placeholder="Google Business profile, Facebook, Instagram, booking page, current CRM, etc."></textarea>
+            </div>
+
+            <div class="field">
+              <label for="preferred_contact">Preferred contact method *</label>
+              <select id="preferred_contact" name="preferred_contact" required>
+                <option>Phone</option>
+                <option>Email</option>
+                <option>WhatsApp</option>
+                <option>Any</option>
+              </select>
+            </div>
+
+            <div class="field full">
+              <label for="notes">What should the AI worker help with?</label>
+              <textarea id="notes" name="notes" placeholder="Missed calls, lead qualification, booking, follow-up, reception, admin, customer support..."></textarea>
+            </div>
+          </div>
+
+          <div class="actions">
+            <button id="submitBtn" class="btn blue" type="submit">Request selected fact-find slot →</button>
+            <span id="formStatus" class="status"></span>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+</div>
+
+<script>
+const slotGrid = document.getElementById("slotGrid");
+const selectedSlotLabel = document.getElementById("selectedSlotLabel");
+const summary = document.getElementById("bookingSummary");
+const summaryText = summary.querySelector("span");
+const form = document.getElementById("demoForm");
+const statusEl = document.getElementById("formStatus");
+const submitBtn = document.getElementById("submitBtn");
+const slotStartInput = document.getElementById("slot_start");
+const slotEndInput = document.getElementById("slot_end");
+
+let selectedSlot = null;
+
+function groupSlots(slots){
+  return slots.reduce((acc, slot) => {
+    (acc[slot.date] ||= {label: slot.day_label, slots: []}).slots.push(slot);
+    return acc;
+  }, {});
+}
+
+function renderSlots(slots){
+  if(!slots.length){
+    slotGrid.innerHTML = '<div class="empty">No available slots right now. Please check back later.</div>';
+    return;
+  }
+
+  const grouped = groupSlots(slots);
+  const days = Object.values(grouped).slice(0, 10);
+
+  slotGrid.innerHTML = days.map(day => `
+    <div class="dayCard">
+      <div class="slotDay">${day.label}</div>
+      <div class="slotList">
+        ${day.slots.map(slot => `
+          <button class="slot" type="button" data-start="${slot.slot_start}" data-end="${slot.slot_end}" data-label="${day.label} at ${slot.time_label}">
+            ${slot.time_label}
+          </button>
+        `).join("")}
+      </div>
+    </div>
+  `).join("");
+
+  slotGrid.querySelectorAll(".slot").forEach(btn => {
+    btn.addEventListener("click", () => {
+      slotGrid.querySelectorAll(".slot").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      selectedSlot = {
+        slot_start: btn.dataset.start,
+        slot_end: btn.dataset.end,
+        label: btn.dataset.label
+      };
+
+      slotStartInput.value = selectedSlot.slot_start;
+      slotEndInput.value = selectedSlot.slot_end;
+      selectedSlotLabel.textContent = selectedSlot.label;
+      summaryText.textContent = selectedSlot.label + " · UK time";
+      summary.classList.add("show");
+      statusEl.textContent = "";
+      statusEl.className = "status";
+    });
+  });
+}
+
+async function loadSlots(){
+  slotGrid.innerHTML = '<div class="empty">Loading slots...</div>';
+  try{
+    const res = await fetch("/api/available-slots", {cache:"no-store"});
+    const data = await res.json();
+    if(!res.ok || !data.ok) throw new Error("Slot load failed");
+    renderSlots(data.slots || []);
+  }catch(err){
+    slotGrid.innerHTML = '<div class="empty">Could not load slots. Check the booking API is running.</div>';
+  }
+}
+
+function formPayload(form){
+  return Object.fromEntries(new FormData(form).entries());
+}
+
+form.addEventListener("submit", async (event) => {
+  event.preventDefault();
+  statusEl.className = "status";
+  statusEl.textContent = "";
+
+  if(!selectedSlot){
+    statusEl.className = "status err";
+    statusEl.textContent = "Choose a slot first.";
+    return;
+  }
+
+  const payload = formPayload(form);
+
+  if(!payload.phone && !payload.email){
+    statusEl.className = "status err";
+    statusEl.textContent = "Add a phone number or email.";
+    return;
+  }
+
+  submitBtn.disabled = true;
+  statusEl.textContent = "Booking...";
+
+  try {
+    const res = await fetch("/api/book-demo", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify(payload)
+    });
+
+    const data = await res.json().catch(() => ({}));
+
+    if(!res.ok || !data.ok){
+      statusEl.className = "status err";
+      statusEl.textContent = (data.errors || [data.error] || ["Could not reserve slot."]).filter(Boolean).join(" ");
+      submitBtn.disabled = false;
+      await loadSlots();
+      return;
+    }
+
+    form.reset();
+    selectedSlot = null;
+    selectedSlotLabel.textContent = "No slot selected";
+    summary.classList.remove("show");
+    statusEl.className = "status ok";
+    statusEl.textContent = "Fact-find booked. Reference: " + data.id.slice(0,8) + " · " + data.slot_label;
+    submitBtn.disabled = false;
+    await loadSlots();
+  } catch (err) {
+    statusEl.className = "status err";
+    statusEl.textContent = "Could not reserve slot. Try again.";
+    submitBtn.disabled = false;
+  }
+});
+
+loadSlots();
+</script>
+  <script defer src="/assets/frontline-menu.js"></script>
+</body>
+</html>
