@@ -11,6 +11,7 @@
     { label: "How It Works", href: "/#how", meta: "Process", icon: "/assets/menu-process.png" },
     { label: "Delivery Proof", href: "/#proof", meta: "Trust", icon: "/assets/menu-proof.png" },
     { label: "Resources", href: "/#resources", meta: "Links", icon: "/assets/menu-resources.png" },
+    { label: "Demo Portal", href: "/demo-portal.html", meta: "Hub", icon: "/assets/menu-resources.png" },
     { label: "Controlled Build", href: "/controlled-build-method.html", meta: "Method", icon: "/assets/menu-controlled-build.png" },
     { label: "Change Control", href: "/change-control-procedure.html", meta: "Review", icon: "/assets/menu-change-control.png" },
     { label: "Book Fact-Find", href: "/book-demo.html", meta: "Calendar", icon: "/assets/menu-calendar.png" }

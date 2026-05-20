@@ -203,6 +203,30 @@ const slotEndInput = document.getElementById("slot_end");
 
 let selectedSlot = null;
 
+// FRONTLINE_BOOKING_QUERY_PREFILL_V1
+function applyQueryPrefill(){
+  const params = new URLSearchParams(window.location.search);
+  const productInterest = params.get("product_interest");
+  const notesHint = params.get("notes");
+
+  const productSelect = document.getElementById("product_interest");
+  const notes = document.getElementById("notes");
+
+  if(productInterest && productSelect){
+    const wanted = productInterest.trim().toLowerCase();
+    const match = Array.from(productSelect.options).find(option => option.textContent.trim().toLowerCase() === wanted);
+    if(match){
+      productSelect.value = match.textContent;
+    }
+  }
+
+  if(notesHint && notes && !notes.value.trim()){
+    notes.value = notesHint;
+  }
+}
+
+applyQueryPrefill();
+
 function groupSlots(slots){
   return slots.reduce((acc, slot) => {
     (acc[slot.date] ||= {label: slot.day_label, slots: []}).slots.push(slot);
@@ -326,6 +350,6 @@ form.addEventListener("submit", async (event) => {
 
 loadSlots();
 </script>
-  <script defer src="/assets/frontline-menu.js"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260520-demoportal"></script>
 </body>
 </html>

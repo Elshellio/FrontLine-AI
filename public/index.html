@@ -558,8 +558,8 @@ h1{
 
 
 /* FRONTLINE_CAPACITY_MODALS_V1 */
-.capacityCard.modalTrigger,.op.modalTrigger{cursor:pointer}
-.op.modalTrigger:focus-visible{outline:2px solid rgba(125,205,255,.82);outline-offset:4px}
+.capacityCard.modalTrigger,.op.modalTrigger,.workerCard.modalTrigger{cursor:pointer}
+.op.modalTrigger:focus-visible,.workerCard.modalTrigger:focus-visible{outline:2px solid rgba(125,205,255,.82);outline-offset:4px}
 .capacityExplore{
   display:inline-flex;
   align-items:center;
@@ -820,7 +820,7 @@ h1{
           <p>Each AI worker is designed around a real business job, not a generic chatbot. Start with the repeated front-office task that leaks the most time or revenue, then add more workers once the first one proves value.</p>
         </div>
         <div class="workerGrid">
-          <article class="workerCard">
+          <article class="workerCard modalTrigger" data-modal="workerReception" tabindex="0" role="button" aria-label="Explore AI Reception Worker benefits">
             <div class="workerVisual"><img src="/assets/worker-reception.png" alt="AI Reception Worker interface example"></div>
             <div class="workerCopy">
               <small>Front office</small>
@@ -830,7 +830,7 @@ h1{
             </div>
           </article>
 
-          <article class="workerCard">
+          <article class="workerCard modalTrigger" data-modal="workerSales" tabindex="0" role="button" aria-label="Explore AI Sales Worker benefits">
             <div class="workerVisual"><img src="/assets/worker-sales.png" alt="AI Sales Worker dashboard example"></div>
             <div class="workerCopy">
               <small>Revenue</small>
@@ -840,7 +840,7 @@ h1{
             </div>
           </article>
 
-          <article class="workerCard">
+          <article class="workerCard modalTrigger" data-modal="workerBooking" tabindex="0" role="button" aria-label="Explore AI Booking Worker benefits">
             <div class="workerVisual"><img src="/assets/worker-booking.png" alt="AI Booking Worker calendar example"></div>
             <div class="workerCopy">
               <small>Operations</small>
@@ -850,7 +850,7 @@ h1{
             </div>
           </article>
 
-          <article class="workerCard">
+          <article class="workerCard modalTrigger" data-modal="workerMissedLead" tabindex="0" role="button" aria-label="Explore AI Missed Lead Worker benefits">
             <div class="workerVisual"><img src="/assets/worker-missed-lead.png" alt="AI Missed Lead Worker follow-up example"></div>
             <div class="workerCopy">
               <small>Recovery</small>
@@ -860,7 +860,7 @@ h1{
             </div>
           </article>
 
-          <article class="workerCard">
+          <article class="workerCard modalTrigger" data-modal="workerLegalIntake" tabindex="0" role="button" aria-label="Explore AI Legal Intake Worker benefits">
             <div class="workerVisual"><img src="/assets/worker-legal-intake.png" alt="AI Legal Intake Worker example"></div>
             <div class="workerCopy">
               <small>Specialist</small>
@@ -870,7 +870,7 @@ h1{
             </div>
           </article>
 
-          <article class="workerCard">
+          <article class="workerCard modalTrigger" data-modal="workerCustom" tabindex="0" role="button" aria-label="Explore custom AI worker benefits">
             <div class="workerVisual"><img src="/assets/worker-custom.png" alt="Custom AI Worker configuration example"></div>
             <div class="workerCopy">
               <small>Custom</small>
@@ -971,7 +971,7 @@ h1{
         <ul class="aiUseCases" id="aiModalCases"></ul>
         <div class="aiChips" id="aiModalChips"></div>
         <div class="aiModalActions">
-          <a class="btn blue" href="/book-demo.html">Book Fact-Find →</a>
+          <a class="btn blue" id="aiModalBookLink" href="/book-demo.html">Book Fact-Find →</a>
           <button class="btn aiModalCloseSecondary" type="button">Close</button>
         </div>
       </div>
@@ -982,6 +982,90 @@ h1{
 <script>
 (function(){
   const data = {
+    workerReception: {
+      kicker: "AI Reception Worker",
+      title: "Never let the first customer contact go cold.",
+      image: "/assets/worker-reception.png",
+      bookingUrl: "/book-demo.html?product_interest=AI%20Reception%20Worker&source=worker-popup",
+      lead: "An AI Reception Worker gives your business a reliable front line for calls and enquiries. It captures the reason for contact, records the customer details, identifies urgency and prepares the next action so your team can respond faster and with better information.",
+      cases: [
+        ["What it handles", "Inbound calls, missed calls, web enquiries, callback requests and common first-contact questions."],
+        ["Business benefit", "Fewer missed opportunities, faster response times, better customer experience and cleaner records."],
+        ["Best fit", "Trades, clinics, garages, legal firms, agencies and service businesses where every enquiry matters."],
+        ["Conversion angle", "Customers get a structured response quickly instead of waiting, chasing or trying a competitor."]
+      ],
+      chips: ["AI Receptionist", "Call Handling", "Customer Intake", "Callback Capture"]
+    },
+    workerSales: {
+      kicker: "AI Sales Worker",
+      title: "Qualify leads before they consume your time.",
+      image: "/assets/worker-sales.png",
+      bookingUrl: "/book-demo.html?product_interest=AI%20Sales%20Worker&source=worker-popup",
+      lead: "An AI Sales Worker asks the first useful questions, filters poor-fit enquiries and pushes stronger opportunities toward a quote, demo, consultation or booking. It helps your sales process feel faster without adding admin pressure.",
+      cases: [
+        ["What it handles", "Lead qualification, budget questions, service fit, location, urgency, product interest and next-step routing."],
+        ["Business benefit", "Better lead quality, less wasted time, faster follow-up and more consistent sales conversations."],
+        ["Best fit", "Service businesses, consultants, agencies, B2B providers, ecommerce support and appointment-led sales."],
+        ["Conversion angle", "Good enquiries are identified earlier and moved toward action while interest is still warm."]
+      ],
+      chips: ["Lead Qualification", "Sales Automation", "Quote Routing", "Demo Booking"]
+    },
+    workerBooking: {
+      kicker: "AI Booking Worker",
+      title: "Turn interest into booked appointments.",
+      image: "/assets/worker-booking.png",
+      bookingUrl: "/book-demo.html?product_interest=AI%20Booking%20Worker&source=worker-popup",
+      lead: "An AI Booking Worker helps customers move from enquiry to booked time by collecting the right information, preparing appointment requests, supporting cancellations and reducing manual back-and-forth around scheduling.",
+      cases: [
+        ["What it handles", "Appointment requests, fact-finds, consultations, cancellation intent, reschedule requests and booking details."],
+        ["Business benefit", "More completed bookings, fewer admin messages, clearer customer intent and less diary friction."],
+        ["Best fit", "Clinics, garages, consultants, salons, agencies, legal consultations and any appointment-led service."],
+        ["Conversion angle", "Customers who are ready to act get a smoother path to booking instead of waiting for manual replies."]
+      ],
+      chips: ["Appointment Booking", "Fact-Finds", "Rescheduling", "Calendar Workflow"]
+    },
+    workerMissedLead: {
+      kicker: "AI Missed Lead Worker",
+      title: "Recover revenue hiding in missed calls and abandoned enquiries.",
+      image: "/assets/worker-missed-lead.png",
+      bookingUrl: "/book-demo.html?product_interest=AI%20Missed%20Lead%20Worker&source=worker-popup",
+      lead: "An AI Missed Lead Worker follows up quickly when a customer call or enquiry is missed. It captures context, sends the right message and turns abandoned contact into a structured callback or next step.",
+      cases: [
+        ["What it handles", "Missed calls, after-hours enquiries, unanswered messages, abandoned forms and delayed customer replies."],
+        ["Business benefit", "More recovered leads, faster response, less leakage and a visible record of opportunities that nearly disappeared."],
+        ["Best fit", "Any business where calls are missed during jobs, meetings, busy periods, evenings or weekends."],
+        ["Conversion angle", "Warm prospects are contacted while intent is still fresh, before they move on to another provider."]
+      ],
+      chips: ["Missed Call Recovery", "SMS Follow-Up", "Lead Capture", "Revenue Recovery"]
+    },
+    workerLegalIntake: {
+      kicker: "AI Legal Intake Worker",
+      title: "Structure legal enquiries before they reach the team.",
+      image: "/assets/worker-legal-intake.png",
+      bookingUrl: "/book-demo.html?product_interest=AI%20Legal%20Intake%20Worker&source=worker-popup",
+      lead: "An AI Legal Intake Worker captures caller details, matter type, urgency, callback requirements and routing context. It supports a more controlled intake process for law firms and compliance-heavy teams.",
+      cases: [
+        ["What it handles", "New enquiries, caller details, matter category, urgency, callback requests, conflict-ready records and routing notes."],
+        ["Business benefit", "Cleaner intake, faster triage, stronger audit trail and less pressure on reception or fee earners."],
+        ["Best fit", "Law firms, legal intake teams, regulated service providers and businesses needing structured records."],
+        ["Conversion angle", "Potential clients feel heard quickly while the firm receives a clearer, more useful intake record."]
+      ],
+      chips: ["Legal Intake", "Matter Routing", "Audit Trail", "Callback Workflow"]
+    },
+    workerCustom: {
+      kicker: "Custom AI Worker",
+      title: "Build an AI worker around your actual process.",
+      image: "/assets/worker-custom.png",
+      bookingUrl: "/book-demo.html?product_interest=Custom%20AI%20Worker&source=worker-popup",
+      lead: "A custom AI worker is designed around the repeated job that costs your business time, money or missed opportunities. The workflow, records, prompts, routing and handover are built around the way your business really operates.",
+      cases: [
+        ["What it handles", "Custom intake, internal workflows, customer support, document questions, quote preparation, routing and follow-up."],
+        ["Business benefit", "Less manual handling, clearer process control, faster customer response and a system that fits the business."],
+        ["Best fit", "Businesses with repeated admin, fragmented processes, manual follow-up or customer handling bottlenecks."],
+        ["Conversion angle", "The first AI worker proves value on one clear process before expanding into a wider AI workforce."]
+      ],
+      chips: ["Custom Workflow", "AI Automation", "RAG Ready", "Client Portal"]
+    },
     outcomeAnswer: {
       kicker: "Answer every enquiry",
       title: "Stop missed enquiries becoming missed revenue.",
@@ -1097,6 +1181,7 @@ h1{
   const cases = document.getElementById("aiModalCases");
   const chips = document.getElementById("aiModalChips");
   const image = document.getElementById("aiModalImage");
+  const bookLink = document.getElementById("aiModalBookLink");
 
   function openModal(key){
     const item = data[key];
@@ -1106,6 +1191,7 @@ h1{
     lead.textContent = item.lead;
     image.src = item.image;
     image.alt = item.kicker + " AI worker examples";
+    if(bookLink) bookLink.href = item.bookingUrl || "/book-demo.html";
     cases.innerHTML = item.cases.map(([name, copy]) => `<li><b>${name}:</b> ${copy}</li>`).join("");
     chips.innerHTML = item.chips.map(chip => `<span class="aiChip">${chip}</span>`).join("");
     modal.classList.add("open");
@@ -1143,6 +1229,6 @@ h1{
 })();
 </script>
 
-  <script defer src="/assets/frontline-menu.js"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260520-demoportal"></script>
 </body>
 </html>
