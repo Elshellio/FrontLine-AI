@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontline AI · Controlled Build Method</title>
+  <style>
+    :root{
+      --bg:#050914;
+      --ink:#f7fbff;
+      --muted:#aeb9cc;
+      --soft:#718096;
+      --line:rgba(255,255,255,.13);
+      --glass:rgba(255,255,255,.072);
+      --glass2:rgba(255,255,255,.045);
+      --blue:#4f8dff;
+      --blue2:#6de7ff;
+      --gold:#f4c96f;
+      --green:#72f2ad;
+      --red:#ff8c8c;
+      --shadow:0 34px 90px rgba(0,0,0,.48);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(79,141,255,.34), transparent 34%),
+        radial-gradient(circle at 80% 12%, rgba(109,231,255,.16), transparent 30%),
+        radial-gradient(circle at 55% 88%, rgba(244,201,111,.10), transparent 38%),
+        linear-gradient(135deg,#02040a,#071126 42%,#050812);
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
+      background-size:46px 46px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.75), transparent 76%);
+      pointer-events:none;
+    }
+
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url("assets/frontline-ai/9.png") center bottom / cover no-repeat;
+      opacity:.14;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    a{text-decoration:none;color:inherit}
+    .wrap{width:min(1180px, calc(100% - 44px));margin:0 auto;position:relative;z-index:2}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(20px);
+      background:linear-gradient(to bottom, rgba(3,7,18,.88), rgba(3,7,18,.55));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav{
+      height:78px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:20px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brand img{
+      width:48px;
+      height:48px;
+      border-radius:17px;
+      object-fit:cover;
+      box-shadow:0 0 34px rgba(93,149,255,.28);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+    }
+
+    .brandText{
+      font-size:13px;
+      color:var(--muted);
+      border-left:1px solid rgba(255,255,255,.14);
+      padding-left:14px;
+      white-space:nowrap;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .navlinks a:hover{color:white}
+
+    .navPill{
+      padding:10px 15px;
+      border-radius:999px;
+      background:rgba(79,141,255,.10);
+      border:1px solid rgba(109,231,255,.20);
+      color:#dff7ff;
+      font-size:13px;
+      font-weight:800;
+      box-shadow:0 0 30px rgba(79,141,255,.12);
+      white-space:nowrap;
+    }
+
+    .hero{
+      min-height:720px;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:38px;
+      align-items:center;
+      padding:74px 0 56px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(109,231,255,.22);
+      background:rgba(79,141,255,.10);
+      color:#dff7ff;
+      font-size:12px;
+      font-weight:900;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .pulse{
+      width:8px;height:8px;border-radius:50%;
+      background:var(--green);
+      box-shadow:0 0 22px var(--green);
+    }
+
+    h1{
+      font-size:clamp(46px,6.4vw,82px);
+      line-height:.92;
+      letter-spacing:-.07em;
+      margin:24px 0 20px;
+      max-width:790px;
+    }
+
+    .grad{
+      background:linear-gradient(90deg,#fff,#dff7ff,var(--blue2));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      font-size:20px;
+      line-height:1.56;
+      color:#d6dfef;
+      max-width:720px;
+      margin:0;
+    }
+
+    .heroButtons{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:15px 18px;
+      border-radius:16px;
+      font-weight:900;
+      border:1px solid rgba(255,255,255,.14);
+      cursor:pointer;
+    }
+
+    .btn.primary{
+      background:linear-gradient(135deg,#5fb4ff,#264cff);
+      box-shadow:0 22px 48px rgba(79,141,255,.28);
+      color:white;
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.07);
+      color:#e9f1ff;
+    }
+
+    .proofRow{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:32px;
+      max-width:730px;
+    }
+
+    .proof{
+      padding:15px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.052);
+    }
+
+    .proof b{display:block;font-size:18px;margin-bottom:4px}
+    .proof span{font-size:13px;color:var(--muted)}
+
+    .heroVisual{
+      position:relative;
+      min-height:560px;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:#061022;
+      box-shadow:var(--shadow);
+    }
+
+    .heroVisual:before{
+      content:"";
+      position:absolute;inset:0;
+      background:
+        linear-gradient(90deg, rgba(2,6,18,.88), rgba(2,6,18,.42), rgba(2,6,18,.76)),
+        url("assets/frontline-ai/7.png") center / cover no-repeat;
+      transform:scale(1.02);
+    }
+
+    .heroVisual:after{
+      content:"";
+      position:absolute;inset:0;
+      background:radial-gradient(circle at 68% 28%, rgba(109,231,255,.20), transparent 26%);
+      pointer-events:none;
+    }
+
+    .floatingLogo{
+      position:absolute;
+      top:26px;
+      left:26px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:20px;
+      background:rgba(3,8,22,.66);
+      border:1px solid rgba(255,255,255,.13);
+      backdrop-filter:blur(18px);
+      z-index:2;
+    }
+
+    .floatingLogo img{width:38px;height:38px;border-radius:12px}
+    .floatingLogo b{font-size:14px}
+    .floatingLogo span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+
+    .cockpit{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      z-index:2;
+      border-radius:26px;
+      padding:17px;
+      background:rgba(3,8,22,.72);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(20px);
+    }
+
+    .cockpitTop{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      color:var(--muted);
+      font-size:12px;
+      margin-bottom:14px;
+    }
+
+    .live{color:var(--green);font-weight:900;text-transform:uppercase;letter-spacing:.10em}
+
+    .stages{display:grid;gap:10px}
+    .stage{
+      display:grid;
+      grid-template-columns:38px 1fr auto;
+      gap:12px;
+      align-items:center;
+      padding:12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .num{
+      height:38px;border-radius:13px;
+      display:grid;place-items:center;
+      background:rgba(79,141,255,.12);
+      border:1px solid rgba(109,231,255,.22);
+      color:var(--blue2);
+      font-weight:1000;
+      font-size:12px;
+    }
+    .stage b{display:block;font-size:14px}
+    .stage span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .ok{font-size:11px;color:var(--green);font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
+
+    section{padding:68px 0}
+    .sectionHead{
+      display:flex;
+      align-items:end;
+      justify-content:space-between;
+      gap:24px;
+      margin-bottom:24px;
+    }
+    .sectionHead h2{
+      font-size:clamp(32px,4.4vw,52px);
+      letter-spacing:-.055em;
+      margin:0;
+      max-width:760px;
+      line-height:1;
+    }
+    .sectionHead p{
+      margin:0;
+      color:var(--muted);
+      line-height:1.55;
+      max-width:520px;
+      font-size:16px;
+    }
+
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      position:relative;
+      overflow:hidden;
+      border-radius:26px;
+      padding:24px;
+      border:1px solid var(--line);
+      background:linear-gradient(155deg,rgba(255,255,255,.085),rgba(255,255,255,.036));
+      box-shadow:0 24px 64px rgba(0,0,0,.20);
+    }
+    .card:hover{
+      transform:translateY(-3px);
+      border-color:rgba(109,231,255,.24);
+      box-shadow:0 30px 78px rgba(0,0,0,.32);
+      transition:.22s ease;
+    }
+    .card h3{font-size:20px;margin:0 0 10px}
+    .card p{margin:0;color:var(--muted);line-height:1.55}
+    .icon{
+      width:46px;height:46px;border-radius:16px;
+      display:grid;place-items:center;
+      margin-bottom:16px;
+      background:rgba(79,141,255,.13);
+      border:1px solid rgba(109,231,255,.22);
+      color:#dff7ff;
+      font-weight:1000;
+    }
+
+    .bad{background:linear-gradient(155deg,rgba(255,89,89,.095),rgba(255,255,255,.035))}
+    .good{background:linear-gradient(155deg,rgba(114,242,173,.095),rgba(255,255,255,.035))}
+    .list{display:grid;gap:10px;margin-top:16px}
+    .li{display:flex;gap:10px;color:#dbe6f8;line-height:1.4}
+    .li i{font-style:normal;color:var(--blue2);font-weight:1000}
+
+    .process{
+      display:grid;
+      grid-template-columns:repeat(6,1fr);
+      gap:14px;
+      position:relative;
+    }
+    .process:before{
+      content:"";
+      position:absolute;
+      left:5%;right:5%;top:51px;
+      height:2px;
+      background:linear-gradient(90deg,transparent,var(--blue),var(--blue2),transparent);
+      opacity:.48;
+    }
+    .step{
+      position:relative;
+      min-height:194px;
+      padding:18px;
+      border-radius:22px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.055);
+    }
+    .bubble{
+      width:62px;height:62px;border-radius:21px;
+      display:grid;place-items:center;
+      font-weight:1000;
+      margin-bottom:18px;
+      background:linear-gradient(135deg,rgba(79,141,255,.26),rgba(109,231,255,.10));
+      border:1px solid rgba(255,255,255,.16);
+    }
+    .step h3{margin:0 0 8px;font-size:15px}
+    .step p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+
+    .imageCard{
+      min-height:360px;
+      padding:0;
+    }
+    .imageCard img{
+      width:100%;
+      height:360px;
+      object-fit:cover;
+      display:block;
+      opacity:.82;
+    }
+    .imageCard .caption{
+      position:absolute;
+      left:18px;right:18px;bottom:18px;
+      padding:16px;
+      border-radius:18px;
+      background:rgba(3,8,22,.72);
+      border:1px solid rgba(255,255,255,.13);
+      backdrop-filter:blur(16px);
+    }
+    .caption b{display:block;margin-bottom:5px}
+    .caption span{color:var(--muted);font-size:13px;line-height:1.45}
+
+    .evidence{
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.055);
+      box-shadow:var(--shadow);
+    }
+    table{width:100%;border-collapse:collapse;font-size:14px}
+    th,td{padding:16px;text-align:left;border-bottom:1px solid rgba(255,255,255,.075)}
+    th{
+      background:rgba(255,255,255,.05);
+      color:#dff7ff;
+      text-transform:uppercase;
+      letter-spacing:.09em;
+      font-size:12px;
+    }
+    td{color:#dbe6f8}
+    .pass{
+      display:inline-flex;align-items:center;gap:7px;
+      padding:6px 9px;
+      border-radius:999px;
+      background:rgba(114,242,173,.12);
+      color:var(--green);
+      font-weight:1000;
+      font-size:12px;
+    }
+    .dot{width:7px;height:7px;border-radius:50%;background:var(--green)}
+
+    .quote{
+      padding:38px;
+      border-radius:32px;
+      background:
+        linear-gradient(135deg,rgba(79,141,255,.16),rgba(109,231,255,.065)),
+        rgba(255,255,255,.04);
+      border:1px solid rgba(109,231,255,.18);
+      font-size:29px;
+      line-height:1.24;
+      letter-spacing:-.03em;
+      font-weight:950;
+      box-shadow:var(--shadow);
+    }
+    .quote span{color:#dff7ff}
+
+    .commitList{display:grid;gap:12px}
+    .commit{
+      display:grid;
+      grid-template-columns:88px 1fr auto;
+      gap:14px;
+      align-items:center;
+      padding:14px;
+      border-radius:18px;
+      background:rgba(255,255,255,.055);
+      border:1px solid rgba(255,255,255,.11);
+    }
+    .hash{font-family:ui-monospace, Menlo, monospace;color:var(--blue2);font-size:12px}
+    .tag{
+      padding:6px 9px;
+      border-radius:999px;
+      background:rgba(79,141,255,.13);
+      color:#dff7ff;
+      font-size:11px;
+      font-weight:1000;
+      text-transform:uppercase;
+    }
+
+    .handover{
+      display:grid;
+      grid-template-columns:repeat(4,1fr);
+      gap:14px;
+    }
+    .tile{
+      padding:18px;
+      min-height:126px;
+      border-radius:21px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.055);
+    }
+    .tile b{display:block;margin-bottom:8px}
+    .tile span{color:var(--muted);font-size:13px;line-height:1.45}
+
+    .final{
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:center;
+      padding:54px;
+      border-radius:36px;
+      border:1px solid rgba(109,231,255,.22);
+      background:
+        linear-gradient(90deg,rgba(2,6,18,.90),rgba(2,6,18,.54)),
+        url("assets/frontline-ai/14.png") center / cover no-repeat;
+      box-shadow:var(--shadow);
+      overflow:hidden;
+    }
+    .final h2{
+      margin:0 0 13px;
+      max-width:820px;
+      font-size:42px;
+      line-height:1.02;
+      letter-spacing:-.05em;
+    }
+    .final p{margin:0;color:#dbe6f8;max-width:760px;line-height:1.55;font-size:17px}
+
+    footer{
+      padding:34px 0 56px;
+      color:var(--soft);
+      font-size:13px;
+      text-align:center;
+    }
+
+    @media(max-width:1000px){
+      .hero,.grid2{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .process{grid-template-columns:1fr 1fr}
+      .process:before{display:none}
+      .handover{grid-template-columns:1fr 1fr}
+      .final{grid-template-columns:1fr}
+      .navlinks{display:none}
+      .heroVisual{min-height:560px}
+    }
+    @media(max-width:620px){
+      .wrap{width:min(100% - 28px,1180px)}
+      .brandText,.navPill{display:none}
+      h1{font-size:44px}
+      .proofRow,.process,.handover{grid-template-columns:1fr}
+      .sectionHead{display:block}
+      .sectionHead p{margin-top:12px}
+      table{font-size:12px}
+      th,td{padding:12px}
+      .commit{grid-template-columns:1fr}
+      .final{padding:28px}
+      .final h2{font-size:31px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#">
+        <img src="assets/frontline-ai/5.png" alt="Frontline AI F logo" />
+        <div class="brandText">Controlled Build Method</div>
+      </a>
+      <nav class="navlinks">
+        <a href="#process">Process</a>
+        <a href="#evidence">Evidence</a>
+        <a href="#handover">Handover</a>
+        <a href="#delivery">Delivery Control</a>
+      </nav>
+      <div class="navPill">Frontline AI Delivery Framework</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> Modern app delivery without blind risk</div>
+        <h1>Custom business systems, <span class="grad">delivered with control.</span></h1>
+        <p class="lead">Frontline AI combines modern development speed with serious delivery discipline: clear requirements, version-controlled changes, test evidence, release checkpoints and clean client handover.</p>
+
+        <div class="heroButtons">
+          <a class="btn primary" href="#process">View the process →</a>
+          <a class="btn secondary" href="#evidence">See example evidence</a>
+        </div>
+
+        <div class="proofRow">
+          <div class="proof"><b>Git-backed</b><span>Every accepted change has history.</span></div>
+          <div class="proof"><b>Test-linked</b><span>Features mapped to evidence.</span></div>
+          <div class="proof"><b>Client-owned</b><span>Clean handover and repo copy.</span></div>
+        </div>
+      </div>
+
+      <div class="heroVisual">
+        <div class="floatingLogo">
+          <img src="assets/frontline-ai/4.png" alt="Frontline AI icon" />
+          <div><b>Delivery cockpit</b><span>Build · Review · Test · Release</span></div>
+        </div>
+
+        <div class="cockpit">
+          <div class="cockpitTop">
+            <span>Frontline AI build assurance</span>
+            <span class="live">Live control</span>
+          </div>
+          <div class="stages">
+            <div class="stage"><div class="num">01</div><div><b>Requirement captured</b><span>Client workflow converted into a clear build item.</span></div><div class="ok">Ready</div></div>
+            <div class="stage"><div class="num">02</div><div><b>Controlled code change</b><span>Small targeted patch, reviewed through Git diff.</span></div><div class="ok">Diff</div></div>
+            <div class="stage"><div class="num">03</div><div><b>Endpoint evidence</b><span>Test runner proves key workflow response.</span></div><div class="ok">Pass</div></div>
+            <div class="stage"><div class="num">04</div><div><b>Release checkpoint</b><span>Clean commit and recoverable version history.</span></div><div class="ok">Commit</div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="delivery">
+      <div class="grid2">
+        <div class="card bad">
+          <div class="icon">!</div>
+          <h3>The problem with many fast builds</h3>
+          <p>Speed is useful. But speed without control creates mystery code, fragile fixes and unclear ownership.</p>
+          <div class="list">
+            <div class="li"><i>×</i><span>No visible version history</span></div>
+            <div class="li"><i>×</i><span>No clear evidence of what was tested</span></div>
+            <div class="li"><i>×</i><span>No reliable rollback path</span></div>
+            <div class="li"><i>×</i><span>No clean handover if the developer disappears</span></div>
+          </div>
+        </div>
+
+        <div class="card good">
+          <div class="icon">✓</div>
+          <h3>The benefit of controlled delivery</h3>
+          <p>Smaller businesses get the practical controls normally associated with serious delivery programmes, without carrying the cost of a large permanent team.</p>
+          <div class="list">
+            <div class="li"><i>✓</i><span>You can see what was requested, changed, tested and released.</span></div>
+            <div class="li"><i>✓</i><span>You receive a versioned codebase, not a black box.</span></div>
+            <div class="li"><i>✓</i><span>Changes are faster because they are targeted and recoverable.</span></div>
+            <div class="li"><i>✓</i><span>Modern tooling accelerates delivery, but human control owns the release.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="process">
+      <div class="sectionHead">
+        <h2>Frontline speed. <span class="grad">Enterprise-style discipline.</span></h2>
+        <p>This is not a generate-and-hope approach. It is a controlled delivery process adapted from business-critical implementation work, made lean enough for smaller companies.</p>
+      </div>
+
+      <div class="process">
+        <div class="step"><div class="bubble">01</div><h3>Requirement</h3><p>Every feature starts as a clear business outcome and acceptance point.</p></div>
+        <div class="step"><div class="bubble">02</div><h3>Design judgement</h3><p>Practical architecture decisions before code is changed.</p></div>
+        <div class="step"><div class="bubble">03</div><h3>Accelerated build</h3><p>Modern AI-assisted tooling speeds up inspection, coding and iteration.</p></div>
+        <div class="step"><div class="bubble">04</div><h3>Git diff review</h3><p>Every change is visible before it is trusted.</p></div>
+        <div class="step"><div class="bubble">05</div><h3>Test evidence</h3><p>Key endpoints and workflows are linked back to requirements.</p></div>
+        <div class="step"><div class="bubble">06</div><h3>Handover</h3><p>Client receives release notes, repo access and support detail.</p></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="quote">
+        Anyone can generate code quickly. <span>The value is knowing what changed, why it changed, whether it works, how to recover it and how to hand it over safely.</span>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionHead">
+        <h2>A lean team model, <span class="grad">senior where it matters.</span></h2>
+        <p>Most smaller builds do not need a large permanent development team. They need clear ownership, controlled delivery and the right specialist input at the right time.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card imageCard">
+          <img src="assets/frontline-ai/10.png" alt="Frontline AI delivery oversight" />
+          <div class="caption"><b>Single accountable lead</b><span>One clear owner for design, delivery control, communication and release decisions.</span></div>
+        </div>
+        <div class="card imageCard">
+          <img src="assets/frontline-ai/12.png" alt="Technical control" />
+          <div class="caption"><b>Technical control</b><span>Code changes are inspectable, reviewable and recoverable through Git.</span></div>
+        </div>
+        <div class="card imageCard">
+          <img src="assets/frontline-ai/14.png" alt="Client confidence" />
+          <div class="caption"><b>Client confidence</b><span>Release evidence, clear handover and private repository options.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evidence">
+      <div class="sectionHead">
+        <h2>Requirement-linked <span class="grad">test evidence.</span></h2>
+        <p>Instead of vague “it works” claims, important features are linked to visible test outcomes and release evidence.</p>
+      </div>
+
+      <div class="evidence">
+        <table>
+          <thead>
+            <tr><th>Requirement</th><th>Endpoint / Test</th><th>Evidence</th><th>Status</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Create customer record</td><td>POST /api/customers/save</td><td>CUSTOMER-SAVE-001</td><td><span class="pass"><span class="dot"></span>Passed</span></td></tr>
+            <tr><td>Search active jobs</td><td>GET /api/jobs/search</td><td>JOB-SEARCH-003</td><td><span class="pass"><span class="dot"></span>Passed</span></td></tr>
+            <tr><td>Send SMS reminder</td><td>POST /api/sms/send</td><td>SMS-SEND-002</td><td><span class="pass"><span class="dot"></span>Passed</span></td></tr>
+            <tr><td>Admin permissions</td><td>GET /api/users/permissions</td><td>PERMISSION-READ-001</td><td><span class="pass"><span class="dot"></span>Passed</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="handover">
+      <div class="sectionHead">
+        <h2>Version control and <span class="grad">client handover.</span></h2>
+        <p>Every approved release can be committed, pushed to a private GitHub repository and documented for future support.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card">
+          <h3>Example release history</h3>
+          <div class="commitList">
+            <div class="commit"><div class="hash">6301a81</div><div>Initial clean code checkpoint</div><div class="tag">Baseline</div></div>
+            <div class="commit"><div class="hash">c1e5ea8</div><div>Backup clutter removed from server</div><div class="tag">Clean</div></div>
+            <div class="commit"><div class="hash">a84d921</div><div>Endpoint test evidence added</div><div class="tag">Tested</div></div>
+            <div class="commit"><div class="hash">f19c03b</div><div>Client handover release package</div><div class="tag">Release</div></div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>What the client receives</h3>
+          <div class="list">
+            <div class="li"><i>✓</i><span>Private GitHub repository or release snapshot</span></div>
+            <div class="li"><i>✓</i><span>Version and commit reference for deployed app</span></div>
+            <div class="li"><i>✓</i><span>Endpoint test evidence mapped to requirements</span></div>
+            <div class="li"><i>✓</i><span>Rollback and recovery path</span></div>
+            <div class="li"><i>✓</i><span>Technical handover notes and support contact</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionHead">
+        <h2>Your build includes</h2>
+        <p>A lightweight but serious delivery pack designed to make the system easier to own, support and extend.</p>
+      </div>
+
+      <div class="handover">
+        <div class="tile"><b>Private repo</b><span>Clean source code history stored outside the server.</span></div>
+        <div class="tile"><b>Requirement tracker</b><span>Feature list with status, notes and sign-off evidence.</span></div>
+        <div class="tile"><b>Endpoint tests</b><span>Core behaviours proven through repeatable checks.</span></div>
+        <div class="tile"><b>Tech details page</b><span>Version, build, environment and support information.</span></div>
+        <div class="tile"><b>Release checkpoints</b><span>Recoverable commits before and after major changes.</span></div>
+        <div class="tile"><b>Deployment notes</b><span>Clear summary of hosting, services and restart process.</span></div>
+        <div class="tile"><b>Support model</b><span>Known routes for fixes, upgrades and monitoring.</span></div>
+        <div class="tile"><b>Handover pack</b><span>Client-facing documentation for ownership and continuity.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="final">
+        <div>
+          <h2>Not a black-box freelancer build. Not an expensive consultancy machine.</h2>
+          <p>A lean, controlled delivery model for practical business systems — combining modern development speed with version history, test evidence and accountable handover.</p>
+        </div>
+        <a class="btn primary" href="mailto:hello@frontline-ai.co.uk">Discuss a build</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Frontline AI · Controlled Build Method · Modern build speed · Human-controlled delivery
+  </footer>
+</body>
+</html>

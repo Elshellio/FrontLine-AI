@@ -1,0 +1,832 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Frontline AI · Change Control Procedure</title>
+  <style>
+    :root{
+      --bg:#050914;
+      --ink:#f8fbff;
+      --muted:#aeb9cc;
+      --soft:#748197;
+      --line:rgba(255,255,255,.14);
+      --glass:rgba(255,255,255,.075);
+      --glass2:rgba(255,255,255,.045);
+      --blue:#5d95ff;
+      --cyan:#6ef5ff;
+      --gold:#f5c76b;
+      --gold2:#ffe8a8;
+      --green:#79f2b1;
+      --red:#ff8f8f;
+      --purple:#bca7ff;
+      --shadow:0 32px 90px rgba(0,0,0,.44);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      color:var(--ink);
+      font-family:Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 18% 0%, rgba(93,149,255,.30), transparent 34%),
+        radial-gradient(circle at 84% 8%, rgba(110,245,255,.14), transparent 32%),
+        radial-gradient(circle at 50% 92%, rgba(245,199,107,.12), transparent 40%),
+        linear-gradient(135deg,#02040a,#071126 46%,#050812);
+      overflow-x:hidden;
+    }
+
+    body:before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(255,255,255,.032) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.032) 1px, transparent 1px);
+      background-size:46px 46px;
+      mask-image:linear-gradient(to bottom, rgba(0,0,0,.72), transparent 78%);
+      pointer-events:none;
+    }
+
+    body:after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:url("assets/frontline-ai/9.png") center bottom / cover no-repeat;
+      opacity:.12;
+      mix-blend-mode:screen;
+      pointer-events:none;
+    }
+
+    a{color:inherit;text-decoration:none}
+    .wrap{width:min(1180px, calc(100% - 44px));margin:0 auto;position:relative;z-index:2}
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:20;
+      backdrop-filter:blur(20px);
+      background:linear-gradient(to bottom, rgba(3,7,18,.90), rgba(3,7,18,.56));
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+
+    .nav{
+      height:80px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:18px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      min-width:0;
+    }
+
+    .brandBadge{
+      width:48px;
+      height:48px;
+      border-radius:17px;
+      object-fit:cover;
+      box-shadow:0 0 34px rgba(93,149,255,.28);
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.06);
+    }
+
+    .brandWords{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .brandWords b{
+      font-size:15px;
+      letter-spacing:.01em;
+    }
+
+    .brandWords span{
+      color:var(--muted);
+      font-size:12px;
+    }
+
+    .navlinks{
+      display:flex;
+      gap:18px;
+      color:var(--muted);
+      font-size:14px;
+    }
+
+    .navlinks a:hover{color:white}
+
+    .navPill{
+      padding:10px 14px;
+      border-radius:999px;
+      color:#dff7ff;
+      background:rgba(93,149,255,.10);
+      border:1px solid rgba(110,245,255,.20);
+      font-size:13px;
+      font-weight:900;
+      white-space:nowrap;
+    }
+
+    .hero{
+      min-height:680px;
+      display:grid;
+      grid-template-columns:1.02fr .98fr;
+      gap:38px;
+      align-items:center;
+      padding:72px 0 48px;
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      gap:10px;
+      align-items:center;
+      padding:9px 12px;
+      border-radius:999px;
+      border:1px solid rgba(110,245,255,.22);
+      background:rgba(93,149,255,.10);
+      color:#dff7ff;
+      font-size:12px;
+      font-weight:950;
+      letter-spacing:.12em;
+      text-transform:uppercase;
+    }
+
+    .pulse{
+      width:8px;
+      height:8px;
+      border-radius:999px;
+      background:var(--green);
+      box-shadow:0 0 20px var(--green);
+    }
+
+    h1{
+      font-size:clamp(44px,6.1vw,78px);
+      line-height:.94;
+      letter-spacing:-.065em;
+      margin:22px 0 20px;
+      max-width:800px;
+    }
+
+    .grad{
+      background:linear-gradient(90deg,#fff,#dff7ff,var(--cyan));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .lead{
+      margin:0;
+      max-width:720px;
+      font-size:20px;
+      line-height:1.56;
+      color:#d8e2f1;
+    }
+
+    .heroActions{
+      display:flex;
+      gap:14px;
+      flex-wrap:wrap;
+      margin-top:28px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:15px 18px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.14);
+      font-weight:950;
+      cursor:pointer;
+    }
+
+    .btn.primary{
+      background:linear-gradient(135deg,#62b8ff,#3357ff);
+      color:white;
+      box-shadow:0 20px 45px rgba(93,149,255,.25);
+    }
+
+    .btn.secondary{
+      background:rgba(255,255,255,.07);
+      color:#eef6ff;
+    }
+
+    .heroProof{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:12px;
+      margin-top:30px;
+      max-width:740px;
+    }
+
+    .mini{
+      padding:15px;
+      border-radius:18px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.052);
+    }
+
+    .mini b{display:block;font-size:17px;margin-bottom:5px}
+    .mini span{display:block;color:var(--muted);font-size:13px;line-height:1.38}
+
+    .visual{
+      position:relative;
+      min-height:560px;
+      border-radius:34px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,.14);
+      background:#061022;
+      box-shadow:var(--shadow);
+    }
+
+    .visual:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(90deg, rgba(2,6,18,.92), rgba(2,6,18,.45), rgba(2,6,18,.78)),
+        url("assets/frontline-ai/7.png") center / cover no-repeat;
+      transform:scale(1.02);
+    }
+
+    .visualCard{
+      position:absolute;
+      left:24px;
+      right:24px;
+      bottom:24px;
+      z-index:2;
+      border-radius:26px;
+      padding:18px;
+      background:rgba(3,8,22,.74);
+      border:1px solid rgba(255,255,255,.14);
+      backdrop-filter:blur(20px);
+    }
+
+    .visualTop{
+      position:absolute;
+      z-index:2;
+      left:24px;
+      top:24px;
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:12px 14px;
+      border-radius:20px;
+      background:rgba(3,8,22,.68);
+      border:1px solid rgba(255,255,255,.13);
+      backdrop-filter:blur(18px);
+    }
+
+    .visualTop img{
+      width:42px;
+      height:42px;
+      border-radius:14px;
+      object-fit:cover;
+    }
+
+    .visualTop b{display:block;font-size:14px}
+    .visualTop span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+
+    .checkline{
+      display:grid;
+      grid-template-columns:40px 1fr auto;
+      gap:12px;
+      align-items:center;
+      padding:12px;
+      border-radius:16px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      margin-top:10px;
+    }
+
+    .num{
+      height:40px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      background:rgba(93,149,255,.13);
+      border:1px solid rgba(110,245,255,.22);
+      color:var(--cyan);
+      font-weight:1000;
+      font-size:12px;
+    }
+
+    .checkline b{display:block;font-size:14px}
+    .checkline span{display:block;color:var(--muted);font-size:12px;margin-top:2px}
+    .ok{font-size:11px;color:var(--green);font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
+    .hold{font-size:11px;color:var(--gold2);font-weight:1000;text-transform:uppercase;letter-spacing:.08em}
+
+    section{padding:64px 0}
+
+    .sectionHead{
+      display:flex;
+      justify-content:space-between;
+      align-items:end;
+      gap:22px;
+      margin-bottom:24px;
+    }
+
+    .sectionHead h2{
+      margin:0;
+      max-width:760px;
+      font-size:clamp(30px,4.2vw,50px);
+      line-height:1.03;
+      letter-spacing:-.05em;
+    }
+
+    .sectionHead p{
+      margin:0;
+      max-width:540px;
+      color:var(--muted);
+      line-height:1.55;
+      font-size:16px;
+    }
+
+    .grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+
+    .card{
+      border:1px solid var(--line);
+      border-radius:26px;
+      padding:24px;
+      background:linear-gradient(155deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
+      box-shadow:0 22px 56px rgba(0,0,0,.19);
+    }
+
+    .card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(110,245,255,.25);
+      transition:.22s ease;
+      box-shadow:0 28px 68px rgba(0,0,0,.28);
+    }
+
+    .icon{
+      width:46px;
+      height:46px;
+      border-radius:16px;
+      display:grid;
+      place-items:center;
+      margin-bottom:16px;
+      background:rgba(93,149,255,.13);
+      border:1px solid rgba(110,245,255,.22);
+      color:#dff7ff;
+      font-weight:1000;
+    }
+
+    .icon.gold{
+      background:rgba(245,199,107,.12);
+      border-color:rgba(245,199,107,.24);
+      color:var(--gold2);
+    }
+
+    .icon.green{
+      background:rgba(121,242,177,.10);
+      border-color:rgba(121,242,177,.22);
+      color:var(--green);
+    }
+
+    .card h3{margin:0 0 10px;font-size:20px}
+    .card p{margin:0;color:var(--muted);line-height:1.55}
+
+    .procedure{
+      display:grid;
+      gap:14px;
+      counter-reset:item;
+    }
+
+    .step{
+      display:grid;
+      grid-template-columns:70px 1fr;
+      gap:18px;
+      padding:18px;
+      border-radius:24px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.055);
+      overflow:hidden;
+    }
+
+    .step:before{
+      counter-increment:item;
+      content:counter(item, decimal-leading-zero);
+      width:58px;
+      height:58px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      font-weight:1000;
+      background:linear-gradient(135deg,rgba(93,149,255,.28),rgba(110,245,255,.12));
+      border:1px solid rgba(255,255,255,.18);
+      color:#fff;
+    }
+
+    .step h3{margin:0 0 7px;font-size:19px}
+    .step p{margin:0;color:var(--muted);line-height:1.55}
+
+    .cmd{
+      margin-top:12px;
+      border-radius:16px;
+      border:1px solid rgba(255,255,255,.12);
+      background:#07101f;
+      overflow:hidden;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+      font-size:13px;
+    }
+
+    .cmd b{
+      display:block;
+      padding:10px 13px;
+      background:rgba(255,255,255,.055);
+      color:#d8e2f1;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      font-family:Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .cmd pre{
+      margin:0;
+      padding:13px;
+      overflow:auto;
+      color:#dbe7f7;
+      line-height:1.65;
+      white-space:pre-wrap;
+    }
+
+    .reviewBox{
+      border-radius:30px;
+      border:1px solid rgba(188,167,255,.30);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(188,167,255,.18), transparent 34%),
+        linear-gradient(155deg,rgba(255,255,255,.085),rgba(255,255,255,.035));
+      padding:26px;
+      box-shadow:var(--shadow);
+    }
+
+    .reviewBox h3{
+      margin:0 0 10px;
+      font-size:28px;
+      letter-spacing:-.025em;
+    }
+
+    .reviewPrompt{
+      margin-top:18px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(3,7,18,.74);
+      overflow:hidden;
+      font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+    }
+
+    .reviewPrompt div{
+      padding:10px 13px;
+      background:rgba(255,255,255,.055);
+      color:#d8ccff;
+      border-bottom:1px solid rgba(255,255,255,.08);
+      font-weight:950;
+      font-family:Inter, ui-sans-serif, system-ui, sans-serif;
+      font-size:12px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .reviewPrompt pre{
+      margin:0;
+      padding:14px;
+      overflow:auto;
+      color:#dbe7f7;
+      line-height:1.65;
+      white-space:pre-wrap;
+      font-size:13px;
+    }
+
+    .traffic{
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      gap:12px;
+    }
+
+    .light{
+      min-height:126px;
+      padding:16px;
+      border-radius:20px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.052);
+    }
+
+    .light b{display:block;margin-bottom:8px}
+    .light span{display:block;color:var(--muted);font-size:13px;line-height:1.45}
+
+    .greenLine{border-color:rgba(121,242,177,.30)}
+    .goldLine{border-color:rgba(245,199,107,.32)}
+    .redLine{border-color:rgba(255,143,143,.30)}
+
+    .final{
+      padding:48px;
+      border-radius:34px;
+      border:1px solid rgba(110,245,255,.20);
+      background:
+        linear-gradient(90deg,rgba(2,6,18,.94),rgba(2,6,18,.58)),
+        url("assets/frontline-ai/8.png") center / cover no-repeat;
+      box-shadow:var(--shadow);
+      display:grid;
+      grid-template-columns:1fr auto;
+      gap:24px;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    .final h2{
+      margin:0 0 12px;
+      font-size:40px;
+      line-height:1.05;
+      letter-spacing:-.05em;
+      max-width:800px;
+    }
+
+    .final p{
+      margin:0;
+      color:#d8e2f1;
+      font-size:17px;
+      line-height:1.55;
+      max-width:780px;
+    }
+
+    footer{
+      padding:34px 0 54px;
+      color:var(--soft);
+      font-size:13px;
+      text-align:center;
+    }
+
+    @media(max-width:980px){
+      .hero,.grid2{grid-template-columns:1fr}
+      .grid3{grid-template-columns:1fr}
+      .traffic{grid-template-columns:1fr 1fr}
+      .final{grid-template-columns:1fr}
+      .navlinks{display:none}
+    }
+
+    @media(max-width:620px){
+      .wrap{width:min(100% - 28px,1180px)}
+      .hero{padding-top:48px}
+      h1{font-size:43px}
+      .heroProof,.traffic{grid-template-columns:1fr}
+      .sectionHead{display:block}
+      .sectionHead p{margin-top:12px}
+      .step{grid-template-columns:1fr}
+      .navPill{display:none}
+      .final{padding:30px}
+      .final h2{font-size:31px}
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="/legal/controlled-build-method.html">
+        <img class="brandBadge" src="assets/frontline-ai/5.png" alt="Frontline AI F logo" />
+        <div class="brandWords">
+          <span>Change control procedure</span>
+        </div>
+      </a>
+      <nav class="navlinks">
+        <a href="#procedure">Procedure</a>
+        <a href="#review">ChatGPT Review</a>
+        <a href="#commands">Commands</a>
+        <a href="#lights">Decision Lights</a>
+      </nav>
+      <div class="navPill">Server → Git → Review → GitHub</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="eyebrow"><span class="pulse"></span> LawFlow online help · controlled delivery</div>
+        <h1>Change control for LawFlow, <span class="grad">without mystery edits.</span></h1>
+        <p class="lead">This is the exact operating procedure for changing LawFlow safely: start clean, inspect first, make one narrow change, review the Git diff with ChatGPT, test, commit locally, then push to the private GitHub repository.</p>
+
+        <div class="heroActions">
+          <a class="btn primary" href="#procedure">Follow the procedure →</a>
+          <a class="btn secondary" href="#review">Use ChatGPT review gate</a>
+        </div>
+
+        <div class="heroProof">
+          <div class="mini"><b>Live server</b><span>Working code remains on /opt/lawflow.</span></div>
+          <div class="mini"><b>Git history</b><span>Accepted changes become local commits.</span></div>
+          <div class="mini"><b>GitHub backup</b><span>Push after review and testing only.</span></div>
+        </div>
+      </div>
+
+      <div class="visual">
+        <div class="visualTop">
+          <img src="assets/frontline-ai/5.png" alt="Frontline AI F" />
+          <div><b>Frontline AI Control</b><span>Inspect · Diff · Review · Commit</span></div>
+        </div>
+
+        <div class="visualCard">
+          <div class="checkline"><div class="num">01</div><div><b>Start from clean Git state</b><span>Confirm no unfinished work before a change.</span></div><div class="ok">Clean</div></div>
+          <div class="checkline"><div class="num">02</div><div><b>Make one targeted change</b><span>Codex or set script changes only the intended area.</span></div><div class="hold">Narrow</div></div>
+          <div class="checkline"><div class="num">03</div><div><b>ChatGPT reviews the diff</b><span>Check scope, risk, syntax and test plan before commit.</span></div><div class="hold">Gate</div></div>
+          <div class="checkline"><div class="num">04</div><div><b>Commit and push</b><span>Local Git commit first, then GitHub private backup.</span></div><div class="ok">Safe</div></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sectionHead">
+        <h2>The non-negotiable rules</h2>
+        <p>These rules keep LawFlow recoverable and stop broad accidental edits from becoming permanent.</p>
+      </div>
+
+      <div class="grid3">
+        <div class="card"><div class="icon green">✓</div><h3>One change at a time</h3><p>Each fix or feature must be small enough to inspect, test, review and roll back cleanly.</p></div>
+        <div class="card"><div class="icon">⌁</div><h3>Inspect before editing</h3><p>Never guess the file structure. Inspect the current page, route, backend block or Git state first.</p></div>
+        <div class="card"><div class="icon gold">AI</div><h3>ChatGPT review before commit</h3><p>Paste the actual Git diff into ChatGPT before committing, especially when Codex made the change.</p></div>
+      </div>
+    </section>
+
+    <section id="procedure">
+      <div class="sectionHead">
+        <h2>Standard change control procedure</h2>
+        <p>Use this sequence for Codex, ChatGPT-generated scripts or direct server changes.</p>
+      </div>
+
+      <div class="procedure">
+        <div class="step">
+          <div>
+            <h3>Start clean</h3>
+            <p>Before editing anything, confirm the working tree is clean. If Git is already dirty, stop and understand why.</p>
+            <div class="cmd"><b>Command</b><pre>cd /opt/lawflow
+git status
+git log --oneline -3</pre></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Inspect the target</h3>
+            <p>Find the exact file, route, UI block or backend function being changed. Codex should inspect first before writing.</p>
+            <div class="cmd"><b>Examples</b><pre>grep -n "target text" /opt/lawflow/public/page.html
+grep -n "route name" /opt/lawflow/api/server.js
+node --check /opt/lawflow/api/server.js</pre></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Make one narrow change</h3>
+            <p>Change only the intended target. Do not combine unrelated UI, backend, database, nginx or styling changes in one pass.</p>
+            <div class="cmd"><b>Rule</b><pre>One change = one reason = one diff = one review = one commit.</pre></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Review the Git diff</h3>
+            <p>Look at what actually changed. This catches accidental broad replacements, wrong files and generated clutter.</p>
+            <div class="cmd"><b>Commands</b><pre>cd /opt/lawflow
+git status
+git diff --stat
+git diff -- path/to/changed-file</pre></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>ChatGPT review gate</h3>
+            <p>Before committing, paste the diff summary and target diff into ChatGPT. Ask for a scope/risk/test review.</p>
+            <div class="cmd"><b>Minimum review pack</b><pre>git status
+git diff --stat
+git diff -- path/to/changed-file</pre></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Test the changed area</h3>
+            <p>Use the browser, curl, endpoint runner or live workflow test depending on what changed. Backend edits must pass syntax check.</p>
+            <div class="cmd"><b>Common tests</b><pre>node --check /opt/lawflow/api/server.js
+curl -I https://hub.missedcallsrecovered.co.uk/legal/change-control-procedure.html
+pm2 status</pre></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Commit locally</h3>
+            <p>Only commit after the diff has been reviewed and the relevant test has passed.</p>
+            <div class="cmd"><b>Commands</b><pre>cd /opt/lawflow
+git add path/to/changed-file
+git commit -m "Clear description of the change"
+git status</pre></div>
+          </div>
+        </div>
+
+        <div class="step">
+          <div>
+            <h3>Push to GitHub</h3>
+            <p>GitHub is the private off-server backup and review trail. It only updates when you push.</p>
+            <div class="cmd"><b>Command</b><pre>cd /opt/lawflow
+git push</pre></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="review">
+      <div class="reviewBox">
+        <h3>ChatGPT review before commit</h3>
+        <p class="lead" style="font-size:17px;margin:0;color:#d8e2f1">This is the quality gate between “a file changed” and “the change is accepted”. Use it before every commit, especially after Codex edits.</p>
+
+        <div class="reviewPrompt">
+          <div>Prompt to paste into ChatGPT</div>
+          <pre>Please review this LawFlow Git diff before I commit.
+
+Goal of the change:
+[describe the intended change in one sentence]
+
+I need you to check:
+1. Did the diff only touch the intended target area?
+2. Are there accidental broad replacements or unrelated file changes?
+3. Is there any obvious syntax, routing, UI, data or security risk?
+4. What exact test should I run before commit?
+5. Is this safe to commit, or should I stop?
+
+Here is the output:
+
+[PASTE git status]
+[PASTE git diff --stat]
+[PASTE git diff for the changed file]</pre>
+        </div>
+      </div>
+    </section>
+
+    <section id="commands">
+      <div class="sectionHead">
+        <h2>Command cheat sheet</h2>
+        <p>The common commands for the LawFlow server, local Git history and GitHub backup workflow.</p>
+      </div>
+
+      <div class="grid2">
+        <div class="card"><div class="icon">G</div><h3>Before changing anything</h3><div class="cmd"><b>Clean start</b><pre>cd /opt/lawflow
+git status
+git pull --ff-only
+git log --oneline -5</pre></div></div>
+
+        <div class="card"><div class="icon gold">D</div><h3>Review after change</h3><div class="cmd"><b>Diff review</b><pre>cd /opt/lawflow
+git status
+git diff --stat
+git diff -- path/to/changed-file</pre></div></div>
+
+        <div class="card"><div class="icon green">T</div><h3>Test before commit</h3><div class="cmd"><b>Common tests</b><pre>node --check /opt/lawflow/api/server.js
+curl -I https://hub.missedcallsrecovered.co.uk/legal/
+pm2 status</pre></div></div>
+
+        <div class="card"><div class="icon">↑</div><h3>Commit and push</h3><div class="cmd"><b>Accepted change</b><pre>cd /opt/lawflow
+git add path/to/changed-file
+git commit -m "Describe the accepted change"
+git push</pre></div></div>
+      </div>
+    </section>
+
+    <section id="lights">
+      <div class="sectionHead">
+        <h2>Decision lights</h2>
+        <p>Use this simple model when deciding whether to commit and push.</p>
+      </div>
+
+      <div class="traffic">
+        <div class="light greenLine"><b>Green</b><span>Diff is narrow, test passes, ChatGPT review has no blockers. Commit and push.</span></div>
+        <div class="light goldLine"><b>Amber</b><span>Diff is larger than expected or test coverage is weak. Review again before commit.</span></div>
+        <div class="light redLine"><b>Red</b><span>Unexpected files changed, syntax failed, or behaviour is unclear. Do not commit.</span></div>
+        <div class="light goldLine"><b>Rollback</b><span>If uncommitted, restore the file. If committed, use a revert commit.</span></div>
+        <div class="light greenLine"><b>Checkpoint</b><span>After commit and push, GitHub becomes the latest off-server recovery point.</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="final">
+        <div>
+          <h2>The rule: no mystery changes.</h2>
+          <p>Every LawFlow change should have a reason, a visible diff, a ChatGPT review, a test result, a local commit and a GitHub backup.</p>
+        </div>
+        <a class="btn primary" href="/legal/controlled-build-method.html">View delivery method</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    Frontline AI · LawFlow Change Control Procedure · Inspect first · Review diff · Test · Commit · Push to GitHub
+  </footer>
+</body>
+</html>
