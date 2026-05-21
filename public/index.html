@@ -848,6 +848,438 @@ h1{
   display:none;
 }
 
+/* FRONTLINE_PREMIUM_WEBSITES_HOMEPAGE_SECTION_V1 */
+.websiteBuildSection{
+  position:relative;
+  overflow:hidden;
+  padding:94px 0 88px;
+  background:
+    radial-gradient(circle at 14% 14%,rgba(73,155,255,.22),transparent 32%),
+    radial-gradient(circle at 82% 18%,rgba(170,55,255,.22),transparent 34%),
+    radial-gradient(circle at 48% 86%,rgba(98,216,255,.10),transparent 34%),
+    linear-gradient(180deg,#020610,#061126 52%,#020610);
+}
+.websiteBuildSection:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(135deg,rgba(98,216,255,.055) 0 1px,transparent 1px 42px),
+    radial-gradient(circle at 12% 28%,rgba(20,120,255,.18),transparent 36%),
+    radial-gradient(circle at 88% 42%,rgba(194,64,255,.16),transparent 34%);
+  opacity:.72;
+  pointer-events:none;
+}
+.websiteBuildSection:after{
+  content:"";
+  position:absolute;
+  left:0;
+  right:0;
+  bottom:-1px;
+  height:160px;
+  background:linear-gradient(180deg,rgba(2,6,16,0),rgba(2,6,16,.86));
+  pointer-events:none;
+}
+.websiteBuildSection .shell{
+  position:relative;
+  z-index:2;
+}
+.websiteBuildHero{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(360px,1.05fr);
+  gap:34px;
+  align-items:center;
+}
+.websiteBuildIntro{
+  max-width:680px;
+}
+.websiteBuildIntro h2{
+  margin:0;
+  max-width:700px;
+  font-size:clamp(42px,5vw,68px);
+  line-height:.96;
+  letter-spacing:-.055em;
+}
+.websiteBuildIntro p{
+  margin:20px 0 0;
+  color:#d4deec;
+  font-size:18px;
+  line-height:1.62;
+}
+.websiteBuildActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:26px;
+}
+.websiteProofPoints{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:24px;
+}
+.websiteProofPoints span{
+  min-height:76px;
+  display:flex;
+  align-items:center;
+  border:1px solid rgba(125,205,255,.22);
+  border-radius:20px;
+  padding:14px;
+  color:#dbe8f8;
+  font-size:13px;
+  font-weight:850;
+  line-height:1.32;
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(7,18,35,.42));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+.websiteBuildVisual{
+  position:relative;
+  min-height:460px;
+  padding:24px;
+  overflow:hidden;
+  border:1px solid rgba(125,205,255,.30);
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 18% 12%,rgba(98,216,255,.18),transparent 34%),
+    linear-gradient(145deg,rgba(7,18,35,.82),rgba(3,8,18,.66));
+  box-shadow:
+    0 36px 120px rgba(0,0,0,.52),
+    0 0 90px rgba(20,120,255,.20),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+}
+.websiteBuildVisual:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('/assets/websites/crops/01-website-hero-premium-build.png') center/cover no-repeat;
+  opacity:.16;
+  filter:blur(9px) saturate(1.18) brightness(.58);
+  transform:scale(1.08);
+  pointer-events:none;
+}
+.websiteBuildVisual:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 18% 16%,rgba(194,64,255,.12),transparent 34%),
+    radial-gradient(circle at 84% 18%,rgba(20,120,255,.16),transparent 34%),
+    linear-gradient(180deg,rgba(2,6,16,0),rgba(2,6,16,.50));
+  pointer-events:none;
+}
+.websiteVisualHero{
+  position:relative;
+  z-index:2;
+  min-height:412px;
+  display:grid;
+  grid-template-rows:auto 1fr auto;
+  gap:16px;
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:26px;
+  padding:18px;
+  background:linear-gradient(145deg,rgba(2,8,20,.82),rgba(8,22,46,.58));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 24px 70px rgba(0,0,0,.32);
+  overflow:hidden;
+}
+.websiteVisualHero:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(90deg,rgba(255,255,255,.045),transparent 42%),
+    radial-gradient(circle at 80% 20%,rgba(98,216,255,.16),transparent 32%);
+  pointer-events:none;
+}
+.websiteBrowserBar{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  height:34px;
+  border:1px solid rgba(125,205,255,.16);
+  border-radius:999px;
+  padding:0 12px;
+  background:rgba(3,10,24,.72);
+}
+.websiteBrowserBar span{
+  width:8px;
+  height:8px;
+  border-radius:50%;
+  background:#58b8ff;
+  box-shadow:18px 0 0 rgba(155,92,255,.78),36px 0 0 rgba(242,220,157,.76);
+}
+.websiteBrowserBar b{
+  margin-left:44px;
+  color:#9fd7ff;
+  font-size:11px;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.websitePreviewGrid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:14px;
+  align-items:stretch;
+}
+.websiteMainPreview,
+.websiteMiniCard,
+.websiteAssistantOverlay,
+.websiteWorkflowStrip{
+  border:1px solid rgba(125,205,255,.18);
+  background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(7,18,35,.48));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 18px 44px rgba(0,0,0,.24);
+  backdrop-filter:blur(14px);
+}
+.websiteMainPreview{
+  min-height:230px;
+  border-radius:22px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  background:
+    radial-gradient(circle at 18% 18%,rgba(98,216,255,.18),transparent 34%),
+    linear-gradient(180deg,rgba(2,6,16,.14),rgba(2,6,16,.78)),
+    url('/assets/websites/crops/02-website-luxury-food-imagery.png') center/cover no-repeat;
+}
+.websiteMainPreview small,
+.websiteMiniCard small{
+  color:#83d4ff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+.websiteMainPreview b{
+  display:block;
+  max-width:260px;
+  margin-top:12px;
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  letter-spacing:-.04em;
+}
+.websiteMainPreview span{
+  display:block;
+  width:min(220px,82%);
+  height:10px;
+  border-radius:999px;
+  background:linear-gradient(90deg,#1678ff,#62d8ff);
+  box-shadow:0 0 30px rgba(20,120,255,.28);
+}
+.websiteMiniStack{
+  display:grid;
+  gap:12px;
+}
+.websiteMiniCard{
+  position:relative;
+  min-height:68px;
+  border-radius:18px;
+  padding:13px;
+  overflow:hidden;
+}
+.websiteMiniCard.salon{
+  background:linear-gradient(90deg,rgba(2,6,16,.22),rgba(2,6,16,.78)),url('/assets/websites/crops/03-website-salon-premium-imagery.png') center/cover no-repeat;
+}
+.websiteMiniCard.property{
+  background:linear-gradient(90deg,rgba(2,6,16,.22),rgba(2,6,16,.78)),url('/assets/websites/crops/05-website-property-premium-imagery.png') center/cover no-repeat;
+}
+.websiteMiniCard b{
+  display:block;
+  margin-top:5px;
+  color:#fff;
+  font-size:14px;
+}
+.websiteAssistantOverlay{
+  position:absolute;
+  z-index:4;
+  right:30px;
+  bottom:86px;
+  width:min(255px,44%);
+  border-radius:22px;
+  padding:14px;
+  background:linear-gradient(145deg,rgba(4,12,28,.78),rgba(13,34,68,.88)),url('/assets/websites/crops/07-website-ai-assistant-overlay.png') center/cover no-repeat;
+}
+.websiteAssistantOverlay small{
+  color:#f2dc9d;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.websiteAssistantOverlay b{
+  display:block;
+  margin:7px 0 6px;
+  color:#fff;
+  font-size:16px;
+}
+.websiteAssistantOverlay p{
+  margin:0;
+  color:#b9c8dc;
+  font-size:12px;
+  line-height:1.4;
+}
+.websiteWorkflowStrip{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  border-radius:18px;
+  padding:12px;
+  background:linear-gradient(145deg,rgba(4,12,28,.86),rgba(13,34,68,.68)),url('/assets/websites/crops/08-website-enquiry-flow.png') center/cover no-repeat;
+}
+.websiteWorkflowStrip span{
+  color:#dbe8f8;
+  font-size:11px;
+  font-weight:900;
+  white-space:nowrap;
+}
+.websiteWorkflowStrip i{
+  flex:1;
+  height:1px;
+  min-width:12px;
+  background:linear-gradient(90deg,rgba(98,216,255,.18),rgba(98,216,255,.70),rgba(155,92,255,.26));
+}
+.websiteVisualBadge{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:22px;
+  z-index:3;
+  display:flex;
+  align-items:center;
+  gap:13px;
+  padding:15px;
+  border:1px solid rgba(255,255,255,.16);
+  border-radius:22px;
+  background:rgba(2,7,18,.74);
+  backdrop-filter:blur(16px);
+  box-shadow:0 18px 44px rgba(0,0,0,.28);
+}
+.websiteVisualMark{
+  width:56px;
+  height:56px;
+  flex:0 0 56px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(125,205,255,.36);
+  border-radius:18px;
+  background:linear-gradient(135deg,rgba(20,120,255,.32),rgba(170,55,255,.20));
+  color:#fff;
+  font-weight:950;
+  box-shadow:0 0 30px rgba(20,120,255,.22);
+}
+.websiteVisualBadge b{
+  display:block;
+  color:#f5f9ff;
+  font-size:17px;
+  margin-bottom:5px;
+}
+.websiteVisualBadge span{
+  display:block;
+  color:#b9c8dc;
+  font-size:12.5px;
+  line-height:1.35;
+}
+.websiteOfferGrid{
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:12px;
+  margin-top:24px;
+}
+.websiteOfferCard{
+  position:relative;
+  min-height:154px;
+  overflow:hidden;
+  border:1px solid rgba(125,205,255,.20);
+  border-radius:24px;
+  padding:18px;
+  background:
+    radial-gradient(circle at 20% 0%,rgba(98,216,255,.13),transparent 34%),
+    linear-gradient(145deg,rgba(255,255,255,.075),rgba(7,18,35,.50));
+  box-shadow:0 22px 70px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.10);
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+}
+.websiteOfferCard:hover{
+  transform:translateY(-5px);
+  border-color:rgba(125,205,255,.52);
+  box-shadow:0 34px 95px rgba(0,0,0,.42),0 0 42px rgba(20,120,255,.16),inset 0 1px 0 rgba(255,255,255,.14);
+}
+.websiteOfferCard small{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:36px;
+  height:36px;
+  margin-bottom:16px;
+  border:1px solid rgba(125,205,255,.28);
+  border-radius:13px;
+  color:#83d4ff;
+  background:rgba(4,10,20,.56);
+  font-size:11px;
+  font-weight:950;
+}
+.websiteOfferCard b{
+  display:block;
+  color:#fff;
+  font-size:17px;
+  line-height:1.12;
+  margin-bottom:8px;
+}
+.websiteOfferCard span{
+  display:block;
+  color:#b9c8dc;
+  font-size:13px;
+  line-height:1.42;
+}
+@media(max-width:1180px){
+  .websiteBuildHero{
+    grid-template-columns:1fr;
+  }
+  .websiteOfferGrid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+@media(max-width:720px){
+  .websiteBuildSection{
+    padding:76px 0;
+  }
+  .websiteProofPoints,
+  .websiteOfferGrid{
+    grid-template-columns:1fr;
+  }
+  .websiteBuildVisual,
+  .websiteVisualHero{
+    min-height:330px;
+  }
+  .websitePreviewGrid{
+    grid-template-columns:1fr;
+  }
+  .websiteAssistantOverlay{
+    position:relative;
+    right:auto;
+    bottom:auto;
+    width:100%;
+  }
+  .websiteWorkflowStrip{
+    flex-wrap:wrap;
+  }
+  .websiteWorkflowStrip i{
+    display:none;
+  }
+  .websiteVisualBadge{
+    left:16px;
+    right:16px;
+    bottom:16px;
+  }
+}
+
 /* FRONTLINE_RAG_WEBSITE_BUILDS_SECTION_V1 */
 .ragWebsiteSection{
   position:relative;
@@ -1798,7 +2230,7 @@ h1{
 }
 
 </style>
-  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-groups-fit-v1">
+  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-exact-v2">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
 <!-- FRONTLINE_HOMEPAGE_IMAGE_OPTIMISE_V1 -->
 </head>
@@ -2077,6 +2509,93 @@ h1{
               <p>Capture urgent faults, installation enquiries, safety checks and callback requests.</p>
               <a class="monthlyServiceCardLink" href="/electriciandesk.html">Explore ElectricianDesk →</a>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section alt websiteBuildSection" id="websites">
+      <div class="shell">
+        <div class="websiteBuildHero">
+          <div class="websiteBuildIntro">
+            <div class="kicker">WEBSITES THAT WORK</div>
+            <h2>Premium websites, built to capture enquiries and power AI.</h2>
+            <p>Frontline AI builds state-of-the-art websites for serious service businesses. Premium design, conversion-focused pages, enquiry capture, booking routes and AI-ready content structure — built so your website can become part of your operating system.</p>
+            <div class="websiteBuildActions">
+              <a class="btn blue" href="/websites.html">View Website Builds →</a>
+              <a class="btn" href="/book-demo.html?product_interest=Premium%20Website%20Build">Book a Fact-Find →</a>
+            </div>
+            <div class="websiteProofPoints" aria-label="Premium website build proof points">
+              <span>Conversion-first pages built around real enquiries, bookings and quote requests.</span>
+              <span>AI-ready service content, FAQs and structure for future knowledge assistants.</span>
+              <span>Premium visual direction for serious service businesses, not template sites.</span>
+            </div>
+          </div>
+
+          <div class="websiteBuildVisual" aria-label="Premium website visual direction preview">
+            <div class="websiteVisualHero">
+              <div class="websiteBrowserBar"><span></span><b>frontline website system</b></div>
+              <div class="websitePreviewGrid">
+                <div class="websiteMainPreview">
+                  <div>
+                    <small>Michelin-grade hospitality</small>
+                    <b>High-intent pages built around bookings.</b>
+                  </div>
+                  <span></span>
+                </div>
+                <div class="websiteMiniStack">
+                  <div class="websiteMiniCard salon"><small>Premium salon / clinic</small><b>Treatments, trust and booking flow</b></div>
+                  <div class="websiteMiniCard property"><small>Property / service business</small><b>Valuations, quotes and enquiries</b></div>
+                </div>
+              </div>
+              <div class="websiteAssistantOverlay">
+                <small>AI assistant overlay</small>
+                <b>Answers from approved website material.</b>
+                <p>Guides visitors into a fact-find, booking or clean team handoff.</p>
+              </div>
+              <div class="websiteWorkflowStrip" aria-label="Website enquiry workflow">
+                <span>Visitor</span><i></i><span>Enquiry</span><i></i><span>Assistant</span><i></i><span>Booking</span><i></i><span>Handoff</span>
+              </div>
+            </div>
+            <div class="websiteVisualBadge">
+              <div class="websiteVisualMark">AI</div>
+              <div>
+                <b>Website first. Assistant ready.</b>
+                <span>Design, content, capture routes and workflow handoff planned as one operating layer.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="websiteOfferGrid" aria-label="Premium website and AI-ready build offer">
+          <article class="websiteOfferCard">
+            <small>01</small>
+            <b>Premium Website Builds</b>
+            <span>Sharp service pages, responsive layouts and conversion-ready calls to action.</span>
+          </article>
+          <article class="websiteOfferCard">
+            <small>02</small>
+            <b>Luxury Visual Direction</b>
+            <span>Sector-aware art direction for brands that need to look credible fast.</span>
+          </article>
+          <article class="websiteOfferCard">
+            <small>03</small>
+            <b>AI-Ready Content Structure</b>
+            <span>Pages, FAQs and service logic structured for controlled assistant answers.</span>
+          </article>
+          <article class="websiteOfferCard">
+            <small>04</small>
+            <b>Booking & Enquiry Capture</b>
+            <span>Fact-finds, booking routes and forms that collect useful details.</span>
+          </article>
+          <article class="websiteOfferCard">
+            <small>05</small>
+            <b>RAG Knowledge Assistants</b>
+            <span>Upgrade into approved-knowledge assistants that answer from your site and docs.</span>
+          </article>
+          <article class="websiteOfferCard">
+            <small>06</small>
+            <b>Workflow Integration</b>
+            <span>Route enquiries into callbacks, dashboards, notifications and follow-up flows.</span>
           </article>
         </div>
       </div>
@@ -2898,7 +3417,7 @@ h1{
 })();
 </script>
 
-  <script defer src="/assets/frontline-menu.js?v=20260521-menu-groups-fit-v1"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260521-menu-exact-v2"></script>
   <script defer src="/assets/frontline-assistant.js?v=20260520-frontline-assistant-v1"></script>
 </body>
 </html>

@@ -72,10 +72,10 @@
     }).join("");
 
     return `
-      <section class="frontlineMenuGroup">
+      <div class="frontlineMenuGroup" role="group" aria-label="${group.title}">
         <div class="frontlineMenuGroupHead">${group.title}</div>
         ${items}
-      </section>
+      </div>
     `;
   }).join("");
 

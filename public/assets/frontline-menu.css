@@ -83,8 +83,11 @@ body.frontline-menu-mounted:not(.frontline-home-page){
   height:48px !important;
   min-width:48px !important;
   max-width:48px !important;
+  display:block !important;
+  padding:0 !important;
   border-radius:17px !important;
   object-fit:cover !important;
+  background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(3,12,28,.78)) !important;
   border:1px solid rgba(255,255,255,.24) !important;
   box-shadow:0 0 30px rgba(55,156,255,.26) !important;
 }
@@ -118,6 +121,7 @@ body.frontline-menu-mounted:not(.frontline-home-page){
   align-items:center !important;
   gap:6px !important;
   padding:2px 0 9px !important;
+  margin:0 !important;
 }
 
 .frontlineMenuGroup{
@@ -126,12 +130,20 @@ body.frontline-menu-mounted:not(.frontline-home-page){
   flex-direction:column !important;
   align-items:center !important;
   gap:3px !important;
+  padding:0 !important;
+  margin:0 !important;
+  min-height:0 !important;
+  border:0 !important;
+  background:transparent !important;
+  box-shadow:none !important;
+  overflow:visible !important;
 }
 
 .frontlineMenuGroupHead{
   width:88% !important;
   max-width:248px !important;
   padding:2px 4px 1px !important;
+  margin:0 !important;
   color:#6eb8ff !important;
   font-size:8.5px !important;
   line-height:1 !important;
