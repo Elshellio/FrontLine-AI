@@ -1,0 +1,1672 @@
+{
+  "generatedAt": "2026-05-21T21:16:03.199Z",
+  "sourcePages": [
+    {
+      "page": "index.html",
+      "url": "/",
+      "title": "Frontline AI | AI Workers for Business Growth",
+      "chunks": 4
+    },
+    {
+      "page": "websites.html",
+      "url": "/websites.html",
+      "title": "Premium Websites & AI-Ready Builds | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "managed-ai-services.html",
+      "url": "/managed-ai-services.html",
+      "title": "Managed AI Services | Frontline AI",
+      "chunks": 2
+    },
+    {
+      "page": "custom-ai-builds.html",
+      "url": "/custom-ai-builds.html",
+      "title": "Custom AI Builds | Frontline AI",
+      "chunks": 2
+    },
+    {
+      "page": "ad-engine.html",
+      "url": "/ad-engine.html",
+      "title": "Ad Engine | Frontline AI",
+      "chunks": 2
+    },
+    {
+      "page": "lawflow-pro.html",
+      "url": "/lawflow-pro.html",
+      "title": "LawFlow Pro | Frontline AI",
+      "chunks": 4
+    },
+    {
+      "page": "garagepro.html",
+      "url": "/garagepro.html",
+      "title": "GaragePro | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "propertydesk.html",
+      "url": "/propertydesk.html",
+      "title": "PropertyDesk | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "salonboss.html",
+      "url": "/salonboss.html",
+      "title": "SalonBoss | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "tableboss.html",
+      "url": "/tableboss.html",
+      "title": "TableBoss | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "plumberpro.html",
+      "url": "/plumberpro.html",
+      "title": "PlumberPro | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "locksmithpro.html",
+      "url": "/locksmithpro.html",
+      "title": "LockSmithPro | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "maintenancedesk.html",
+      "url": "/maintenancedesk.html",
+      "title": "MaintenanceDesk | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "builderdesk.html",
+      "url": "/builderdesk.html",
+      "title": "BuilderDesk | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "electriciandesk.html",
+      "url": "/electriciandesk.html",
+      "title": "ElectricianDesk | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "clinics.html",
+      "url": "/clinics.html",
+      "title": "Clinics | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "controlled-build-method.html",
+      "url": "/controlled-build-method.html",
+      "title": "Frontline AI · Controlled Build Method",
+      "chunks": 2
+    },
+    {
+      "page": "change-control-procedure.html",
+      "url": "/change-control-procedure.html",
+      "title": "Change Control Procedure | Frontline AI",
+      "chunks": 3
+    },
+    {
+      "page": "demo-portal.html",
+      "url": "/demo-portal.html",
+      "title": "Frontline AI Hub | Client Demo Portal",
+      "chunks": 2
+    },
+    {
+      "page": "book-demo.html",
+      "url": "/book-demo.html",
+      "title": "AI Worker Fact-Find | Frontline AI",
+      "chunks": 1
+    },
+    {
+      "page": "about.html",
+      "url": "/about.html",
+      "title": "About Frontline AI | Practical AI Systems Built Under Control",
+      "chunks": 2
+    },
+    {
+      "page": "hub.html",
+      "url": "/hub.html",
+      "title": "Frontline AI Hub | Client Demo Portal",
+      "chunks": 2
+    }
+  ],
+  "chunks": [
+    {
+      "id": "index-1",
+      "page": "index.html",
+      "url": "/",
+      "title": "Frontline AI | AI Workers for Business Growth",
+      "text": "More capacity without hiring first. For one-person businesses, an AI worker is an extra resource while you grow. For larger teams, the savings multiply across every repeated sales, reception and admin process. Capture enquiries while you are on jobs, in meetings or away from the phone. Add capacity before you are ready to hire. Reduce admin pressure, speed up response times and keep follow-up consistent while your team handles the work that matters. Multiply savings across call handling, booking, lead qualification and customer operations where repeated work adds up fast. Start with one worker. Build the workforce. Each AI worker is designed around a real business job, not a generic chatbot. Start with the repeated front-office task that leaks the most time or revenue, then add more workers once the first one proves value. Answers calls, captures customer details, routes enquiries, creates callback records and keeps the first response moving. Qualifies leads, asks the first questions, scores fit and pushes good enquiries toward a demo, quote or booking. Collects booking intent, handles appointment requests, supports cancellations and prepares clean scheduling records.",
+      "tags": [
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Explore LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Explore GaragePro →",
+          "href": "/garagepro.html"
+        },
+        {
+          "label": "Who is this for? →",
+          "href": "/clinics.html"
+        },
+        {
+          "label": "Explore TableBoss →",
+          "href": "/tableboss.html"
+        },
+        {
+          "label": "Explore PropertyDesk →",
+          "href": "/propertydesk.html"
+        },
+        {
+          "label": "Explore SalonBoss →",
+          "href": "/salonboss.html"
+        },
+        {
+          "label": "Explore PlumberPro →",
+          "href": "/plumberpro.html"
+        },
+        {
+          "label": "Explore LockSmithPro →",
+          "href": "/locksmithpro.html"
+        },
+        {
+          "label": "Explore MaintenanceDesk →",
+          "href": "/maintenancedesk.html"
+        },
+        {
+          "label": "Explore BuilderDesk →",
+          "href": "/builderdesk.html"
+        },
+        {
+          "label": "Explore ElectricianDesk →",
+          "href": "/electriciandesk.html"
+        },
+        {
+          "label": "View Website Builds →",
+          "href": "/websites.html"
+        },
+        {
+          "label": "Book a Fact-Find →",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View Controlled Build Method",
+          "href": "/controlled-build-method.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "index-2",
+      "page": "index.html",
+      "url": "/",
+      "title": "Frontline AI | AI Workers for Business Growth",
+      "text": "Turns missed calls and abandoned enquiries into structured follow-up instead of letting warm leads disappear. Handles structured intake, caller details, matter routing, callback requests and audit-ready legal workflow support. Tell us the repeated job. We design the workflow, records, routing, testing and handover around your actual process. Cloud AI support for service businesses. For businesses that do not need a full custom build, Frontline AI can provide a supported monthly service: enquiry handling, missed lead recovery, customer follow-up and a cloud dashboard with ongoing support. Book a call for pricing. Capture enquiries, callback requests and intake details before they are lost. Recover missed calls, booking requests and service enquiries from busy workshops. Support appointment enquiries, patient callbacks and follow-up requests. Handle booking questions, event enquiries and follow-up while staff are busy. Capture viewing requests, valuation leads and property enquiries quickly. Capture appointment enquiries, recover missed calls, send reminders and keep repeat customers moving. Capture emergency leaks, boiler issues, quote requests and same-day callouts.",
+      "tags": [
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Explore LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Explore GaragePro →",
+          "href": "/garagepro.html"
+        },
+        {
+          "label": "Who is this for? →",
+          "href": "/clinics.html"
+        },
+        {
+          "label": "Explore TableBoss →",
+          "href": "/tableboss.html"
+        },
+        {
+          "label": "Explore PropertyDesk →",
+          "href": "/propertydesk.html"
+        },
+        {
+          "label": "Explore SalonBoss →",
+          "href": "/salonboss.html"
+        },
+        {
+          "label": "Explore PlumberPro →",
+          "href": "/plumberpro.html"
+        },
+        {
+          "label": "Explore LockSmithPro →",
+          "href": "/locksmithpro.html"
+        },
+        {
+          "label": "Explore MaintenanceDesk →",
+          "href": "/maintenancedesk.html"
+        },
+        {
+          "label": "Explore BuilderDesk →",
+          "href": "/builderdesk.html"
+        },
+        {
+          "label": "Explore ElectricianDesk →",
+          "href": "/electriciandesk.html"
+        },
+        {
+          "label": "View Website Builds →",
+          "href": "/websites.html"
+        },
+        {
+          "label": "Book a Fact-Find →",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View Controlled Build Method",
+          "href": "/controlled-build-method.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "index-3",
+      "page": "index.html",
+      "url": "/",
+      "title": "Frontline AI | AI Workers for Business Growth",
+      "text": "Route lockouts, urgent access issues, key problems and same-day callouts. Handle out-of-hours building repairs, tenant issues and urgent maintenance requests. Qualify job enquiries, site visits, quotes, project details and follow-up. Capture urgent faults, installation enquiries, safety checks and callback requests. Premium websites, built to capture enquiries and power AI. Frontline AI builds state-of-the-art websites for serious service businesses. Premium design, conversion-focused pages, enquiry capture, booking routes and AI-ready content structure — built so your website can become part of your operating system. Guides visitors into a fact-find, booking or clean team handoff. RAG Assistants & Integrated Website Builds Turn your website, documents and business knowledge into a controlled assistant that helps visitors take the right next step. This is not just a chatbot. Frontline AI can build assistants that connect approved knowledge, business processes and website journeys, then hand the useful next step into bookings, enquiries, email, SMS, WhatsApp or dashboard workflows. Launch is controlled, tested and improved from real usage.",
+      "tags": [
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Explore LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Explore GaragePro →",
+          "href": "/garagepro.html"
+        },
+        {
+          "label": "Who is this for? →",
+          "href": "/clinics.html"
+        },
+        {
+          "label": "Explore TableBoss →",
+          "href": "/tableboss.html"
+        },
+        {
+          "label": "Explore PropertyDesk →",
+          "href": "/propertydesk.html"
+        },
+        {
+          "label": "Explore SalonBoss →",
+          "href": "/salonboss.html"
+        },
+        {
+          "label": "Explore PlumberPro →",
+          "href": "/plumberpro.html"
+        },
+        {
+          "label": "Explore LockSmithPro →",
+          "href": "/locksmithpro.html"
+        },
+        {
+          "label": "Explore MaintenanceDesk →",
+          "href": "/maintenancedesk.html"
+        },
+        {
+          "label": "Explore BuilderDesk →",
+          "href": "/builderdesk.html"
+        },
+        {
+          "label": "Explore ElectricianDesk →",
+          "href": "/electriciandesk.html"
+        },
+        {
+          "label": "View Website Builds →",
+          "href": "/websites.html"
+        },
+        {
+          "label": "Book a Fact-Find →",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View Controlled Build Method",
+          "href": "/controlled-build-method.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "index-4",
+      "page": "index.html",
+      "url": "/",
+      "title": "Frontline AI | AI Workers for Business Growth",
+      "text": "The assistant stays inside approved knowledge, then moves the visitor toward a useful next action. Website Knowledge Assistant Answer from approved service pages, FAQs and business content. Document / Policy Assistant Use controlled documents, PDFs or guidance as source material. Lead & Booking Assistant Guide visitors into enquiries, bookings or fact-find requests. Workflow Integration Hand off to email, SMS, WhatsApp, CRM or dashboard actions. Resources and proof. These pages show the delivery method behind the build: controlled changes, test evidence, review checkpoints and clean handover. Controlled Build Method How Frontline AI keeps fast builds controlled, reviewed and testable. Change Control Procedure How changes are planned, reviewed, tested and accepted before becoming part of the live build. See where AI workers, RAG assistants, website builds or monthly support could fit your business. Your first AI worker starts with the right fact-find. Reception, sales, booking or follow-up. We identify the biggest profit leak before suggesting the right AI worker. Your first AI worker before your first hire.",
+      "tags": [
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Explore LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Explore GaragePro →",
+          "href": "/garagepro.html"
+        },
+        {
+          "label": "Who is this for? →",
+          "href": "/clinics.html"
+        },
+        {
+          "label": "Explore TableBoss →",
+          "href": "/tableboss.html"
+        },
+        {
+          "label": "Explore PropertyDesk →",
+          "href": "/propertydesk.html"
+        },
+        {
+          "label": "Explore SalonBoss →",
+          "href": "/salonboss.html"
+        },
+        {
+          "label": "Explore PlumberPro →",
+          "href": "/plumberpro.html"
+        },
+        {
+          "label": "Explore LockSmithPro →",
+          "href": "/locksmithpro.html"
+        },
+        {
+          "label": "Explore MaintenanceDesk →",
+          "href": "/maintenancedesk.html"
+        },
+        {
+          "label": "Explore BuilderDesk →",
+          "href": "/builderdesk.html"
+        },
+        {
+          "label": "Explore ElectricianDesk →",
+          "href": "/electriciandesk.html"
+        },
+        {
+          "label": "View Website Builds →",
+          "href": "/websites.html"
+        },
+        {
+          "label": "Book a Fact-Find →",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View Controlled Build Method",
+          "href": "/controlled-build-method.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View LawFlow Pro →",
+          "href": "/lawflow-pro.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "websites-1",
+      "page": "websites.html",
+      "url": "/websites.html",
+      "title": "Premium Websites & AI-Ready Builds | Frontline AI",
+      "text": "Premium websites, built to capture enquiries and power AI. Frontline AI builds state-of-the-art websites for serious service businesses: premium visual direction, clear conversion journeys, booking and enquiry capture, and a content structure ready for controlled AI assistants, RAG knowledge and workflow automation. Designed for businesses where the website needs to do more than look good: it must qualify demand, route visitors and become the foundation for AI-powered operations. Guides visitors into a fact-find, booking or clean team handoff. Premium websites that look expensive and capture useful enquiries. Not template brochure sites. Frontline AI builds image-led service websites with clear offers, sharp calls to action, booking routes, enquiry capture and a structure ready for assistants and workflow handoff. Premium visual direction for the industries where first impressions matter. Restaurants, salons, clinics, property firms, trades and professional services all need different signals of trust. We shape the site around the customer decision, the enquiry route and the visual standard your market expects. From premium website to tested enquiry system.",
+      "tags": [
+        "website",
+        "rag",
+        "knowledge",
+        "booking",
+        "fact-find"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        },
+        {
+          "label": "Discuss this build →",
+          "href": "/book-demo.html?product_interest=Website%20Only"
+        },
+        {
+          "label": "Book a Fact-Find →",
+          "href": "/book-demo.html?product_interest=Website%20Plus%20Assistant"
+        },
+        {
+          "label": "Map the workflow →",
+          "href": "/book-demo.html?product_interest=Website%20Workflow%20Integration"
+        },
+        {
+          "label": "Plan the system →",
+          "href": "/book-demo.html?product_interest=Full%20Operating%20System%20Build"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        }
+      ]
+    },
+    {
+      "id": "websites-2",
+      "page": "websites.html",
+      "url": "/websites.html",
+      "title": "Premium Websites & AI-Ready Builds | Frontline AI",
+      "text": "Your website should not stop at looking good. The build maps what a visitor sees, what they click, what details are captured and where that enquiry goes next. Clarify the services, sectors, proof and first conversion goal. Shape the route from page visit to enquiry, booking or fact-find. Create the pages, forms, assistant prompts and handoff routes. Test mobile, copy, links, forms, workflow and assistant readiness. Choose the level of website system you need. Start with a premium website, then add assistant, enquiry capture, booking routes or a full operating layer when the business is ready. A polished service-business website with strong content, premium visuals and clear conversion routes. Homepage and core service pages Responsive design and launch polish Clear CTAs, forms and sector positioning A premium website with a controlled knowledge assistant ready to answer from approved content. Website-ready knowledge structure Assistant prompts and safe escalation Fact-find and booking routing Connect website enquiries into notifications, callback queues, booking records or dashboard-style views. Structured forms and enquiry routing Callback, booking or quote queues",
+      "tags": [
+        "website",
+        "rag",
+        "knowledge",
+        "booking",
+        "fact-find"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        },
+        {
+          "label": "Discuss this build →",
+          "href": "/book-demo.html?product_interest=Website%20Only"
+        },
+        {
+          "label": "Book a Fact-Find →",
+          "href": "/book-demo.html?product_interest=Website%20Plus%20Assistant"
+        },
+        {
+          "label": "Map the workflow →",
+          "href": "/book-demo.html?product_interest=Website%20Workflow%20Integration"
+        },
+        {
+          "label": "Plan the system →",
+          "href": "/book-demo.html?product_interest=Full%20Operating%20System%20Build"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        }
+      ]
+    },
+    {
+      "id": "websites-3",
+      "page": "websites.html",
+      "url": "/websites.html",
+      "title": "Premium Websites & AI-Ready Builds | Frontline AI",
+      "text": "Email, SMS or admin handoff planning Turn the website into the front door of a wider AI worker, dashboard and workflow platform. Website, assistant and operating dashboard Custom workflows and role-based views Controlled testing, launch and monthly improvement Build a website that captures demand and prepares your business for AI. Book a focused fact-find and Frontline AI will map the first website build worth launching.",
+      "tags": [
+        "website",
+        "rag",
+        "knowledge",
+        "booking",
+        "fact-find"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        },
+        {
+          "label": "Discuss this build →",
+          "href": "/book-demo.html?product_interest=Website%20Only"
+        },
+        {
+          "label": "Book a Fact-Find →",
+          "href": "/book-demo.html?product_interest=Website%20Plus%20Assistant"
+        },
+        {
+          "label": "Map the workflow →",
+          "href": "/book-demo.html?product_interest=Website%20Workflow%20Integration"
+        },
+        {
+          "label": "Plan the system →",
+          "href": "/book-demo.html?product_interest=Full%20Operating%20System%20Build"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Premium%20Website%20Build"
+        }
+      ]
+    },
+    {
+      "id": "managed-ai-services-1",
+      "page": "managed-ai-services.html",
+      "url": "/managed-ai-services.html",
+      "title": "Managed AI Services | Frontline AI",
+      "text": "Managed AI services for businesses that want outcomes, not software projects. Frontline AI can run practical AI services around reception, missed leads, bookings, callbacks, website assistants and growth intelligence — so the business gets results without having to operate the system itself. What this includes. This is a draft commercial page so the offer is visible in the menu now. We can replace sections with real proof, screenshots and campaign results as we build it out. Managed AI Reception Capture calls, enquiries and callbacks with a supported AI front-office layer. Managed Booking & Callback Handling Keep appointment requests, quote enquiries and follow-ups moving. Managed RAG Website Assistant Operate an approved-knowledge assistant for website visitors and document-led questions. Monthly AI Operations Support Review usage, improve prompts, update flows and keep the service useful. Competitor monitoring, campaign angles and growth intelligence as an ongoing service. Reporting & Improvement Monthly visibility into activity, opportunities and improvements. Proof slots ready to fill.",
+      "tags": [
+        "managed",
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Discuss Managed Service →",
+          "href": "/book-demo.html?product_interest=Managed%20AI%20Services"
+        },
+        {
+          "label": "Back to Frontline AI",
+          "href": "/"
+        },
+        {
+          "label": "Discuss Managed Service →",
+          "href": "/book-demo.html?product_interest=Managed%20AI%20Services"
+        }
+      ]
+    },
+    {
+      "id": "managed-ai-services-2",
+      "page": "managed-ai-services.html",
+      "url": "/managed-ai-services.html",
+      "title": "Managed AI Services | Frontline AI",
+      "text": "Designed to accept real results, dashboards, examples, before/after comparisons and screenshots as they become available. Start with a focused fact-find. We can scope the first version, then add evidence, visuals and stronger proof sections.",
+      "tags": [
+        "managed",
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Discuss Managed Service →",
+          "href": "/book-demo.html?product_interest=Managed%20AI%20Services"
+        },
+        {
+          "label": "Back to Frontline AI",
+          "href": "/"
+        },
+        {
+          "label": "Discuss Managed Service →",
+          "href": "/book-demo.html?product_interest=Managed%20AI%20Services"
+        }
+      ]
+    },
+    {
+      "id": "custom-ai-builds-1",
+      "page": "custom-ai-builds.html",
+      "url": "/custom-ai-builds.html",
+      "title": "Custom AI Builds | Frontline AI",
+      "text": "Custom AI systems built around your real process. For businesses that need more than an off-the-shelf tool: custom AI workers, dashboards, portals, call-flow systems, CRM-style records, Twilio, WhatsApp, SMS and workflow automation. What this includes. This is a draft commercial page so the offer is visible in the menu now. We can replace sections with real proof, screenshots and campaign results as we build it out. Purpose-built assistants for intake, routing, support, sales, booking or operations. Dashboards & Portals Internal views for teams, managers, records, queues and next actions. Call Flow Builders Voice, SMS and workflow logic built around your actual customer journey. CRM / Workflow Automation Structured records, statuses, notifications, follow-up and audit trails. Twilio / WhatsApp / SMS Communication systems connected to calls, texts, reminders and handoffs. Controlled Delivery Build, test, review and change control rather than fragile one-off automation. Proof slots ready to fill. Designed to accept real results, dashboards, examples, before/after comparisons and screenshots as they become available. Start with a focused fact-find.",
+      "tags": [
+        "custom",
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Scope a Custom Build →",
+          "href": "/book-demo.html?product_interest=Custom%20AI%20Build"
+        },
+        {
+          "label": "Back to Frontline AI",
+          "href": "/"
+        },
+        {
+          "label": "Scope a Custom Build →",
+          "href": "/book-demo.html?product_interest=Custom%20AI%20Build"
+        }
+      ]
+    },
+    {
+      "id": "custom-ai-builds-2",
+      "page": "custom-ai-builds.html",
+      "url": "/custom-ai-builds.html",
+      "title": "Custom AI Builds | Frontline AI",
+      "text": "We can scope the first version, then add evidence, visuals and stronger proof sections.",
+      "tags": [
+        "custom",
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Scope a Custom Build →",
+          "href": "/book-demo.html?product_interest=Custom%20AI%20Build"
+        },
+        {
+          "label": "Back to Frontline AI",
+          "href": "/"
+        },
+        {
+          "label": "Scope a Custom Build →",
+          "href": "/book-demo.html?product_interest=Custom%20AI%20Build"
+        }
+      ]
+    },
+    {
+      "id": "ad-engine-1",
+      "page": "ad-engine.html",
+      "url": "/ad-engine.html",
+      "title": "Ad Engine | Frontline AI",
+      "text": "AI growth intelligence for better ads, offers and campaigns. Frontline AI Ad Engine helps businesses analyse competitors, find winning ad angles, clone proven campaign structures, improve landing pages and turn campaign research into practical growth actions. What this includes. This is a draft commercial page so the offer is visible in the menu now. We can replace sections with real proof, screenshots and campaign results as we build it out. Competitor Analysis Track competitor offers, positioning, hooks, pages and campaign angles. Winning Ad Campaign Clone Break down what is working and rebuild the structure for your market. Facebook Results Evidence Dedicated proof slots for your real ad results, screenshots and performance notes. Landing Page Intelligence Analyse pages for message, offer, CTA, trust and conversion weaknesses. Ad Copy & Creative Angles Generate campaign variants, hooks, headlines and creative briefs. Monthly Growth Reports Package the findings into a practical report and action list. Proof slots ready to fill. Designed to accept real results, dashboards, examples, before/after comparisons and screenshots as they become available.",
+      "tags": [
+        "ads"
+      ],
+      "links": [
+        {
+          "label": "Discuss Ad Engine →",
+          "href": "/book-demo.html?product_interest=Ad%20Engine"
+        },
+        {
+          "label": "Back to Frontline AI",
+          "href": "/"
+        },
+        {
+          "label": "Discuss Ad Engine →",
+          "href": "/book-demo.html?product_interest=Ad%20Engine"
+        }
+      ]
+    },
+    {
+      "id": "ad-engine-2",
+      "page": "ad-engine.html",
+      "url": "/ad-engine.html",
+      "title": "Ad Engine | Frontline AI",
+      "text": "Start with a focused fact-find. We can scope the first version, then add evidence, visuals and stronger proof sections.",
+      "tags": [
+        "ads"
+      ],
+      "links": [
+        {
+          "label": "Discuss Ad Engine →",
+          "href": "/book-demo.html?product_interest=Ad%20Engine"
+        },
+        {
+          "label": "Back to Frontline AI",
+          "href": "/"
+        },
+        {
+          "label": "Discuss Ad Engine →",
+          "href": "/book-demo.html?product_interest=Ad%20Engine"
+        }
+      ]
+    },
+    {
+      "id": "lawflow-pro-1",
+      "page": "lawflow-pro.html",
+      "url": "/lawflow-pro.html",
+      "title": "LawFlow Pro | Frontline AI",
+      "text": "AI legal intake, conflict-aware routing and action control for modern law firms. LawFlow Pro turns calls, messages and enquiries into structured legal actions, with AI-assisted intake, matter matching, conflict-aware routing, follow-up, audit control and solicitor-side AI support. Draft emails where configured, research legal or client context, prepare updates, create reminders, plan travel or visit notes, and support day-to-day admin within controlled permissions and audit boundaries. Built and delivered by Frontline AI as either a custom build or a managed service. Real operational dashboard proof Staff can see matters, actions, callbacks, ownership and urgency in one live legal action board. Capture calls, forms, messages and enquiries before they disappear into inboxes or missed callbacks. Collect structured details and classify matter type, urgency and next action. Conflict & Entity Check Route conflict-sensitive, restricted or urgent matters into review before the wrong action is taken. Action Board & Follow-Up Create owned actions for callbacks, follow-up, matter setup, approval gates and staff tasks. Inside the LawFlow workspace",
+      "tags": [
+        "legal"
+      ],
+      "links": [
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Discuss Managed Service",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "lawflow-pro-2",
+      "page": "lawflow-pro.html",
+      "url": "/lawflow-pro.html",
+      "title": "LawFlow Pro | Frontline AI",
+      "text": "LawFlow Pro is organised around the work your firm actually needs to control: intake, consultations, callbacks, restricted records, conflict review, audit history, AI support and call-flow automation. Call, web form, email, SMS or WhatsApp route. Key details, matter type, urgency and missing information. Entity, matter, conflict and restricted-record logic. Callback, conflict review, consultation or staff task. The right person follows up with a controlled audit trail. Real LawFlow Pro screens, not generic mockups. These proof assets show the working product ecosystem: live legal action visibility, configurable workflow automation and staff-side AI Helper operations. Live Legal Action Board A central operating view for legal actions, callbacks, matter activity and firm-wide intake visibility. Call Flow Designer Configurable call-flow and workflow controls for intake routes, escalation steps and approved legal process design. Each solicitor can access AI Helper for day-to-day operational support: drafting emails, preparing updates, researching legal or client context, creating reminders, planning travel or visit notes, and keeping matters moving within controlled permissions.",
+      "tags": [
+        "legal"
+      ],
+      "links": [
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Discuss Managed Service",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "lawflow-pro-3",
+      "page": "lawflow-pro.html",
+      "url": "/lawflow-pro.html",
+      "title": "LawFlow Pro | Frontline AI",
+      "text": "Conflict, entity and matter controls for legal operations. LawFlow Pro is designed around the operational realities of firms: conflict search, audit rows, entity relationships, matter libraries and controlled linking between people and matters. Conflict Admin & Audit History Conflict search, audit rows and compliance review support for safer intake and matter handling. Entity & Relationship Management Entity relationships, client, opponent and witness links, plus custom matter type library setup. Create matters, link entities to matters and manage the matter library with clearer operational control. A tailored legal intake and action-control system for your firm. Built around your departments, matter types and workflow Configured call flows, intake forms and routing Conflict, entity and restricted-record controls Dashboard, audit and staff workflows Frontline AI helps run, refine and improve the system monthly. Monthly workflow review and improvement planning Updates to wording, routing and follow-up Support for email, SMS, WhatsApp and dashboard actions Ongoing controlled changes and testing Capture every enquiry",
+      "tags": [
+        "legal"
+      ],
+      "links": [
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Discuss Managed Service",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "lawflow-pro-4",
+      "page": "lawflow-pro.html",
+      "url": "/lawflow-pro.html",
+      "title": "LawFlow Pro | Frontline AI",
+      "text": "Stop valuable legal enquiries disappearing into missed calls, inboxes, forms or delayed follow-up. Reduce operational risk Keep conflict-sensitive, restricted and urgent matters visible before they become a problem. Move faster with control Turn intake into action without losing auditability, routing discipline or human review. See how LawFlow Pro fits your firm Start with a focused demo and map the first controlled workflow worth building.",
+      "tags": [
+        "legal"
+      ],
+      "links": [
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Discuss Managed Service",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book a Demo",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "garagepro-1",
+      "page": "garagepro.html",
+      "url": "/garagepro.html",
+      "title": "GaragePro | Frontline AI",
+      "text": "GaragePro by Frontline AI Recover workshop enquiries while the team is busy on the tools. GaragePro helps garages, MOT centres and workshops capture missed calls, service booking requests, MOT enquiries and customer callbacks before they turn into lost jobs. Built for Independent garages, MOT centres, mobile mechanics and busy workshops that need faster response without adding front-desk pressure. Screenshot-ready modules, not generic placeholders. GaragePro is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future GaragePro product screenshot or module image. MOT and service booking queue Prepared as a clean drop-in frame for a future GaragePro product screenshot or module image. Customer callback record Prepared as a clean drop-in frame for a future GaragePro product screenshot or module image. Follow-up workflow Prepared as a clean drop-in frame for a future GaragePro product screenshot or module image. Activity and recovery report",
+      "tags": [
+        "rag",
+        "booking",
+        "garage"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=GaragePro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=GaragePro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "garagepro-2",
+      "page": "garagepro.html",
+      "url": "/garagepro.html",
+      "title": "GaragePro | Frontline AI",
+      "text": "Prepared as a clean drop-in frame for a future GaragePro product screenshot or module image. Routing and reminder settings Prepared as a clean drop-in frame for a future GaragePro product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. Customer call or enquiry arrives GaragePro captures vehicle, service and contact details A booking or callback record is created Follow-up or reminder workflow starts The workshop acts from a clean queue The first four modules that make GaragePro useful. Each module can start as a supported monthly service and later expand into a deeper operating system. MOT / service booking Capture booking intent, vehicle details and preferred dates. Missed-call recovery Turn unanswered calls into callback tasks and follow-up messages. Customer callbacks Give staff clear records for who needs a response and why. Support reminders, confirmations and repeat service follow-up. Managed service now, custom operating system when ready.",
+      "tags": [
+        "rag",
+        "booking",
+        "garage"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=GaragePro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=GaragePro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "garagepro-3",
+      "page": "garagepro.html",
+      "url": "/garagepro.html",
+      "title": "GaragePro | Frontline AI",
+      "text": "Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover. Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow. Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand GaragePro into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control See how GaragePro could recover more workshop enquiries. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "rag",
+        "booking",
+        "garage"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=GaragePro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=GaragePro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "propertydesk-1",
+      "page": "propertydesk.html",
+      "url": "/propertydesk.html",
+      "title": "PropertyDesk | Frontline AI",
+      "text": "PropertyDesk by Frontline AI Capture viewing requests, valuation leads and property enquiries faster. PropertyDesk helps estate agencies and property teams respond quickly to buyers, sellers, landlords and tenants, then route each enquiry into the right next action. Built for Estate agents, letting agents and property managers that rely on fast response and clean follow-up ownership. Screenshot-ready modules, not generic placeholders. PropertyDesk is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future PropertyDesk product screenshot or module image. Viewing request queue Prepared as a clean drop-in frame for a future PropertyDesk product screenshot or module image. Valuation lead record Prepared as a clean drop-in frame for a future PropertyDesk product screenshot or module image. Buyer or seller callback Prepared as a clean drop-in frame for a future PropertyDesk product screenshot or module image. Follow-up activity view",
+      "tags": [
+        "property"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PropertyDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PropertyDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "propertydesk-2",
+      "page": "propertydesk.html",
+      "url": "/propertydesk.html",
+      "title": "PropertyDesk | Frontline AI",
+      "text": "Prepared as a clean drop-in frame for a future PropertyDesk product screenshot or module image. Routing rules and branch settings Prepared as a clean drop-in frame for a future PropertyDesk product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. A viewing, valuation or property enquiry arrives PropertyDesk captures contact and property context A lead or callback record is created The enquiry routes by service, property or branch The team follows up with clear ownership The first four modules that make PropertyDesk useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Capture property interest, availability and contact details. Structure seller and landlord valuation enquiries. Buyer / seller callbacks Keep warm property leads visible until handled. Property enquiry routing Route by branch, property type, urgency or team. Managed service now, custom operating system when ready.",
+      "tags": [
+        "property"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PropertyDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PropertyDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "propertydesk-3",
+      "page": "propertydesk.html",
+      "url": "/propertydesk.html",
+      "title": "PropertyDesk | Frontline AI",
+      "text": "Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover. Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow. Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand PropertyDesk into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Map the first PropertyDesk workflow for your agency. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "property"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PropertyDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PropertyDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "salonboss-1",
+      "page": "salonboss.html",
+      "url": "/salonboss.html",
+      "title": "SalonBoss | Frontline AI",
+      "text": "SalonBoss by Frontline AI Keep booking enquiries, reminders and repeat visits moving. SalonBoss helps salons and beauty businesses capture appointment enquiries, recover missed calls, send reminders and keep regular clients moving back into the diary. Built for Salons, beauty rooms and appointment-led local businesses that lose bookings during busy periods or out of hours. Screenshot-ready modules, not generic placeholders. SalonBoss is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future SalonBoss product screenshot or module image. Booking enquiry queue Prepared as a clean drop-in frame for a future SalonBoss product screenshot or module image. Appointment request record Prepared as a clean drop-in frame for a future SalonBoss product screenshot or module image. Prepared as a clean drop-in frame for a future SalonBoss product screenshot or module image. Repeat customer follow-up Prepared as a clean drop-in frame for a future SalonBoss product screenshot or module image. Service and staff routing settings",
+      "tags": [
+        "booking",
+        "salon"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=SalonBoss&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=SalonBoss&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "salonboss-2",
+      "page": "salonboss.html",
+      "url": "/salonboss.html",
+      "title": "SalonBoss | Frontline AI",
+      "text": "Prepared as a clean drop-in frame for a future SalonBoss product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. A booking question or call arrives SalonBoss captures service, timing and customer details A booking or callback record is created Reminder or follow-up workflow starts Staff confirm or update the appointment The first four modules that make SalonBoss useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Collect service, preferred time and contact details. Support confirmation and appointment reminder workflows. Missed-call recovery Recover enquiries when stylists and staff are busy. Repeat customer follow-up Help regular clients return at the right time. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover. Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow.",
+      "tags": [
+        "booking",
+        "salon"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=SalonBoss&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=SalonBoss&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "salonboss-3",
+      "page": "salonboss.html",
+      "url": "/salonboss.html",
+      "title": "SalonBoss | Frontline AI",
+      "text": "Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand SalonBoss into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Plan the first SalonBoss booking workflow for your salon. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "booking",
+        "salon"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=SalonBoss&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=SalonBoss&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "tableboss-1",
+      "page": "tableboss.html",
+      "url": "/tableboss.html",
+      "title": "TableBoss | Frontline AI",
+      "text": "TableBoss by Frontline AI Handle table bookings, event enquiries and customer messages while staff serve guests. TableBoss helps restaurants, cafes and venues capture booking questions, event interest and follow-up details without interrupting service every time the phone rings. Built for Restaurants, cafes, venues and hospitality teams with frequent calls, event requests and booking questions. Screenshot-ready modules, not generic placeholders. TableBoss is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future TableBoss product screenshot or module image. Table enquiry queue Prepared as a clean drop-in frame for a future TableBoss product screenshot or module image. Event request record Prepared as a clean drop-in frame for a future TableBoss product screenshot or module image. Customer follow-up workflow Prepared as a clean drop-in frame for a future TableBoss product screenshot or module image. Booking reminder activity Prepared as a clean drop-in frame for a future TableBoss product screenshot or module image.",
+      "tags": [
+        "booking",
+        "hospitality"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=TableBoss&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=TableBoss&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "tableboss-2",
+      "page": "tableboss.html",
+      "url": "/tableboss.html",
+      "title": "TableBoss | Frontline AI",
+      "text": "Service and venue routing settings Prepared as a clean drop-in frame for a future TableBoss product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. A table, event or customer enquiry arrives TableBoss captures party size, date and request details A booking or event lead record is created Follow-up or reminder workflow starts Staff confirm, call back or route the request The first four modules that make TableBoss useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Capture date, party size, time and contact information. Structure private hire, party and event interest. Customer follow-up Keep customer messages visible until resolved. Support confirmations and reminder workflows. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover. Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow.",
+      "tags": [
+        "booking",
+        "hospitality"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=TableBoss&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=TableBoss&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "tableboss-3",
+      "page": "tableboss.html",
+      "url": "/tableboss.html",
+      "title": "TableBoss | Frontline AI",
+      "text": "Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand TableBoss into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control See how TableBoss could support your venue. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "booking",
+        "hospitality"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=TableBoss&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=TableBoss&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "plumberpro-1",
+      "page": "plumberpro.html",
+      "url": "/plumberpro.html",
+      "title": "PlumberPro | Frontline AI",
+      "text": "PlumberPro by Frontline AI Capture emergency leaks, boiler issues and same-day callouts faster. PlumberPro helps plumbing and heating teams capture urgent jobs, quote requests and customer details while engineers are on site, driving or already handling another callout. Built for Plumbers, heating engineers and emergency repair teams that cannot answer every high-intent call live. Screenshot-ready modules, not generic placeholders. PlumberPro is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future PlumberPro product screenshot or module image. Emergency callout queue Prepared as a clean drop-in frame for a future PlumberPro product screenshot or module image. Leak or boiler issue record Prepared as a clean drop-in frame for a future PlumberPro product screenshot or module image. Quote request workflow Prepared as a clean drop-in frame for a future PlumberPro product screenshot or module image. Same-day callback activity Prepared as a clean drop-in frame for a future PlumberPro product screenshot or module image.",
+      "tags": [
+        "trades"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PlumberPro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PlumberPro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "plumberpro-2",
+      "page": "plumberpro.html",
+      "url": "/plumberpro.html",
+      "title": "PlumberPro | Frontline AI",
+      "text": "Area and urgency routing settings Prepared as a clean drop-in frame for a future PlumberPro product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. An emergency or quote request arrives PlumberPro captures issue, location and urgency A job or callback record is created Same-day routing or follow-up starts The team responds with the right context The first four modules that make PlumberPro useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Capture urgent leak reports and location details. Record fault symptoms, urgency and callback needs. Collect job scope and contact details for estimates. Prioritise urgent jobs and route them clearly. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover. Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow. Configured forms, queues and follow-up wording",
+      "tags": [
+        "trades"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PlumberPro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PlumberPro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "plumberpro-3",
+      "page": "plumberpro.html",
+      "url": "/plumberpro.html",
+      "title": "PlumberPro | Frontline AI",
+      "text": "Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand PlumberPro into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Find the first PlumberPro workflow worth building. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "trades"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PlumberPro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=PlumberPro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "locksmithpro-1",
+      "page": "locksmithpro.html",
+      "url": "/locksmithpro.html",
+      "title": "LockSmithPro | Frontline AI",
+      "text": "LockSmithPro by Frontline AI Route lockouts, urgent access issues and same-day calls with less friction. LockSmithPro captures lockout context, location, urgency and contact details so locksmiths can prioritise urgent work without losing quote or callback enquiries. Built for Locksmiths and access specialists handling urgent, location-sensitive calls and same-day service requests. Screenshot-ready modules, not generic placeholders. LockSmithPro is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future LockSmithPro product screenshot or module image. Lockout request queue Prepared as a clean drop-in frame for a future LockSmithPro product screenshot or module image. Location and urgency record Prepared as a clean drop-in frame for a future LockSmithPro product screenshot or module image. Prepared as a clean drop-in frame for a future LockSmithPro product screenshot or module image. Same-day activity view Prepared as a clean drop-in frame for a future LockSmithPro product screenshot or module image.",
+      "tags": [
+        "emergency"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=LockSmithPro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=LockSmithPro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "locksmithpro-2",
+      "page": "locksmithpro.html",
+      "url": "/locksmithpro.html",
+      "title": "LockSmithPro | Frontline AI",
+      "text": "Area and service routing settings Prepared as a clean drop-in frame for a future LockSmithPro product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. A lockout or access issue arrives LockSmithPro captures location, issue and urgency A callout or callback record is created Urgent routing or follow-up starts The locksmith acts with clean details The first four modules that make LockSmithPro useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Capture immediate access problems and customer context. Collect address, area and practical access notes. Separate emergency callouts from general enquiries. Keep quote and non-urgent requests moving. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover. Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow. Configured forms, queues and follow-up wording",
+      "tags": [
+        "emergency"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=LockSmithPro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=LockSmithPro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "locksmithpro-3",
+      "page": "locksmithpro.html",
+      "url": "/locksmithpro.html",
+      "title": "LockSmithPro | Frontline AI",
+      "text": "Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand LockSmithPro into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Design the first LockSmithPro emergency handling flow. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "emergency"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=LockSmithPro&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=LockSmithPro&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "maintenancedesk-1",
+      "page": "maintenancedesk.html",
+      "url": "/maintenancedesk.html",
+      "title": "MaintenanceDesk | Frontline AI",
+      "text": "MaintenanceDesk by Frontline AI Triage repairs, tenant issues and urgent maintenance requests into action. MaintenanceDesk helps property maintenance teams and facilities providers structure urgent repairs, tenant details, site context and escalation routes before the team acts. Built for Maintenance teams, facilities providers, landlords and repair businesses handling urgent and out-of-hours requests. Screenshot-ready modules, not generic placeholders. MaintenanceDesk is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future MaintenanceDesk product screenshot or module image. Repair request queue Prepared as a clean drop-in frame for a future MaintenanceDesk product screenshot or module image. Tenant or site issue record Prepared as a clean drop-in frame for a future MaintenanceDesk product screenshot or module image. Escalation workflow Prepared as a clean drop-in frame for a future MaintenanceDesk product screenshot or module image. Urgency activity view",
+      "tags": [
+        "property",
+        "maintenance"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=MaintenanceDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=MaintenanceDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "maintenancedesk-2",
+      "page": "maintenancedesk.html",
+      "url": "/maintenancedesk.html",
+      "title": "MaintenanceDesk | Frontline AI",
+      "text": "Prepared as a clean drop-in frame for a future MaintenanceDesk product screenshot or module image. Routing and service settings Prepared as a clean drop-in frame for a future MaintenanceDesk product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. A repair or tenant issue arrives MaintenanceDesk captures site, issue and urgency A repair or escalation record is created Routing and follow-up workflow starts The team resolves from a clear queue The first four modules that make MaintenanceDesk useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Classify repair type, risk and next action. Tenant / site details Capture property, contact and access context. Flag emergencies and out-of-hours risks. Escalation routing Route urgent jobs to the right team or supplier. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover.",
+      "tags": [
+        "property",
+        "maintenance"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=MaintenanceDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=MaintenanceDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "maintenancedesk-3",
+      "page": "maintenancedesk.html",
+      "url": "/maintenancedesk.html",
+      "title": "MaintenanceDesk | Frontline AI",
+      "text": "Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow. Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand MaintenanceDesk into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Plan a cleaner MaintenanceDesk triage workflow. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "property",
+        "maintenance"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=MaintenanceDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=MaintenanceDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "builderdesk-1",
+      "page": "builderdesk.html",
+      "url": "/builderdesk.html",
+      "title": "BuilderDesk | Frontline AI",
+      "text": "BuilderDesk by Frontline AI Qualify job enquiries, site visits and quote requests before the callback. BuilderDesk helps builders and contractors turn vague job enquiries into useful first-stage records with project type, location, timescale, budget signals and follow-up prompts. Built for Builders, contractors and trade businesses receiving varied quote requests and site visit enquiries. Screenshot-ready modules, not generic placeholders. BuilderDesk is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future BuilderDesk product screenshot or module image. Prepared as a clean drop-in frame for a future BuilderDesk product screenshot or module image. Site visit request record Prepared as a clean drop-in frame for a future BuilderDesk product screenshot or module image. Quote detail workflow Prepared as a clean drop-in frame for a future BuilderDesk product screenshot or module image. Follow-up activity view Prepared as a clean drop-in frame for a future BuilderDesk product screenshot or module image.",
+      "tags": [
+        "builder"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=BuilderDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=BuilderDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "builderdesk-2",
+      "page": "builderdesk.html",
+      "url": "/builderdesk.html",
+      "title": "BuilderDesk | Frontline AI",
+      "text": "Trade and project routing settings Prepared as a clean drop-in frame for a future BuilderDesk product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. A job or quote enquiry arrives BuilderDesk captures project scope and practical details A quote or site visit record is created Follow-up prompts and routing start The team responds with better context The first four modules that make BuilderDesk useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Collect scope, location, timescale and fit. Site visit requests Prepare cleaner site visit records and callbacks. Capture budget signals, project notes and constraints. Keep promising enquiries from going cold. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover. Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow.",
+      "tags": [
+        "builder"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=BuilderDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=BuilderDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "builderdesk-3",
+      "page": "builderdesk.html",
+      "url": "/builderdesk.html",
+      "title": "BuilderDesk | Frontline AI",
+      "text": "Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand BuilderDesk into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Map your first BuilderDesk quote workflow. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "builder"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=BuilderDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=BuilderDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "electriciandesk-1",
+      "page": "electriciandesk.html",
+      "url": "/electriciandesk.html",
+      "title": "ElectricianDesk | Frontline AI",
+      "text": "ElectricianDesk by Frontline AI Capture urgent faults, installation enquiries and safety check requests. ElectricianDesk helps electrical teams structure fault reports, installation interest, safety checks and callback requests so urgent work is easier to prioritise. Built for Electricians and electrical contractors handling faults, installations, checks and callback-heavy service enquiries. Screenshot-ready modules, not generic placeholders. ElectricianDesk is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future ElectricianDesk product screenshot or module image. Fault request queue Prepared as a clean drop-in frame for a future ElectricianDesk product screenshot or module image. Installation enquiry record Prepared as a clean drop-in frame for a future ElectricianDesk product screenshot or module image. Safety check workflow Prepared as a clean drop-in frame for a future ElectricianDesk product screenshot or module image. Callback activity view",
+      "tags": [
+        "electrician"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=ElectricianDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=ElectricianDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "electriciandesk-2",
+      "page": "electriciandesk.html",
+      "url": "/electriciandesk.html",
+      "title": "ElectricianDesk | Frontline AI",
+      "text": "Prepared as a clean drop-in frame for a future ElectricianDesk product screenshot or module image. Urgency and service routing rules Prepared as a clean drop-in frame for a future ElectricianDesk product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. A fault or installation enquiry arrives ElectricianDesk captures issue, property and urgency A service or callback record is created Routing or follow-up workflow starts The team acts with cleaner details The first four modules that make ElectricianDesk useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Collect fault type, property details and urgency. Installation enquiries Structure new install interest and callback needs. Capture certification, check and inspection requests. Keep non-urgent enquiries visible and moving. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover.",
+      "tags": [
+        "electrician"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=ElectricianDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=ElectricianDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "electriciandesk-3",
+      "page": "electriciandesk.html",
+      "url": "/electriciandesk.html",
+      "title": "ElectricianDesk | Frontline AI",
+      "text": "Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow. Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand ElectricianDesk into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Build the first ElectricianDesk routing workflow. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "electrician"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=ElectricianDesk&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=ElectricianDesk&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "clinics-1",
+      "page": "clinics.html",
+      "url": "/clinics.html",
+      "title": "Clinics | Frontline AI",
+      "text": "Clinics by Frontline AI Support appointment enquiries, callbacks and intake notes without adding admin load. Clinics helps appointment-led teams capture enquiries, callback requests, service interest and basic intake notes so staff can respond faster with better context. Built for Private clinics, wellness services, therapists, dental-style practices and appointment-led local businesses. Screenshot-ready modules, not generic placeholders. Clinics is structured around real operational views. These frames are ready for future product screenshots as the dashboard, queues and workflows are captured. Dashboard overview Prepared as a clean drop-in frame for a future Clinics product screenshot or module image. Appointment enquiry queue Prepared as a clean drop-in frame for a future Clinics product screenshot or module image. Client callback record Prepared as a clean drop-in frame for a future Clinics product screenshot or module image. Intake note workflow Prepared as a clean drop-in frame for a future Clinics product screenshot or module image. Follow-up reminder activity Prepared as a clean drop-in frame for a future Clinics product screenshot or module image.",
+      "tags": [
+        "clinic"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Clinics&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Clinics&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "clinics-2",
+      "page": "clinics.html",
+      "url": "/clinics.html",
+      "title": "Clinics | Frontline AI",
+      "text": "Service and practitioner routing settings Prepared as a clean drop-in frame for a future Clinics product screenshot or module image. From first enquiry to owned action. The product starts with the first repeated customer-contact job, then routes the right details into a clean record and follow-up path. An appointment or service enquiry arrives Clinics captures contact, service and timing details A callback or intake record is created Reminder or follow-up workflow starts The team responds from a clean queue The first four modules that make Clinics useful. Each module can start as a supported monthly service and later expand into a deeper operating system. Appointment enquiries Capture service interest, timing and contact details. Patient / client callbacks Keep callback requests visible and owned. Collect simple pre-appointment context. Follow-up reminders Support confirmations, reminders and next steps. Managed service now, custom operating system when ready. Frontline AI keeps product delivery controlled: narrow first workflow, clean review, testable changes and practical handover.",
+      "tags": [
+        "clinic"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Clinics&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Clinics&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "clinics-3",
+      "page": "clinics.html",
+      "url": "/clinics.html",
+      "title": "Clinics | Frontline AI",
+      "text": "Start with a supported monthly setup for the highest-value enquiry, booking or callback workflow. Configured forms, queues and follow-up wording Cloud visibility for records and activity Monthly improvement and support rhythm Controlled changes without a large first build Expand Clinics into a deeper workflow platform around your teams, rules and reporting needs. Custom routing, dashboards and records Workflow automation across email, SMS or dashboards Role-based views and handover points Tested release process and documented change control Plan the first Clinics workflow for your team. Book a focused fact-find and Frontline AI will map the first controlled workflow worth building.",
+      "tags": [
+        "clinic"
+      ],
+      "links": [
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Clinics&source=product-page"
+        },
+        {
+          "label": "Book a Fact-Find",
+          "href": "/book-demo.html?product_interest=Clinics&source=product-page"
+        }
+      ]
+    },
+    {
+      "id": "controlled-build-method-1",
+      "page": "controlled-build-method.html",
+      "url": "/controlled-build-method.html",
+      "title": "Frontline AI · Controlled Build Method",
+      "text": "Custom business systems, delivered with control. Frontline AI combines modern development speed with serious delivery discipline: clear requirements, version-controlled changes, test evidence, release checkpoints and clean client handover. The problem with many fast builds Speed is useful. But speed without control creates mystery code, fragile fixes and unclear ownership. The benefit of controlled delivery Smaller businesses get the practical controls normally associated with serious delivery programmes, without carrying the cost of a large permanent team. Frontline speed. Enterprise-style discipline. This is not a generate-and-hope approach. It is a controlled delivery process adapted from business-critical implementation work, made lean enough for smaller companies. Every feature starts as a clear business outcome and acceptance point. Practical architecture decisions before code is changed. Modern AI-assisted tooling speeds up inspection, coding and iteration. Every change is visible before it is trusted. Key endpoints and workflows are linked back to requirements. Client receives release notes, repo access and support detail. A lean team model, senior where it matters.",
+      "tags": [
+        "rag",
+        "controlled-build"
+      ],
+      "links": []
+    },
+    {
+      "id": "controlled-build-method-2",
+      "page": "controlled-build-method.html",
+      "url": "/controlled-build-method.html",
+      "title": "Frontline AI · Controlled Build Method",
+      "text": "Most smaller builds do not need a large permanent development team. They need clear ownership, controlled delivery and the right specialist input at the right time. Requirement-linked test evidence. Instead of vague “it works” claims, important features are linked to visible test outcomes and release evidence. Version control and client handover. Every approved release can be committed, pushed to a private GitHub repository and documented for future support. Example release history What the client receives Your build includes A lightweight but serious delivery pack designed to make the system easier to own, support and extend. Not a black-box freelancer build. Not an expensive consultancy machine. A lean, controlled delivery model for practical business systems — combining modern development speed with version history, test evidence and accountable handover.",
+      "tags": [
+        "rag",
+        "controlled-build"
+      ],
+      "links": []
+    },
+    {
+      "id": "change-control-procedure-1",
+      "page": "change-control-procedure.html",
+      "url": "/change-control-procedure.html",
+      "title": "Change Control Procedure | Frontline AI",
+      "text": "Change control that protects your AI build. Frontline AI builds websites, AI workers, chatbots, portals and automations under a controlled change process. That means changes are planned, reviewed, tested and accepted before they become part of your live system. Why change control matters. Fast development is useful only when the work remains understandable, reviewable and safe. Change control prevents rushed edits, hidden mistakes and unclear decisions from damaging your website, AI workflow or business process. Changes are made in clear, limited steps so problems can be spotted before they spread across the project. Accepted versions are tracked, making it easier to understand what changed and recover from unwanted behaviour. You get a build process that favours evidence, review and useful outcomes rather than random edits. The client-facing procedure. This is the practical sequence used to keep a project under control from first request through to live acceptance. We clarify what is being changed, why it matters, what outcome is expected and what should not be touched. Inspect the current state",
+      "tags": [
+        "website",
+        "change-control"
+      ],
+      "links": [
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View Build Method",
+          "href": "/controlled-build-method.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "change-control-procedure-2",
+      "page": "change-control-procedure.html",
+      "url": "/change-control-procedure.html",
+      "title": "Change Control Procedure | Frontline AI",
+      "text": "Before editing, we check the current page, workflow, form, API, design or behaviour so the change is based on reality. Make one controlled change Work is kept narrow. A design change is not mixed with unrelated backend, content, server or data changes unless agreed. Review what changed The actual difference is checked so accidental removals, broad rewrites or unrelated edits can be caught early. The changed area is tested in the browser, form, workflow or live route depending on what the change affects. Once the change is approved, it becomes part of the controlled build history so future work starts from a stable point. Designed for AI systems, not just websites. AI workers, chatbots and workflow automations need more control than a normal brochure site. A small wording change, routing change or form change can affect leads, bookings, customer messages, records and handovers. That is why Frontline AI treats change control as part of the product, not an afterthought. What this protects. The same process applies whether we are building a marketing page, an AI receptionist, a booking journey, a client portal or a document-aware assistant.",
+      "tags": [
+        "website",
+        "change-control"
+      ],
+      "links": [
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View Build Method",
+          "href": "/controlled-build-method.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "change-control-procedure-3",
+      "page": "change-control-procedure.html",
+      "url": "/change-control-procedure.html",
+      "title": "Change Control Procedure | Frontline AI",
+      "text": "Design, content, navigation, landing pages, forms, SEO structure and conversion journeys. Reception, sales, booking, follow-up and custom workflow workers that handle real enquiries. Website assistants that answer questions, qualify visitors and route enquiries toward action. Document-aware systems that answer from business content, policies, FAQs and knowledge bases. Every change should be easy to classify. If the result is unclear, we pause rather than pushing uncertainty into the live system. No mystery changes. Your build should not rely on blind edits or unexplained changes. Frontline AI keeps work visible, controlled and reviewable from the first page to the final workflow. Planned changes protect the build.",
+      "tags": [
+        "website",
+        "change-control"
+      ],
+      "links": [
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "View Build Method",
+          "href": "/controlled-build-method.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        },
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "demo-portal-1",
+      "page": "demo-portal.html",
+      "url": "/demo-portal.html",
+      "title": "Frontline AI Hub | Client Demo Portal",
+      "text": "Product-style demos and platforms that show what Frontline AI can build, configure and operationalise. AI reception, lead qualification, booking, missed lead recovery and custom workflow workers. AI legal reception, matter intake, callbacks, conflict checks, calendars and workflow routing. Missed Calls Recovered Capture missed calls, follow up by SMS and turn abandoned enquiries into callbacks. Creative generation, campaign support, social workflows and ad automation experiments. Real-world style builds and services that can be adapted into client sales pages on the main site. Retail workflow utilities, sold checking, product tools and vintage ecommerce support systems. Premium service-business websites with forms, bookings, portals and automation built in. Website chat assistants for qualifying visitors, answering service questions and booking calls. Document-aware assistants that answer from policies, manuals, PDFs, FAQs and internal content. What you can explore The hub is client-facing, but these sections can later become full sales pages on the main site. Live products and platforms built by Frontline AI to solve practical business problems.",
+      "tags": [
+        "booking"
+      ],
+      "links": []
+    },
+    {
+      "id": "demo-portal-2",
+      "page": "demo-portal.html",
+      "url": "/demo-portal.html",
+      "title": "Frontline AI Hub | Client Demo Portal",
+      "text": "Client-style systems, ecommerce tools, legal workflows and operational demos. Chatbots, RAG assistants, workflow automation and website-based AI demos.",
+      "tags": [
+        "booking"
+      ],
+      "links": []
+    },
+    {
+      "id": "book-demo-1",
+      "page": "book-demo.html",
+      "url": "/book-demo.html",
+      "title": "AI Worker Fact-Find | Frontline AI",
+      "text": "Book a fact-find for your first AI worker. Pick a slot, then tell us what your business does, where time or leads are being lost, and which AI worker may create value first. This is a short discovery call, not a hard-sell demo. The goal is to understand the opportunity before suggesting the right AI worker. Choose a fact-find slot 30-minute UK-time slots. Once selected, the slot is reserved for your fact-find call.",
+      "tags": [
+        "fact-find"
+      ],
+      "links": []
+    },
+    {
+      "id": "about-1",
+      "page": "about.html",
+      "url": "/about.html",
+      "title": "About Frontline AI | Practical AI Systems Built Under Control",
+      "text": "What Frontline AI does. We turn practical AI ideas into working business systems: enquiry handling, missed lead recovery, booking support, knowledge assistants, client portals, dashboards and connected workflows. AI reception, sales, booking, follow-up and custom workflow workers designed around real customer contact, not generic chatbot demos. Assistants that answer from your FAQs, service notes, policies, PDFs, knowledge base or operational content. Websites built around action: clear services, strong calls to action, booking routes, enquiry capture and follow-up workflows. Why we build this way. AI systems can become messy quickly if they are rushed. Frontline AI uses controlled delivery so each improvement has purpose, value, review, testing and a stable checkpoint. Frontline AI is for service businesses where missed enquiries, slow replies, repeated questions or manual admin directly affect revenue, customer experience or team capacity. Capture enquiries and follow-up while you are on jobs, in meetings or handling delivery. Give staff cleaner records, clearer handoffs and fewer repeated manual tasks.",
+      "tags": [
+        "website",
+        "knowledge",
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "about-2",
+      "page": "about.html",
+      "url": "/about.html",
+      "title": "About Frontline AI | Practical AI Systems Built Under Control",
+      "text": "Support reception, booking, sales, customer questions and follow-up across busy periods. Use RAG assistants to answer from controlled content rather than vague generic AI responses. The controlled delivery promise. We do not sell AI hype and disappear. The aim is to build useful systems that can be inspected, improved, tested and handed over cleanly. We look for cost saving, revenue recovery, faster response or reduced admin before deciding what should be built first. Changes should be visible, understandable and narrow enough to check without damaging unrelated parts of the build. Accepted improvements become a reliable point to continue from, instead of relying on memory or guesswork. Start with a practical fact-find. We identify where AI, a RAG assistant, website build, dashboard or monthly support service could create the most value first.",
+      "tags": [
+        "website",
+        "knowledge",
+        "booking"
+      ],
+      "links": [
+        {
+          "label": "Book Fact-Find →",
+          "href": "/book-demo.html"
+        }
+      ]
+    },
+    {
+      "id": "hub-1",
+      "page": "hub.html",
+      "url": "/hub.html",
+      "title": "Frontline AI Hub | Client Demo Portal",
+      "text": "Product-style demos and platforms that show what Frontline AI can build, configure and operationalise. AI reception, lead qualification, booking, missed lead recovery and custom workflow workers. AI legal reception, matter intake, callbacks, conflict checks, calendars and workflow routing. Missed Calls Recovered Capture missed calls, follow up by SMS and turn abandoned enquiries into callbacks. Creative generation, campaign support, social workflows and ad automation experiments. Real-world style builds and services that can be adapted into client sales pages on the main site. Retail workflow utilities, sold checking, product tools and vintage ecommerce support systems. Premium service-business websites with forms, bookings, portals and automation built in. Website chat assistants for qualifying visitors, answering service questions and booking calls. Document-aware assistants that answer from policies, manuals, PDFs, FAQs and internal content. What you can explore The hub is client-facing, but these sections can later become full sales pages on the main site. Live products and platforms built by Frontline AI to solve practical business problems.",
+      "tags": [
+        "booking"
+      ],
+      "links": []
+    },
+    {
+      "id": "hub-2",
+      "page": "hub.html",
+      "url": "/hub.html",
+      "title": "Frontline AI Hub | Client Demo Portal",
+      "text": "Client-style systems, ecommerce tools, legal workflows and operational demos. Chatbots, RAG assistants, workflow automation and website-based AI demos.",
+      "tags": [
+        "booking"
+      ],
+      "links": []
+    }
+  ]
+}

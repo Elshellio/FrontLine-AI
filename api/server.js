@@ -9,6 +9,8 @@ const PORT = Number(process.env.PORT || 3401);
 const DATA_DIR = process.env.DATA_DIR || "/opt/frontline-ai/data";
 const REQUESTS_FILE = path.join(DATA_DIR, "demo-requests.jsonl");
 const PRODUCT_KNOWLEDGE_FILE = path.join(__dirname, "product-knowledge.json");
+const SITE_KNOWLEDGE_FILE = path.join(__dirname, "site-knowledge.json");
+const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
@@ -60,6 +62,18 @@ function loadProductKnowledge() {
 }
 
 const productKnowledge = loadProductKnowledge();
+
+function loadSiteKnowledge() {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(SITE_KNOWLEDGE_FILE, "utf8"));
+    return Array.isArray(parsed.chunks) ? parsed.chunks : [];
+  } catch (err) {
+    console.warn("[frontline-ai-api] site knowledge unavailable; run scripts/build-site-knowledge.js", err.message);
+    return [];
+  }
+}
+
+const siteKnowledge = loadSiteKnowledge();
 
 const assistantKnowledge = [
   {
@@ -393,6 +407,224 @@ function scoreProductMatch(normalized, product) {
   }, 0);
 }
 
+function tokenizeKnowledge(value) {
+  return String(value || "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ")
+    .split(/\s+/)
+    .filter(token => token.length > 2 && ![
+      "the", "and", "for", "with", "from", "that", "this", "can", "into", "your", "you", "are", "not", "but", "has", "have", "what", "how", "why", "who"
+    ].includes(token));
+}
+
+function productKnowledgeDocuments() {
+  return productKnowledge.map(product => {
+    const textParts = [
+      product.name,
+      product.category,
+      product.shortSummary,
+      product.longSummary,
+      ...(product.whoItIsFor || []),
+      ...(product.problemsSolved || []),
+      ...(product.coreFeatures || []),
+      ...(product.commercialValue || []),
+      ...(product.deliveryModel || []),
+      ...(product.modules || []).map(module => `${module.name}: ${module.description}`),
+      ...(product.keywords || [])
+    ];
+
+    return {
+      id: `product-${product.id || product.name}`,
+      page: product.productPage || product.bookingPage || "/book-demo.html",
+      url: product.productPage || product.bookingPage || "/book-demo.html",
+      title: product.name,
+      text: textParts.filter(Boolean).join(" "),
+      tags: ["product", product.category || ""].filter(Boolean),
+      links: [
+        product.productPage ? { label: `View ${product.name}`, href: product.productPage } : null,
+        product.bookingPage ? { label: "Book a demo", href: product.bookingPage } : null
+      ].filter(Boolean)
+    };
+  });
+}
+
+function normalizeInternalUrl(url) {
+  const clean = String(url || "").trim();
+  if (!clean) return "";
+  if (clean.startsWith("https://frontline-ai.co.uk/")) return clean.replace("https://frontline-ai.co.uk", "");
+  if (clean.startsWith("http://frontline-ai.co.uk/")) return clean.replace("http://frontline-ai.co.uk", "");
+  if (clean.startsWith("/")) return clean;
+  if (/^[a-z]+:/i.test(clean)) return "";
+  return `/${clean.replace(/^\/+/, "")}`;
+}
+
+function scoreKnowledgeDocument(message, doc) {
+  const normalizedMessage = normalizeAssistantQuery(message);
+  const queryTokens = tokenizeKnowledge(message);
+  const haystack = `${doc.title || ""} ${doc.text || ""} ${(doc.tags || []).join(" ")}`.toLowerCase();
+  let score = 0;
+
+  for (const token of queryTokens) {
+    if (!haystack.includes(token)) continue;
+    score += token.length > 6 ? 3 : 1;
+    if (String(doc.title || "").toLowerCase().includes(token)) score += 3;
+    if ((doc.tags || []).some(tag => String(tag).toLowerCase().includes(token))) score += 3;
+  }
+
+  for (const phrase of [
+    "premium websites",
+    "ai ready",
+    "managed ai services",
+    "custom ai builds",
+    "ad engine",
+    "competitor analysis",
+    "clone winning",
+    "facebook results",
+    "rag knowledge",
+    "controlled build",
+    "change control",
+    "fact find"
+  ]) {
+    if (normalizedMessage.includes(phrase) && haystack.includes(phrase)) score += 8;
+  }
+
+  return score;
+}
+
+function searchApprovedKnowledge(message, limit = 8) {
+  const documents = [
+    ...siteKnowledge,
+    ...productKnowledgeDocuments()
+  ];
+
+  return documents
+    .map(doc => ({ ...doc, score: scoreKnowledgeDocument(message, doc) }))
+    .filter(doc => doc.score > 0)
+    .sort((a, b) => b.score - a.score)
+    .slice(0, limit);
+}
+
+function actionFromKnowledgeDoc(doc, primary = false) {
+  const url = normalizeInternalUrl(doc.url || doc.page);
+  if (!url) return null;
+  const label = url === "/" ? "View homepage" : `View ${doc.title || "page"}`;
+  return [label, url, primary];
+}
+
+function uniqueActions(actions, limit = 4) {
+  const seen = new Set();
+  return actions.filter(action => {
+    if (!Array.isArray(action) || !action[0] || !action[1]) return false;
+    const url = normalizeInternalUrl(action[1]);
+    if (!url || seen.has(url)) return false;
+    action[1] = url;
+    seen.add(url);
+    return true;
+  }).slice(0, limit);
+}
+
+function hasCommercialIntent(message) {
+  const normalized = normalizeAssistantQuery(message);
+  return [
+    "can you",
+    "do you",
+    "could you",
+    "we need",
+    "i need",
+    "my business",
+    "my company",
+    "our business",
+    "our company",
+    "service",
+    "services",
+    "price",
+    "pricing",
+    "cost",
+    "costs",
+    "how much",
+    "how it works",
+    "what should",
+    "which",
+    "choose",
+    "build",
+    "website",
+    "managed",
+    "custom",
+    "ad engine",
+    "book",
+    "demo",
+    "fact find",
+    "fact-find"
+  ].some(token => normalized.includes(token));
+}
+
+function productInterestFromKnowledge(message, relevantDocs = []) {
+  const matches = [
+    ["managed-ai-services", "Managed AI Services"],
+    ["managed ai services", "Managed AI Services"],
+    ["custom-ai-builds", "Custom AI Build"],
+    ["custom ai builds", "Custom AI Build"],
+    ["custom build", "Custom AI Build"],
+    ["ad-engine", "Ad Engine"],
+    ["ad engine", "Ad Engine"],
+    ["ads", "Ad Engine"],
+    ["campaign", "Ad Engine"],
+    ["lawflow", "LawFlow Pro"],
+    ["garagepro", "GaragePro"],
+    ["garage", "GaragePro"],
+    ["propertydesk", "PropertyDesk"],
+    ["property", "PropertyDesk"],
+    ["salonboss", "SalonBoss"],
+    ["salon", "SalonBoss"],
+    ["tableboss", "TableBoss"],
+    ["restaurant", "TableBoss"],
+    ["plumberpro", "PlumberPro"],
+    ["plumber", "PlumberPro"],
+    ["locksmithpro", "LockSmithPro"],
+    ["locksmith", "LockSmithPro"],
+    ["maintenancedesk", "MaintenanceDesk"],
+    ["maintenance", "MaintenanceDesk"],
+    ["builderdesk", "BuilderDesk"],
+    ["builder", "BuilderDesk"],
+    ["electriciandesk", "ElectricianDesk"],
+    ["electrician", "ElectricianDesk"],
+    ["clinics", "Clinics"],
+    ["clinic", "Clinics"],
+    ["managed", "Managed AI Services"],
+    ["website", "Premium Website Build"],
+    ["websites", "Premium Website Build"],
+    ["premium websites", "Premium Website Build"]
+  ];
+
+  const topDocText = relevantDocs.length
+    ? `${relevantDocs[0].url || ""} ${relevantDocs[0].title || ""} ${(relevantDocs[0].tags || []).join(" ")}`.toLowerCase()
+    : "";
+  const userText = normalizeAssistantQuery(message).toLowerCase();
+  const broadText = `${userText} ${relevantDocs.map(doc => `${doc.url || ""} ${doc.title || ""} ${(doc.tags || []).join(" ")}`).join(" ")}`.toLowerCase();
+
+  const found = matches.find(([needle]) => topDocText.includes(needle))
+    || matches.find(([needle]) => userText.includes(needle))
+    || matches.find(([needle]) => broadText.includes(needle));
+  return found ? found[1] : "";
+}
+
+function factFindUrlFor(message, relevantDocs = []) {
+  const interest = productInterestFromKnowledge(message, relevantDocs);
+  return interest ? `/book-demo.html?product_interest=${encodeURIComponent(interest)}` : "/book-demo.html";
+}
+
+function factFindActionFor(message, relevantDocs = [], primary = true) {
+  return ["Book a fact-find", factFindUrlFor(message, relevantDocs), primary];
+}
+
+function closeTextFor(message, relevantDocs = []) {
+  const interest = productInterestFromKnowledge(message, relevantDocs);
+  if (interest) {
+    return `The best next step is a short fact-find so we can map what you need for ${interest}.`;
+  }
+  return "The best next step is a short fact-find so we can map what you need.";
+}
+
 function isPricingOrNextStepQuery(normalized) {
   return [
     "price",
@@ -425,10 +657,12 @@ function formatProductModules(product, limit = 5) {
 
 function buildReadyProductAnswer(product, normalized) {
   const pricingOrNextStep = isPricingOrNextStepQuery(normalized);
+  const factFindUrl = `/book-demo.html?product_interest=${encodeURIComponent(product.name)}`;
   const actions = [
+    ["Book a fact-find", factFindUrl, true],
     productAction(product.recommendedCTA || (product.productPage ? { label: `View ${product.name}`, url: product.productPage } : null), true),
     productAction(product.secondaryCTA || (product.bookingPage ? { label: "Book Demo", url: product.bookingPage } : null), false)
-  ].filter(Boolean);
+  ].filter(Boolean).map((action, index) => index === 0 ? action : [action[0], action[1], false]);
 
   const build = [
     ...(product.coreFeatures || []).slice(0, 5),
@@ -446,24 +680,24 @@ function buildReadyProductAnswer(product, normalized) {
   return {
     title: product.name,
     short,
-    why,
+    why: `${why} The best next step is a short fact-find so we can map what you need for ${product.name}.`,
     build,
     sources: ["LawFlow Pro product page", "Homepage", "Book Demo page", "Controlled Build Method"],
     confidence: "high",
-    actions
+    actions: uniqueActions(actions)
   };
 }
 
 function buildPlaceholderProductAnswer(product) {
   const actions = [
-    ["Book Demo", product.bookingPage || "https://frontline-ai.co.uk/book-demo.html", true],
+    ["Book a fact-find", `/book-demo.html?product_interest=${encodeURIComponent(product.name)}`, true],
     assistantActions.buildMethod
   ];
 
   return {
     title: product.name,
     short: product.shortSummary,
-    why: `The full ${product.name} product page is not ready yet. Frontline AI can still discuss the workflow and map a controlled first version through a demo call.`,
+    why: `The full ${product.name} product page is not ready yet. Frontline AI can still discuss the workflow and map a controlled first version through a demo call. The best next step is a short fact-find so we can map what you need for ${product.name}.`,
     build: [
       "Clarify the main enquiry or admin workflow",
       "Identify the first controlled version worth building",
@@ -512,6 +746,238 @@ function findAssistantAnswer(message) {
 
   const { intent, match, ...publicAnswer } = bestAnswer;
   return publicAnswer;
+}
+
+function sentenceSnippets(text, limit = 4) {
+  const prepared = String(text || "").replace(/\s+(Managed AI Reception|Managed Booking & Callback Handling|Managed RAG Website Assistant|Monthly AI Operations Support|Managed Ad Engine|Reporting & Improvement|Competitor Analysis|Winning Ad Campaign Clone|Facebook Results Evidence|Landing Page Intelligence|Ad Copy & Creative Angles|Monthly Growth Reports)\s+/g, ". $1 ");
+  return prepared
+    .split(/(?<=[.!?])\s+/)
+    .map(item => item.trim())
+    .filter(item => item.length > 35)
+    .slice(0, limit);
+}
+
+function labelledKnowledgeSnippets(text, limit = 6) {
+  const labels = [
+    "Managed AI Reception",
+    "Managed Booking & Callback Handling",
+    "Managed RAG Website Assistant",
+    "Monthly AI Operations Support",
+    "Managed Ad Engine",
+    "Reporting & Improvement",
+    "Competitor Analysis",
+    "Winning Ad Campaign Clone",
+    "Facebook Results Evidence",
+    "Landing Page Intelligence",
+    "Ad Copy & Creative Angles",
+    "Monthly Growth Reports"
+  ];
+  const source = String(text || "");
+  const positions = labels
+    .map(label => ({ label, index: source.indexOf(label) }))
+    .filter(item => item.index >= 0)
+    .sort((a, b) => a.index - b.index);
+
+  return positions.map((item, index) => {
+    const next = positions[index + 1]?.index || source.length;
+    return source.slice(item.index, next).replace(/\s+/g, " ").trim();
+  }).filter(Boolean).slice(0, limit);
+}
+
+function buildKnowledgeFallbackAnswer(message, relevantDocs) {
+  if (!relevantDocs.length) {
+    const answer = findAssistantAnswer(message);
+    const factFindAction = factFindActionFor(message, relevantDocs, true);
+    return {
+      ...answer,
+      why: `${answer.why} ${closeTextFor(message, relevantDocs)}`,
+      actions: uniqueActions([factFindAction, ...(answer.actions || [])]),
+      links: uniqueActions([factFindAction, ...(answer.actions || [])]).map(([label, url]) => ({ label, url })),
+      suggested_cta: { label: factFindAction[0], url: factFindAction[1] }
+    };
+  }
+
+  const top = relevantDocs[0];
+  const commercialIntent = hasCommercialIntent(message);
+  const factFindAction = factFindActionFor(message, relevantDocs, true);
+  const snippets = sentenceSnippets(relevantDocs.map(doc => doc.text).join(" "), 8);
+  const labelledSnippets = labelledKnowledgeSnippets(top.text, 8);
+  const buildItems = (labelledSnippets.length ? labelledSnippets : snippets.slice(3, 8)).concat([
+    closeTextFor(message, relevantDocs)
+  ]).slice(0, 7);
+  const actions = uniqueActions([
+    ...(commercialIntent ? [factFindAction] : []),
+    actionFromKnowledgeDoc(top, !commercialIntent),
+    ...relevantDocs.slice(1, 4).map(doc => actionFromKnowledgeDoc(doc, false)),
+    factFindAction
+  ].filter(Boolean));
+
+  return {
+    title: top.title || "Frontline AI recommendation",
+    short: snippets[0] || "Frontline AI can scope this using approved site knowledge and a focused fact-find.",
+    why: `${snippets.slice(1, 3).join(" ") || "This response is based on approved Frontline AI site material. If a detail is not covered, the right next step is a fact-find rather than guessing."} ${commercialIntent ? closeTextFor(message, relevantDocs) : ""}`.trim(),
+    build: buildItems,
+    sources: [...new Set(relevantDocs.slice(0, 4).map(doc => doc.title).filter(Boolean))],
+    source_pages: [...new Set(relevantDocs.slice(0, 5).map(doc => normalizeInternalUrl(doc.url || doc.page)).filter(Boolean))],
+    confidence: "medium",
+    actions,
+    links: actions.map(([label, url]) => ({ label, url })),
+    suggested_cta: { label: factFindAction[0], url: factFindAction[1] }
+  };
+}
+
+let openAiWarningLogged = false;
+
+function logMissingOpenAiKeyOnce() {
+  if (openAiWarningLogged) return;
+  openAiWarningLogged = true;
+  console.warn("[frontline-ai-api] OPENAI_API_KEY missing; assistant using controlled fallback.");
+}
+
+function safeJsonParse(value) {
+  try { return JSON.parse(value); } catch { return null; }
+}
+
+function sanitizeLlmAction(action) {
+  if (Array.isArray(action)) {
+    const url = normalizeInternalUrl(action[1]);
+    if (!action[0] || !url) return null;
+    return [String(action[0]).slice(0, 80), url, Boolean(action[2])];
+  }
+  if (action && typeof action === "object") {
+    const url = normalizeInternalUrl(action.url || action.href);
+    if (!action.label || !url) return null;
+    return [String(action.label).slice(0, 80), url, Boolean(action.primary)];
+  }
+  return null;
+}
+
+function sanitizeAssistantAnswer(answer, fallback, relevantDocs, message) {
+  if (!answer || typeof answer !== "object") return fallback;
+  const commercialIntent = hasCommercialIntent(message);
+  const factFindAction = factFindActionFor(message, relevantDocs, true);
+  const contextActions = uniqueActions([
+    ...(commercialIntent ? [factFindAction] : []),
+    ...(Array.isArray(answer.actions) ? answer.actions.map(sanitizeLlmAction).filter(Boolean) : []),
+    ...(Array.isArray(answer.links) ? answer.links.map(link => sanitizeLlmAction(link)).filter(Boolean) : []),
+    ...(answer.suggested_cta ? [sanitizeLlmAction(answer.suggested_cta)].filter(Boolean) : []),
+    ...relevantDocs.slice(0, 3).map(doc => actionFromKnowledgeDoc(doc, false)).filter(Boolean),
+    factFindAction
+  ]);
+
+  const answerWhy = cleanText(answer.why || fallback.why, 1000);
+  const commercialClose = commercialIntent && !answerWhy.toLowerCase().includes("best next step")
+    ? `${answerWhy} ${closeTextFor(message, relevantDocs)}`
+    : answerWhy;
+
+  const sourcePages = Array.isArray(answer.source_pages)
+    ? answer.source_pages.map(normalizeInternalUrl).filter(Boolean)
+    : [...new Set(relevantDocs.slice(0, 5).map(doc => normalizeInternalUrl(doc.url || doc.page)).filter(Boolean))];
+
+  return {
+    title: cleanText(answer.title || fallback.title || "Frontline AI recommendation", 160),
+    short: cleanText(answer.short || fallback.short, 900),
+    why: cleanText(commercialClose, 1100),
+    build: Array.isArray(answer.build) ? answer.build.map(item => cleanText(item, 220)).filter(Boolean).slice(0, 7) : fallback.build,
+    sources: Array.isArray(answer.sources) && answer.sources.length ? answer.sources.map(item => cleanText(item, 90)).filter(Boolean).slice(0, 5) : fallback.sources,
+    source_pages: sourcePages,
+    confidence: answer.confidence === "high" ? "high" : "medium",
+    actions: contextActions.length ? contextActions : fallback.actions,
+    links: contextActions.map(([label, url]) => ({ label, url })),
+    suggested_cta: { label: factFindAction[0], url: factFindAction[1] }
+  };
+}
+
+async function askOpenAiAssistant(message, relevantDocs, fallback) {
+  const apiKey = process.env.OPENAI_API_KEY;
+  if (!apiKey) {
+    logMissingOpenAiKeyOnce();
+    return null;
+  }
+
+  const approvedContext = relevantDocs.map((doc, index) => ({
+    id: index + 1,
+    title: doc.title,
+    url: normalizeInternalUrl(doc.url || doc.page),
+    tags: doc.tags || [],
+    text: String(doc.text || "").slice(0, 1400)
+  }));
+
+  const controller = new AbortController();
+  const timeout = setTimeout(() => controller.abort(), 12000);
+
+  try {
+    const response = await fetch("https://api.openai.com/v1/chat/completions", {
+      method: "POST",
+      signal: controller.signal,
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${apiKey}`
+      },
+      body: JSON.stringify({
+        model: OPENAI_MODEL,
+        temperature: 0.2,
+        response_format: { type: "json_object" },
+        messages: [
+          {
+            role: "system",
+            content: "You are the Frontline AI website assistant. Answer using only the approved Frontline AI site knowledge provided. Be concise, practical and commercially helpful. Do not invent prices. Do not pretend to be a human. Answer the question first, then give a short explanation, suggest a relevant next page if useful, and close toward a fact-find when the user shows buying intent, asks about a service, asks whether Frontline AI can do something, mentions their business, asks about pricing, asks how it works, or asks what to choose. Use this preferred close when relevant: \"The best next step is a short fact-find so we can map what you need.\" If a specific offer is relevant, make /book-demo.html with the correct product_interest query the main CTA. If the answer is not covered, say Frontline AI can scope it in a fact-find rather than inventing details. Return JSON only with: title, short, why, build array, sources array, source_pages array, actions array of [label,url,primary], links array of {label,url}, suggested_cta {label,url}, confidence."
+          },
+          {
+            role: "user",
+            content: JSON.stringify({
+              question: message,
+              approved_frontline_ai_knowledge: approvedContext,
+              allowed_links: [
+                "/book-demo.html",
+                "/websites.html",
+                "/managed-ai-services.html",
+                "/custom-ai-builds.html",
+                "/ad-engine.html",
+                "/controlled-build-method.html",
+                "/change-control-procedure.html",
+                "/demo-portal.html",
+                "/lawflow-pro.html",
+                "/garagepro.html",
+                "/propertydesk.html",
+                "/salonboss.html",
+                "/tableboss.html",
+                "/plumberpro.html",
+                "/locksmithpro.html",
+                "/maintenancedesk.html",
+                "/builderdesk.html",
+                "/electriciandesk.html",
+                "/clinics.html"
+              ],
+              preferred_fact_find_url: factFindUrlFor(message, relevantDocs)
+            })
+          }
+        ]
+      })
+    });
+
+    if (!response.ok) {
+      console.warn("[frontline-ai-api] OpenAI assistant fallback", response.status);
+      return null;
+    }
+
+    const payload = await response.json();
+    const content = payload?.choices?.[0]?.message?.content;
+    const parsed = safeJsonParse(content);
+    return sanitizeAssistantAnswer(parsed, fallback, relevantDocs, message);
+  } catch (err) {
+    console.warn("[frontline-ai-api] OpenAI assistant fallback", err.message);
+    return null;
+  } finally {
+    clearTimeout(timeout);
+  }
+}
+
+async function findAssistantAnswerWithKnowledge(message) {
+  const relevantDocs = searchApprovedKnowledge(message, 8);
+  const fallback = buildKnowledgeFallbackAnswer(message, relevantDocs);
+  const llmAnswer = await askOpenAiAssistant(message, relevantDocs, fallback);
+  return llmAnswer || fallback;
 }
 
 function readBookings() {
@@ -650,10 +1116,12 @@ const server = http.createServer(async (req, res) => {
       const message = cleanText(input.message, 1200);
       if (!message) return sendJson(res, 400, { ok: false, errors: ["Message is required."] });
 
+      const answer = await findAssistantAnswerWithKnowledge(message);
       return sendJson(res, 200, {
         ok: true,
-        mode: "controlled_knowledge_v1",
-        answer: findAssistantAnswer(message)
+        mode: process.env.OPENAI_API_KEY ? "controlled_llm_knowledge_v1" : "controlled_knowledge_fallback_v1",
+        answer,
+        reply: answer
       });
     }
 

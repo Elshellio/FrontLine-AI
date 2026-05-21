@@ -248,13 +248,41 @@
 
   function normalizeAssistantResponse(response){
     if(!response || typeof response !== "object") return null;
-    const actions = Array.isArray(response.actions) ? response.actions.filter(action => Array.isArray(action) && action.length >= 2) : [];
+    const actions = [];
+    const seenUrls = new Set();
+
+    function addAction(label, href, primary){
+      if(!label || !href || seenUrls.has(href)) return;
+      seenUrls.add(href);
+      actions.push([String(label), String(href), Boolean(primary)]);
+    }
+
+    if(Array.isArray(response.actions)){
+      response.actions
+        .filter(action => Array.isArray(action) && action.length >= 2)
+        .forEach(action => addAction(action[0], action[1], action[2]));
+    }
+
+    if(response.suggested_cta && typeof response.suggested_cta === "object"){
+      addAction(response.suggested_cta.label, response.suggested_cta.url || response.suggested_cta.href, true);
+    }
+
+    if(Array.isArray(response.links)){
+      response.links.forEach(link => {
+        if(Array.isArray(link)) addAction(link[0], link[1], false);
+        else if(link && typeof link === "object") addAction(link.label, link.url || link.href, false);
+      });
+    }
+
+    const sources = Array.isArray(response.sources) ? response.sources : [];
+    const sourcePages = Array.isArray(response.source_pages) ? response.source_pages : [];
     return {
       title: response.title || "Frontline AI recommendation",
       short: response.short || "",
       why: response.why || "",
       build: Array.isArray(response.build) ? response.build : [],
-      sources: Array.isArray(response.sources) ? response.sources : [],
+      sources: sources.length ? sources : sourcePages,
+      source_pages: sourcePages,
       confidence: response.confidence || "",
       actions: actions.length ? actions : fallback.actions
     };
@@ -301,7 +329,7 @@
       </div>
       ${qualifiers}
       <div class="flai-assistant-actions">
-        ${response.actions.map(([label, href, primary]) => `<a class="flai-assistant-action${primary ? " flai-assistant-action-primary" : ""}" href="${href}">${escapeHtml(label)}</a>`).join("")}
+        ${response.actions.map(([label, href, primary]) => `<a class="flai-assistant-action${primary ? " flai-assistant-action-primary" : ""}" href="${escapeHtml(href)}">${escapeHtml(label)}</a>`).join("")}
       </div>
     `;
     body.appendChild(wrap);

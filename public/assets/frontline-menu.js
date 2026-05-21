@@ -28,6 +28,11 @@
       items: [
         { label: "Resources", href: "/#resources", meta: "Links", icon: "/assets/optimized/assets__menu-resources.webp" },
         { label: "Demo Portal", href: "/demo-portal.html", meta: "Hub", icon: "/assets/optimized/assets__menu-resources.webp" },
+        { label: "Websites", href: "/websites.html", meta: "Sites", icon: "/assets/optimized/assets__menu-industries.webp" },
+        { label: "RAG Assistants", href: "/websites.html#workflow", meta: "RAG", icon: "/assets/optimized/assets__menu-workers.webp" },
+        { label: "Managed Services", href: "/managed-ai-services.html", meta: "Run", icon: "/assets/menu-workers.png" },
+        { label: "Custom Builds", href: "/custom-ai-builds.html", meta: "Build", icon: "/assets/menu-controlled-build.png" },
+        { label: "Ad Engine", href: "/ad-engine.html", meta: "Growth", icon: "/assets/menu-proof.png" },
         { label: "About", href: "/about.html", meta: "Who", icon: "/assets/optimized/assets__menu-proof.webp" }
       ]
     },
