@@ -426,19 +426,22 @@ function formatProductModules(product, limit = 5) {
 function buildReadyProductAnswer(product, normalized) {
   const pricingOrNextStep = isPricingOrNextStepQuery(normalized);
   const actions = [
-    productAction(product.recommendedCTA, true),
-    productAction(product.secondaryCTA, false)
+    productAction(product.recommendedCTA || (product.productPage ? { label: `View ${product.name}`, url: product.productPage } : null), true),
+    productAction(product.secondaryCTA || (product.bookingPage ? { label: "Book Demo", url: product.bookingPage } : null), false)
   ].filter(Boolean);
 
   const build = [
     ...(product.coreFeatures || []).slice(0, 5),
     ...formatProductModules(product, 3)
   ].slice(0, 8);
+  if (!build.length && Array.isArray(product.keywords)) {
+    build.push("Preview product page now available", "Book a demo to map the first workflow worth building");
+  }
 
   const short = product.shortSummary;
   const why = pricingOrNextStep
-    ? `${product.pricingPosition} ${product.name} is controlled product knowledge in this assistant, not a live quote engine.`
-    : `${product.longSummary} This assistant is using controlled product knowledge, not a live LLM.`;
+    ? `${product.pricingPosition || "Pricing depends on scope, support level and the workflow involved. Book a demo for the next step."} ${product.name} is controlled product knowledge in this assistant, not a live quote engine.`
+    : `${product.longSummary || product.shortSummary} This assistant is using controlled product knowledge, not a live LLM.`;
 
   return {
     title: product.name,

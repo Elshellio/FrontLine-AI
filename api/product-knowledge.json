@@ -113,13 +113,13 @@
     },
     {
       "id": "garage-ai",
-      "name": "Garage AI",
-      "category": "Garage enquiry and service workflow",
-      "status": "placeholder",
-      "productPage": null,
+      "name": "GaragePro",
+      "category": "Garage AI service advisor",
+      "status": "preview",
+      "productPage": "https://frontline-ai.co.uk/garagepro.html",
       "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
-      "shortSummary": "A future product direction for garages that need help with missed calls, MOT enquiries, service requests and customer follow-up.",
-      "keywords": ["garage ai", "garage product", "mot product", "mechanic ai", "garage automation"]
+      "shortSummary": "GaragePro helps garages recover missed calls, capture booking requests, answer service enquiries and keep customers moving toward appointments.",
+      "keywords": ["garage ai", "garagepro", "garage pro", "garage product", "mot product", "mot booking", "mechanic ai", "garage automation"]
     },
     {
       "id": "clinic-ai",
@@ -133,23 +133,33 @@
     },
     {
       "id": "hospitality-ai",
-      "name": "Hospitality AI",
-      "category": "Hospitality booking and guest enquiry workflow",
-      "status": "placeholder",
-      "productPage": null,
+      "name": "TableBoss",
+      "category": "Hospitality AI booking service",
+      "status": "preview",
+      "productPage": "https://frontline-ai.co.uk/tableboss.html",
       "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
-      "shortSummary": "A future product direction for restaurants, hotels and venues that need help with bookings, guest questions and event enquiries.",
-      "keywords": ["hospitality ai", "restaurant ai product", "hotel ai product", "event enquiry product"]
+      "shortSummary": "TableBoss helps hospitality businesses handle booking questions, event enquiries, follow-up messages and customer requests when staff are busy.",
+      "keywords": ["hospitality ai", "tableboss", "table boss", "restaurant ai product", "restaurant booking", "hotel ai product", "event enquiry product"]
     },
     {
       "id": "estate-agent-ai",
-      "name": "Estate Agent AI",
-      "category": "Estate agency enquiry and valuation workflow",
-      "status": "placeholder",
-      "productPage": null,
+      "name": "PropertyDesk",
+      "category": "Estate agency AI enquiry handler",
+      "status": "preview",
+      "productPage": "https://frontline-ai.co.uk/propertydesk.html",
       "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
-      "shortSummary": "A future product direction for estate agents that need help with property enquiries, valuation requests, viewings and landlord or tenant leads.",
-      "keywords": ["estate agent ai", "estate agency product", "property enquiry product", "valuation ai"]
+      "shortSummary": "PropertyDesk helps estate agents capture viewing requests, valuation leads and property enquiries quickly, then keep follow-up moving with clearer ownership and reminders.",
+      "keywords": ["estate agent ai", "propertydesk", "property desk", "estate agency product", "property enquiry product", "valuation ai", "viewing request"]
+    },
+    {
+      "id": "salon-ai",
+      "name": "SalonBoss",
+      "category": "Salon AI booking and reminder support",
+      "status": "preview",
+      "productPage": "https://frontline-ai.co.uk/salonboss.html",
+      "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
+      "shortSummary": "SalonBoss helps salons capture booking enquiries, send reminders, recover missed calls and keep repeat revenue moving without adding front-desk pressure.",
+      "keywords": ["salon ai", "salonboss", "salon boss", "salon product", "beauty business ai", "appointment reminders"]
     }
   ]
 }
