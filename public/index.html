@@ -1635,6 +1635,168 @@ h1{
   }
 }
 
+
+/* FRONTLINE_SERVICE_CARD_UNIFORM_SIZE_V1 */
+.monthlyServiceCard{
+  min-height:390px;
+  display:flex;
+  flex-direction:column;
+}
+.monthlyServiceCard .cardImage{
+  height:238px;
+  min-height:238px;
+  position:relative;
+  overflow:hidden;
+}
+.monthlyServiceCard .cardImage > img:first-child{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:center;
+}
+.monthlyServiceCard .cardText{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:flex-end;
+}
+.monthlyServiceCard .productCardBrand,
+.monthlyServiceCard .productLogoTile,
+.monthlyServiceCard .tradeServiceIcon{
+  z-index:3;
+}
+
+
+
+
+/* FRONTLINE_UNIFORM_CARD_ICONS_V2 */
+.monthlyServiceCard .cardImage .productCardBrand,
+.monthlyServiceCard .cardImage .legalProductBrand{
+  position:absolute !important;
+  top:16px !important;
+  left:16px !important;
+  z-index:5 !important;
+  width:74px !important;
+  height:74px !important;
+  padding:0 !important;
+  margin:0 !important;
+  background:transparent !important;
+  border:0 !important;
+  box-shadow:none !important;
+  outline:0 !important;
+  backdrop-filter:none !important;
+  -webkit-backdrop-filter:none !important;
+}
+
+.monthlyServiceCard .cardImage .productLogoTile,
+.monthlyServiceCard .cardImage .tradeServiceIcon,
+.monthlyServiceCard .cardImage .legalProductBrand .productLogoTile,
+.monthlyServiceCard .cardImage .productCardBrand .productLogoTile{
+  width:74px !important;
+  height:74px !important;
+  min-width:74px !important;
+  min-height:74px !important;
+  max-width:74px !important;
+  max-height:74px !important;
+  display:grid !important;
+  place-items:center !important;
+  padding:12px !important;
+  margin:0 !important;
+  border-radius:22px !important;
+  overflow:hidden !important;
+  background:linear-gradient(180deg, rgba(255,255,255,.16), rgba(255,255,255,.075)) !important;
+  border:1px solid rgba(255,255,255,.18) !important;
+  outline:0 !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.14),
+    0 12px 28px rgba(0,0,0,.28) !important;
+  backdrop-filter:blur(14px) saturate(135%) !important;
+  -webkit-backdrop-filter:blur(14px) saturate(135%) !important;
+}
+
+.monthlyServiceCard .cardImage .productLogoTile img,
+.monthlyServiceCard .cardImage .tradeServiceIcon img{
+  width:100% !important;
+  height:100% !important;
+  display:block !important;
+  object-fit:contain !important;
+  border-radius:14px !important;
+  overflow:hidden !important;
+  background:transparent !important;
+}
+
+.monthlyServiceCard .cardImage .productLogoTile::before,
+.monthlyServiceCard .cardImage .productLogoTile::after,
+.monthlyServiceCard .cardImage .tradeServiceIcon::before,
+.monthlyServiceCard .cardImage .tradeServiceIcon::after,
+.monthlyServiceCard .cardImage .productCardBrand::before,
+.monthlyServiceCard .cardImage .productCardBrand::after,
+.monthlyServiceCard .cardImage .legalProductBrand::before,
+.monthlyServiceCard .cardImage .legalProductBrand::after{
+  display:none !important;
+  content:none !important;
+  border:0 !important;
+  box-shadow:none !important;
+}
+
+
+/* FRONTLINE_UNIFORM_SERVICE_CARD_LINKS_V1 */
+.monthlyServiceCard .monthlyServiceCardLink,
+.monthlyServiceCard.productServiceCard .monthlyServiceCardLink,
+.monthlyServiceCard.legalProductCard .monthlyServiceCardLink,
+.monthlyServiceCard.tradeServiceCard .monthlyServiceCardLink{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:auto;
+  min-width:0;
+  max-width:max-content;
+  border:1px solid rgba(125,205,255,.46) !important;
+  background:rgba(2,10,24,.34) !important;
+  color:#dff2ff !important;
+  box-shadow:none !important;
+}
+
+.monthlyServiceCard .monthlyServiceCardLink:hover,
+.monthlyServiceCard.productServiceCard .monthlyServiceCardLink:hover,
+.monthlyServiceCard.legalProductCard .monthlyServiceCardLink:hover,
+.monthlyServiceCard.tradeServiceCard .monthlyServiceCardLink:hover{
+  border-color:rgba(125,205,255,.78) !important;
+  background:rgba(20,120,255,.16) !important;
+  color:#ffffff !important;
+  box-shadow:0 0 18px rgba(20,120,255,.16) !important;
+}
+
+
+
+/* FRONTLINE_FOOTER_CTA_BACKGROUND_V2 */
+.frontlineFooterCtaBackdrop{
+  position:relative;
+  overflow:hidden;
+  background-image:
+    linear-gradient(180deg, rgba(2,6,16,.72), rgba(2,6,16,.86)),
+    url('/assets/newbplu/newbackground.png') !important;
+  background-size:cover !important;
+  background-position:center bottom !important;
+  background-repeat:no-repeat !important;
+}
+
+.frontlineFooterCtaBackdrop::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 18% 35%, rgba(163,55,255,.18), transparent 34%),
+    radial-gradient(circle at 82% 42%, rgba(20,120,255,.18), transparent 32%);
+  opacity:.72;
+}
+
+.frontlineFooterCtaBackdrop > *{
+  position:relative;
+  z-index:1;
+}
+
 </style>
   <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-groups-fit-v1">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
@@ -1729,7 +1891,7 @@ h1{
       </div>
     </section>
 
-<section class="section alt" id="workers">
+<section class="section alt" id="workers" style="background-image: linear-gradient(180deg, rgba(2,6,16,.40), rgba(2,6,16,.72)), url('/assets/newbplu/newbackground.png'); background-size: cover; background-position: center; background-repeat: no-repeat;">
       <div class="shell">
         <div class="sectionHead">
           <h2>Start with one worker. <span class="blueText">Build the workforce.</span></h2>
@@ -1737,7 +1899,7 @@ h1{
         </div>
         <div class="workerGrid">
           <article class="workerCard modalTrigger" data-modal="workerReception" tabindex="0" role="button" aria-label="Explore AI Reception Worker benefits">
-            <div class="workerVisual"><img src="/assets/optimized/worker-reception.webp" alt="AI Reception Worker interface example"></div>
+            <div class="workerVisual"><img src="/assets/new-services-images/buildwf/ai-reception.png" alt="AI Reception Worker interface example"></div>
             <div class="workerCopy">
               <small>Front office</small>
               <b>AI Reception Worker</b>
@@ -1747,7 +1909,7 @@ h1{
           </article>
 
           <article class="workerCard modalTrigger" data-modal="workerSales" tabindex="0" role="button" aria-label="Explore AI Sales Worker benefits">
-            <div class="workerVisual"><img src="/assets/optimized/worker-sales.webp" alt="AI Sales Worker dashboard example"></div>
+            <div class="workerVisual"><img src="/assets/new-services-images/buildwf/sales-ai.png" alt="AI Sales Worker dashboard example"></div>
             <div class="workerCopy">
               <small>Revenue</small>
               <b>AI Sales Worker</b>
@@ -1757,7 +1919,7 @@ h1{
           </article>
 
           <article class="workerCard modalTrigger" data-modal="workerBooking" tabindex="0" role="button" aria-label="Explore AI Booking Worker benefits">
-            <div class="workerVisual"><img src="/assets/optimized/worker-booking.webp" alt="AI Booking Worker calendar example"></div>
+            <div class="workerVisual"><img src="/assets/new-services-images/buildwf/booking-ai.png" alt="AI Booking Worker calendar example"></div>
             <div class="workerCopy">
               <small>Operations</small>
               <b>AI Booking Worker</b>
@@ -1767,7 +1929,7 @@ h1{
           </article>
 
           <article class="workerCard modalTrigger" data-modal="workerMissedLead" tabindex="0" role="button" aria-label="Explore AI Missed Lead Worker benefits">
-            <div class="workerVisual"><img src="/assets/optimized/worker-missed-lead.webp" alt="AI Missed Lead Worker follow-up example"></div>
+            <div class="workerVisual"><img src="/assets/new-services-images/buildwf/missedlead-ai.png" alt="AI Missed Lead Worker follow-up example"></div>
             <div class="workerCopy">
               <small>Recovery</small>
               <b>AI Missed Lead Worker</b>
@@ -1777,7 +1939,7 @@ h1{
           </article>
 
           <article class="workerCard modalTrigger" data-modal="workerLegalIntake" tabindex="0" role="button" aria-label="Explore AI Legal Intake Worker benefits">
-            <div class="workerVisual"><img src="/assets/optimized/worker-legal-intake.webp" alt="AI Legal Intake Worker example"></div>
+            <div class="workerVisual"><img src="/assets/new-services-images/buildwf/legal-ai.png" alt="AI Legal Intake Worker example"></div>
             <div class="workerCopy">
               <small>Specialist</small>
               <b>AI Legal Intake Worker</b>
@@ -1787,7 +1949,7 @@ h1{
           </article>
 
           <article class="workerCard modalTrigger" data-modal="workerCustom" tabindex="0" role="button" aria-label="Explore custom AI worker benefits">
-            <div class="workerVisual"><img src="/assets/optimized/worker-custom.webp" alt="Custom AI Worker configuration example"></div>
+            <div class="workerVisual"><img src="/assets/new-services-images/buildwf/build-ai-yo.png" alt="Custom AI Worker configuration example"></div>
             <div class="workerCopy">
               <small>Custom</small>
               <b>Build Your Own AI Worker</b>
@@ -1827,8 +1989,8 @@ h1{
             </div>
           </article>
 
-          <article class="card monthlyServiceCard modalTrigger" data-modal="industryClinics" tabindex="0" role="button" aria-label="Explore AI support for clinics">
-            <div class="cardImage"><img src="/assets/optimized/12.webp" alt="Clinic AI coordinator"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/clinics-icon.png" alt="Clinics icon"></span></div></div>
+          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryClinics" tabindex="0" role="button" aria-label="Explore AI support for clinics">
+            <div class="cardImage"><img src="/assets/new-services-images/clinics.png" alt="Clinic AI coordinator"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/clinics-icon.png" alt="Clinics icon"></span></div></div>
             <div class="cardText">
               <small>AI Coordinator</small>
               <b>Clinics</b>
@@ -1858,7 +2020,7 @@ h1{
           </article>
 
           <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industrySalon" tabindex="0" role="button" aria-label="Explore SalonBoss for salons">
-            <div class="cardImage productOnlyCardImage"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/8fb5be49-3394-4f67-a0e0-6764e983effe.png" alt=""></span></div></div>
+            <div class="cardImage"><img src="/assets/newbplu/salonboss.png" alt="SalonBoss salon appointment service artwork"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/8fb5be49-3394-4f67-a0e0-6764e983effe.png" alt=""></span></div></div>
             <div class="cardText">
               <small>AI Booking Service · Salons</small>
               <b>SalonBoss</b>
@@ -1868,7 +2030,7 @@ h1{
           </article>
 
           <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryPlumbers" tabindex="0" role="button" aria-label="Explore PlumberPro for plumbing businesses">
-            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/plumberpro-icon.png" alt="PlumberPro icon"></span></div>
+            <div class="cardImage"><img src="/assets/newbplu/plumberpro.png" alt="PlumberPro AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/plumberpro-icon.png" alt="PlumberPro icon"></span></div>
             <div class="cardText">
               <small>AI Service Desk</small>
               <b>PlumberPro</b>
@@ -1878,7 +2040,7 @@ h1{
           </article>
 
           <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryLocksmiths" tabindex="0" role="button" aria-label="Explore LockSmithPro for locksmiths">
-            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/locksmithpro-icon.png" alt="LockSmithPro icon"></span></div>
+            <div class="cardImage"><img src="/assets/new-services-images/locksmith.png" alt="LockSmithPro AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/locksmithpro-icon.png" alt="LockSmithPro icon"></span></div>
             <div class="cardText">
               <small>AI Emergency Handler</small>
               <b>LockSmithPro</b>
@@ -1888,7 +2050,7 @@ h1{
           </article>
 
           <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryMaintenance" tabindex="0" role="button" aria-label="Explore MaintenanceDesk for maintenance teams">
-            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/maintenancedesk-icon.png" alt="MaintenanceDesk icon"></span></div>
+            <div class="cardImage"><img src="/assets/new-services-images/maintenance.png" alt="MaintenanceDesk AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/maintenancedesk-icon.png" alt="MaintenanceDesk icon"></span></div>
             <div class="cardText">
               <small>AI Emergency Service</small>
               <b>MaintenanceDesk</b>
@@ -1898,7 +2060,7 @@ h1{
           </article>
 
           <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryBuilders" tabindex="0" role="button" aria-label="Explore BuilderDesk for builders">
-            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/builderdesk-icon.png" alt="BuilderDesk icon"></span></div>
+            <div class="cardImage"><img src="/assets/newbplu/builderdesk.png" alt="BuilderDesk AI quote assistant artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/builderdesk-icon.png" alt="BuilderDesk icon"></span></div>
             <div class="cardText">
               <small>AI Quote Assistant</small>
               <b>BuilderDesk</b>
@@ -1908,7 +2070,7 @@ h1{
           </article>
 
           <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryElectricians" tabindex="0" role="button" aria-label="Explore ElectricianDesk for electricians">
-            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/electriciandesk-icon.png" alt="ElectricianDesk icon"></span></div>
+            <div class="cardImage"><img src="/assets/new-services-images/electrician.png" alt="ElectricianDesk AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/electriciandesk-icon.png" alt="ElectricianDesk icon"></span></div>
             <div class="cardText">
               <small>AI Service Router</small>
               <b>ElectricianDesk</b>
@@ -2016,10 +2178,10 @@ h1{
       </div>
     </section>
 
-    <section class="cta" id="contact">
+    <section class="cta frontlineFooterCtaBackdrop" id="contact">
       <div class="shell">
         <div class="ctaBox">
-          <div>
+          <div class="">
             <h2>Your first AI worker starts with the right fact-find.</h2>
             <p>Reception, sales, booking or follow-up. We identify the biggest profit leak before suggesting the right AI worker.</p>
           </div>
@@ -2125,8 +2287,13 @@ h1{
     industryClinics: {
       kicker: "Monthly AI service · Clinics",
       title: "Support appointment-heavy teams with cleaner enquiry handling.",
-      image: "/assets/product-library/clinics-icon.png",
-      imageFit: "contain",
+      image: "/assets/new-services-images/clinics.png",
+      imageFit: "cover",
+      productPanel: {
+        badge: "Clinics product",
+        logo: "/assets/product-library/clinics-icon.png",
+        copy: "Clinics helps appointment-led teams capture enquiries, callbacks and follow-up requests while staff are busy."
+      },
       lead: "Clinics and appointment-led businesses need fast, consistent response. The monthly service helps capture enquiries, appointment intent and callback requests when the team is busy.",
       cases: [
         ["Who it is for", "Private clinics, wellness services, therapists, dental-style practices and appointment-led local businesses."],
@@ -2134,15 +2301,22 @@ h1{
         ["Monthly service", "Cloud dashboard access, supported configuration and a monthly support agreement for ongoing use."],
         ["Commercial value", "Reduce admin leakage, respond faster and keep potential clients from drifting to another provider."]
       ],
+      productFeatures: [
+        ["Appointment Enquiries"],
+        ["Patient Callbacks"],
+        ["Follow-Up Requests"],
+        ["Cloud Dashboard"]
+      ],
       productUrl: "/clinics.html",
       productLinkText: "View Clinics →",
+      helper: "Monthly service now, full product page when you want to go deeper.",
       chips: ["Appointment Enquiries", "Callback Support", "Client Follow-Up", "Cloud Dashboard"]
     },
     industrySalon: {
       kicker: "AI booking service · Salons",
       title: "For salons that need booking capture, reminders and repeat customer follow-up.",
-      image: "/assets/product-library/images/shopify/8fb5be49-3394-4f67-a0e0-6764e983effe.png",
-      imageFit: "contain",
+      image: "/assets/newbplu/salonboss.png",
+      imageFit: "cover",
       bookingText: "Book Demo →",
       productPanel: {
         badge: "SalonBoss product",
@@ -2226,10 +2400,15 @@ h1{
     industryPlumbers: {
       kicker: "AI service desk · Plumbers",
       title: "For plumbing teams that need urgent enquiries captured fast.",
-      image: "/assets/product-library/plumberpro-icon.png",
-      imageFit: "contain",
+      image: "/assets/newbplu/plumberpro.png",
+      imageFit: "cover",
       bookingText: "Book Demo →",
       bookingUrl: "/book-demo.html?product_interest=PlumberPro&source=industry-card",
+      productPanel: {
+        badge: "PlumberPro product",
+        logo: "/assets/product-library/plumberpro-icon.png",
+        copy: "PlumberPro helps plumbing businesses capture emergency leaks, boiler issues, quote requests and same-day callouts while the team is on the tools."
+      },
       lead: "PlumberPro is for plumbing businesses that need emergency leaks, boiler issues, quote requests and same-day callouts captured while the team is on the tools.",
       cases: [
         ["Who it is for", "Plumbers, heating engineers and emergency repair teams that cannot answer every call during busy jobs."],
@@ -2251,10 +2430,15 @@ h1{
     industryLocksmiths: {
       kicker: "AI emergency handler · Locksmiths",
       title: "For locksmiths that need urgent access calls routed cleanly.",
-      image: "/assets/product-library/locksmithpro-icon.png",
-      imageFit: "contain",
+      image: "/assets/new-services-images/locksmith.png",
+      imageFit: "cover",
       bookingText: "Book Demo →",
       bookingUrl: "/book-demo.html?product_interest=LockSmithPro&source=industry-card",
+      productPanel: {
+        badge: "LockSmithPro product",
+        logo: "/assets/product-library/locksmithpro-icon.png",
+        copy: "LockSmithPro helps locksmiths capture urgent access calls, location details, key problems and same-day callout requests cleanly."
+      },
       lead: "LockSmithPro helps capture lockouts, urgent access issues, key problems and same-day callouts with enough context for fast follow-up.",
       cases: [
         ["Who it is for", "Locksmiths and access specialists handling urgent, location-sensitive customer requests."],
@@ -2276,10 +2460,15 @@ h1{
     industryMaintenance: {
       kicker: "AI emergency service · Maintenance",
       title: "For maintenance teams handling urgent repairs and tenant issues.",
-      image: "/assets/product-library/maintenancedesk-icon.png",
-      imageFit: "contain",
+      image: "/assets/new-services-images/maintenance.png",
+      imageFit: "cover",
       bookingText: "Book Demo →",
       bookingUrl: "/book-demo.html?product_interest=MaintenanceDesk&source=industry-card",
+      productPanel: {
+        badge: "MaintenanceDesk product",
+        logo: "/assets/product-library/maintenancedesk-icon.png",
+        copy: "MaintenanceDesk helps property and maintenance teams triage urgent repairs, tenant issues and out-of-hours requests into cleaner action records."
+      },
       lead: "MaintenanceDesk helps triage out-of-hours building repairs, tenant issues and urgent maintenance requests into cleaner action records.",
       cases: [
         ["Who it is for", "Property maintenance teams, facilities providers, landlords and repair businesses managing urgent requests."],
@@ -2301,10 +2490,15 @@ h1{
     industryBuilders: {
       kicker: "AI quote assistant · Builders",
       title: "For builders that need cleaner job enquiries and quote preparation.",
-      image: "/assets/product-library/builderdesk-icon.png",
-      imageFit: "contain",
+      image: "/assets/newbplu/builderdesk.png",
+      imageFit: "cover",
       bookingText: "Book Demo →",
       bookingUrl: "/book-demo.html?product_interest=BuilderDesk&source=industry-card",
+      productPanel: {
+        badge: "BuilderDesk product",
+        logo: "/assets/product-library/builderdesk-icon.png",
+        copy: "BuilderDesk helps builders qualify job enquiries, site visits, quote requests and project details before the callback."
+      },
       lead: "BuilderDesk qualifies job enquiries, site visits, quotes, project details and follow-up so promising work is easier to assess.",
       cases: [
         ["Who it is for", "Builders, contractors and trade businesses that receive varied job requests needing first-stage qualification."],
@@ -2326,10 +2520,15 @@ h1{
     industryElectricians: {
       kicker: "AI service router · Electricians",
       title: "For electricians that need urgent faults and service enquiries routed.",
-      image: "/assets/product-library/electriciandesk-icon.png",
-      imageFit: "contain",
+      image: "/assets/new-services-images/electrician.png",
+      imageFit: "cover",
       bookingText: "Book Demo →",
       bookingUrl: "/book-demo.html?product_interest=ElectricianDesk&source=industry-card",
+      productPanel: {
+        badge: "ElectricianDesk product",
+        logo: "/assets/product-library/electriciandesk-icon.png",
+        copy: "ElectricianDesk helps electricians capture urgent faults, installation enquiries, safety checks and callback requests with cleaner routing."
+      },
       lead: "ElectricianDesk captures urgent faults, installation enquiries, safety checks and callback requests so the next step is clearer.",
       cases: [
         ["Who it is for", "Electricians and electrical contractors handling faults, installations, checks and callback-heavy enquiries."],
