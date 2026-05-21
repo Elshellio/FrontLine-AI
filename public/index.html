@@ -1013,6 +1013,50 @@ h1{
   .aiModalContent h3{font-size:34px}
 }
 
+
+/* FRONTLINE_MOBILE_MODAL_FIX_V1 */
+.aiModalBackdrop{
+  z-index:30000 !important;
+}
+@media(max-width:900px){
+  .aiModalBackdrop{
+    padding:14px !important;
+    align-items:flex-start !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .aiModal{
+    width:min(100%, 520px) !important;
+    max-height:calc(100vh - 28px) !important;
+    overflow-y:auto !important;
+    margin:0 auto !important;
+  }
+  .aiModalInner{
+    grid-template-columns:1fr !important;
+    padding:18px !important;
+    gap:16px !important;
+  }
+  .aiModalVisual{
+    min-height:0 !important;
+    height:150px !important;
+  }
+  .aiModalContent h3{
+    font-size:26px !important;
+    line-height:1.05 !important;
+  }
+  .aiModalLead,
+  .aiUseCases li{
+    font-size:14px !important;
+    line-height:1.45 !important;
+  }
+  .aiModalActions{
+    position:sticky;
+    bottom:0;
+    padding-top:10px;
+    background:linear-gradient(180deg, rgba(4,10,22,0), rgba(4,10,22,.96) 35%);
+  }
+}
+
 </style>
   <link rel="stylesheet" href="/assets/frontline-menu.css">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">

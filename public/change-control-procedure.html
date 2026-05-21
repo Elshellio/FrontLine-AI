@@ -736,6 +736,50 @@ footer{padding:34px 0 0;color:#8194ad;font-size:13px}
   .footerCta{display:block}
   .footerCta .btn{margin-top:22px}
 }
+
+/* FRONTLINE_MOBILE_MODAL_FIX_V1 */
+.changeModalBackdrop{
+  z-index:30000 !important;
+}
+@media(max-width:900px){
+  .changeModalBackdrop{
+    padding:14px !important;
+    align-items:flex-start !important;
+    overflow-y:auto !important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .changeModal{
+    width:min(100%, 520px) !important;
+    max-height:calc(100vh - 28px) !important;
+    overflow-y:auto !important;
+    margin:0 auto !important;
+  }
+  .changeModalInner{
+    grid-template-columns:1fr !important;
+    padding:18px !important;
+    gap:16px !important;
+  }
+  .changeModalVisual{
+    min-height:0 !important;
+    height:150px !important;
+  }
+  .changeModalContent h3{
+    font-size:26px !important;
+    line-height:1.05 !important;
+  }
+  .changeModalLead,
+  .changeUseCases li{
+    font-size:14px !important;
+    line-height:1.45 !important;
+  }
+  .changeModalActions{
+    position:sticky;
+    bottom:0;
+    padding-top:10px;
+    background:linear-gradient(180deg, rgba(4,10,22,0), rgba(4,10,22,.96) 35%);
+  }
+}
+
 </style>
 <link rel="stylesheet" href="/assets/frontline-menu.css">
 <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
