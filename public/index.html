@@ -566,8 +566,32 @@ h1{
   cursor:pointer;
 }
 
+.monthlyServiceGrid{
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+}
+
+@media(max-width:1180px){
+  .monthlyServiceGrid{
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+}
+
+@media(max-width:900px){
+  .monthlyServiceGrid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+
+@media(max-width:620px){
+  .monthlyServiceGrid{
+    grid-template-columns:1fr;
+  }
+}
+
 .monthlyServiceCard{
-  min-height:470px;
+  min-height:382px;
+  border-radius:23px;
 }
 
 .monthlyServiceCard .cardImage{
@@ -585,35 +609,38 @@ h1{
 }
 
 .monthlyServiceCard .cardText{
-  left:24px;
-  right:24px;
-  bottom:24px;
+  left:20px;
+  right:20px;
+  bottom:20px;
 }
 
 .monthlyServiceCard .cardText p{
-  margin:12px 0 0;
+  margin:10px 0 0;
   color:#c4d1e4;
-  font-size:15px;
-  line-height:1.42;
-  max-width:260px;
+  font-size:13.5px;
+  line-height:1.38;
+  max-width:235px;
 }
 
-.monthlyServiceCard .cardText span{
+.monthlyServiceCard .cardText span,
+.monthlyServiceCard .cardText a{
   display:inline-flex;
   align-items:center;
-  margin-top:18px;
-  min-height:34px;
-  padding:0 13px;
+  margin-top:14px;
+  min-height:31px;
+  padding:0 11px;
   border-radius:999px;
   border:1px solid rgba(125,205,255,.36);
   background:rgba(2,6,16,.46);
   color:#d9f1ff;
-  font-size:12px;
+  font-size:11px;
   font-weight:900;
   backdrop-filter:blur(14px);
+  text-decoration:none;
 }
 
-.monthlyServiceCard:hover .cardText span{
+.monthlyServiceCard:hover .cardText span,
+.monthlyServiceCard:hover .cardText a{
   border-color:rgba(125,205,255,.64);
   background:rgba(20,120,255,.16);
 }
@@ -622,24 +649,78 @@ h1{
   outline:2px solid rgba(125,205,255,.82);
   outline-offset:4px;
 }
+.monthlyServiceCard .cardText small{
+  font-size:9.5px;
+  letter-spacing:.13em;
+}
+.monthlyServiceCard .cardText b{
+  margin-top:6px;
+  font-size:20px;
+  line-height:1;
+}
+.tradeServiceCard .cardImage{
+  position:absolute;
+  inset:0;
+  height:100%;
+  background:
+    radial-gradient(circle at 18% 16%,rgba(89,211,255,.24),transparent 31%),
+    radial-gradient(circle at 80% 24%,rgba(20,120,255,.20),transparent 34%),
+    linear-gradient(145deg,rgba(8,24,50,.96),rgba(2,7,18,.98));
+}
+.tradeServiceCard .cardImage:before{
+  content:"";
+  position:absolute;
+  inset:18px;
+  border:1px solid rgba(125,205,255,.18);
+  border-radius:24px;
+  background:
+    linear-gradient(135deg,rgba(255,255,255,.10),transparent 28%),
+    repeating-linear-gradient(135deg,rgba(125,205,255,.14) 0 1px,transparent 1px 13px);
+  opacity:.52;
+  transform:skewY(-3deg);
+}
+.tradeServiceIcon{
+  position:absolute;
+  z-index:3;
+  left:22px;
+  top:22px;
+  border-color:rgba(125,205,255,.38);
+  background:linear-gradient(145deg,rgba(12,30,58,.82),rgba(4,10,22,.68));
+  box-shadow:0 18px 44px rgba(0,0,0,.28),0 0 28px rgba(20,120,255,.18),inset 0 1px 0 rgba(255,255,255,.10);
+}
+.tradeServiceIcon img,
+.cardImage .tradeServiceIcon img{
+  display:block;
+  width:100% !important;
+  height:100% !important;
+  object-fit:contain !important;
+  object-position:center !important;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.tradeServiceCard:after{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.52),rgba(2,6,16,.14) 34%,rgba(2,6,16,.92)),
+    linear-gradient(90deg,rgba(20,120,255,.14),transparent 58%);
+}
 .legalProductCard .cardImage:after{
   background:
     linear-gradient(180deg,rgba(2,6,16,.76),rgba(2,6,16,.12) 34%,rgba(2,6,16,.82)),
     linear-gradient(90deg,rgba(217,183,106,.12),transparent 56%);
 }
-.legalProductBrand{
+.legalProductBrand,
+.productCardBrand{
   position:absolute;
   z-index:3;
   top:18px;
   left:18px;
-  right:18px;
   display:flex;
   align-items:center;
-  gap:0;
-  max-width:235px;
-  padding:10px;
+  justify-content:center;
+  padding:8px;
   border:1px solid rgba(217,183,106,.30);
-  border-radius:20px;
+  border-radius:26px;
   background:
     radial-gradient(circle at 14% 16%,rgba(217,183,106,.14),transparent 36%),
     linear-gradient(145deg,rgba(7,18,35,.78),rgba(5,10,20,.58));
@@ -647,29 +728,93 @@ h1{
   backdrop-filter:blur(14px);
   transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease;
 }
-.legalProductCard:hover .legalProductBrand{
+.legalProductCard:hover .legalProductBrand,
+.productServiceCard:hover .productCardBrand{
   transform:translateY(-2px);
   border-color:rgba(242,220,157,.50);
   box-shadow:0 22px 54px rgba(0,0,0,.32),0 0 30px rgba(217,183,106,.16),inset 0 1px 0 rgba(255,255,255,.10);
 }
-.legalProductBrand .lawflowMiniWordmark{
-  width:190px;
-  max-width:100%;
-  padding:8px 10px;
-  border:1px solid rgba(217,183,106,.24);
-  border-radius:16px;
-  background:linear-gradient(145deg,rgba(217,183,106,.08),rgba(5,10,20,.52));
-  object-fit:contain;
-}
 .legalProductCard .cardText b{
   color:#fff7e8;
 }
-.legalProductCard .cardText span{
+.legalProductCard .cardText span,
+.legalProductCard .cardText a{
   border-color:rgba(217,183,106,.42);
   background:rgba(217,183,106,.10);
   color:#f2dc9d;
 }
-.legalProductCard:hover .cardText span{
+.legalProductCard:hover .cardText span,
+.legalProductCard:hover .cardText a{
+  border-color:rgba(242,220,157,.68);
+  background:rgba(217,183,106,.16);
+}
+.productServiceCard .cardImage:after{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.70),rgba(2,6,16,.10) 34%,rgba(2,6,16,.82)),
+    linear-gradient(90deg,rgba(217,183,106,.10),transparent 56%);
+}
+.productLogoTile{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:82px;
+  height:82px;
+  flex:0 0 82px;
+  padding:12px;
+  border:1px solid rgba(217,183,106,.30);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(217,183,106,.08),rgba(5,10,20,.52));
+  box-shadow:0 14px 34px rgba(0,0,0,.32),inset 0 1px 0 rgba(255,255,255,.08);
+  overflow:hidden;
+}
+.productLogoTile img,
+.cardImage .productLogoTile img{
+  display:block;
+  width:auto !important;
+  height:auto !important;
+  max-width:100%;
+  max-height:100%;
+  object-fit:contain !important;
+  object-position:center !important;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.productOnlyCardImage{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:
+    radial-gradient(circle at 50% 22%,rgba(217,183,106,.18),transparent 34%),
+    radial-gradient(circle at 78% 68%,rgba(20,120,255,.14),transparent 34%),
+    linear-gradient(145deg,rgba(7,18,35,.88),rgba(3,8,18,.94));
+}
+.productOnlyCardImage .productLogoTile{
+  position:relative;
+  z-index:3;
+  width:112px;
+  height:112px;
+  flex-basis:112px;
+  border-radius:28px;
+  padding:16px;
+  box-shadow:0 22px 58px rgba(0,0,0,.38),0 0 34px rgba(217,183,106,.14),inset 0 1px 0 rgba(255,255,255,.10);
+}
+.productModalLogo{
+  width:64px;
+  height:64px;
+  flex-basis:64px;
+  border-radius:19px;
+  padding:10px;
+}
+.productServiceCard .cardText b{color:#fff7e8}
+.productServiceCard .cardText span,
+.productServiceCard .cardText a{
+  border-color:rgba(217,183,106,.42);
+  background:rgba(217,183,106,.10);
+  color:#f2dc9d;
+}
+.productServiceCard:hover .cardText span,
+.productServiceCard:hover .cardText a{
   border-color:rgba(242,220,157,.68);
   background:rgba(217,183,106,.16);
 }
@@ -704,89 +849,283 @@ h1{
 }
 
 /* FRONTLINE_RAG_WEBSITE_BUILDS_SECTION_V1 */
-.ragWebsiteSection .sectionHead p{
-  max-width:850px;
-}
-
-.ragWebsiteSteps .step{
-  min-height:250px;
-  cursor:pointer;
+.ragWebsiteSection{
   position:relative;
   overflow:hidden;
+  padding:112px 0;
   background:
-    radial-gradient(circle at 18% 0%,rgba(20,120,255,.16),transparent 34%),
-    linear-gradient(180deg,rgba(10,24,48,.82),rgba(3,8,18,.92));
-  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease;
+    radial-gradient(circle at 12% 18%,rgba(170,55,255,.20),transparent 32%),
+    radial-gradient(circle at 84% 28%,rgba(20,120,255,.20),transparent 34%),
+    linear-gradient(180deg,#020610,#061226 48%,#020610);
 }
-
-.ragWebsiteSteps .step:before{
+.ragWebsiteSection:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:url('/assets/rag-assistants.png') center/cover no-repeat;
+  opacity:.84;
+  filter:saturate(1.42) contrast(1.12) brightness(1.12);
+  pointer-events:none;
+}
+.ragWebsiteSection:after{
   content:"";
   position:absolute;
   inset:0;
   background:
-    linear-gradient(180deg,rgba(255,255,255,.045),transparent 38%),
-    radial-gradient(circle at 84% 20%,rgba(91,183,255,.14),transparent 32%);
+    radial-gradient(circle at 10% 18%,rgba(184,60,255,.24),transparent 31%),
+    radial-gradient(circle at 92% 24%,rgba(20,120,255,.26),transparent 34%),
+    linear-gradient(90deg,rgba(2,6,16,.88) 0%,rgba(2,6,16,.50) 37%,rgba(2,6,16,.18) 66%,rgba(2,6,16,.42) 100%),
+    linear-gradient(180deg,rgba(2,6,16,.72),rgba(2,6,16,.10) 42%,rgba(2,6,16,.80));
   pointer-events:none;
 }
-
-.ragWebsiteSteps .step:hover{
-  transform:translateY(-7px);
-  border-color:rgba(125,205,255,.66);
-  box-shadow:
-    0 42px 120px rgba(0,0,0,.54),
-    0 0 70px rgba(20,120,255,.20),
-    inset 0 1px 0 rgba(255,255,255,.18);
-}
-
-.ragWebsiteSteps .step span,
-.ragWebsiteSteps .step h3,
-.ragWebsiteSteps .step p{
+.ragWebsiteSection .shell{
   position:relative;
   z-index:2;
 }
-
-.ragWebsiteSteps .step span{
-  width:42px;
-  height:42px;
-  border-radius:15px;
-  box-shadow:0 0 28px rgba(20,120,255,.30), inset 0 1px 0 rgba(255,255,255,.18);
+.ragProductHero{
+  display:grid;
+  grid-template-columns:minmax(0,.92fr) minmax(360px,1.08fr);
+  gap:34px;
+  align-items:stretch;
 }
-
-.ragWebsiteSteps .step h3{
-  font-size:24px;
-  line-height:1.08;
-  margin:18px 0 12px;
+.ragProductIntro{
+  align-self:center;
+  max-width:650px;
 }
-
-.ragWebsiteSteps .step p{
-  color:#bac9dc;
+.ragProductIntro h2{
+  margin:0;
+  font-size:56px;
+  line-height:.98;
+  letter-spacing:-.055em;
+}
+.ragProductIntro p{
+  margin:22px 0 0;
+  color:#d4deec;
+  font-size:20px;
+  line-height:1.58;
+}
+.ragProductIntro .ragCoreMessage{
+  margin-top:18px;
+  color:#b9c8dc;
   font-size:16px;
-  line-height:1.5;
+  line-height:1.6;
 }
-
-.ragWebsiteSteps .step:after{
-  content:"Explore →";
+.ragProductActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:13px;
+  margin-top:28px;
+}
+.ragVisualPanel{
+  position:relative;
+  min-height:520px;
+  overflow:hidden;
+  border:1px solid rgba(125,205,255,.28);
+  border-radius:34px;
+  background:
+    radial-gradient(circle at 18% 8%,rgba(217,183,106,.14),transparent 34%),
+    linear-gradient(145deg,rgba(7,18,35,.78),rgba(3,8,18,.62));
+  box-shadow:
+    0 36px 120px rgba(0,0,0,.55),
+    0 0 90px rgba(20,120,255,.18),
+    inset 0 1px 0 rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+}
+.ragVisualPanel:before{
+  content:"";
   position:absolute;
-  left:26px;
-  bottom:22px;
-  z-index:3;
-  min-height:32px;
-  display:inline-flex;
-  align-items:center;
-  padding:0 12px;
-  border-radius:999px;
-  border:1px solid rgba(125,205,255,.32);
-  color:#d9f1ff;
-  background:rgba(2,6,16,.34);
-  font-size:12px;
-  font-weight:900;
-  opacity:.86;
-}
-
-.ragWebsiteSteps .step:hover:after{
-  border-color:rgba(125,205,255,.62);
-  background:rgba(20,120,255,.14);
+  inset:0;
+  background:url('/assets/rag-assistants.png') center/cover no-repeat;
   opacity:1;
+  filter:saturate(1.34) contrast(1.1) brightness(1.14);
+  transform:scale(1.01);
+}
+.ragVisualPanel:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    radial-gradient(circle at 18% 15%,rgba(194,64,255,.12),transparent 34%),
+    radial-gradient(circle at 88% 18%,rgba(20,120,255,.14),transparent 34%),
+    radial-gradient(circle at 50% 50%,rgba(2,6,16,0),rgba(2,6,16,.42) 78%),
+    linear-gradient(180deg,rgba(2,6,16,0),rgba(2,6,16,.46));
+}
+.ragVisualBrandBadge{
+  position:absolute;
+  left:24px;
+  top:24px;
+  z-index:4;
+  display:flex;
+  align-items:center;
+  gap:12px;
+  max-width:310px;
+  padding:12px 14px 12px 12px;
+  border:1px solid rgba(125,205,255,.30);
+  border-radius:22px;
+  background:
+    radial-gradient(circle at 14% 18%,rgba(91,183,255,.16),transparent 34%),
+    linear-gradient(145deg,rgba(4,12,28,.78),rgba(2,6,16,.62));
+  box-shadow:0 20px 58px rgba(0,0,0,.34),0 0 32px rgba(20,120,255,.14),inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(18px);
+}
+.ragVisualBrandBadge img{
+  width:46px;
+  height:46px;
+  flex:0 0 46px;
+  border-radius:15px;
+  object-fit:cover;
+  border:1px solid rgba(125,205,255,.34);
+  box-shadow:0 0 28px rgba(20,120,255,.22);
+}
+.ragVisualBrandBadge b{
+  display:block;
+  color:#f5f9ff;
+  font-size:16px;
+  line-height:1;
+  margin:0 0 6px;
+}
+.ragVisualBrandBadge span{
+  display:block;
+  color:#b9c8dc;
+  font-size:11.5px;
+  line-height:1.35;
+}
+.ragVisualBadge{
+  position:absolute;
+  left:24px;
+  bottom:24px;
+  z-index:3;
+  max-width:360px;
+  border:1px solid rgba(217,183,106,.28);
+  border-radius:24px;
+  padding:18px;
+  background:rgba(4,10,20,.72);
+  color:#dbe8f8;
+  box-shadow:0 20px 60px rgba(0,0,0,.34),0 0 34px rgba(217,183,106,.10),inset 0 1px 0 rgba(255,255,255,.10);
+  backdrop-filter:blur(18px);
+}
+.ragVisualBadge b{
+  display:block;
+  color:#fff7e8;
+  font-size:18px;
+  margin-bottom:7px;
+}
+.ragVisualBadge span{
+  color:#b9c8dc;
+  font-size:13px;
+  line-height:1.45;
+}
+.ragVisualBadge small{
+  display:block;
+  margin-top:11px;
+  color:#f2dc9d;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.08em;
+  line-height:1.35;
+}
+.ragAssistantCards{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:16px;
+  margin-top:26px;
+}
+.ragAssistantCard{
+  position:relative;
+  min-height:220px;
+  overflow:hidden;
+  border:1px solid rgba(217,183,106,.22);
+  border-radius:26px;
+  padding:22px;
+  cursor:pointer;
+  background:
+    radial-gradient(circle at 18% 0%,rgba(217,183,106,.12),transparent 34%),
+    linear-gradient(145deg,rgba(255,255,255,.08),rgba(7,18,35,.56));
+  color:#f5f9ff;
+  box-shadow:0 26px 80px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.12);
+  backdrop-filter:blur(18px);
+  transition:transform .24s ease,border-color .24s ease,box-shadow .24s ease,background .24s ease;
+}
+.ragAssistantCard:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.055),transparent 42%),
+    radial-gradient(circle at 82% 22%,rgba(20,120,255,.14),transparent 32%);
+  pointer-events:none;
+}
+.ragAssistantCard:hover{
+  transform:translateY(-7px);
+  border-color:rgba(242,220,157,.58);
+  box-shadow:
+    0 42px 120px rgba(0,0,0,.48),
+    0 0 54px rgba(217,183,106,.16),
+    inset 0 1px 0 rgba(255,255,255,.18);
+}
+.ragAssistantCard img{
+  position:relative;
+  z-index:2;
+  width:58px;
+  height:58px;
+  object-fit:contain;
+  padding:10px;
+  border:1px solid rgba(217,183,106,.28);
+  border-radius:19px;
+  background:rgba(4,10,20,.62);
+  box-shadow:0 14px 34px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.10);
+}
+.ragAssistantCard h3{
+  position:relative;
+  z-index:2;
+  margin:18px 0 10px;
+  font-size:21px;
+  line-height:1.1;
+}
+.ragAssistantCard p{
+  position:relative;
+  z-index:2;
+  margin:0;
+  color:#bdc9db;
+  font-size:15px;
+  line-height:1.48;
+}
+@media(max-width:1180px){
+  .ragProductHero{
+    grid-template-columns:1fr;
+  }
+  .ragAssistantCards{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+  }
+}
+@media(max-width:720px){
+  .ragWebsiteSection{
+    padding:76px 0;
+  }
+  .ragProductIntro h2{
+    font-size:42px;
+  }
+  .ragProductIntro p{
+    font-size:18px;
+  }
+  .ragVisualPanel{
+    min-height:340px;
+    border-radius:28px;
+  }
+  .ragVisualBadge{
+    left:16px;
+    right:16px;
+    bottom:16px;
+  }
+  .ragVisualBrandBadge{
+    left:16px;
+    right:16px;
+    top:16px;
+    max-width:none;
+  }
+  .ragAssistantCards{
+    grid-template-columns:1fr;
+  }
 }
 
 /* FRONTLINE_RESOURCES_IMAGE_CARDS_V1 */
@@ -979,6 +1318,13 @@ h1{
   position:absolute;
   inset:0;
 }
+.aiModalVisual.contain img{
+  object-fit:contain;
+  padding:34px;
+  background:
+    radial-gradient(circle at 50% 20%,rgba(217,183,106,.18),transparent 35%),
+    linear-gradient(145deg,rgba(7,18,35,.92),rgba(3,8,18,.96));
+}
 .aiModalVisual:after{
   content:"";
   position:absolute;
@@ -1046,6 +1392,25 @@ h1{
   height:auto;
   object-fit:contain;
 }
+.productPopupLogoFrame{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  max-width:225px;
+  padding:8px 10px;
+  border:1px solid rgba(217,183,106,.30);
+  border-radius:16px;
+  background:linear-gradient(145deg,rgba(217,183,106,.10),rgba(5,10,20,.54));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 28px rgba(0,0,0,.22);
+  overflow:hidden;
+}
+.productPopupLogoFrame img{
+  width:190px;
+  max-width:100%;
+  max-height:58px;
+  height:auto;
+  object-fit:contain;
+}
 .lawflowProductBadge{
   display:inline-flex;
   align-items:center;
@@ -1095,6 +1460,7 @@ h1{
   background:linear-gradient(145deg,rgba(217,183,106,.12),rgba(5,10,20,.58));
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 22px rgba(0,0,0,.22);
 }
+.lawflowFeature span{display:block}
 .aiModalHelper{
   display:none;
   margin:8px 0 0;
@@ -1442,52 +1808,112 @@ h1{
 
         <div class="cards monthlyServiceGrid">
           <article class="card monthlyServiceCard legalProductCard modalTrigger" data-modal="industryLegal" tabindex="0" role="button" aria-label="Explore LawFlow Pro for legal firms">
-            <div class="cardImage"><img src="/assets/optimized/10.webp" alt="Legal AI intake support"><div class="legalProductBrand" aria-hidden="true"><img class="lawflowMiniWordmark" src="/assets/lawflow-pro/generated/02-lawflow-pro-wordmark.png" alt=""></div></div>
+            <div class="cardImage"><img src="/assets/optimized/10.webp" alt="Legal AI intake support"><div class="legalProductBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/lawflow-pro/generated/01-lawflow-pro-crest.png" alt=""></span></div></div>
             <div class="cardText">
               <small>AI Intake</small>
               <b>LawFlow Pro</b>
               <p>Capture enquiries, callback requests and intake details before they are lost.</p>
-              <span>Explore LawFlow Pro →</span>
+              <a class="monthlyServiceCardLink" href="/lawflow-pro.html" target="_blank" rel="noopener">Explore LawFlow Pro →</a>
             </div>
           </article>
 
-          <article class="card monthlyServiceCard modalTrigger" data-modal="industryGarages" tabindex="0" role="button" aria-label="Explore AI support for garages">
-            <div class="cardImage"><img src="/assets/optimized/11.webp" alt="Garage AI service advisor"></div>
+          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryGarages" tabindex="0" role="button" aria-label="Explore GaragePro for garages">
+            <div class="cardImage"><img src="/assets/optimized/11.webp" alt="Garage AI service advisor"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/b09412f9-86be-47f6-8ccb-8d4f8c20bf1f.png" alt=""></span></div></div>
             <div class="cardText">
               <small>AI Service Advisor</small>
-              <b>Garages</b>
+              <b>GaragePro</b>
               <p>Recover missed calls, booking requests and service enquiries from busy workshops.</p>
-              <span>Who is this for? →</span>
+              <a class="monthlyServiceCardLink" href="/garagepro.html">Explore GaragePro →</a>
             </div>
           </article>
 
           <article class="card monthlyServiceCard modalTrigger" data-modal="industryClinics" tabindex="0" role="button" aria-label="Explore AI support for clinics">
-            <div class="cardImage"><img src="/assets/optimized/12.webp" alt="Clinic AI coordinator"></div>
+            <div class="cardImage"><img src="/assets/optimized/12.webp" alt="Clinic AI coordinator"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/clinics-icon.png" alt="Clinics icon"></span></div></div>
             <div class="cardText">
               <small>AI Coordinator</small>
               <b>Clinics</b>
               <p>Support appointment enquiries, patient callbacks and follow-up requests.</p>
-              <span>Who is this for? →</span>
+              <a class="monthlyServiceCardLink" href="/clinics.html">Who is this for? →</a>
             </div>
           </article>
 
-          <article class="card monthlyServiceCard modalTrigger" data-modal="industryHospitality" tabindex="0" role="button" aria-label="Explore AI support for hospitality businesses">
-            <div class="cardImage"><img src="/assets/optimized/13.webp" alt="Hospitality AI concierge"></div>
+          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryHospitality" tabindex="0" role="button" aria-label="Explore TableBoss for hospitality businesses">
+            <div class="cardImage"><img src="/assets/optimized/13.webp" alt="Hospitality AI concierge"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/3a40e8be-6e1a-4570-a815-177e932d236f.png" alt=""></span></div></div>
             <div class="cardText">
               <small>AI Concierge</small>
-              <b>Hospitality</b>
+              <b>TableBoss</b>
               <p>Handle booking questions, event enquiries and follow-up while staff are busy.</p>
-              <span>Who is this for? →</span>
+              <a class="monthlyServiceCardLink" href="/tableboss.html">Explore TableBoss →</a>
             </div>
           </article>
 
-          <article class="card monthlyServiceCard modalTrigger" data-modal="industryEstateAgents" tabindex="0" role="button" aria-label="Explore AI support for estate agents">
-            <div class="cardImage"><img src="/assets/optimized/14.webp" alt="Estate agent AI enquiry handler"></div>
+          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryEstateAgents" tabindex="0" role="button" aria-label="Explore PropertyDesk for estate agents">
+            <div class="cardImage"><img src="/assets/optimized/14.webp" alt="Estate agent AI enquiry handler"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/464416a7-87b4-4cd3-98dc-8eb084ed7faa.png" alt=""></span></div></div>
             <div class="cardText">
               <small>AI Enquiry Handler</small>
-              <b>Estate Agents</b>
+              <b>PropertyDesk</b>
               <p>Capture viewing requests, valuation leads and property enquiries quickly.</p>
-              <span>Who is this for? →</span>
+              <a class="monthlyServiceCardLink" href="/propertydesk.html">Explore PropertyDesk →</a>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industrySalon" tabindex="0" role="button" aria-label="Explore SalonBoss for salons">
+            <div class="cardImage productOnlyCardImage"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/8fb5be49-3394-4f67-a0e0-6764e983effe.png" alt=""></span></div></div>
+            <div class="cardText">
+              <small>AI Booking Service · Salons</small>
+              <b>SalonBoss</b>
+              <p>Capture appointment enquiries, recover missed calls, send reminders and keep repeat customers moving.</p>
+              <a class="monthlyServiceCardLink" href="/salonboss.html">Explore SalonBoss →</a>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryPlumbers" tabindex="0" role="button" aria-label="Explore PlumberPro for plumbing businesses">
+            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/plumberpro-icon.png" alt="PlumberPro icon"></span></div>
+            <div class="cardText">
+              <small>AI Service Desk</small>
+              <b>PlumberPro</b>
+              <p>Capture emergency leaks, boiler issues, quote requests and same-day callouts.</p>
+              <a class="monthlyServiceCardLink" href="/plumberpro.html">Explore PlumberPro →</a>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryLocksmiths" tabindex="0" role="button" aria-label="Explore LockSmithPro for locksmiths">
+            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/locksmithpro-icon.png" alt="LockSmithPro icon"></span></div>
+            <div class="cardText">
+              <small>AI Emergency Handler</small>
+              <b>LockSmithPro</b>
+              <p>Route lockouts, urgent access issues, key problems and same-day callouts.</p>
+              <a class="monthlyServiceCardLink" href="/locksmithpro.html">Explore LockSmithPro →</a>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryMaintenance" tabindex="0" role="button" aria-label="Explore MaintenanceDesk for maintenance teams">
+            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/maintenancedesk-icon.png" alt="MaintenanceDesk icon"></span></div>
+            <div class="cardText">
+              <small>AI Emergency Service</small>
+              <b>MaintenanceDesk</b>
+              <p>Handle out-of-hours building repairs, tenant issues and urgent maintenance requests.</p>
+              <a class="monthlyServiceCardLink" href="/maintenancedesk.html">Explore MaintenanceDesk →</a>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryBuilders" tabindex="0" role="button" aria-label="Explore BuilderDesk for builders">
+            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/builderdesk-icon.png" alt="BuilderDesk icon"></span></div>
+            <div class="cardText">
+              <small>AI Quote Assistant</small>
+              <b>BuilderDesk</b>
+              <p>Qualify job enquiries, site visits, quotes, project details and follow-up.</p>
+              <a class="monthlyServiceCardLink" href="/builderdesk.html">Explore BuilderDesk →</a>
+            </div>
+          </article>
+
+          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryElectricians" tabindex="0" role="button" aria-label="Explore ElectricianDesk for electricians">
+            <div class="cardImage"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/electriciandesk-icon.png" alt="ElectricianDesk icon"></span></div>
+            <div class="cardText">
+              <small>AI Service Router</small>
+              <b>ElectricianDesk</b>
+              <p>Capture urgent faults, installation enquiries, safety checks and callback requests.</p>
+              <a class="monthlyServiceCardLink" href="/electriciandesk.html">Explore ElectricianDesk →</a>
             </div>
           </article>
         </div>
@@ -1495,34 +1921,57 @@ h1{
     </section>
     <section class="section alt ragWebsiteSection" id="how">
       <div class="shell">
-        <div class="sectionHead">
-          <h2>RAG assistants and <span class="blueText">integrated website builds.</span></h2>
-          <p>Frontline AI builds websites that do more than sit online. Your site can qualify visitors, answer from your documents, capture enquiries, book calls and connect into a controlled follow-up workflow.</p>
+        <div class="ragProductHero">
+          <div class="ragProductIntro">
+            <div class="kicker">Controlled knowledge assistants</div>
+            <h2>RAG Assistants & Integrated Website Builds</h2>
+            <p>Turn your website, documents and business knowledge into a controlled assistant that helps visitors take the right next step.</p>
+            <p class="ragCoreMessage">This is not just a chatbot. Frontline AI can build assistants that connect approved knowledge, business processes and website journeys, then hand the useful next step into bookings, enquiries, email, SMS, WhatsApp or dashboard workflows. Launch is controlled, tested and improved from real usage.</p>
+            <div class="ragProductActions">
+              <a class="btn blue" href="/book-demo.html">Book a Fact-Find</a>
+              <a class="btn" href="/controlled-build-method.html">View Controlled Build Method</a>
+            </div>
+          </div>
+
+          <div class="ragVisualPanel" aria-label="Examples of business website assistants">
+            <div class="ragVisualBrandBadge">
+              <img src="/assets/optimized/assets__4.webp" alt="Frontline AI logo">
+              <div>
+                <b>Frontline AI</b>
+                <span>Controlled assistants for websites, documents and workflows.</span>
+              </div>
+            </div>
+            <div class="ragVisualBadge">
+              <b>Frontline AI</b>
+              <span>Controlled AI assistants built around your website, documents and workflows.</span>
+              <small>Website knowledge · Documents · Bookings · Workflow handoff</small>
+            </div>
+          </div>
         </div>
 
-        <div class="steps ragWebsiteSteps">
-          <div class="step modalTrigger" data-modal="ragWebsiteBuild" tabindex="0" role="button" aria-label="Explore integrated AI website builds">
+        <div class="ragAssistantCards" aria-label="RAG assistant and integrated website build options">
+          <div class="ragAssistantCard modalTrigger" data-modal="ragKnowledgeBase" tabindex="0" role="button" aria-label="Explore website knowledge assistants">
             <img class="ragStepIcon" src="/assets/optimized/rag-website-build-icon.webp" alt="">
-            <h3>Build the website around action</h3>
-            <p>Premium service-business pages, clear calls to action, enquiry routes and booking journeys built for conversion.</p>
+            <h3>Website Knowledge Assistant</h3>
+            <p>Answer from approved service pages, FAQs and business content.</p>
           </div>
 
-          <div class="step modalTrigger" data-modal="ragKnowledgeBase" tabindex="0" role="button" aria-label="Explore RAG knowledge base assistants">
+          <div class="ragAssistantCard modalTrigger" data-modal="ragKnowledgeBase" tabindex="0" role="button" aria-label="Explore document and policy assistants">
             <img class="ragStepIcon" src="/assets/optimized/rag-knowledge-assistant-icon.webp" alt="">
-            <h3>Add a RAG knowledge assistant</h3>
-            <p>Give the site an assistant that can answer from your FAQs, service notes, PDFs, policies and business knowledge.</p>
+            <h3>Document / Policy Assistant</h3>
+            <p>Use controlled documents, PDFs or guidance as source material.</p>
           </div>
 
-          <div class="step modalTrigger" data-modal="ragWorkflowIntegration" tabindex="0" role="button" aria-label="Explore website workflow integrations">
-            <img class="ragStepIcon" src="/assets/optimized/rag-workflow-integration-icon.webp" alt="">
-            <h3>Connect forms, bookings and follow-up</h3>
-            <p>Turn website interest into structured enquiries, booking requests, email alerts, SMS follow-up or dashboard records.</p>
-          </div>
-
-          <div class="step modalTrigger" data-modal="ragControlledLaunch" tabindex="0" role="button" aria-label="Explore controlled testing and launch">
+          <div class="ragAssistantCard modalTrigger" data-modal="ragWebsiteBuild" tabindex="0" role="button" aria-label="Explore lead and booking assistants">
             <img class="ragStepIcon" src="/assets/optimized/rag-controlled-launch-icon.webp" alt="">
-            <h3>Test before it goes live</h3>
-            <p>Check the questions, routes, forms, responses and handovers before the system starts speaking to customers.</p>
+            <h3>Lead & Booking Assistant</h3>
+            <p>Guide visitors into enquiries, bookings or fact-find requests.</p>
+          </div>
+
+          <div class="ragAssistantCard modalTrigger" data-modal="ragWorkflowIntegration" tabindex="0" role="button" aria-label="Explore website workflow integrations">
+            <img class="ragStepIcon" src="/assets/optimized/rag-workflow-integration-icon.webp" alt="">
+            <h3>Workflow Integration</h3>
+            <p>Hand off to email, SMS, WhatsApp, CRM or dashboard actions.</p>
           </div>
         </div>
       </div>
@@ -1589,7 +2038,7 @@ h1{
 <div class="aiModalBackdrop" id="aiCapacityModal" aria-hidden="true">
   <div class="aiModal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
     <div class="aiModalTopActions">
-      <a class="aiModalTopProductLink" id="aiModalTopProductLink" href="https://frontline-ai.co.uk/lawflow-pro.html">View LawFlow Pro →</a>
+      <a class="aiModalTopProductLink" id="aiModalTopProductLink" href="/lawflow-pro.html">View LawFlow Pro →</a>
       <button class="aiModalClose" type="button" aria-label="Close examples">×</button>
     </div>
     <div class="aiModalInner">
@@ -1622,6 +2071,7 @@ h1{
       bookingText: "Book Call For Pricing →",
       productPanel: {
         badge: "LawFlow Pro product",
+        logo: "/assets/lawflow-pro/generated/01-lawflow-pro-crest.png",
         crest: "/assets/lawflow-pro/generated/01-lawflow-pro-crest.png",
         wordmark: "/assets/lawflow-pro/generated/02-lawflow-pro-wordmark.png",
         copy: "For firms ready to move from enquiry capture into controlled legal intake, conflict-aware routing and solicitor-side AI support."
@@ -1639,27 +2089,44 @@ h1{
         ["Conflict Checks", "/assets/lawflow-pro/generated/05-icon-conflict-entity-check.png"],
         ["AI Helper", "/assets/lawflow-pro/generated/14-icon-ai-helper.png"]
       ],
-      productUrl: "https://frontline-ai.co.uk/lawflow-pro.html",
+      productUrl: "/lawflow-pro.html",
+      productTargetBlank: true,
       helper: "Monthly service now, full product page when you want to go deeper.",
       chips: ["Cloud Dashboard", "Callback Capture", "Monthly Support", "Book Call For Pricing"]
     },
     industryGarages: {
-      kicker: "Monthly AI service · Garages",
-      title: "Recover service enquiries while the workshop is busy.",
+      kicker: "AI service advisor · Garages",
+      title: "For garages that need faster booking capture and missed-call recovery.",
       image: "/assets/optimized/11.webp",
-      lead: "Garages often lose revenue because staff are on the tools, dealing with customers or unable to answer every call. The monthly service helps capture missed enquiries and turn them into visible follow-up.",
+      bookingText: "Book Demo →",
+      productPanel: {
+        badge: "GaragePro product",
+        logo: "/assets/product-library/images/shopify/b09412f9-86be-47f6-8ccb-8d4f8c20bf1f.png",
+        copy: "GaragePro helps garages, MOT centres and workshops capture booking requests, service enquiries and customer callbacks when the phones are busy."
+      },
+      lead: "GaragePro helps garages, MOT centres and workshops capture booking requests, service enquiries and customer callbacks when the phones are busy.",
       cases: [
-        ["Who it is for", "Independent garages, MOT centres, mobile mechanics and service businesses with missed calls or booking pressure."],
-        ["What it supports", "Missed calls, service requests, MOT enquiries, callback tasks, booking interest and customer follow-up."],
+        ["Who it is for", "Independent garages, MOT centres and workshops that miss calls, lose booking requests or need cleaner customer follow-up."],
+        ["What it supports", "Service enquiries, MOT bookings, callback requests, customer details, reminder prompts and follow-up messages."],
         ["Monthly service", "A supported cloud dashboard showing enquiries, follow-ups and missed lead recovery activity."],
-        ["Commercial value", "More recovered work, fewer missed bookings and less dependency on someone answering every call live."]
+        ["Commercial value", "Recover missed opportunities, reduce front-desk pressure and keep customers moving toward booked work."]
       ],
+      productFeatures: [
+        ["Missed Call Recovery"],
+        ["MOT & Service Booking"],
+        ["Customer Callbacks"],
+        ["Follow-Up Reminders"]
+      ],
+      productUrl: "/garagepro.html",
+      productLinkText: "View GaragePro →",
+      helper: "Monthly service now, full product page when you want to go deeper.",
       chips: ["Missed Calls", "Service Requests", "Garage Dashboard", "Monthly Support"]
     },
     industryClinics: {
       kicker: "Monthly AI service · Clinics",
       title: "Support appointment-heavy teams with cleaner enquiry handling.",
-      image: "/assets/optimized/12.webp",
+      image: "/assets/product-library/clinics-icon.png",
+      imageFit: "contain",
       lead: "Clinics and appointment-led businesses need fast, consistent response. The monthly service helps capture enquiries, appointment intent and callback requests when the team is busy.",
       cases: [
         ["Who it is for", "Private clinics, wellness services, therapists, dental-style practices and appointment-led local businesses."],
@@ -1667,33 +2134,219 @@ h1{
         ["Monthly service", "Cloud dashboard access, supported configuration and a monthly support agreement for ongoing use."],
         ["Commercial value", "Reduce admin leakage, respond faster and keep potential clients from drifting to another provider."]
       ],
+      productUrl: "/clinics.html",
+      productLinkText: "View Clinics →",
       chips: ["Appointment Enquiries", "Callback Support", "Client Follow-Up", "Cloud Dashboard"]
     },
-    industryHospitality: {
-      kicker: "Monthly AI service · Hospitality",
-      title: "Keep bookings and event enquiries moving when staff are busy.",
-      image: "/assets/optimized/13.webp",
-      lead: "Hospitality teams are often too busy serving customers to handle every enquiry immediately. The monthly service helps capture booking questions, event interest and follow-up details.",
+    industrySalon: {
+      kicker: "AI booking service · Salons",
+      title: "For salons that need booking capture, reminders and repeat customer follow-up.",
+      image: "/assets/product-library/images/shopify/8fb5be49-3394-4f67-a0e0-6764e983effe.png",
+      imageFit: "contain",
+      bookingText: "Book Demo →",
+      productPanel: {
+        badge: "SalonBoss product",
+        logo: "/assets/product-library/images/shopify/8fb5be49-3394-4f67-a0e0-6764e983effe.png",
+        copy: "SalonBoss helps salons and beauty businesses capture appointment enquiries, recover missed calls, send reminders and keep customers moving back into the diary."
+      },
+      lead: "SalonBoss helps salons and beauty businesses capture appointment enquiries, recover missed calls, send reminders and keep customers moving back into the diary.",
       cases: [
-        ["Who it is for", "Restaurants, venues, hotels, event spaces and hospitality teams handling frequent customer questions."],
-        ["What it supports", "Booking enquiries, event requests, private hire interest, callback tasks and follow-up messages."],
-        ["Monthly service", "A cloud-based dashboard and supported customer enquiry process for agreed monthly pricing."],
-        ["Commercial value", "Reduce missed booking opportunities and give staff a structured way to follow up later."]
+        ["Who it is for", "Salons, beauty rooms and appointment-led businesses that lose calls, miss booking requests or need more consistent reminders."],
+        ["What it supports", "Appointment enquiries, service questions, missed-call recovery, reminders, repeat customer follow-up and simple booking workflows."],
+        ["Monthly service", "A supported booking and follow-up workflow with cloud visibility and agreed monthly support."],
+        ["Commercial value", "Reduce missed bookings, improve repeat visits and take pressure off staff during busy periods."]
       ],
+      productFeatures: [
+        ["Booking Capture"],
+        ["Appointment Reminders"],
+        ["Missed Call Recovery"],
+        ["Repeat Follow-Up"]
+      ],
+      productUrl: "/salonboss.html",
+      productLinkText: "View SalonBoss →",
+      helper: "Monthly service now, full product page when you want to go deeper.",
+      chips: ["Booking Capture", "Reminders", "Missed Calls", "Repeat Follow-Up"]
+    },
+    industryHospitality: {
+      kicker: "AI booking service · Hospitality",
+      title: "For restaurants and hospitality teams that need faster booking and enquiry handling.",
+      image: "/assets/optimized/13.webp",
+      bookingText: "Book Demo →",
+      productPanel: {
+        badge: "TableBoss product",
+        logo: "/assets/product-library/images/shopify/3a40e8be-6e1a-4570-a815-177e932d236f.png",
+        copy: "TableBoss helps restaurants and hospitality businesses handle booking questions, event enquiries, customer messages and follow-up while staff are busy serving customers."
+      },
+      lead: "TableBoss helps restaurants and hospitality businesses handle booking questions, event enquiries, customer messages and follow-up while staff are busy serving customers.",
+      cases: [
+        ["Who it is for", "Restaurants, venues, cafes and hospitality teams that miss calls, lose enquiries or need a clearer response process."],
+        ["What it supports", "Table bookings, event enquiries, customer questions, callback requests, SMS follow-up and reminders."],
+        ["Monthly service", "A cloud-based dashboard and supported customer enquiry process for agreed monthly pricing."],
+        ["Commercial value", "Capture more enquiries, reduce staff interruption and keep customers moving toward confirmed bookings."]
+      ],
+      productFeatures: [
+        ["Table Enquiries"],
+        ["Event Requests"],
+        ["Customer Follow-Up"],
+        ["Booking Reminders"]
+      ],
+      productUrl: "/tableboss.html",
+      productLinkText: "View TableBoss →",
+      helper: "Monthly service now, full product page when you want to go deeper.",
       chips: ["Booking Enquiries", "Event Leads", "Follow-Up", "Monthly Support"]
     },
     industryEstateAgents: {
-      kicker: "Monthly AI service · Estate Agents",
-      title: "Capture property enquiries before the lead goes cold.",
+      kicker: "AI enquiry handler · Estate Agents",
+      title: "For estate agents that need faster viewing, valuation and property enquiry follow-up.",
       image: "/assets/optimized/14.webp",
-      lead: "Estate agents live on speed of response. The monthly service helps capture viewing requests, valuation leads and property enquiries, then surfaces them in a supported cloud dashboard.",
+      bookingText: "Book Demo →",
+      productPanel: {
+        badge: "PropertyDesk product",
+        logo: "/assets/product-library/images/shopify/464416a7-87b4-4cd3-98dc-8eb084ed7faa.png",
+        copy: "PropertyDesk helps estate agencies capture viewing requests, valuation leads and property enquiries quickly, then keep follow-up moving with clearer ownership and reminders."
+      },
+      lead: "PropertyDesk helps estate agencies capture viewing requests, valuation leads and property enquiries quickly, then keep follow-up moving with clearer ownership and reminders.",
       cases: [
-        ["Who it is for", "Estate agents, letting agents, property managers and local property teams that rely on fast enquiry response."],
-        ["What it supports", "Viewing requests, valuation leads, landlord enquiries, buyer interest, tenant questions and callback follow-up."],
+        ["Who it is for", "Estate agencies and property teams that miss calls, lose viewing requests or need better enquiry follow-up."],
+        ["What it supports", "Viewing requests, valuation enquiries, buyer and seller callbacks, property questions, lead capture and reminder prompts."],
         ["Monthly service", "Cloud dashboard access, supported setup and agreed monthly support instead of a full bespoke build."],
-        ["Commercial value", "Protect high-value leads, respond faster and reduce the chance of prospects moving to another agent."]
+        ["Commercial value", "Respond faster, recover more opportunities and keep property enquiries moving while staff are busy."]
       ],
+      productFeatures: [
+        ["Viewing Requests"],
+        ["Valuation Leads"],
+        ["Buyer/Seller Callbacks"],
+        ["Follow-Up Reminders"]
+      ],
+      productUrl: "/propertydesk.html",
+      productLinkText: "View PropertyDesk →",
+      helper: "Monthly service now, full product page when you want to go deeper.",
       chips: ["Viewing Requests", "Valuation Leads", "Property Enquiries", "Book Call For Pricing"]
+    },
+    industryPlumbers: {
+      kicker: "AI service desk · Plumbers",
+      title: "For plumbing teams that need urgent enquiries captured fast.",
+      image: "/assets/product-library/plumberpro-icon.png",
+      imageFit: "contain",
+      bookingText: "Book Demo →",
+      bookingUrl: "/book-demo.html?product_interest=PlumberPro&source=industry-card",
+      lead: "PlumberPro is for plumbing businesses that need emergency leaks, boiler issues, quote requests and same-day callouts captured while the team is on the tools.",
+      cases: [
+        ["Who it is for", "Plumbers, heating engineers and emergency repair teams that cannot answer every call during busy jobs."],
+        ["What it supports", "Leak reports, boiler issues, quote requests, location details, urgency checks and callback routing."],
+        ["Monthly service", "A supported intake and follow-up workflow with cloud visibility for urgent and non-urgent enquiries."],
+        ["Commercial value", "Respond faster to high-intent enquiries and stop urgent jobs disappearing to another provider."]
+      ],
+      productFeatures: [
+        ["Emergency Intake"],
+        ["Boiler Issues"],
+        ["Quote Requests"],
+        ["Same-Day Callouts"]
+      ],
+      productUrl: "/plumberpro.html",
+      productLinkText: "View PlumberPro →",
+      helper: "Built as a controlled service desk around the calls and quote requests your team actually receives.",
+      chips: ["Emergency Leaks", "Boiler Calls", "Quote Capture", "Urgent Routing"]
+    },
+    industryLocksmiths: {
+      kicker: "AI emergency handler · Locksmiths",
+      title: "For locksmiths that need urgent access calls routed cleanly.",
+      image: "/assets/product-library/locksmithpro-icon.png",
+      imageFit: "contain",
+      bookingText: "Book Demo →",
+      bookingUrl: "/book-demo.html?product_interest=LockSmithPro&source=industry-card",
+      lead: "LockSmithPro helps capture lockouts, urgent access issues, key problems and same-day callouts with enough context for fast follow-up.",
+      cases: [
+        ["Who it is for", "Locksmiths and access specialists handling urgent, location-sensitive customer requests."],
+        ["What it supports", "Lockouts, key issues, access problems, location capture, urgency checks and callback routing."],
+        ["Monthly service", "A controlled enquiry flow that separates urgent callouts from quote or general service requests."],
+        ["Commercial value", "Protect high-intent emergency calls and reduce time wasted chasing incomplete details."]
+      ],
+      productFeatures: [
+        ["Lockout Capture"],
+        ["Urgency Routing"],
+        ["Location Details"],
+        ["Callback Workflow"]
+      ],
+      productUrl: "/locksmithpro.html",
+      productLinkText: "View LockSmithPro →",
+      helper: "Useful where speed, location and clean handover matter from the first contact.",
+      chips: ["Lockouts", "Urgent Access", "Same-Day Calls", "Clean Handover"]
+    },
+    industryMaintenance: {
+      kicker: "AI emergency service · Maintenance",
+      title: "For maintenance teams handling urgent repairs and tenant issues.",
+      image: "/assets/product-library/maintenancedesk-icon.png",
+      imageFit: "contain",
+      bookingText: "Book Demo →",
+      bookingUrl: "/book-demo.html?product_interest=MaintenanceDesk&source=industry-card",
+      lead: "MaintenanceDesk helps triage out-of-hours building repairs, tenant issues and urgent maintenance requests into cleaner action records.",
+      cases: [
+        ["Who it is for", "Property maintenance teams, facilities providers, landlords and repair businesses managing urgent requests."],
+        ["What it supports", "Repair category, tenant or site details, urgency, photos or notes, callback needs and routing context."],
+        ["Monthly service", "A structured intake and escalation workflow with visibility over what needs action first."],
+        ["Commercial value", "Reduce missed urgent repairs, improve response consistency and give teams clearer job context."]
+      ],
+      productFeatures: [
+        ["Repair Triage"],
+        ["Tenant Issues"],
+        ["Urgency Checks"],
+        ["Escalation Routing"]
+      ],
+      productUrl: "/maintenancedesk.html",
+      productLinkText: "View MaintenanceDesk →",
+      helper: "A good fit for businesses where after-hours requests need calm triage instead of a messy inbox.",
+      chips: ["Out-of-Hours", "Tenant Repairs", "Urgent Triage", "Maintenance Routing"]
+    },
+    industryBuilders: {
+      kicker: "AI quote assistant · Builders",
+      title: "For builders that need cleaner job enquiries and quote preparation.",
+      image: "/assets/product-library/builderdesk-icon.png",
+      imageFit: "contain",
+      bookingText: "Book Demo →",
+      bookingUrl: "/book-demo.html?product_interest=BuilderDesk&source=industry-card",
+      lead: "BuilderDesk qualifies job enquiries, site visits, quotes, project details and follow-up so promising work is easier to assess.",
+      cases: [
+        ["Who it is for", "Builders, contractors and trade businesses that receive varied job requests needing first-stage qualification."],
+        ["What it supports", "Project type, location, timescale, budget signals, site visit requests, quote details and follow-up prompts."],
+        ["Monthly service", "A practical enquiry capture workflow that prepares better notes before someone calls back."],
+        ["Commercial value", "Spend less time on vague enquiries and more time on jobs that are real, relevant and ready to discuss."]
+      ],
+      productFeatures: [
+        ["Job Qualification"],
+        ["Site Visit Requests"],
+        ["Quote Details"],
+        ["Follow-Up Prompts"]
+      ],
+      productUrl: "/builderdesk.html",
+      productLinkText: "View BuilderDesk →",
+      helper: "Designed to turn loose trade enquiries into a more useful first conversation.",
+      chips: ["Quote Assistant", "Site Visits", "Project Details", "Lead Qualification"]
+    },
+    industryElectricians: {
+      kicker: "AI service router · Electricians",
+      title: "For electricians that need urgent faults and service enquiries routed.",
+      image: "/assets/product-library/electriciandesk-icon.png",
+      imageFit: "contain",
+      bookingText: "Book Demo →",
+      bookingUrl: "/book-demo.html?product_interest=ElectricianDesk&source=industry-card",
+      lead: "ElectricianDesk captures urgent faults, installation enquiries, safety checks and callback requests so the next step is clearer.",
+      cases: [
+        ["Who it is for", "Electricians and electrical contractors handling faults, installations, checks and callback-heavy enquiries."],
+        ["What it supports", "Fault type, property details, urgency, installation interest, safety check requests and team notifications."],
+        ["Monthly service", "A service-routing workflow that helps prioritise urgent issues and structure non-urgent requests."],
+        ["Commercial value", "Respond faster to faults while keeping quote and callback enquiries from slipping through."]
+      ],
+      productFeatures: [
+        ["Fault Capture"],
+        ["Installation Enquiries"],
+        ["Safety Checks"],
+        ["Callback Requests"]
+      ],
+      productUrl: "/electriciandesk.html",
+      productLinkText: "View ElectricianDesk →",
+      helper: "Optional trade-sector example showing how the same controlled pattern adapts to electrical services.",
+      chips: ["Urgent Faults", "Installations", "Safety Checks", "Service Routing"]
     },
     ragWebsiteBuild: {
       kicker: "Integrated website builds",
@@ -1960,11 +2613,13 @@ h1{
     lead.textContent = item.lead;
     image.src = item.image;
     image.alt = item.kicker + " AI worker examples";
+    image.parentElement.classList.toggle("contain", item.imageFit === "contain");
     if(bookLink) bookLink.href = item.bookingUrl || "/book-demo.html";
     if(bookLink) bookLink.textContent = item.bookingText || "Book Fact-Find →";
     if(productPanel){
       if(item.productPanel){
-        productPanel.innerHTML = `<div class="lawflowProductTop"><img class="lawflowProductCrest" src="${item.productPanel.crest}" alt=""><div class="lawflowProductBrand"><span class="lawflowProductBadge">${item.productPanel.badge}</span><span class="lawflowWordmarkFrame"><img src="${item.productPanel.wordmark}" alt="LawFlow Pro"></span></div></div><p>${item.productPanel.copy}</p>`;
+        const productLogo = item.productPanel.logo || item.productPanel.crest;
+        productPanel.innerHTML = `<div class="lawflowProductTop"><span class="productLogoTile productModalLogo"><img src="${productLogo}" alt="${item.productPanel.badge}"></span><span class="lawflowProductBadge">${item.productPanel.badge}</span></div><p>${item.productPanel.copy}</p>`;
         productPanel.classList.add("active");
       }else{
         productPanel.innerHTML = "";
@@ -1974,7 +2629,7 @@ h1{
     cases.innerHTML = item.cases.map(([name, copy]) => `<li><b>${name}:</b> ${copy}</li>`).join("");
     if(featureGrid){
       if(item.productFeatures){
-        featureGrid.innerHTML = item.productFeatures.map(([name, icon]) => `<div class="lawflowFeature"><img src="${icon}" alt=""><span>${name}</span></div>`).join("");
+        featureGrid.innerHTML = item.productFeatures.map(([name, icon]) => `<div class="lawflowFeature">${icon ? `<img src="${icon}" alt="">` : ""}<span>${name}</span></div>`).join("");
         featureGrid.classList.add("active");
       }else{
         featureGrid.innerHTML = "";
@@ -1985,8 +2640,18 @@ h1{
     if(productLink){
       if(item.productUrl){
         productLink.href = item.productUrl;
+        productLink.textContent = item.productLinkText || "View Product →";
+        if(item.productTargetBlank){
+          productLink.target = "_blank";
+          productLink.rel = "noopener";
+        }else{
+          productLink.removeAttribute("target");
+          productLink.removeAttribute("rel");
+        }
         productLink.classList.add("active");
       }else{
+        productLink.removeAttribute("target");
+        productLink.removeAttribute("rel");
         productLink.classList.remove("active");
       }
     }
@@ -2004,6 +2669,11 @@ h1{
     modal.setAttribute("aria-hidden","true");
     document.body.style.overflow = "";
   }
+
+  document.querySelectorAll(".monthlyServiceCardLink").forEach(link => {
+    link.addEventListener("click", event => event.stopPropagation());
+    link.addEventListener("keydown", event => event.stopPropagation());
+  });
 
   document.querySelectorAll(".modalTrigger[data-modal]").forEach(card => {
     card.addEventListener("click", () => openModal(card.dataset.modal));
