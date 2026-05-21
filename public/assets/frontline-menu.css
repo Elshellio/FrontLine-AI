@@ -1,3 +1,4 @@
+/* FRONTLINE_HOMEPAGE_IMAGE_OPTIMISE_V1 */
 /* FRONTLINE_MENU_CLEAN_CSS_V6 */
 /* Single clean stylesheet for the shared Frontline AI menu. No appended override stack. */
 
@@ -212,7 +213,7 @@ body.frontline-menu-mounted:not(.frontline-home-page){
 
   background:
     linear-gradient(180deg,rgba(9,28,68,.56),rgba(4,12,28,.86)),
-    url("/assets/sidebar-cta-glow.png") center/cover no-repeat !important;
+    url("/assets/optimized/sidebar-cta-glow.webp") center/cover no-repeat !important;
   box-shadow:
     inset 0 1px 0 rgba(255,255,255,.12),
     0 22px 54px rgba(0,0,0,.24) !important;

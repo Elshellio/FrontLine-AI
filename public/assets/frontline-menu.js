@@ -1,3 +1,4 @@
+/* FRONTLINE_ALL_PAGE_IMAGE_OPTIMISE_V1 */
 // FRONTLINE_IMAGE_SHARED_MENU_V2
 // Shared Frontline AI menu. Icons are CSS backgrounds to prevent global page CSS resizing them.
 
@@ -5,17 +6,17 @@
   if(document.getElementById("frontlineOneSharedMenu")) return;
 
   const MENU_ITEMS = [
-    { label: "Home", href: "/", meta: "Start", icon: "/assets/menu-home.png" },
-    { label: "AI Workers", href: "/#workers", meta: "Products", icon: "/assets/menu-workers.png" },
-    { label: "Industries", href: "/#industries", meta: "Use cases", icon: "/assets/menu-industries.png" },
-    { label: "How It Works", href: "/#how", meta: "Process", icon: "/assets/menu-process.png" },
-    { label: "Delivery Proof", href: "/#proof", meta: "Trust", icon: "/assets/menu-proof.png" },
-    { label: "Resources", href: "/#resources", meta: "Links", icon: "/assets/menu-resources.png" },
-    { label: "Demo Portal", href: "/demo-portal.html", meta: "Hub", icon: "/assets/menu-resources.png" },
-    { label: "About", href: "/about.html", meta: "Who", icon: "/assets/menu-proof.png" },
-    { label: "Controlled Build", href: "/controlled-build-method.html", meta: "Method", icon: "/assets/menu-controlled-build.png" },
-    { label: "Change Control", href: "/change-control-procedure.html", meta: "Review", icon: "/assets/menu-change-control.png" },
-    { label: "Book Fact-Find", href: "/book-demo.html", meta: "Calendar", icon: "/assets/menu-calendar.png" }
+    { label: "Home", href: "/", meta: "Start", icon: "/assets/optimized/assets__menu-home.webp" },
+    { label: "AI Workers", href: "/#workers", meta: "Products", icon: "/assets/optimized/assets__menu-workers.webp" },
+    { label: "Industries", href: "/#industries", meta: "Use cases", icon: "/assets/optimized/assets__menu-industries.webp" },
+    { label: "How It Works", href: "/#how", meta: "Process", icon: "/assets/optimized/assets__menu-process.webp" },
+    { label: "Delivery Proof", href: "/#proof", meta: "Trust", icon: "/assets/optimized/assets__menu-proof.webp" },
+    { label: "Resources", href: "/#resources", meta: "Links", icon: "/assets/optimized/assets__menu-resources.webp" },
+    { label: "Demo Portal", href: "/demo-portal.html", meta: "Hub", icon: "/assets/optimized/assets__menu-resources.webp" },
+    { label: "About", href: "/about.html", meta: "Who", icon: "/assets/optimized/assets__menu-proof.webp" },
+    { label: "Controlled Build", href: "/controlled-build-method.html", meta: "Method", icon: "/assets/optimized/assets__menu-controlled-build.webp" },
+    { label: "Change Control", href: "/change-control-procedure.html", meta: "Review", icon: "/assets/optimized/assets__menu-change-control.webp" },
+    { label: "Book Fact-Find", href: "/book-demo.html", meta: "Calendar", icon: "/assets/optimized/assets__menu-calendar.webp" }
   ];
 
   const path = window.location.pathname || "/";
@@ -47,7 +48,7 @@
   sidebar.className = "frontlineMenuSidebar";
   sidebar.innerHTML = `
     <a class="frontlineMenuBrand" href="/">
-      <img class="frontlineMenuBrandMark" src="/assets/4.png" alt="Frontline AI">
+      <img class="frontlineMenuBrandMark" src="/assets/optimized/assets__4.webp" alt="Frontline AI">
       <div>
         <div class="frontlineMenuLogo">Frontline AI</div>
         <span>AI Worker Hub</span>
@@ -70,7 +71,7 @@
   mobile.className = "frontlineMenuMobileTop";
   mobile.innerHTML = `
     <a class="frontlineMenuMobileBrand" href="/">
-      <img src="/assets/4.png" alt="Frontline AI">
+      <img src="/assets/optimized/assets__4.webp" alt="Frontline AI">
       <span>Frontline AI</span>
     </a>
     <a class="frontlineMenuMobileCta" href="/book-demo.html">Book Fact-Find</a>

@@ -1,3 +1,4 @@
+/* FRONTLINE_ALL_PAGE_IMAGE_OPTIMISE_V1 */
 /* FRONTLINE_DOCUMENT_SKIN_BOOKING_ALIGNED_V1 */
 
 /* FRONTLINE_DOC_BOOKING_BACKGROUND_V1 */
@@ -13,7 +14,7 @@ body.frontline-doc-page:before{
   content:"" !important;
   position:fixed !important;
   inset:0 !important;
-  background:url('/assets/9.png') center top/cover no-repeat !important;
+  background:url('/assets/optimized/assets__9.webp') center top/cover no-repeat !important;
   opacity:.35 !important;
   pointer-events:none !important;
   z-index:0 !important;
