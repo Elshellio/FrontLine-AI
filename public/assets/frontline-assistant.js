@@ -1,5 +1,5 @@
 // FRONTLINE_AI_KNOWLEDGE_ASSISTANT_V1
-// Static demo assistant. No network calls, no external dependencies.
+// Controlled-knowledge assistant. Uses the backend when available and falls back locally.
 
 (function(){
   if(document.getElementById("flaiAssistantRoot")) return;
@@ -246,6 +246,38 @@
     return responses.find(item => item.match.some(token => normalized.includes(token))) || fallback;
   }
 
+  function normalizeAssistantResponse(response){
+    if(!response || typeof response !== "object") return null;
+    const actions = Array.isArray(response.actions) ? response.actions.filter(action => Array.isArray(action) && action.length >= 2) : [];
+    return {
+      title: response.title || "Frontline AI recommendation",
+      short: response.short || "",
+      why: response.why || "",
+      build: Array.isArray(response.build) ? response.build : [],
+      sources: Array.isArray(response.sources) ? response.sources : [],
+      confidence: response.confidence || "",
+      actions: actions.length ? actions : fallback.actions
+    };
+  }
+
+  function askBackend(text){
+    return fetch("/api/assistant/query", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: text })
+    })
+      .then(res => {
+        if(!res.ok) throw new Error("Assistant API unavailable");
+        return res.json();
+      })
+      .then(data => {
+        if(!data || data.ok !== true) throw new Error("Assistant API error");
+        const answer = normalizeAssistantResponse(data.answer);
+        if(!answer) throw new Error("Assistant API response invalid");
+        return answer;
+      });
+  }
+
   function addAssistantResponse(response){
     const wrap = document.createElement("div");
     wrap.className = "flai-assistant-message flai-assistant-message-system";
@@ -254,6 +286,7 @@
         ${Object.keys(qualifierMap).map(label => `<button class="flai-assistant-qualifier" type="button" data-flai-assistant-prompt="${escapeHtml(qualifierMap[label])}">${escapeHtml(label)}</button>`).join("")}
       </div>
     ` : "";
+    const sourceText = response.sources && response.sources.length ? `Sources: ${response.sources.join(", ")}.` : "Source: based on approved Frontline AI material.";
     wrap.innerHTML = `
       <div class="flai-assistant-message-bubble">
         <span class="flai-assistant-section-title">Short answer</span>
@@ -264,7 +297,7 @@
         <p>${escapeHtml(response.why)}</p>
         <span class="flai-assistant-section-title">What Frontline AI would build</span>
         <ul>${response.build.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
-        <div class="flai-assistant-source">Source: based on approved Frontline AI material.</div>
+        <div class="flai-assistant-source">${escapeHtml(sourceText)}</div>
       </div>
       ${qualifiers}
       <div class="flai-assistant-actions">
@@ -279,7 +312,9 @@
     const clean = text.trim();
     if(!clean) return;
     addUserMessage(clean);
-    window.setTimeout(() => addAssistantResponse(findResponse(clean)), 180);
+    askBackend(clean)
+      .then(addAssistantResponse)
+      .catch(() => window.setTimeout(() => addAssistantResponse(findResponse(clean)), 180));
   }
 
   function openAssistant(){

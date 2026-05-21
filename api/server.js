@@ -36,6 +36,129 @@ const allowedBusinessSizes = new Set([
 
 const allowedContactMethods = new Set(["Phone", "Email", "WhatsApp", "Any"]);
 
+const assistantKnowledge = [
+  {
+    match: ["reception", "receptionist", "miss", "missed", "call", "calls", "phone", "voicemail", "answering"],
+    title: "AI Reception Worker / missed call recovery",
+    short: "Start with the calls and first-response workflow. An AI Reception Worker can answer or recover missed enquiries, capture the reason for contact and hand the team a cleaner record.",
+    why: "This fits when valuable enquiries are being lost before a person can respond, or when staff are repeatedly collecting the same caller details.",
+    build: [
+      "Phone answering or missed-call follow-up",
+      "Caller details and reason for contact",
+      "SMS, WhatsApp or email confirmation",
+      "Team notification and enquiry record",
+      "Clear handover when a human needs to step in"
+    ],
+    sources: ["Homepage", "AI Workers", "Controlled Build Method"],
+    confidence: "high",
+    actions: [
+      ["Book a fact-find", "/book-demo.html", true],
+      ["Explore AI workers", "/#workers", false],
+      ["Controlled build method", "/controlled-build-method.html", false]
+    ]
+  },
+  {
+    match: ["rag", "knowledge", "document", "documents", "pdf", "pdfs", "faq", "faqs", "policy", "policies", "manual", "q&a", "qa"],
+    title: "Controlled Knowledge Assistant / RAG planning",
+    short: "A controlled knowledge assistant is the right starting point when staff or customers need reliable answers from approved documents, FAQs, policies, PDFs or website content.",
+    why: "The first version should stay inside approved knowledge, cite its sources and escalate when the material does not answer the question.",
+    build: [
+      "Approved document and FAQ inventory",
+      "Source-backed answer format",
+      "No-guessing fallback when knowledge is missing",
+      "Question logging for content gaps",
+      "Change-controlled updates to the knowledge base"
+    ],
+    sources: ["Homepage", "Change Control Procedure", "Controlled Build Method"],
+    confidence: "high",
+    actions: [
+      ["Book a fact-find", "/book-demo.html", true],
+      ["Change control", "/change-control-procedure.html", false],
+      ["View resources", "/#resources", false]
+    ]
+  },
+  {
+    match: ["booking", "bookings", "appointment", "appointments", "calendar", "calendly", "fact-find", "fact find", "schedule", "scheduling"],
+    title: "AI Booking Worker / appointment workflow",
+    short: "Use an AI Booking Worker when the main job is turning enquiries into qualified appointments, fact-finds or calendar bookings.",
+    why: "It helps remove back-and-forth by gathering the right details first, offering the next step and keeping the booking record consistent.",
+    build: [
+      "Fact-find questions before booking",
+      "Appointment routing by service or urgency",
+      "Calendar slot selection",
+      "Confirmation and reminder messages",
+      "Structured booking record for the team"
+    ],
+    sources: ["Homepage", "Book Demo", "Controlled Build Method"],
+    confidence: "high",
+    actions: [
+      ["Book a fact-find", "/book-demo.html", true],
+      ["Explore AI workers", "/#workers", false],
+      ["Controlled build method", "/controlled-build-method.html", false]
+    ]
+  },
+  {
+    match: ["website", "site", "form", "forms", "workflow", "workflows", "automation", "automate", "follow-up", "follow up", "enquiry", "enquiries", "inquiry", "inquiries"],
+    title: "Website automation / enquiry workflow",
+    short: "Website automation fits when your site needs to capture demand, qualify visitors and trigger the right follow-up instead of leaving everything to manual admin.",
+    why: "Forms, routing and follow-up workflows are a practical first step when repeated enquiries need the same collection, triage and response pattern.",
+    build: [
+      "Service-specific enquiry forms",
+      "Qualification and routing logic",
+      "Email, SMS or team notifications",
+      "Follow-up sequences",
+      "Logged workflow records"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Resources"],
+    confidence: "medium",
+    actions: [
+      ["Book a fact-find", "/book-demo.html", true],
+      ["View resources", "/#resources", false],
+      ["Controlled build method", "/controlled-build-method.html", false]
+    ]
+  },
+  {
+    match: ["controlled", "control", "change", "testing", "test", "rollback", "roll back", "launch", "safe", "approval", "approved"],
+    title: "Controlled build / change control",
+    short: "For a controlled build, the priority is to define the workflow, test changes before release and keep a rollback path if something does not behave as expected.",
+    why: "This fits when the assistant or automation affects customer experience, operational records or live business processes.",
+    build: [
+      "Clear scope and acceptance checks",
+      "Approved content and workflow rules",
+      "Test route before launch",
+      "Change log and release notes",
+      "Rollback plan for live changes"
+    ],
+    sources: ["Change Control Procedure", "Controlled Build Method"],
+    confidence: "high",
+    actions: [
+      ["Book a fact-find", "/book-demo.html", true],
+      ["Change control", "/change-control-procedure.html", false],
+      ["Controlled build method", "/controlled-build-method.html", false]
+    ]
+  }
+];
+
+const assistantFallback = {
+  title: "Guided AI worker fact-find",
+  short: "The best starting point depends on where time, leads or customer experience are leaking first. Start with one controlled workflow, prove it, then expand.",
+  why: "Frontline AI usually begins with a focused assistant or worker that can be tested against approved material and a clear handover path.",
+  build: [
+    "Identify the repeated operational problem",
+    "Define the first useful AI worker or assistant",
+    "Agree approved knowledge and workflow rules",
+    "Test behaviour, copy and handover",
+    "Use the fact-find to plan the next step"
+  ],
+  sources: ["Homepage", "Controlled Build Method"],
+  confidence: "medium",
+  actions: [
+    ["Book a fact-find", "/book-demo.html", true],
+    ["Controlled build method", "/controlled-build-method.html", false],
+    ["View resources", "/#resources", false]
+  ]
+};
+
 function sendJson(res, status, payload) {
   const body = JSON.stringify(payload);
   res.writeHead(status, {
@@ -71,6 +194,13 @@ function cleanText(value, max = 1000) {
 
 function cleanEmail(value) {
   return cleanText(value, 254).toLowerCase();
+}
+
+function findAssistantAnswer(message) {
+  const normalized = message.toLowerCase();
+  const answer = assistantKnowledge.find(item => item.match.some(token => normalized.includes(token))) || assistantFallback;
+  const { match, ...publicAnswer } = answer;
+  return publicAnswer;
 }
 
 function readBookings() {
@@ -197,6 +327,22 @@ const server = http.createServer(async (req, res) => {
         timezone: "Europe/London",
         duration_minutes: SLOT_MINUTES,
         slots: generateSlots()
+      });
+    }
+
+    if (req.method === "POST" && url.pathname === "/api/assistant/query") {
+      const raw = await readBody(req);
+      let input = {};
+      try { input = JSON.parse(raw || "{}"); }
+      catch { return sendJson(res, 400, { ok: false, errors: ["Invalid JSON."] }); }
+
+      const message = cleanText(input.message, 1200);
+      if (!message) return sendJson(res, 400, { ok: false, errors: ["Message is required."] });
+
+      return sendJson(res, 200, {
+        ok: true,
+        mode: "controlled_knowledge_v1",
+        answer: findAssistantAnswer(message)
       });
     }
 
