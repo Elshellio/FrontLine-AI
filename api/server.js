@@ -153,7 +153,7 @@ const assistantKnowledge = [
   },
   {
     intent: "admin_overload",
-    match: ["admin", "wasting time", "same questions", "repeated questions", "answering the same", "structured enquiries", "structured inquiries", "send details", "email or dashboard", "dashboard", "manual", "manual admin", "inbox"],
+    match: ["admin", "wasting time", "same questions", "repeated questions", "answering the same", "structured enquiries", "structured inquiries", "send details", "email or dashboard", "dashboard", "manual", "manual admin", "inbox", "email", "emails", "outbound email", "sending emails", "thousands of emails", "email volume", "email follow-up", "repeated emails"],
     title: "Admin relief and structured enquiry workflow",
     short: "Start with one admin-heavy enquiry path and turn it into a structured workflow. Frontline AI would capture the details once, route them cleanly and send the team a usable email or dashboard record.",
     why: "This works when staff repeatedly ask the same questions or copy details between systems. It remains controlled knowledge, not a live LLM, so the workflow should be predictable and easy to review.",
@@ -250,6 +250,23 @@ const assistantKnowledge = [
       "Rollback plan for live changes"
     ],
     sources: ["Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "savings_roi",
+    match: ["how much can i save", "how much money can this save", "save using ai", "save me time", "save time", "admin time", "admin time can i save", "roi", "return on investment", "worth it", "go live in minutes", "live in minutes", "quickly can i go live", "first realistic saving", "recovered lead", "recovered leads"],
+    title: "Realistic AI savings depend on where the leak is",
+    short: "Savings depend on where the business is leaking time, enquiries or staff capacity. The useful question is not whether AI can save money in theory, but where the first realistic saving sits.",
+    why: "For one business that might be calls; for another it might be email volume, repeated admin, booking back-and-forth, quote follow-up, website enquiries, document questions or manual handoffs. That is why Frontline AI starts with a focused fact-find rather than promising a meaningful bespoke system that goes live in minutes.",
+    build: [
+      "Map where enquiries, bookings or admin currently slow down",
+      "Identify the first realistic saving or recovered-lead opportunity",
+      "Recommend the smallest useful AI worker or workflow",
+      "Build under controlled change, testing and review",
+      "Improve from real usage rather than guessing upfront"
+    ],
+    sources: ["Homepage", "Book Fact-Find page", "Controlled Build Method", "Change Control Procedure"],
     confidence: "high",
     actions: defaultAssistantActions
   },
