@@ -36,113 +36,264 @@ const allowedBusinessSizes = new Set([
 
 const allowedContactMethods = new Set(["Phone", "Email", "WhatsApp", "Any"]);
 
+const assistantActions = {
+  factFind: ["Book a fact-find", "/book-demo.html", true],
+  buildMethod: ["View controlled build method", "/controlled-build-method.html", false],
+  changeControl: ["Change control", "/change-control-procedure.html", false]
+};
+
+const defaultAssistantActions = [
+  assistantActions.factFind,
+  assistantActions.buildMethod,
+  assistantActions.changeControl
+];
+
 const assistantKnowledge = [
   {
-    match: ["reception", "receptionist", "miss", "missed", "call", "calls", "phone", "voicemail", "answering"],
-    title: "AI Reception Worker / missed call recovery",
-    short: "Start with the calls and first-response workflow. An AI Reception Worker can answer or recover missed enquiries, capture the reason for contact and hand the team a cleaner record.",
-    why: "This fits when valuable enquiries are being lost before a person can respond, or when staff are repeatedly collecting the same caller details.",
+    intent: "industry_garage",
+    match: ["garage", "mot", "car service", "car servicing", "service enquiry", "service enquiries", "working on cars", "vehicle repair", "mechanic"],
+    title: "Garage enquiry and MOT booking workflow",
+    short: "For a garage, the first useful build is usually missed-call recovery plus MOT, service and repair enquiry capture. Frontline AI would make sure callers are answered, qualified and routed while the team is on the tools.",
+    why: "Garages often lose revenue because calls arrive when nobody can stop to answer. This controlled recommendation is based on fixed Frontline AI knowledge, not a live LLM improvising.",
     build: [
-      "Phone answering or missed-call follow-up",
-      "Caller details and reason for contact",
-      "SMS, WhatsApp or email confirmation",
-      "Team notification and enquiry record",
-      "Clear handover when a human needs to step in"
+      "AI Reception Worker for missed calls and busy periods",
+      "MOT, service, repair and callback qualification questions",
+      "SMS or email follow-up for the customer",
+      "Booking or callback record sent to the garage team",
+      "Escalation rules for urgent or unclear enquiries"
     ],
-    sources: ["Homepage", "AI Workers", "Controlled Build Method"],
+    sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
     confidence: "high",
-    actions: [
-      ["Book a fact-find", "/book-demo.html", true],
-      ["Explore AI workers", "/#workers", false],
-      ["Controlled build method", "/controlled-build-method.html", false]
-    ]
+    actions: defaultAssistantActions
   },
   {
-    match: ["rag", "knowledge", "document", "documents", "pdf", "pdfs", "faq", "faqs", "policy", "policies", "manual", "q&a", "qa"],
-    title: "Controlled Knowledge Assistant / RAG planning",
-    short: "A controlled knowledge assistant is the right starting point when staff or customers need reliable answers from approved documents, FAQs, policies, PDFs or website content.",
-    why: "The first version should stay inside approved knowledge, cite its sources and escalate when the material does not answer the question.",
+    intent: "industry_legal",
+    match: ["law firm", "legal", "solicitor", "solicitors", "matter intake", "legal intake", "conflict", "conflict-aware", "client callback", "client callbacks"],
+    title: "Legal intake and callback workflow",
+    short: "For a law firm, start with a controlled legal intake workflow: capture the enquiry, identify the matter type, flag conflict-sensitive steps and route callbacks without giving legal advice.",
+    why: "Legal intake needs structure, auditability and careful escalation. This is controlled knowledge only, so Frontline AI would build approved questions and routing rules rather than a live LLM making judgement calls.",
     build: [
-      "Approved document and FAQ inventory",
-      "Source-backed answer format",
+      "Matter type and urgency capture",
+      "Conflict-aware routing prompts and handover rules",
+      "Client callback and appointment request records",
+      "Email notification to the right team or inbox",
+      "Controlled copy, testing and change log before launch"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "industry_estate_agents",
+    match: ["estate agent", "estate agents", "property enquiry", "property enquiries", "valuation", "valuation request", "valuation requests", "viewing", "viewing booking", "viewing bookings", "tenant", "landlord"],
+    title: "Estate agent lead and viewing workflow",
+    short: "For an estate agency, the best first build is usually property enquiry routing: valuation requests, viewing bookings, tenant questions and landlord leads captured into a clean follow-up record.",
+    why: "Property enquiries go cold quickly when they are not qualified and routed. This assistant uses controlled Frontline AI knowledge, not a live LLM, so the workflow should be explicit and testable.",
+    build: [
+      "Visitor route for sales, lettings, valuations and viewings",
+      "Property, budget, timing and contact detail capture",
+      "Viewing or valuation request notifications",
+      "Tenant and landlord lead separation",
+      "Fact-find review before adding calendar or CRM integrations"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "industry_clinic",
+    match: ["clinic", "patient", "patients", "patient enquiry", "patient enquiries", "treatment", "treatment question", "treatment questions", "appointment request", "appointment requests"],
+    title: "Clinic enquiry and appointment request workflow",
+    short: "For a clinic, start with appointment requests and treatment enquiries: capture the patient need, collect the right non-clinical details and route the request for the team to review.",
+    why: "Clinics need fast responses without unsafe advice. This is controlled knowledge only, so Frontline AI would build scripted capture, approved answers and escalation rather than a live diagnostic LLM.",
+    build: [
+      "Treatment or service enquiry routing",
+      "Appointment request and callback capture",
+      "Approved FAQs for opening hours, services and next steps",
+      "Email notification with structured patient enquiry details",
+      "No-advice fallback for medical or uncertain questions"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "industry_hospitality",
+    match: ["restaurant", "restaurants", "table booking", "table bookings", "hotel", "hotel enquiry", "hotel enquiries", "guest question", "guest questions", "event enquiry", "event enquiries", "hospitality"],
+    title: "Hospitality booking and guest enquiry workflow",
+    short: "For hospitality, start with bookings and guest questions: table bookings, hotel enquiries, event requests and common questions routed into a clear team notification.",
+    why: "Hospitality teams are often busy when enquiries arrive. This is a controlled, non-LLM recommendation, so Frontline AI would keep the first version practical and rule-based.",
+    build: [
+      "Booking or event enquiry capture",
+      "Guest details, dates, party size and special request fields",
+      "Approved FAQ answers for opening, availability and services",
+      "Email or dashboard notification for staff",
+      "Escalation for VIP, urgent or unclear requests"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "missed_calls",
+    match: ["miss calls", "missed calls", "miss call", "busy", "answer my phone", "answer phone", "take messages", "send sms", "sms follow", "qualify callers", "qualify caller", "phone", "voicemail", "call back", "callback", "reception", "receptionist"],
+    title: "AI Reception Worker for missed calls",
+    short: "Start with an AI Reception Worker that answers or recovers missed calls, takes a useful message, qualifies the caller and sends a fast SMS or email follow-up.",
+    why: "This protects buyer intent at the moment it appears. It is controlled keyword and workflow knowledge, not a live LLM, so the first build should use approved questions, clear routing and human handover.",
+    build: [
+      "Missed-call or phone enquiry capture",
+      "Name, number, service need, urgency and preferred callback time",
+      "SMS or email confirmation after the enquiry",
+      "Caller qualification and routing rules",
+      "Team notification with a structured record"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "admin_overload",
+    match: ["admin", "wasting time", "same questions", "repeated questions", "answering the same", "structured enquiries", "structured inquiries", "send details", "email or dashboard", "dashboard", "manual", "manual admin", "inbox"],
+    title: "Admin relief and structured enquiry workflow",
+    short: "Start with one admin-heavy enquiry path and turn it into a structured workflow. Frontline AI would capture the details once, route them cleanly and send the team a usable email or dashboard record.",
+    why: "This works when staff repeatedly ask the same questions or copy details between systems. It remains controlled knowledge, not a live LLM, so the workflow should be predictable and easy to review.",
+    build: [
+      "Approved intake questions for the repeated enquiry",
+      "Structured enquiry summary for email or dashboard",
+      "Routing by service, urgency or location",
+      "Reusable replies for common questions",
+      "Question log to identify gaps and improvements"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "appointment_booking",
+    match: ["book appointments", "book appointment", "appointment", "appointments", "replace calendly", "calendly", "calendar", "collect details before booking", "before booking", "cancellation", "cancellations", "rebooking", "reschedule", "booking details", "email me booking", "schedule", "scheduling"],
+    title: "AI Booking Worker for qualified appointments",
+    short: "An AI Booking Worker is the right first build when you want enquiries converted into qualified appointments rather than just raw calendar slots.",
+    why: "It can sit before or alongside a calendar tool by collecting the right details first. This controlled assistant is not a live LLM, so availability, cancellation and rebooking rules should be defined before launch.",
+    build: [
+      "Pre-booking questions and qualification rules",
+      "Appointment type, urgency and contact detail capture",
+      "Booking request or calendar handoff",
+      "Cancellation and rebooking rules for a later version",
+      "Email confirmation with the booking details"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "website_lead_capture",
+    match: ["website capture", "better leads", "capture leads", "forms trigger", "trigger emails", "trigger sms", "route visitors", "visitors into bookings", "turn visitors", "existing website", "my website", "site", "web form", "forms", "lead capture"],
+    title: "Website lead capture and visitor routing",
+    short: "Your website can capture better leads by asking the right questions, routing visitors to the next step and triggering email or SMS follow-up when someone is ready to act.",
+    why: "This is a strong first build when traffic exists but enquiries are messy or incomplete. It stays controlled and non-LLM by using approved routes, forms and response rules.",
+    build: [
+      "Lead capture route for your existing website",
+      "Service-specific forms and visitor routing",
+      "Email, SMS or team notification triggers",
+      "Booking or callback next step",
+      "Testing against real buyer situations before launch"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "rag_documents",
+    match: ["answer from my documents", "documents", "document", "pdf", "pdfs", "faq", "faqs", "policy", "policies", "make things up", "hallucinate", "cite sources", "sources", "doesn't know", "does not know", "rag", "knowledge base", "approved knowledge"],
+    title: "Controlled Knowledge Assistant for documents",
+    short: "For PDFs, FAQs, policies or website content, start with a controlled knowledge assistant that answers only from approved material, cites source labels and says when it does not know.",
+    why: "This is useful when reliability matters more than free-form chat. It is not a live LLM in this Stage 2 assistant; Frontline AI would define the approved knowledge, answer format and escalation path first.",
+    build: [
+      "Approved document, FAQ and policy inventory",
+      "Source-backed answer format with source labels",
       "No-guessing fallback when knowledge is missing",
-      "Question logging for content gaps",
-      "Change-controlled updates to the knowledge base"
+      "Escalation route to a person or fact-find",
+      "Change-controlled updates when documents change"
     ],
-    sources: ["Homepage", "Change Control Procedure", "Controlled Build Method"],
+    sources: ["Homepage", "Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
     confidence: "high",
-    actions: [
-      ["Book a fact-find", "/book-demo.html", true],
-      ["Change control", "/change-control-procedure.html", false],
-      ["View resources", "/#resources", false]
-    ]
+    actions: defaultAssistantActions
   },
   {
-    match: ["booking", "bookings", "appointment", "appointments", "calendar", "calendly", "fact-find", "fact find", "schedule", "scheduling"],
-    title: "AI Booking Worker / appointment workflow",
-    short: "Use an AI Booking Worker when the main job is turning enquiries into qualified appointments, fact-finds or calendar bookings.",
-    why: "It helps remove back-and-forth by gathering the right details first, offering the next step and keeping the booking record consistent.",
+    intent: "ai_worker_selection",
+    match: ["what ai worker", "which ai worker", "need first", "ai reception", "ai sales", "difference between", "more than one ai worker", "more than one worker", "don't know what i need", "dont know what i need", "not sure what i need", "i don't know", "i dont know"],
+    title: "AI worker selection fact-find",
+    short: "If you are not sure which AI worker you need, start by finding the biggest leak: missed calls, weak website leads, repeated admin, bookings or document questions.",
+    why: "Frontline AI can build more than one worker, but the first version should prove one commercial workflow. This recommendation is controlled knowledge, not a live LLM assessment.",
     build: [
-      "Fact-find questions before booking",
-      "Appointment routing by service or urgency",
-      "Calendar slot selection",
-      "Confirmation and reminder messages",
-      "Structured booking record for the team"
+      "Short fact-find to identify the highest-value workflow",
+      "First AI worker recommendation: Reception, Sales, Booking, Knowledge or custom",
+      "Scope for one useful version before expanding",
+      "Success criteria and handover rules",
+      "Roadmap for additional workers if the first one proves useful"
     ],
-    sources: ["Homepage", "Book Demo", "Controlled Build Method"],
-    confidence: "high",
-    actions: [
-      ["Book a fact-find", "/book-demo.html", true],
-      ["Explore AI workers", "/#workers", false],
-      ["Controlled build method", "/controlled-build-method.html", false]
-    ]
-  },
-  {
-    match: ["website", "site", "form", "forms", "workflow", "workflows", "automation", "automate", "follow-up", "follow up", "enquiry", "enquiries", "inquiry", "inquiries"],
-    title: "Website automation / enquiry workflow",
-    short: "Website automation fits when your site needs to capture demand, qualify visitors and trigger the right follow-up instead of leaving everything to manual admin.",
-    why: "Forms, routing and follow-up workflows are a practical first step when repeated enquiries need the same collection, triage and response pattern.",
-    build: [
-      "Service-specific enquiry forms",
-      "Qualification and routing logic",
-      "Email, SMS or team notifications",
-      "Follow-up sequences",
-      "Logged workflow records"
-    ],
-    sources: ["Homepage", "Controlled Build Method", "Resources"],
+    sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
     confidence: "medium",
-    actions: [
-      ["Book a fact-find", "/book-demo.html", true],
-      ["View resources", "/#resources", false],
-      ["Controlled build method", "/controlled-build-method.html", false]
-    ]
+    actions: defaultAssistantActions
   },
   {
-    match: ["controlled", "control", "change", "testing", "test", "rollback", "roll back", "launch", "safe", "approval", "approved"],
-    title: "Controlled build / change control",
-    short: "For a controlled build, the priority is to define the workflow, test changes before release and keep a rollback path if something does not behave as expected.",
-    why: "This fits when the assistant or automation affects customer experience, operational records or live business processes.",
+    intent: "controlled_delivery",
+    match: ["stop it breaking", "stop changes breaking", "how do you test", "test it", "review changes", "change goes wrong", "version control", "breaking the site", "rollback", "roll back", "change control", "controlled delivery", "safe launch"],
+    title: "Controlled delivery and change control",
+    short: "Frontline AI would keep the build controlled: define the workflow, test changes before release, let you review important changes and keep a rollback path if something goes wrong.",
+    why: "This matters when the assistant affects live enquiries, customer messages or operational records. The assistant here is controlled knowledge only, so delivery should be equally explicit and testable.",
     build: [
-      "Clear scope and acceptance checks",
-      "Approved content and workflow rules",
-      "Test route before launch",
-      "Change log and release notes",
+      "Acceptance checks for the workflow and copy",
+      "Test route before live release",
+      "Client review for material changes",
+      "Version control and change notes",
       "Rollback plan for live changes"
     ],
-    sources: ["Change Control Procedure", "Controlled Build Method"],
+    sources: ["Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
     confidence: "high",
-    actions: [
-      ["Book a fact-find", "/book-demo.html", true],
-      ["Change control", "/change-control-procedure.html", false],
-      ["Controlled build method", "/controlled-build-method.html", false]
-    ]
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "pricing_and_timeline",
+    match: ["how much", "cost", "costs", "price", "pricing", "how long", "timeline", "take", "fact-find", "fact find", "what do you need from me", "need from me", "pay monthly", "monthly"],
+    title: "Pricing, timeline and fact-find",
+    short: "The honest next step is a fact-find, because price and timeline depend on the workflow, channels, content and handover rules. Frontline AI would scope the smallest useful version first.",
+    why: "A missed-call worker is different from a document assistant or booking workflow, so the fact-find prevents vague pricing. This is controlled knowledge only, not a live quote engine.",
+    build: [
+      "Fact-find covering the buyer situation and current process",
+      "First-version scope and success criteria",
+      "Required content, pages, documents or example enquiries",
+      "Timeline based on complexity and review cycles",
+      "Monthly support or iteration options if appropriate"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
+    confidence: "medium",
+    actions: defaultAssistantActions
+  },
+  {
+    intent: "start_small",
+    match: ["start small", "first version", "test one thing", "one thing first", "huge build", "small build", "pilot", "mvp", "simple version", "prove it"],
+    title: "Small first version",
+    short: "Yes. The best route is usually one controlled first version: one audience, one workflow and one clear handover, then expand once it proves useful.",
+    why: "This keeps cost, risk and review effort sensible. It also fits the Stage 2 controlled approach: keyword and workflow matching first, not a live LLM doing too much too soon.",
+    build: [
+      "One buyer situation chosen in the fact-find",
+      "One assistant or AI worker workflow",
+      "Approved copy, questions and fallback behaviour",
+      "Simple email, SMS or dashboard handover",
+      "Review after real enquiries before expanding"
+    ],
+    sources: ["Homepage", "Controlled Build Method", "Change Control Procedure", "Book Fact-Find page"],
+    confidence: "high",
+    actions: defaultAssistantActions
   }
 ];
 
 const assistantFallback = {
+  intent: "unknown_general",
   title: "Guided AI worker fact-find",
-  short: "The best starting point depends on where time, leads or customer experience are leaking first. Start with one controlled workflow, prove it, then expand.",
-  why: "Frontline AI usually begins with a focused assistant or worker that can be tested against approved material and a clear handover path.",
+  short: "The best starting point depends on where time, leads or customer experience are leaking first. Frontline AI would use the fact-find to choose one controlled workflow before building wider automation.",
+  why: "This assistant is controlled keyword knowledge, not a live LLM, so it will not guess beyond the approved material. A fact-find is the right route when the situation is not clear yet.",
   build: [
     "Identify the repeated operational problem",
     "Define the first useful AI worker or assistant",
@@ -150,13 +301,9 @@ const assistantFallback = {
     "Test behaviour, copy and handover",
     "Use the fact-find to plan the next step"
   ],
-  sources: ["Homepage", "Controlled Build Method"],
+  sources: ["Homepage", "Controlled Build Method", "Book Fact-Find page"],
   confidence: "medium",
-  actions: [
-    ["Book a fact-find", "/book-demo.html", true],
-    ["Controlled build method", "/controlled-build-method.html", false],
-    ["View resources", "/#resources", false]
-  ]
+  actions: defaultAssistantActions
 };
 
 function sendJson(res, status, payload) {
@@ -196,10 +343,32 @@ function cleanEmail(value) {
   return cleanText(value, 254).toLowerCase();
 }
 
+function normalizeAssistantQuery(message) {
+  return ` ${message.toLowerCase().replace(/[^a-z0-9'&]+/g, " ").replace(/\s+/g, " ").trim()} `;
+}
+
+function scoreAssistantIntent(normalized, item) {
+  return item.match.reduce((score, token) => {
+    const cleanToken = token.toLowerCase();
+    if (!normalized.includes(cleanToken)) return score;
+    return score + (cleanToken.includes(" ") ? 3 : 1);
+  }, 0);
+}
+
 function findAssistantAnswer(message) {
-  const normalized = message.toLowerCase();
-  const answer = assistantKnowledge.find(item => item.match.some(token => normalized.includes(token))) || assistantFallback;
-  const { match, ...publicAnswer } = answer;
+  const normalized = normalizeAssistantQuery(message);
+  let bestAnswer = assistantFallback;
+  let bestScore = 0;
+
+  for (const item of assistantKnowledge) {
+    const score = scoreAssistantIntent(normalized, item);
+    if (score > bestScore) {
+      bestAnswer = item;
+      bestScore = score;
+    }
+  }
+
+  const { intent, match, ...publicAnswer } = bestAnswer;
   return publicAnswer;
 }
 
