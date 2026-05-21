@@ -8,6 +8,7 @@ const crypto = require("crypto");
 const PORT = Number(process.env.PORT || 3401);
 const DATA_DIR = process.env.DATA_DIR || "/opt/frontline-ai/data";
 const REQUESTS_FILE = path.join(DATA_DIR, "demo-requests.jsonl");
+const PRODUCT_KNOWLEDGE_FILE = path.join(__dirname, "product-knowledge.json");
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
@@ -47,6 +48,18 @@ const defaultAssistantActions = [
   assistantActions.buildMethod,
   assistantActions.changeControl
 ];
+
+function loadProductKnowledge() {
+  try {
+    const parsed = JSON.parse(fs.readFileSync(PRODUCT_KNOWLEDGE_FILE, "utf8"));
+    return Array.isArray(parsed.products) ? parsed.products : [];
+  } catch (err) {
+    console.error("[frontline-ai-api] product knowledge unavailable", err.message);
+    return [];
+  }
+}
+
+const productKnowledge = loadProductKnowledge();
 
 const assistantKnowledge = [
   {
@@ -372,8 +385,117 @@ function scoreAssistantIntent(normalized, item) {
   }, 0);
 }
 
+function scoreProductMatch(normalized, product) {
+  return (product.keywords || []).reduce((score, token) => {
+    const cleanToken = String(token).toLowerCase();
+    if (!normalized.includes(cleanToken)) return score;
+    return score + (cleanToken.includes(" ") ? 4 : 1);
+  }, 0);
+}
+
+function isPricingOrNextStepQuery(normalized) {
+  return [
+    "price",
+    "pricing",
+    "cost",
+    "costs",
+    "how much",
+    "demo",
+    "book",
+    "setup",
+    "set up",
+    "next step",
+    "next steps",
+    "monthly",
+    "managed",
+    "custom build"
+  ].some(token => normalized.includes(token));
+}
+
+function productAction(action, primary) {
+  if (!action || !action.label || !action.url) return null;
+  return [action.label, action.url, Boolean(primary)];
+}
+
+function formatProductModules(product, limit = 5) {
+  return (product.modules || [])
+    .slice(0, limit)
+    .map(module => `${module.name}: ${module.description}`);
+}
+
+function buildReadyProductAnswer(product, normalized) {
+  const pricingOrNextStep = isPricingOrNextStepQuery(normalized);
+  const actions = [
+    productAction(product.recommendedCTA, true),
+    productAction(product.secondaryCTA, false)
+  ].filter(Boolean);
+
+  const build = [
+    ...(product.coreFeatures || []).slice(0, 5),
+    ...formatProductModules(product, 3)
+  ].slice(0, 8);
+
+  const short = product.shortSummary;
+  const why = pricingOrNextStep
+    ? `${product.pricingPosition} ${product.name} is controlled product knowledge in this assistant, not a live quote engine.`
+    : `${product.longSummary} This assistant is using controlled product knowledge, not a live LLM.`;
+
+  return {
+    title: product.name,
+    short,
+    why,
+    build,
+    sources: ["LawFlow Pro product page", "Homepage", "Book Demo page", "Controlled Build Method"],
+    confidence: "high",
+    actions
+  };
+}
+
+function buildPlaceholderProductAnswer(product) {
+  const actions = [
+    ["Book Demo", product.bookingPage || "https://frontline-ai.co.uk/book-demo.html", true],
+    assistantActions.buildMethod
+  ];
+
+  return {
+    title: product.name,
+    short: product.shortSummary,
+    why: `The full ${product.name} product page is not ready yet. Frontline AI can still discuss the workflow and map a controlled first version through a demo call.`,
+    build: [
+      "Clarify the main enquiry or admin workflow",
+      "Identify the first controlled version worth building",
+      "Avoid pretending the full product is ready before the product page exists"
+    ],
+    sources: ["Homepage", "Book Demo page", "Controlled Build Method"],
+    confidence: "medium",
+    actions
+  };
+}
+
+function findProductAnswer(normalized) {
+  let bestProduct = null;
+  let bestScore = 0;
+
+  for (const product of productKnowledge) {
+    const score = scoreProductMatch(normalized, product);
+    if (score > bestScore) {
+      bestProduct = product;
+      bestScore = score;
+    }
+  }
+
+  if (!bestProduct) return null;
+  if (bestProduct.status === "placeholder" && bestScore < 2) return null;
+  if (bestProduct.status !== "placeholder" && bestScore < 1) return null;
+  if (bestProduct.status === "placeholder") return buildPlaceholderProductAnswer(bestProduct);
+  return buildReadyProductAnswer(bestProduct, normalized);
+}
+
 function findAssistantAnswer(message) {
   const normalized = normalizeAssistantQuery(message);
+  const productAnswer = findProductAnswer(normalized);
+  if (productAnswer) return productAnswer;
+
   let bestAnswer = assistantFallback;
   let bestScore = 0;
 

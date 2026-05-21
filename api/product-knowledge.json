@@ -1,0 +1,155 @@
+{
+  "products": [
+    {
+      "id": "lawflow-pro",
+      "name": "LawFlow Pro",
+      "category": "Legal AI intake and operations platform",
+      "status": "ready",
+      "productPage": "https://frontline-ai.co.uk/lawflow-pro.html",
+      "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
+      "shortSummary": "LawFlow Pro turns calls, messages and enquiries into structured legal actions with AI-assisted intake, matter matching, conflict-aware routing, follow-up, audit control and solicitor-side AI support.",
+      "longSummary": "LawFlow Pro is a controlled legal operations product for modern law firms. It helps firms capture enquiries, structure matter intake, route callbacks and urgent actions, support conflict-aware decision points, maintain audit visibility and give solicitors access to AI support for day-to-day operational tasks.",
+      "whoItIsFor": [
+        "Law firms missing calls or losing callback opportunities",
+        "Firms that need cleaner intake records",
+        "Firms that want structured matter capture before hand-off",
+        "Firms that need conflict-aware routing and restricted-record control",
+        "Firms that want solicitor-side AI support without losing audit discipline",
+        "Firms moving from manual intake/admin to controlled AI-assisted operations"
+      ],
+      "problemsSolved": [
+        "Missed legal enquiries",
+        "Unstructured callbacks",
+        "Lost matter details",
+        "Slow enquiry-to-action handoff",
+        "Weak ownership of follow-up",
+        "Conflict-sensitive enquiries reaching the wrong workflow",
+        "Front desk pressure",
+        "Lack of visibility across intake, callbacks and actions"
+      ],
+      "coreFeatures": [
+        "AI legal reception",
+        "Matter intake",
+        "Conflict and entity checks",
+        "Legal Action Board",
+        "Callback capture and follow-up",
+        "Email, SMS and WhatsApp follow-up support",
+        "AI Helper",
+        "Call Flow Designer",
+        "Audit visibility",
+        "Restricted-record control"
+      ],
+      "modules": [
+        { "name": "Dashboard", "description": "Live overview of matters, callbacks, consultations, staff status and legal actions." },
+        { "name": "Matter Intake", "description": "Structured capture of new enquiries, matter details and required follow-up." },
+        { "name": "Consultations", "description": "Track booked consultations, fact-finds and appointment outcomes." },
+        { "name": "Solicitors", "description": "Staff, availability and routing ownership for legal work." },
+        { "name": "Callbacks", "description": "Callback requests, urgency, ownership and follow-up status." },
+        { "name": "Restricted Records", "description": "Restricted or sensitive matters that need controlled access." },
+        { "name": "Entity Management", "description": "Clients, related parties, matter links and relationship checks." },
+        { "name": "Conflict Admin", "description": "Conflict review, decision support and audit-controlled checks." },
+        { "name": "Audit Centre", "description": "Activity history, compliance evidence and accountability trail." },
+        { "name": "AI Helper", "description": "Solicitor-side AI support for emails, updates, reminders, research and admin." },
+        { "name": "Call Flow Designer", "description": "Configurable workflows for calls, messages, intake routes and follow-up automation." },
+        { "name": "Test Lab", "description": "Safe testing area for workflow checks, regression evidence, feature validation and controlled release confidence." }
+      ],
+      "aiHelperCapabilities": [
+        "Draft emails where configured",
+        "Prepare matter or client updates",
+        "Research legal or client context",
+        "Create reminders and task prompts",
+        "Plan travel or visit notes",
+        "Support day-to-day admin",
+        "Help keep matters moving",
+        "Work within controlled permissions and audit boundaries"
+      ],
+      "commercialValue": [
+        "Recover missed opportunities",
+        "Reduce front-desk pressure",
+        "Move potential clients toward a conversation faster",
+        "Improve intake consistency",
+        "Improve follow-up ownership",
+        "Reduce operational risk",
+        "Keep sensitive work inside controlled workflows"
+      ],
+      "deliveryModel": [
+        "Can be delivered as a focused monthly AI service",
+        "Can be expanded into a fuller product platform",
+        "Can be custom-built or managed by Frontline AI",
+        "Starts with a focused fact-find/demo to map the first workflow worth building"
+      ],
+      "pricingPosition": "Book a call/demo for pricing. Pricing depends on scope, product configuration, support level and whether the firm wants a managed monthly service or a deeper custom build.",
+      "recommendedCTA": {
+        "label": "View LawFlow Pro",
+        "url": "https://frontline-ai.co.uk/lawflow-pro.html"
+      },
+      "secondaryCTA": {
+        "label": "Book Demo",
+        "url": "https://frontline-ai.co.uk/book-demo.html"
+      },
+      "keywords": [
+        "legal",
+        "law firm",
+        "law firms",
+        "solicitor",
+        "solicitors",
+        "intake",
+        "matter intake",
+        "conflict check",
+        "conflict checks",
+        "callback",
+        "callbacks",
+        "legal action board",
+        "ai helper",
+        "audit",
+        "restricted records",
+        "call flow designer",
+        "legal receptionist",
+        "missed calls",
+        "enquiry capture",
+        "lawflow",
+        "lawflow pro"
+      ]
+    },
+    {
+      "id": "garage-ai",
+      "name": "Garage AI",
+      "category": "Garage enquiry and service workflow",
+      "status": "placeholder",
+      "productPage": null,
+      "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
+      "shortSummary": "A future product direction for garages that need help with missed calls, MOT enquiries, service requests and customer follow-up.",
+      "keywords": ["garage ai", "garage product", "mot product", "mechanic ai", "garage automation"]
+    },
+    {
+      "id": "clinic-ai",
+      "name": "Clinic AI",
+      "category": "Clinic enquiry and appointment workflow",
+      "status": "placeholder",
+      "productPage": null,
+      "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
+      "shortSummary": "A future product direction for clinics that need help with appointment requests, patient enquiries and controlled non-clinical routing.",
+      "keywords": ["clinic ai", "clinic product", "patient enquiry product", "appointment clinic ai"]
+    },
+    {
+      "id": "hospitality-ai",
+      "name": "Hospitality AI",
+      "category": "Hospitality booking and guest enquiry workflow",
+      "status": "placeholder",
+      "productPage": null,
+      "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
+      "shortSummary": "A future product direction for restaurants, hotels and venues that need help with bookings, guest questions and event enquiries.",
+      "keywords": ["hospitality ai", "restaurant ai product", "hotel ai product", "event enquiry product"]
+    },
+    {
+      "id": "estate-agent-ai",
+      "name": "Estate Agent AI",
+      "category": "Estate agency enquiry and valuation workflow",
+      "status": "placeholder",
+      "productPage": null,
+      "bookingPage": "https://frontline-ai.co.uk/book-demo.html",
+      "shortSummary": "A future product direction for estate agents that need help with property enquiries, valuation requests, viewings and landlord or tenant leads.",
+      "keywords": ["estate agent ai", "estate agency product", "property enquiry product", "valuation ai"]
+    }
+  ]
+}

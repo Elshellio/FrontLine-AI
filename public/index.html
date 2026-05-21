@@ -622,6 +622,57 @@ h1{
   outline:2px solid rgba(125,205,255,.82);
   outline-offset:4px;
 }
+.legalProductCard .cardImage:after{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.76),rgba(2,6,16,.12) 34%,rgba(2,6,16,.82)),
+    linear-gradient(90deg,rgba(217,183,106,.12),transparent 56%);
+}
+.legalProductBrand{
+  position:absolute;
+  z-index:3;
+  top:18px;
+  left:18px;
+  right:18px;
+  display:flex;
+  align-items:center;
+  gap:0;
+  max-width:235px;
+  padding:10px;
+  border:1px solid rgba(217,183,106,.30);
+  border-radius:20px;
+  background:
+    radial-gradient(circle at 14% 16%,rgba(217,183,106,.14),transparent 36%),
+    linear-gradient(145deg,rgba(7,18,35,.78),rgba(5,10,20,.58));
+  box-shadow:0 18px 44px rgba(0,0,0,.26),0 0 24px rgba(217,183,106,.12),inset 0 1px 0 rgba(255,255,255,.08);
+  backdrop-filter:blur(14px);
+  transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease,background .28s ease;
+}
+.legalProductCard:hover .legalProductBrand{
+  transform:translateY(-2px);
+  border-color:rgba(242,220,157,.50);
+  box-shadow:0 22px 54px rgba(0,0,0,.32),0 0 30px rgba(217,183,106,.16),inset 0 1px 0 rgba(255,255,255,.10);
+}
+.legalProductBrand .lawflowMiniWordmark{
+  width:190px;
+  max-width:100%;
+  padding:8px 10px;
+  border:1px solid rgba(217,183,106,.24);
+  border-radius:16px;
+  background:linear-gradient(145deg,rgba(217,183,106,.08),rgba(5,10,20,.52));
+  object-fit:contain;
+}
+.legalProductCard .cardText b{
+  color:#fff7e8;
+}
+.legalProductCard .cardText span{
+  border-color:rgba(217,183,106,.42);
+  background:rgba(217,183,106,.10);
+  color:#f2dc9d;
+}
+.legalProductCard:hover .cardText span{
+  border-color:rgba(242,220,157,.68);
+  background:rgba(217,183,106,.16);
+}
 
 /* FRONTLINE_RAG_ICONS_V1 */
 .ragStepIcon{
@@ -881,7 +932,7 @@ h1{
 .aiModalBackdrop.open{display:flex}
 .aiModal{
   width:min(1060px,94vw);
-  max-height:86vh;
+  max-height:92vh;
   overflow:hidden;
   position:relative;
   border:1px solid rgba(120,205,255,.48);
@@ -907,14 +958,14 @@ h1{
   position:relative;
   z-index:2;
   display:grid;
-  grid-template-columns:.9fr 1.1fr;
-  gap:26px;
-  padding:26px;
+  grid-template-columns:.82fr 1.18fr;
+  gap:22px;
+  padding:22px;
 }
 .aiModalVisual{
   min-height:0;
-  height:560px;
-  max-height:calc(86vh - 52px);
+  height:500px;
+  max-height:calc(92vh - 44px);
   border-radius:26px;
   overflow:hidden;
   border:1px solid rgba(255,255,255,.12);
@@ -935,7 +986,7 @@ h1{
   background:linear-gradient(180deg,rgba(2,6,16,.04),rgba(2,6,16,.78)),linear-gradient(90deg,rgba(20,120,255,.18),transparent);
 }
 .aiModalContent{
-  padding:4px 4px;
+  padding:2px 4px;
   align-self:center;
 }
 .aiModalKicker{
@@ -944,68 +995,208 @@ h1{
   letter-spacing:.22em;
   font-weight:900;
   font-size:12px;
-  margin-bottom:16px;
+  margin-bottom:10px;
 }
+.lawflowProductPanel{
+  display:none;
+  margin:0 0 12px;
+  border:1px solid rgba(217,183,106,.28);
+  border-radius:20px;
+  padding:12px;
+  background:
+    radial-gradient(circle at 12% 15%,rgba(217,183,106,.14),transparent 34%),
+    linear-gradient(145deg,rgba(7,18,35,.82),rgba(5,10,20,.62));
+  box-shadow:0 18px 44px rgba(0,0,0,.25),0 0 26px rgba(217,183,106,.10),inset 0 1px 0 rgba(255,255,255,.08);
+}
+.lawflowProductPanel.active{display:block}
+.lawflowProductTop{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:8px;
+}
+.lawflowProductCrest{
+  width:42px;
+  height:42px;
+  border-radius:16px;
+  border:1px solid rgba(217,183,106,.34);
+  background:linear-gradient(135deg,rgba(217,183,106,.14),rgba(255,255,255,.04));
+  object-fit:contain;
+  flex:0 0 auto;
+}
+.lawflowProductBrand{
+  display:inline-flex;
+  flex-direction:column;
+  align-items:flex-start;
+}
+.lawflowWordmarkFrame{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  max-width:190px;
+  padding:7px 9px;
+  border:1px solid rgba(217,183,106,.30);
+  border-radius:16px;
+  background:linear-gradient(145deg,rgba(217,183,106,.10),rgba(5,10,20,.54));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 12px 28px rgba(0,0,0,.22);
+  overflow:hidden;
+}
+.lawflowProductBrand img{
+  width:155px;
+  height:auto;
+  object-fit:contain;
+}
+.lawflowProductBadge{
+  display:inline-flex;
+  align-items:center;
+  margin-bottom:6px;
+  border:1px solid rgba(217,183,106,.34);
+  border-radius:999px;
+  padding:5px 9px;
+  color:#f2dc9d;
+  background:rgba(217,183,106,.08);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.lawflowProductPanel p{
+  margin:0;
+  color:#c6d4e8;
+  line-height:1.38;
+  font-size:13px;
+}
+.lawflowFeatureGrid{
+  display:none;
+  grid-template-columns:repeat(4,1fr);
+  gap:7px;
+  margin:0 0 12px;
+}
+.lawflowFeatureGrid.active{display:grid}
+.lawflowFeature{
+  border:1px solid rgba(217,183,106,.22);
+  border-radius:18px;
+  padding:8px 7px;
+  background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(7,18,35,.42));
+  color:#dbe8f8;
+  font-size:10px;
+  font-weight:900;
+  line-height:1.15;
+  text-align:center;
+}
+.lawflowFeature img{
+  width:32px;
+  height:32px;
+  object-fit:contain;
+  margin:0 auto 6px;
+  padding:5px;
+  border:1px solid rgba(217,183,106,.34);
+  border-radius:14px;
+  background:linear-gradient(145deg,rgba(217,183,106,.12),rgba(5,10,20,.58));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 10px 22px rgba(0,0,0,.22);
+}
+.aiModalHelper{
+  display:none;
+  margin:8px 0 0;
+  color:#98acc4;
+  font-size:12px;
+  line-height:1.4;
+}
+.aiModalHelper.active{display:block}
 .aiModalContent h3{
   font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;
   margin:0;
-  font-size:38px;
-  line-height:.98;
+  font-size:32px;
+  line-height:1;
   letter-spacing:-.035em;
 }
 .aiModalLead{
-  margin:16px 0 18px;
+  margin:12px 0 12px;
   color:#d7e2f2;
-  font-size:17px;
-  line-height:1.48;
+  font-size:15px;
+  line-height:1.43;
 }
 .aiUseCases{
   display:grid;
-  gap:10px;
-  margin:0 0 18px;
+  gap:8px;
+  margin:0 0 12px;
   padding:0;
   list-style:none;
 }
 .aiUseCases li{
   border:1px solid rgba(255,255,255,.12);
-  border-radius:16px;
-  padding:12px 14px;
+  border-radius:14px;
+  padding:9px 12px;
   background:rgba(255,255,255,.055);
   color:#c6d4e8;
-  line-height:1.35;
-  font-size:15px;
+  line-height:1.28;
+  font-size:14px;
 }
 .aiUseCases b{color:#fff}
 .aiChips{
   display:flex;
   flex-wrap:wrap;
   gap:8px;
-  margin:0 0 18px;
+  margin:0 0 12px;
 }
 .aiChip{
   border:1px solid rgba(125,205,255,.36);
   background:rgba(20,120,255,.12);
   color:#d9f1ff;
   border-radius:999px;
-  padding:9px 12px;
-  font-size:12px;
+  padding:7px 10px;
+  font-size:11px;
   font-weight:900;
 }
 .aiModalActions{display:flex;gap:12px;flex-wrap:wrap}
-.aiModalClose{
+.aiModalTopActions{
   position:absolute;
   top:18px;
   right:18px;
-  z-index:5;
-  width:42px;
-  height:42px;
-  border-radius:14px;
+  z-index:6;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.aiModalTopProductLink{
+  display:none;
+  min-height:40px;
+  align-items:center;
+  justify-content:center;
+  padding:0 15px;
+  border:1px solid rgba(217,183,106,.46);
+  border-radius:999px;
+  color:#171008;
+  background:linear-gradient(135deg,#f5dc95,#c99942);
+  box-shadow:0 14px 34px rgba(0,0,0,.30),0 0 22px rgba(217,183,106,.16),inset 0 1px 0 rgba(255,255,255,.22);
+  font-size:12px;
+  font-weight:950;
+  text-decoration:none;
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease;
+}
+.aiModalTopProductLink.active{display:inline-flex}
+.aiModalTopProductLink:hover{
+  transform:translateY(-1px);
+  border-color:rgba(255,237,181,.88);
+  background:linear-gradient(135deg,#ffe8a7,#d4a54c);
+  box-shadow:0 18px 42px rgba(0,0,0,.36),0 0 30px rgba(217,183,106,.24),inset 0 1px 0 rgba(255,255,255,.26);
+}
+.aiModalClose{
+  position:static;
+  z-index:1;
+  width:34px;
+  height:34px;
+  flex:0 0 auto;
+  border-radius:999px;
   border:1px solid rgba(255,255,255,.18);
   background:rgba(2,6,16,.54);
   color:#fff;
-  font-size:24px;
+  font-size:20px;
   cursor:pointer;
+  opacity:.76;
+  transition:opacity .22s ease,transform .22s ease,border-color .22s ease,box-shadow .22s ease;
 }
+.aiModalClose:hover{opacity:1;transform:translateY(-1px);border-color:rgba(217,183,106,.38);box-shadow:0 0 18px rgba(217,183,106,.12)}
 @media(max-width:900px){
   .aiModalBackdrop{padding:14px}
   .aiModalInner{grid-template-columns:1fr;padding:22px}
@@ -1033,7 +1224,7 @@ h1{
   }
   .aiModalInner{
     grid-template-columns:1fr !important;
-    padding:18px !important;
+    padding:58px 18px 18px !important;
     gap:16px !important;
   }
   .aiModalVisual{
@@ -1048,6 +1239,27 @@ h1{
   .aiUseCases li{
     font-size:14px !important;
     line-height:1.45 !important;
+  }
+  .lawflowFeatureGrid.active{
+    grid-template-columns:repeat(2,1fr);
+  }
+  .lawflowProductBrand img{
+    width:145px;
+  }
+  .aiModalTopActions{
+    top:12px;
+    right:12px;
+    left:12px;
+    justify-content:flex-end;
+  }
+  .aiModalTopProductLink{
+    min-height:34px;
+    padding:0 12px;
+    font-size:11px;
+  }
+  .aiModalClose{
+    width:32px;
+    height:32px;
   }
   .aiModalActions{
     position:sticky;
@@ -1229,13 +1441,13 @@ h1{
         </div>
 
         <div class="cards monthlyServiceGrid">
-          <article class="card monthlyServiceCard modalTrigger" data-modal="industryLegal" tabindex="0" role="button" aria-label="Explore AI support for legal firms">
-            <div class="cardImage"><img src="/assets/optimized/10.webp" alt="Legal AI intake support"></div>
+          <article class="card monthlyServiceCard legalProductCard modalTrigger" data-modal="industryLegal" tabindex="0" role="button" aria-label="Explore LawFlow Pro for legal firms">
+            <div class="cardImage"><img src="/assets/optimized/10.webp" alt="Legal AI intake support"><div class="legalProductBrand" aria-hidden="true"><img class="lawflowMiniWordmark" src="/assets/lawflow-pro/generated/02-lawflow-pro-wordmark.png" alt=""></div></div>
             <div class="cardText">
               <small>AI Intake</small>
-              <b>Legal</b>
+              <b>LawFlow Pro</b>
               <p>Capture enquiries, callback requests and intake details before they are lost.</p>
-              <span>Who is this for? →</span>
+              <span>Explore LawFlow Pro →</span>
             </div>
           </article>
 
@@ -1376,19 +1588,25 @@ h1{
 <!-- FRONTLINE_CAPACITY_MODALS_V1 -->
 <div class="aiModalBackdrop" id="aiCapacityModal" aria-hidden="true">
   <div class="aiModal" role="dialog" aria-modal="true" aria-labelledby="aiModalTitle">
-    <button class="aiModalClose" type="button" aria-label="Close examples">×</button>
+    <div class="aiModalTopActions">
+      <a class="aiModalTopProductLink" id="aiModalTopProductLink" href="https://frontline-ai.co.uk/lawflow-pro.html">View LawFlow Pro →</a>
+      <button class="aiModalClose" type="button" aria-label="Close examples">×</button>
+    </div>
     <div class="aiModalInner">
       <div class="aiModalVisual"><img id="aiModalImage" src="/assets/optimized/flai1.webp" alt=""></div>
       <div class="aiModalContent">
         <div class="aiModalKicker" id="aiModalKicker">AI worker examples</div>
+        <div class="lawflowProductPanel" id="lawflowProductPanel"></div>
         <h3 id="aiModalTitle">Your first AI worker before your first hire.</h3>
         <p class="aiModalLead" id="aiModalLead"></p>
         <ul class="aiUseCases" id="aiModalCases"></ul>
+        <div class="lawflowFeatureGrid" id="lawflowFeatureGrid"></div>
         <div class="aiChips" id="aiModalChips"></div>
         <div class="aiModalActions">
           <a class="btn blue" id="aiModalBookLink" href="/book-demo.html">Book Fact-Find →</a>
           <button class="btn aiModalCloseSecondary" type="button">Close</button>
         </div>
+        <p class="aiModalHelper" id="aiModalHelper"></p>
       </div>
     </div>
   </div>
@@ -1401,6 +1619,13 @@ h1{
       kicker: "Monthly AI service · Legal",
       title: "For firms that need faster enquiry handling without a full custom build.",
       image: "/assets/optimized/10.webp",
+      bookingText: "Book Call For Pricing →",
+      productPanel: {
+        badge: "LawFlow Pro product",
+        crest: "/assets/lawflow-pro/generated/01-lawflow-pro-crest.png",
+        wordmark: "/assets/lawflow-pro/generated/02-lawflow-pro-wordmark.png",
+        copy: "For firms ready to move from enquiry capture into controlled legal intake, conflict-aware routing and solicitor-side AI support."
+      },
       lead: "The monthly service is for firms that want structured enquiry capture, callback support and a cloud-based dashboard without commissioning a full bespoke platform first.",
       cases: [
         ["Who it is for", "Small and growing legal firms that miss calls, lose callbacks or need cleaner intake records."],
@@ -1408,6 +1633,14 @@ h1{
         ["Monthly service", "A cloud dashboard, supported setup, lead/callback visibility and agreed ongoing support."],
         ["Commercial value", "Recover missed opportunities, reduce front-desk pressure and keep potential clients moving toward a conversation."]
       ],
+      productFeatures: [
+        ["AI Legal Reception", "/assets/lawflow-pro/generated/03-icon-ai-legal-reception.png"],
+        ["Matter Intake", "/assets/lawflow-pro/generated/04-icon-matter-intake.png"],
+        ["Conflict Checks", "/assets/lawflow-pro/generated/05-icon-conflict-entity-check.png"],
+        ["AI Helper", "/assets/lawflow-pro/generated/14-icon-ai-helper.png"]
+      ],
+      productUrl: "https://frontline-ai.co.uk/lawflow-pro.html",
+      helper: "Monthly service now, full product page when you want to go deeper.",
       chips: ["Cloud Dashboard", "Callback Capture", "Monthly Support", "Book Call For Pricing"]
     },
     industryGarages: {
@@ -1714,6 +1947,10 @@ h1{
   const chips = document.getElementById("aiModalChips");
   const image = document.getElementById("aiModalImage");
   const bookLink = document.getElementById("aiModalBookLink");
+  const productPanel = document.getElementById("lawflowProductPanel");
+  const featureGrid = document.getElementById("lawflowFeatureGrid");
+  const productLink = document.getElementById("aiModalTopProductLink");
+  const helper = document.getElementById("aiModalHelper");
 
   function openModal(key){
     const item = data[key];
@@ -1724,8 +1961,39 @@ h1{
     image.src = item.image;
     image.alt = item.kicker + " AI worker examples";
     if(bookLink) bookLink.href = item.bookingUrl || "/book-demo.html";
+    if(bookLink) bookLink.textContent = item.bookingText || "Book Fact-Find →";
+    if(productPanel){
+      if(item.productPanel){
+        productPanel.innerHTML = `<div class="lawflowProductTop"><img class="lawflowProductCrest" src="${item.productPanel.crest}" alt=""><div class="lawflowProductBrand"><span class="lawflowProductBadge">${item.productPanel.badge}</span><span class="lawflowWordmarkFrame"><img src="${item.productPanel.wordmark}" alt="LawFlow Pro"></span></div></div><p>${item.productPanel.copy}</p>`;
+        productPanel.classList.add("active");
+      }else{
+        productPanel.innerHTML = "";
+        productPanel.classList.remove("active");
+      }
+    }
     cases.innerHTML = item.cases.map(([name, copy]) => `<li><b>${name}:</b> ${copy}</li>`).join("");
+    if(featureGrid){
+      if(item.productFeatures){
+        featureGrid.innerHTML = item.productFeatures.map(([name, icon]) => `<div class="lawflowFeature"><img src="${icon}" alt=""><span>${name}</span></div>`).join("");
+        featureGrid.classList.add("active");
+      }else{
+        featureGrid.innerHTML = "";
+        featureGrid.classList.remove("active");
+      }
+    }
     chips.innerHTML = item.chips.map(chip => `<span class="aiChip">${chip}</span>`).join("");
+    if(productLink){
+      if(item.productUrl){
+        productLink.href = item.productUrl;
+        productLink.classList.add("active");
+      }else{
+        productLink.classList.remove("active");
+      }
+    }
+    if(helper){
+      helper.textContent = item.helper || "";
+      helper.classList.toggle("active", Boolean(item.helper));
+    }
     modal.classList.add("open");
     modal.setAttribute("aria-hidden","false");
     document.body.style.overflow = "hidden";
