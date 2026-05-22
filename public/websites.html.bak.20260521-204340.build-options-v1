@@ -1,0 +1,806 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Premium Websites & AI-Ready Builds | Frontline AI</title>
+  <meta name="description" content="Premium website builds by Frontline AI: high-end service business websites designed to capture enquiries, support booking flows and power controlled AI assistants.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--bg:#03070f;--bg2:#07101d;--panel:rgba(8,16,30,.78);--text:#f6f9ff;--muted:#aebbd0;--line:rgba(108,178,255,.25);--line2:rgba(177,113,255,.25);--blue:#1678ff;--cyan:#62d8ff;--violet:#9b5cff;--gold:#f2dc9d;--ease:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease,color .22s ease}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:radial-gradient(circle at 12% -4%,rgba(22,120,255,.24),transparent 30%),radial-gradient(circle at 86% 8%,rgba(155,92,255,.22),transparent 34%),linear-gradient(180deg,#020610,#07101e 46%,#020610)}body:before{content:"";position:fixed;inset:0;background:url("/assets/newbplu/newbackground.png") center/cover no-repeat;opacity:.13;filter:saturate(1.08) contrast(1.05);pointer-events:none}a{color:inherit;text-decoration:none}img{display:block;max-width:100%}.wrap{width:min(1180px,calc(100% - 42px));margin:0 auto}.page{position:relative;z-index:1}
+    .top{position:sticky;top:0;z-index:10;padding:16px 0;background:linear-gradient(180deg,rgba(3,7,15,.44),rgba(3,7,15,0))}.nav{min-height:78px;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 14px 12px 16px;border:1px solid var(--line);border-radius:28px;background:linear-gradient(135deg,rgba(7,18,35,.92),rgba(8,23,48,.74));backdrop-filter:blur(18px);box-shadow:0 24px 70px rgba(0,0,0,.34),0 0 42px rgba(22,120,255,.16),inset 0 1px 0 rgba(255,255,255,.09)}.brandCluster{display:flex;align-items:center;gap:12px;min-width:0}.frontlineBrand,.productBrand{display:flex;align-items:center;gap:11px;border:1px solid rgba(112,184,255,.18);border-radius:22px;padding:9px 11px;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(7,18,35,.35));box-shadow:inset 0 1px 0 rgba(255,255,255,.08);transition:var(--ease)}.frontlineBrand:hover,.productBrand:hover{transform:translateY(-1px);border-color:rgba(98,216,255,.48);background:linear-gradient(145deg,rgba(22,120,255,.13),rgba(10,28,52,.50))}.brandMark{width:46px;height:46px;border:1px solid var(--line);border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(22,120,255,.22),rgba(255,255,255,.04));overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.10);flex:0 0 auto}.brandMark img{width:100%;height:100%;object-fit:contain}.websiteMark{color:#fff;font-size:20px;font-weight:950}.frontlineText strong,.productText strong{display:block;color:#fff;font-size:15px;line-height:1;font-weight:950}.frontlineText span,.productText span{display:block;color:#aeb9c9;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;margin-top:5px}.navlinks{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:850;color:#d7deea;white-space:nowrap}.navlinks a{border-radius:999px;padding:10px 11px;transition:var(--ease)}.navlinks a:hover{transform:translateY(-1px);color:#fff;background:rgba(22,120,255,.13)}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;border:1px solid rgba(98,216,255,.38);border-radius:999px;padding:14px 21px;font-weight:900;background:linear-gradient(145deg,rgba(255,255,255,.055),rgba(8,14,24,.54));box-shadow:0 16px 40px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.08);transition:var(--ease)}.btn:hover{transform:translateY(-2px);border-color:rgba(98,216,255,.74);box-shadow:0 20px 50px rgba(0,0,0,.34),0 0 28px rgba(22,120,255,.18)}.btn.primary{background:linear-gradient(135deg,var(--blue),var(--cyan));border-color:rgba(255,255,255,.30);color:#fff}
+    .hero{position:relative;padding:72px 0 52px;overflow:hidden}.hero:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 26% 20%,rgba(98,216,255,.10),transparent 32%),radial-gradient(circle at 76% 30%,rgba(155,92,255,.16),transparent 34%);pointer-events:none}.heroGrid{position:relative;z-index:1;display:grid;grid-template-columns:.92fr 1.08fr;gap:44px;align-items:center}.eyebrow{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:9px 14px;color:#8fd4ff;font-size:11px;font-weight:950;letter-spacing:.18em;text-transform:uppercase;background:rgba(22,120,255,.08)}h1{font-family:Georgia,serif;font-size:clamp(54px,7.6vw,102px);line-height:.9;letter-spacing:-.055em;font-weight:500;margin:24px 0 16px}h1 span{color:var(--cyan)}h2{font-family:Georgia,serif;font-weight:500;font-size:clamp(27px,3vw,44px);line-height:1.08;margin:0 0 18px}.lead{font-size:18px;line-height:1.7;color:#c7d0de;max-width:650px}.actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}.note{margin-top:20px;color:#9ca8ba;font-size:13px}.heroVisual,.card,.proofCard,.step,.optionPanel{border:1px solid var(--line);border-radius:30px;background:linear-gradient(145deg,rgba(13,25,44,.82),rgba(7,14,25,.66));box-shadow:0 22px 60px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.07);overflow:hidden;transition:var(--ease)}.heroVisual:hover,.card:hover,.proofCard:hover,.step:hover,.optionPanel:hover{transform:translateY(-2px);border-color:rgba(98,216,255,.58);box-shadow:0 28px 72px rgba(0,0,0,.38),0 0 34px rgba(22,120,255,.18),inset 0 1px 0 rgba(255,255,255,.09)}
+    .heroVisual{position:relative;padding:18px}.visualStage{position:relative;min-height:500px;border:1px solid rgba(255,255,255,.10);border-radius:24px;background:#07101c;overflow:hidden}.visualStage img{width:100%;height:100%;min-height:500px;object-fit:cover;object-position:center}.visualStage:after{content:"";position:absolute;left:18px;top:18px;border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:8px 12px;color:#dceeff;background:rgba(2,7,18,.70);backdrop-filter:blur(14px);font-size:11px;font-weight:900;letter-spacing:.08em;text-transform:uppercase}.heroBadge{position:absolute;left:38px;right:38px;bottom:38px;display:flex;align-items:center;gap:13px;padding:15px;border:1px solid rgba(255,255,255,.16);border-radius:22px;background:rgba(2,7,18,.72);backdrop-filter:blur(16px);box-shadow:0 18px 44px rgba(0,0,0,.28)}.heroBadge .miniLogo{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;border:1px solid var(--line);background:linear-gradient(135deg,rgba(22,120,255,.28),rgba(155,92,255,.18));font-weight:950}.heroBadge b{display:block;color:#fff;font-size:18px}.heroBadge span{display:block;color:#b8c7da;font-size:13px;margin-top:4px}
+    section{padding:58px 0}.sectionHead{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:24px}.sectionTitle{color:#8fd4ff;font-size:12px;letter-spacing:.26em;font-weight:950;text-transform:uppercase;margin-bottom:12px}.sectionHead p{max-width:590px;margin:0;color:#aeb9c9;line-height:1.62}.grid4{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}.card{padding:26px}.icon,.stepNum{width:58px;height:58px;border:1px solid rgba(98,216,255,.42);border-radius:20px;display:grid;place-items:center;margin:0 0 16px;color:#fff;background:linear-gradient(145deg,rgba(22,120,255,.24),rgba(6,12,22,.70));font-weight:950}.card h3,.proofCard h3,.optionPanel h3{margin:0 0 9px;font-size:20px}.card p,.proofCard p,.optionPanel p{margin:0;color:#aeb9c9;line-height:1.58;font-size:14px}.proofCard{padding:16px}.shot{border:1px solid rgba(112,184,255,.18);border-radius:24px;background:linear-gradient(145deg,rgba(7,16,31,.98),rgba(3,8,18,.96));overflow:hidden;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 55px rgba(0,0,0,.24)}.placeholder{min-height:230px;display:grid;place-items:center;padding:24px;text-align:center;background:radial-gradient(circle at 50% 28%,rgba(22,120,255,.18),transparent 40%),linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015))}.placeholder span{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 13px;border:1px solid var(--line);border-radius:999px;color:#d9ecff;background:rgba(255,255,255,.04);font-size:12px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}.assetPreview{padding:16px}.assetPreview .shot img{width:100%;height:auto;max-height:620px;object-fit:contain;background:#07101c}.proofCopy{padding:16px 10px 6px}.proofLabel{display:inline-flex;align-items:center;margin-bottom:9px;color:#fff;background:linear-gradient(135deg,var(--blue),var(--violet));border-radius:999px;padding:7px 11px;font-size:10px;font-weight:950;letter-spacing:.12em;text-transform:uppercase}
+    .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:14px}.step{text-align:center;padding:20px 14px}.stepNum{margin:0 auto 14px;border-radius:50%}.step h3{font-size:15px;margin:0 0 8px}.step p{font-size:13px;color:#a9b4c4;line-height:1.45;margin:0}.optionPanel{padding:30px}.optionPanel h3{font-size:27px}.optionPanel ul{margin:16px 0 0;padding-left:18px;color:#c4ccda;line-height:1.75;font-size:14px}.finalCta{position:relative;margin-top:34px;padding:68px 0;border-top:1px solid var(--line);background:linear-gradient(90deg,rgba(3,7,15,.96),rgba(7,16,31,.84)),url("/assets/newbplu/newbackground.png") center/cover no-repeat;overflow:hidden}.finalCta:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 82% 34%,rgba(155,92,255,.28),transparent 34%),radial-gradient(circle at 18% 80%,rgba(22,120,255,.18),transparent 30%);pointer-events:none}.footerBox{position:relative;z-index:1;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center;border:1px solid var(--line);border-radius:32px;padding:30px;background:linear-gradient(145deg,rgba(5,9,18,.62),rgba(8,14,24,.35));box-shadow:0 24px 70px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.07)}.footerBox h2{font-size:42px;margin:0 0 12px}.footerBox p{margin:0;color:#c1cad8;font-size:17px}
+    /* websiteVisualHero: replace temporary sheet display with a finished glass/browser composition. */
+    .hero{padding:44px 0 48px}.heroGrid{grid-template-columns:minmax(0,.9fr) minmax(420px,1.1fr);gap:34px}.eyebrow{padding:8px 13px}h1{font-size:clamp(44px,5.8vw,76px);line-height:.92;margin:20px 0 14px}.lead{font-size:17px;line-height:1.62}.note{font-size:12.5px;line-height:1.5}.heroVisual{padding:16px}.visualStage{min-height:430px;padding:16px;display:grid;grid-template-rows:auto 1fr auto;gap:14px;background:radial-gradient(circle at 18% 12%,rgba(98,216,255,.18),transparent 34%),linear-gradient(145deg,rgba(2,8,20,.92),rgba(8,22,46,.66))}.visualStage:before{content:"";position:absolute;inset:0;background:url("/assets/websites-final/website-hero-premium-build.png") center 38%/145% auto no-repeat;opacity:.14;filter:blur(10px) saturate(1.16) brightness(.52);transform:scale(1.08);pointer-events:none}.visualStage:after{display:none}.visualStage img{display:none}.websiteVisualHero{position:relative;z-index:2;display:grid;grid-template-rows:auto 1fr auto;gap:14px;min-height:398px}.websiteBrowserBar{display:flex;align-items:center;gap:8px;height:34px;border:1px solid rgba(125,205,255,.16);border-radius:999px;padding:0 12px;background:rgba(3,10,24,.72)}.websiteBrowserBar span{width:8px;height:8px;border-radius:50%;background:#58b8ff;box-shadow:18px 0 0 rgba(155,92,255,.78),36px 0 0 rgba(242,220,157,.76)}.websiteBrowserBar b{margin-left:44px;color:#9fd7ff;font-size:11px;letter-spacing:.12em;text-transform:uppercase}.websitePreviewGrid{display:grid;grid-template-columns:1.05fr .95fr;gap:13px}.websiteMainPreview,.websiteMiniCard,.websiteAssistantOverlay,.websiteWorkflowStrip{border:1px solid rgba(125,205,255,.18);background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(7,18,35,.50));box-shadow:inset 0 1px 0 rgba(255,255,255,.10),0 18px 44px rgba(0,0,0,.24);backdrop-filter:blur(14px)}.websiteMainPreview{min-height:210px;border-radius:22px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;background:radial-gradient(circle at 18% 18%,rgba(98,216,255,.18),transparent 34%),linear-gradient(145deg,rgba(255,255,255,.08),rgba(7,18,35,.52))}.websiteMainPreview small,.websiteMiniCard small{color:#83d4ff;font-size:10px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}.websiteMainPreview b{display:block;max-width:260px;margin-top:12px;color:#fff;font-size:28px;line-height:1;letter-spacing:-.04em}.websiteMainPreview span{display:block;width:min(220px,82%);height:10px;border-radius:999px;background:linear-gradient(90deg,#1678ff,#62d8ff);box-shadow:0 0 30px rgba(20,120,255,.28)}.websiteMiniStack{display:grid;gap:12px}.websiteMiniCard{min-height:64px;border-radius:18px;padding:13px}.websiteMiniCard b{display:block;margin-top:5px;color:#fff;font-size:14px}.websiteAssistantOverlay{position:absolute;right:30px;bottom:76px;width:min(255px,44%);border-radius:22px;padding:14px;background:linear-gradient(145deg,rgba(4,12,28,.90),rgba(13,34,68,.74))}.websiteAssistantOverlay small{color:#f2dc9d;font-size:10px;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.websiteAssistantOverlay b{display:block;margin:7px 0 6px;color:#fff;font-size:16px}.websiteAssistantOverlay p{margin:0;color:#b9c8dc;font-size:12px;line-height:1.4}.websiteWorkflowStrip{display:flex;align-items:center;justify-content:space-between;gap:8px;border-radius:18px;padding:12px}.websiteWorkflowStrip span{color:#dbe8f8;font-size:11px;font-weight:900;white-space:nowrap}.websiteWorkflowStrip i{flex:1;height:1px;min-width:12px;background:linear-gradient(90deg,rgba(98,216,255,.18),rgba(98,216,255,.70),rgba(155,92,255,.26))}.heroBadge{display:none}.websiteSectorGrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}.websiteImageSlot{min-height:220px;display:flex;flex-direction:column;justify-content:space-between;padding:18px;border:1px solid rgba(112,184,255,.18);border-radius:24px;background:radial-gradient(circle at 50% 24%,rgba(22,120,255,.18),transparent 40%),linear-gradient(135deg,rgba(255,255,255,.06),rgba(255,255,255,.015));box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 55px rgba(0,0,0,.24)}.websiteImageSlot:before{content:"future image slot";align-self:flex-start;border:1px solid rgba(125,205,255,.22);border-radius:999px;padding:8px 11px;color:#8fd4ff;background:rgba(3,10,24,.62);font-size:10px;font-weight:950;letter-spacing:.14em;text-transform:uppercase}.websiteImageSlot b{display:block;color:#fff;font-size:21px;margin-bottom:7px}.websiteImageSlot span{display:block;color:#b9c8dc;font-size:14px;line-height:1.45}.assetPreview{display:none}
+    @media(max-width:1180px){.nav{flex-wrap:wrap}.navlinks{width:100%;justify-content:flex-end}.brandCluster{flex:1 1 auto}.heroGrid{grid-template-columns:1fr}.websiteSectorGrid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:980px){.navlinks{display:none}.grid4,.grid3,.grid2,.flow,.footerBox{grid-template-columns:1fr}.sectionHead{display:block}.hero{padding-top:34px}.visualStage{min-height:360px}}@media(max-width:600px){.wrap{width:calc(100% - 26px)}.top{padding:10px 0}.nav{border-radius:24px;padding:10px}.brandCluster{width:100%;display:grid;grid-template-columns:1fr;gap:10px}.frontlineBrand,.productBrand{width:100%;padding:8px 10px}.brandMark{width:40px;height:40px;border-radius:16px}h1{font-size:44px}.lead{font-size:16px}.actions .btn{width:100%}.heroVisual,.proofCard,.card,.optionPanel{border-radius:24px}.visualStage,.websiteVisualHero{min-height:300px}.websitePreviewGrid,.websiteSectorGrid{grid-template-columns:1fr}.websiteAssistantOverlay{position:relative;right:auto;bottom:auto;width:100%}.websiteWorkflowStrip{flex-wrap:wrap}.websiteWorkflowStrip i{display:none}.placeholder{min-height:190px}.footerBox{padding:22px}.footerBox h2{font-size:34px}}
+    /* website cropped asset wiring: individual production crops, no full contact sheet display. */
+    .websiteMainPreview{background:linear-gradient(180deg,rgba(2,6,16,.14),rgba(2,6,16,.78)),url("/assets/websites-final/website-luxury-food-imagery.png") center/cover no-repeat}
+    .websiteMiniCard.salon{background:linear-gradient(90deg,rgba(2,6,16,.22),rgba(2,6,16,.78)),url("/assets/websites-final/website-salon-premium-imagery.png") center/cover no-repeat}
+    .websiteMiniCard.property{background:linear-gradient(90deg,rgba(2,6,16,.22),rgba(2,6,16,.78)),url("/assets/websites-final/website-property-premium-imagery.png") center/cover no-repeat}
+    .websiteAssistantOverlay{background:linear-gradient(145deg,rgba(4,12,28,.78),rgba(13,34,68,.88)),url("/assets/websites-final/website-ai-assistant-overlay.png") center/cover no-repeat}
+    .websiteWorkflowStrip{background:linear-gradient(145deg,rgba(4,12,28,.86),rgba(13,34,68,.68)),url("/assets/websites-final/website-enquiry-flow.png") center/cover no-repeat}
+    .websiteImageSlot.food{background:linear-gradient(180deg,rgba(2,6,16,.12),rgba(2,6,16,.78)),url("/assets/websites-final/website-luxury-food-imagery.png") center/cover no-repeat}
+    .websiteImageSlot.salon{background:linear-gradient(180deg,rgba(2,6,16,.12),rgba(2,6,16,.78)),url("/assets/websites-final/website-salon-premium-imagery.png") center/cover no-repeat}
+    .websiteImageSlot.clinic{background:linear-gradient(180deg,rgba(2,6,16,.12),rgba(2,6,16,.78)),url("/assets/websites-final/website-clinic-premium-imagery.png") center/cover no-repeat}
+    .websiteImageSlot.property{background:linear-gradient(180deg,rgba(2,6,16,.12),rgba(2,6,16,.78)),url("/assets/websites-final/website-property-premium-imagery.png") center/cover no-repeat}
+    .websiteImageSlot.trades{background:linear-gradient(180deg,rgba(2,6,16,.12),rgba(2,6,16,.78)),url("/assets/websites-final/website-trades-premium-imagery.png") center/cover no-repeat}
+    .websiteImageSlot.professional{background:linear-gradient(180deg,rgba(2,6,16,.12),rgba(2,6,16,.78)),url("/assets/websites-final/website-dashboard-handoff.png") center/cover no-repeat}
+  
+
+/* FRONTLINE_MANUAL_WEBSITE_VISUALS_V1 */
+.hero .heroVisual{
+  padding:10px !important;
+  border-radius:34px !important;
+}
+.hero .visualStage.websiteVisualHero{
+  min-height:500px !important;
+  display:block !important;
+  padding:0 !important;
+  border-radius:28px !important;
+  background:
+    linear-gradient(180deg, rgba(2,6,16,.06), rgba(2,6,16,.20) 45%, rgba(2,6,16,.70)),
+    url("/assets/websites-final/website-hero-premium-build.png") center/cover no-repeat !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 32px 90px rgba(0,0,0,.36) !important;
+}
+.hero .visualStage.websiteVisualHero::before,
+.hero .visualStage.websiteVisualHero::after,
+.hero .websiteBrowserBar,
+.hero .websitePreviewGrid,
+.hero .websiteAssistantOverlay,
+.hero .websiteWorkflowStrip,
+.hero .visualStage img{
+  display:none !important;
+}
+.websiteImageSlot{
+  min-height:300px !important;
+  justify-content:flex-end !important;
+  padding:22px !important;
+  border-radius:28px !important;
+  overflow:hidden !important;
+  background-size:cover !important;
+  background-position:center !important;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,.10),
+    0 24px 70px rgba(0,0,0,.30) !important;
+}
+.websiteImageSlot::before{
+  display:none !important;
+  content:none !important;
+}
+.websiteImageSlot > div{
+  width:100%;
+  padding:18px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:rgba(2,7,18,.68);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.websiteImageSlot b{
+  font-size:24px !important;
+}
+.websiteImageSlot span{
+  color:#d3deee !important;
+}
+.websiteImageSlot.food{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.05),rgba(2,6,16,.74)),
+    url("/assets/websites-final/website-luxury-food-imagery.png") center/cover no-repeat !important;
+}
+.websiteImageSlot.salon{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.05),rgba(2,6,16,.74)),
+    url("/assets/websites-final/website-salon-premium-imagery.png") center/cover no-repeat !important;
+}
+.websiteImageSlot.clinic{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.05),rgba(2,6,16,.74)),
+    url("/assets/websites-final/website-clinic-premium-imagery.png") center/cover no-repeat !important;
+}
+.websiteImageSlot.property{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.05),rgba(2,6,16,.74)),
+    url("/assets/websites-final/website-property-premium-imagery.png") center/cover no-repeat !important;
+}
+.websiteImageSlot.trades{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.05),rgba(2,6,16,.74)),
+    url("/assets/websites-final/website-trades-premium-imagery.png") center/cover no-repeat !important;
+}
+.websiteImageSlot.professional{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.05),rgba(2,6,16,.74)),
+    url("/assets/websites-final/website-dashboard-handoff.png") center/cover no-repeat !important;
+}
+.assetPreview{
+  display:none !important;
+}
+@media(max-width:700px){
+  .hero .visualStage.websiteVisualHero{
+    min-height:320px !important;
+  }
+  .websiteImageSlot{
+    min-height:240px !important;
+  }
+}
+
+
+
+/* FRONTLINE_WEBSITES_OFFER_SHOWCASE_V1 */
+.websiteOfferShowcase{
+  padding:70px 0;
+}
+.websiteOfferLead{
+  display:grid;
+  grid-template-columns:minmax(0,.95fr) minmax(320px,.75fr);
+  gap:38px;
+  align-items:end;
+  margin-bottom:26px;
+}
+.websiteOfferLead h2{
+  max-width:760px;
+}
+.websiteOfferLead p{
+  margin:0;
+  color:#b8c5d6;
+  font-size:17px;
+  line-height:1.65;
+}
+.websiteShowcaseGrid{
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(360px,.85fr);
+  gap:20px;
+}
+.websiteShowcaseHero,
+.websiteShowcaseMini{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(112,184,255,.24);
+  background:linear-gradient(145deg,rgba(8,18,36,.82),rgba(3,8,18,.72));
+  box-shadow:0 26px 80px rgba(0,0,0,.34), inset 0 1px 0 rgba(255,255,255,.09);
+}
+.websiteShowcaseHero{
+  min-height:560px;
+  border-radius:34px;
+}
+.websiteShowcaseHero img{
+  width:100%;
+  height:100%;
+  min-height:560px;
+  object-fit:cover;
+}
+.websiteShowcaseHero::after,
+.websiteShowcaseMini::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg,rgba(2,6,16,.04),rgba(2,6,16,.22) 38%,rgba(2,6,16,.82));
+  pointer-events:none;
+}
+.showcaseOverlay{
+  position:absolute;
+  left:24px;
+  right:24px;
+  bottom:24px;
+  z-index:2;
+  padding:20px;
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:24px;
+  background:rgba(2,7,18,.72);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+.showcaseOverlay small,
+.websiteShowcaseMini small{
+  display:block;
+  color:#8fd4ff;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  margin-bottom:8px;
+}
+.showcaseOverlay b{
+  display:block;
+  max-width:620px;
+  color:#fff;
+  font-size:34px;
+  line-height:1.05;
+  letter-spacing:-.035em;
+}
+.showcaseOverlay span{
+  display:block;
+  max-width:620px;
+  margin-top:10px;
+  color:#c7d4e6;
+  font-size:15px;
+  line-height:1.55;
+}
+.websiteShowcaseStack{
+  display:grid;
+  gap:20px;
+}
+.websiteShowcaseMini{
+  min-height:173px;
+  border-radius:28px;
+  display:grid;
+  grid-template-columns:170px 1fr;
+}
+.websiteShowcaseMini img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  min-height:173px;
+}
+.websiteShowcaseMini > div{
+  position:relative;
+  z-index:2;
+  padding:22px;
+  align-self:end;
+}
+.websiteShowcaseMini b{
+  display:block;
+  color:#fff;
+  font-size:21px;
+  line-height:1.14;
+  letter-spacing:-.02em;
+}
+.websiteShowcaseMini span{
+  display:block;
+  margin-top:8px;
+  color:#c2cfdf;
+  font-size:14px;
+  line-height:1.45;
+}
+.websiteOfferPills{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+.websiteOfferPills span{
+  border:1px solid rgba(112,184,255,.24);
+  border-radius:999px;
+  padding:10px 13px;
+  background:rgba(8,18,36,.58);
+  color:#dcecff;
+  font-size:12px;
+  font-weight:850;
+}
+@media(max-width:980px){
+  .websiteOfferLead,
+  .websiteShowcaseGrid{
+    grid-template-columns:1fr;
+  }
+  .websiteShowcaseHero,
+  .websiteShowcaseHero img{
+    min-height:380px;
+  }
+}
+@media(max-width:620px){
+  .websiteShowcaseMini{
+    grid-template-columns:1fr;
+  }
+  .websiteShowcaseMini img{
+    height:190px;
+  }
+  .showcaseOverlay b{
+    font-size:26px;
+  }
+}
+
+
+
+/* FRONTLINE_WEBSITE_SECTOR_BRIGHTEN_V1 */
+.websiteImageSlot{
+  filter:brightness(1.18) saturate(1.22) contrast(1.06) !important;
+}
+
+.websiteImageSlot > div{
+  background:rgba(2,7,18,.54) !important;
+}
+
+.websiteImageSlot.food{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.00),rgba(2,6,16,.54)),
+    url("/assets/websites-final/website-luxury-food-imagery.png") center/cover no-repeat !important;
+}
+
+.websiteImageSlot.salon{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.00),rgba(2,6,16,.54)),
+    url("/assets/websites-final/website-salon-premium-imagery.png") center/cover no-repeat !important;
+}
+
+.websiteImageSlot.clinic{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.00),rgba(2,6,16,.54)),
+    url("/assets/websites-final/website-clinic-premium-imagery.png") center/cover no-repeat !important;
+}
+
+.websiteImageSlot.property{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.00),rgba(2,6,16,.54)),
+    url("/assets/websites-final/website-property-premium-imagery.png") center/cover no-repeat !important;
+}
+
+.websiteImageSlot.trades{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.00),rgba(2,6,16,.54)),
+    url("/assets/websites-final/website-trades-premium-imagery.png") center/cover no-repeat !important;
+}
+
+.websiteImageSlot.professional{
+  background:
+    linear-gradient(180deg,rgba(2,6,16,.00),rgba(2,6,16,.54)),
+    url("/assets/websites-final/website-dashboard-handoff.png") center/cover no-repeat !important;
+}
+
+
+
+/* FRONTLINE_WEBSITE_SECTOR_LIGHTBOX_V1 */
+.websiteLightboxTrigger{
+  cursor:pointer;
+  transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease, filter .22s ease;
+}
+
+.websiteLightboxTrigger:hover{
+  transform:translateY(-4px);
+  border-color:rgba(130,210,255,.58) !important;
+  box-shadow:0 30px 85px rgba(0,0,0,.40), 0 0 44px rgba(38,132,255,.22) !important;
+  filter:brightness(1.24) saturate(1.28) contrast(1.06) !important;
+}
+
+.websiteImageLightbox{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:34px;
+  background:rgba(1,5,13,.82);
+  backdrop-filter:blur(18px);
+  -webkit-backdrop-filter:blur(18px);
+}
+
+.websiteImageLightbox.open{
+  display:flex;
+}
+
+.websiteImageLightboxPanel{
+  position:relative;
+  width:min(1180px,94vw);
+  max-height:88vh;
+  border:1px solid rgba(125,205,255,.30);
+  border-radius:34px;
+  overflow:hidden;
+  background:#020710;
+  box-shadow:0 36px 120px rgba(0,0,0,.65), 0 0 80px rgba(50,120,255,.24);
+}
+
+.websiteImageLightboxPanel img{
+  width:100%;
+  height:min(72vh,720px);
+  object-fit:cover;
+  display:block;
+  filter:brightness(1.08) saturate(1.14) contrast(1.03);
+}
+
+.websiteImageLightboxCaption{
+  position:absolute;
+  left:22px;
+  right:82px;
+  bottom:22px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:18px;
+  padding:14px 16px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:rgba(2,7,18,.62);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+
+.websiteImageLightboxCaption b{
+  color:#fff;
+  font-size:18px;
+  letter-spacing:-.02em;
+}
+
+.websiteImageLightboxCaption span{
+  color:#c9d5e4;
+  font-size:13px;
+  line-height:1.35;
+}
+
+.websiteImageLightboxClose{
+  position:absolute;
+  top:18px;
+  right:18px;
+  width:42px;
+  height:42px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:50%;
+  color:#fff;
+  background:rgba(2,7,18,.70);
+  cursor:pointer;
+  font-size:22px;
+  line-height:1;
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+}
+
+@media(max-width:720px){
+  .websiteImageLightbox{
+    padding:16px;
+  }
+  .websiteImageLightboxPanel{
+    border-radius:24px;
+  }
+  .websiteImageLightboxPanel img{
+    height:68vh;
+  }
+  .websiteImageLightboxCaption{
+    left:14px;
+    right:14px;
+    bottom:14px;
+    display:block;
+  }
+  .websiteImageLightboxCaption span{
+    display:block;
+    margin-top:5px;
+  }
+}
+
+
+
+/* FRONTLINE_WEBSITE_PREVIEW_CUE_V1 */
+.websiteLightboxTrigger{
+  position:relative;
+}
+
+.websiteLightboxTrigger::after{
+  content:"Click to preview";
+  position:absolute;
+  right:18px;
+  top:18px;
+  z-index:4;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:30px;
+  padding:0 12px;
+  border:1px solid rgba(145,210,255,.34);
+  border-radius:999px;
+  color:#dff2ff;
+  background:rgba(2,7,18,.62);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  opacity:.74;
+  box-shadow:0 10px 28px rgba(0,0,0,.24);
+  transition:opacity .2s ease, transform .2s ease, border-color .2s ease;
+}
+
+.websiteLightboxTrigger:hover::after{
+  opacity:1;
+  transform:translateY(-1px);
+  border-color:rgba(145,210,255,.68);
+}
+
+.websiteLightboxTrigger > div::after{
+  content:"↗";
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  width:28px;
+  height:28px;
+  margin-left:10px;
+  border:1px solid rgba(145,210,255,.30);
+  border-radius:50%;
+  color:#9fdcff;
+  font-size:15px;
+  vertical-align:middle;
+}
+
+
+
+/* FRONTLINE_WEBSITES_WORKFLOW_SHOWCASE_V1 */
+.websiteWorkflowShowcase{
+  padding:78px 0;
+}
+.websiteWorkflowGrid{
+  display:grid;
+  grid-template-columns:minmax(0,.78fr) minmax(460px,1.22fr);
+  gap:34px;
+  align-items:center;
+}
+.websiteWorkflowCopy h2{
+  max-width:620px;
+}
+.websiteWorkflowCopy > p{
+  max-width:620px;
+  color:#b9c6d6;
+  font-size:17px;
+  line-height:1.65;
+  margin:0 0 24px;
+}
+.workflowSteps{
+  display:grid;
+  gap:12px;
+}
+.workflowSteps div{
+  display:grid;
+  grid-template-columns:54px 1fr;
+  column-gap:14px;
+  align-items:start;
+  padding:15px;
+  border:1px solid rgba(112,184,255,.22);
+  border-radius:22px;
+  background:linear-gradient(145deg,rgba(10,24,46,.70),rgba(5,12,24,.62));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.06);
+}
+.workflowSteps span{
+  grid-row:1 / span 2;
+  width:44px;
+  height:44px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(125,205,255,.34);
+  border-radius:16px;
+  color:#9fdcff;
+  font-size:12px;
+  font-weight:950;
+  background:rgba(8,22,45,.72);
+}
+.workflowSteps b{
+  color:#fff;
+  font-size:17px;
+}
+.workflowSteps p{
+  margin:5px 0 0;
+  color:#aebbd0;
+  font-size:14px;
+  line-height:1.42;
+}
+.websiteWorkflowImage{
+  position:relative;
+  overflow:hidden;
+  border:1px solid rgba(112,184,255,.26);
+  border-radius:34px;
+  background:#020710;
+  box-shadow:0 30px 90px rgba(0,0,0,.40), 0 0 56px rgba(40,120,255,.18);
+}
+.websiteWorkflowImage img{
+  width:100%;
+  min-height:460px;
+  object-fit:cover;
+  filter:brightness(1.13) saturate(1.16) contrast(1.04);
+}
+.websiteWorkflowImage::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(2,6,16,.02),rgba(2,6,16,.08) 50%,rgba(2,6,16,.55));
+}
+.workflowImageCaption{
+  position:absolute;
+  left:22px;
+  right:22px;
+  bottom:22px;
+  z-index:2;
+  padding:16px 18px;
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:22px;
+  background:rgba(2,7,18,.64);
+  backdrop-filter:blur(16px);
+  -webkit-backdrop-filter:blur(16px);
+}
+.workflowImageCaption b{
+  display:block;
+  color:#fff;
+  font-size:20px;
+}
+.workflowImageCaption span{
+  display:block;
+  margin-top:5px;
+  color:#c7d4e6;
+  font-size:14px;
+}
+@media(max-width:980px){
+  .websiteWorkflowGrid{
+    grid-template-columns:1fr;
+  }
+  .websiteWorkflowImage img{
+    min-height:330px;
+  }
+}
+@media(max-width:620px){
+  .workflowSteps div{
+    grid-template-columns:1fr;
+  }
+  .workflowSteps span{
+    margin-bottom:10px;
+  }
+}
+
+</style>
+  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-exact-v2">
+  <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
+</head>
+<body>
+  <div class="page">
+    <header class="top"><div class="wrap nav"><div class="brandCluster"><a class="frontlineBrand" href="/" aria-label="Frontline AI"><div class="brandMark"><img src="/assets/optimized/assets__4.webp" alt=""></div><div class="frontlineText"><strong>Frontline AI</strong><span>Specialist Solutions</span></div></a><a class="productBrand" href="/websites.html"><div class="brandMark"><span class="websiteMark">W</span></div><div class="productText"><strong>Premium Websites</strong><span>AI-ready builds</span></div></a></div><nav class="navlinks"><a href="#options">Build Options</a><a href="#sectors">Sectors</a><a href="#workflow">Workflow</a><a class="btn primary" href="/book-demo.html?product_interest=Premium%20Website%20Build">Book Fact-Find</a></nav></div></header>
+    <main>
+      <section class="hero"><div class="wrap heroGrid"><div><div class="eyebrow">WEBSITES THAT WORK</div><h1>Premium websites, built to capture enquiries and power AI.</h1><p class="lead">Frontline AI builds state-of-the-art websites for serious service businesses: premium visual direction, clear conversion journeys, booking and enquiry capture, and a content structure ready for controlled AI assistants, RAG knowledge and workflow automation.</p><div class="actions"><a class="btn primary" href="/book-demo.html?product_interest=Premium%20Website%20Build">Book a Fact-Find</a><a class="btn" href="#options">View website build options</a></div><p class="note">Designed for businesses where the website needs to do more than look good: it must qualify demand, route visitors and become the foundation for AI-powered operations.</p></div><div class="heroVisual"><div class="visualStage websiteVisualHero"><div class="websiteBrowserBar"><span></span><b>frontline website system</b></div><div class="websitePreviewGrid"><div class="websiteMainPreview"><div><small>Michelin-grade hospitality</small><b>High-intent pages built around bookings.</b></div><span></span></div><div class="websiteMiniStack"><div class="websiteMiniCard salon"><small>Premium salon / clinic</small><b>Treatments, trust and booking flow</b></div><div class="websiteMiniCard property"><small>Property / service business</small><b>Valuations, quotes and enquiries</b></div></div></div><div class="websiteAssistantOverlay"><small>AI assistant overlay</small><b>Answers from approved website material.</b><p>Guides visitors into a fact-find, booking or clean team handoff.</p></div><div class="websiteWorkflowStrip" aria-label="Website enquiry workflow"><span>Visitor</span><i></i><span>Enquiry</span><i></i><span>Assistant</span><i></i><span>Booking</span><i></i><span>Handoff</span></div></div></div></div></section>
+      <section class="websiteOfferShowcase" id="options">
+        <div class="wrap">
+          <div class="websiteOfferLead">
+            <div>
+              <div class="sectionTitle">Website Offer</div>
+              <h2>Premium websites that look expensive and capture useful enquiries.</h2>
+            </div>
+            <p>Not template brochure sites. Frontline AI builds image-led service websites with clear offers, sharp calls to action, booking routes, enquiry capture and a structure ready for assistants and workflow handoff.</p>
+          </div>
+
+          <div class="websiteShowcaseGrid">
+            <article class="websiteShowcaseHero">
+              <img src="/assets/websites-final/website-hero-premium-build.png" alt="Premium website build example">
+              <div class="showcaseOverlay">
+                <small>Premium Website Builds</small>
+                <b>State-of-the-art websites for serious service businesses.</b>
+                <span>Luxury visuals, clear services, fast enquiry routes and pages built around conversion.</span>
+              </div>
+            </article>
+
+            <div class="websiteShowcaseStack">
+              <article class="websiteShowcaseMini">
+                <img src="/assets/websites-final/website-ai-assistant-overlay.png" alt="AI assistant overlay example">
+                <div>
+                  <small>AI-ready structure</small>
+                  <b>Content your assistant can actually use.</b>
+                  <span>Services, FAQs and approved knowledge shaped for controlled answers.</span>
+                </div>
+              </article>
+
+              <article class="websiteShowcaseMini">
+                <img src="/assets/websites-final/website-enquiry-flow.png" alt="Website enquiry flow example">
+                <div>
+                  <small>Booking & enquiry capture</small>
+                  <b>Move visitors into the next action.</b>
+                  <span>Fact-finds, booking forms, callbacks, quotes and clean handoff routes.</span>
+                </div>
+              </article>
+
+              <article class="websiteShowcaseMini">
+                <img src="/assets/websites-final/website-dashboard-handoff.png" alt="Website dashboard handoff example">
+                <div>
+                  <small>Workflow integration</small>
+                  <b>Enquiries do not just sit in an inbox.</b>
+                  <span>Route into email, SMS, WhatsApp, dashboards or custom operating flows.</span>
+                </div>
+              </article>
+            </div>
+          </div>
+
+          <div class="websiteOfferPills">
+            <span>Premium visual direction</span>
+            <span>Conversion-led service pages</span>
+            <span>AI-ready content</span>
+            <span>Booking and enquiry flows</span>
+            <span>RAG assistants</span>
+            <span>Workflow handoff</span>
+          </div>
+        </div>
+      </section>
+      <section id="sectors"><div class="wrap"><div class="sectionHead"><div><div class="sectionTitle">Sector Visual Direction</div><h2>Premium visual direction for the industries where first impressions matter.</h2></div><p>Restaurants, salons, clinics, property firms, trades and professional services all need different signals of trust. We shape the site around the customer decision, the enquiry route and the visual standard your market expects.</p></div><div class="websiteSectorGrid"><article class="proofCard"><div class="websiteImageSlot food websiteLightboxTrigger" role="button" tabindex="0" data-lightbox-image="/assets/websites-final/website-luxury-food-imagery.png" data-lightbox-title="Hospitality / food" data-lightbox-caption="Premium food, private dining, bookings and high-intent restaurant enquiries."><div><b>Hospitality / food</b><span>Premium menus, private dining, bookings, events and high-intent restaurant enquiries.</span></div></div></article><article class="proofCard"><div class="websiteImageSlot salon websiteLightboxTrigger" role="button" tabindex="0" data-lightbox-image="/assets/websites-final/website-salon-premium-imagery.png" data-lightbox-title="Salon / beauty" data-lightbox-caption="Beautiful service pages, treatment discovery, appointment capture and repeat-booking paths."><div><b>Salon / beauty</b><span>Beautiful service pages, treatment discovery, appointment capture and repeat-booking paths.</span></div></div></article><article class="proofCard"><div class="websiteImageSlot clinic websiteLightboxTrigger" role="button" tabindex="0" data-lightbox-image="/assets/websites-final/website-clinic-premium-imagery.png" data-lightbox-title="Clinic / wellness" data-lightbox-caption="Clear services, appointment requests, patient/client FAQs and controlled intake forms."><div><b>Clinic / wellness</b><span>Clear services, appointment requests, patient/client FAQs and controlled intake forms.</span></div></div></article><article class="proofCard"><div class="websiteImageSlot property websiteLightboxTrigger" role="button" tabindex="0" data-lightbox-image="/assets/websites-final/website-property-premium-imagery.png" data-lightbox-title="Property" data-lightbox-caption="Valuation leads, viewing requests, buyer enquiries and high-trust local positioning."><div><b>Property</b><span>Valuation leads, viewing requests, buyer enquiries and high-trust local positioning.</span></div></div></article><article class="proofCard"><div class="websiteImageSlot trades websiteLightboxTrigger" role="button" tabindex="0" data-lightbox-image="/assets/websites-final/website-trades-premium-imagery.png" data-lightbox-title="Trades" data-lightbox-caption="Urgent enquiries, quote requests, same-day callouts and clean routing for busy teams."><div><b>Trades</b><span>Urgent enquiries, quote requests, same-day callouts and clean routing for busy teams.</span></div></div></article><article class="proofCard"><div class="websiteImageSlot professional websiteLightboxTrigger" role="button" tabindex="0" data-lightbox-image="/assets/websites-final/website-dashboard-handoff.png" data-lightbox-title="Professional services" data-lightbox-caption="Trust-led pages, fact-finds, consultation routes and document-backed knowledge assistants."><div><b>Professional services</b><span>Trust-led pages, fact-finds, consultation routes and document-backed knowledge assistants.</span></div></div></article></div></div></section>
+      <section id="workflow" class="websiteWorkflowShowcase">
+        <div class="wrap">
+          <div class="websiteWorkflowGrid">
+            <div class="websiteWorkflowCopy">
+              <div class="sectionTitle">How It Works</div>
+              <h2>From premium website to tested enquiry system.</h2>
+              <p>Your website should not stop at looking good. The build maps what a visitor sees, what they click, what details are captured and where that enquiry goes next.</p>
+
+              <div class="workflowSteps">
+                <div><span>01</span><b>Define the offer</b><p>Clarify the services, sectors, proof and first conversion goal.</p></div>
+                <div><span>02</span><b>Design the journey</b><p>Shape the route from page visit to enquiry, booking or fact-find.</p></div>
+                <div><span>03</span><b>Build and connect</b><p>Create the pages, forms, assistant prompts and handoff routes.</p></div>
+                <div><span>04</span><b>Review and launch</b><p>Test mobile, copy, links, forms, workflow and assistant readiness.</p></div>
+              </div>
+            </div>
+
+            <div class="websiteWorkflowImage">
+              <img src="/assets/websites-final/website-enquiry-flow.png" alt="Frontline AI website enquiry workflow">
+              <div class="workflowImageCaption">
+                <b>Visitor → enquiry → assistant → booking → handoff</b>
+                <span>A cleaner route from attention to action.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section id="options"><div class="wrap"><div class="sectionHead"><div><div class="sectionTitle">Build Options</div><h2>Start with the website, or build the operating layer around it.</h2></div><p>Each option can be scoped as a focused first build and expanded through Frontline AI's controlled change process.</p></div><div class="grid2"><article class="optionPanel"><h3>Website only</h3><p>A premium static/service website with strong content, conversion routes and visual direction.</p><ul><li>Homepage and core service pages</li><li>Responsive design and launch-ready polish</li><li>Clear CTAs, forms and sector positioning</li></ul></article><article class="optionPanel"><h3>Website + assistant</h3><p>Add a controlled knowledge assistant that answers from approved website content and FAQs.</p><ul><li>Website-ready knowledge structure</li><li>Assistant prompts and safe escalation</li><li>Fact-find and booking routing</li></ul></article><article class="optionPanel"><h3>Website + workflow integration</h3><p>Connect enquiries into follow-up, team notification or dashboard-style workflow records.</p><ul><li>Structured forms and enquiry routing</li><li>Callback, booking or quote queues</li><li>Email, SMS or admin handoff planning</li></ul></article><article class="optionPanel"><h3>Full operating-system build</h3><p>Turn the site into the front door of a broader AI worker and workflow platform.</p><ul><li>Website, assistant and operating dashboard</li><li>Custom workflows and role-based views</li><li>Controlled testing, launch and monthly improvement</li></ul></article></div></div></section>
+      <section class="finalCta"><div class="wrap footerBox"><div><div class="sectionTitle">Premium Website Build</div><h2>Build a website that captures demand and prepares your business for AI.</h2><p>Book a focused fact-find and Frontline AI will map the first website build worth launching.</p></div><a class="btn primary" href="/book-demo.html?product_interest=Premium%20Website%20Build">Book a Fact-Find</a></div></section>
+    </main>
+  </div>
+  <script defer src="/assets/frontline-menu.js?v=20260521-menu-exact-v2"></script>
+  <script defer src="/assets/frontline-assistant.js?v=20260520-frontline-assistant-v1"></script>
+
+  <div class="websiteImageLightbox" id="websiteImageLightbox" aria-hidden="true">
+    <div class="websiteImageLightboxPanel" role="dialog" aria-modal="true" aria-label="Website visual preview">
+      <button class="websiteImageLightboxClose" type="button" aria-label="Close image preview">×</button>
+      <img src="" alt="">
+      <div class="websiteImageLightboxCaption">
+        <b></b>
+        <span></span>
+      </div>
+    </div>
+  </div>
+
+
+<script>
+/* FRONTLINE_WEBSITE_SECTOR_LIGHTBOX_V1 */
+(function(){
+  const lightbox = document.getElementById("websiteImageLightbox");
+  if(!lightbox) return;
+
+  const img = lightbox.querySelector("img");
+  const title = lightbox.querySelector(".websiteImageLightboxCaption b");
+  const caption = lightbox.querySelector(".websiteImageLightboxCaption span");
+  const closeBtn = lightbox.querySelector(".websiteImageLightboxClose");
+
+  function openLightbox(trigger){
+    img.src = trigger.dataset.lightboxImage || "";
+    img.alt = trigger.dataset.lightboxTitle || "Website visual preview";
+    title.textContent = trigger.dataset.lightboxTitle || "";
+    caption.textContent = trigger.dataset.lightboxCaption || "";
+    lightbox.classList.add("open");
+    lightbox.setAttribute("aria-hidden", "false");
+    closeBtn.focus();
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove("open");
+    lightbox.setAttribute("aria-hidden", "true");
+    img.src = "";
+  }
+
+  document.querySelectorAll(".websiteLightboxTrigger").forEach((trigger) => {
+    trigger.addEventListener("click", () => openLightbox(trigger));
+    trigger.addEventListener("keydown", (event) => {
+      if(event.key === "Enter" || event.key === " "){
+        event.preventDefault();
+        openLightbox(trigger);
+      }
+    });
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (event) => {
+    if(event.target === lightbox) closeLightbox();
+  });
+  document.addEventListener("keydown", (event) => {
+    if(event.key === "Escape" && lightbox.classList.contains("open")) closeLightbox();
+  });
+})();
+</script>
+
+</body>
+</html>

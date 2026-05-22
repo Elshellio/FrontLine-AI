@@ -11,6 +11,18 @@ const REQUESTS_FILE = path.join(DATA_DIR, "demo-requests.jsonl");
 const PRODUCT_KNOWLEDGE_FILE = path.join(__dirname, "product-knowledge.json");
 const SITE_KNOWLEDGE_FILE = path.join(__dirname, "site-knowledge.json");
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
+const ASSISTANT_BODY_LIMIT_BYTES = 8 * 1024;
+const ASSISTANT_MESSAGE_LIMIT = 750;
+const ASSISTANT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const ASSISTANT_RATE_LIMIT_MAX = 8;
+const MAX_ASSISTANT_LLM_CALLS_PER_DAY = Number(process.env.MAX_ASSISTANT_LLM_CALLS_PER_DAY || 100);
+const OPENAI_ASSISTANT_TIMEOUT_MS = Number(process.env.OPENAI_ASSISTANT_TIMEOUT_MS || 12000);
+
+const assistantRateLimits = new Map();
+let assistantDailyUsage = {
+  date: new Date().toISOString().slice(0, 10),
+  llmCalls: 0
+};
 
 fs.mkdirSync(DATA_DIR, { recursive: true });
 
@@ -360,12 +372,12 @@ function sendJson(res, status, payload) {
   res.end(body);
 }
 
-function readBody(req) {
+function readBody(req, maxBytes = 1_000_000) {
   return new Promise((resolve, reject) => {
     let body = "";
     req.on("data", chunk => {
       body += chunk;
-      if (body.length > 1_000_000) {
+      if (Buffer.byteLength(body, "utf8") > maxBytes) {
         reject(new Error("Request too large"));
         req.destroy();
       }
@@ -826,6 +838,110 @@ function buildKnowledgeFallbackAnswer(message, relevantDocs) {
   };
 }
 
+function assistantBlockedAnswer(reason) {
+  const action = ["Book a fact-find", "/book-demo.html", true];
+  const answer = {
+    title: "Book a Frontline AI fact-find",
+    short: reason === "rate_limited"
+      ? "I can help, but the assistant is being rate-limited. Please book a fact-find."
+      : "I can help, but the safest next step is to book a short fact-find.",
+    why: "Frontline AI can map the first useful workflow, website build, Ad Engine task, managed service or custom AI system without relying on an unrestricted public assistant.",
+    build: [
+      "Identify the business problem and buyer journey",
+      "Map the smallest useful first version",
+      "Decide whether this should be a managed service, website build, Ad Engine task or custom system"
+    ],
+    sources: ["Book Fact-Find page"],
+    source_pages: ["/book-demo.html"],
+    confidence: "medium",
+    actions: [action],
+    links: [{ label: action[0], url: action[1] }],
+    suggested_cta: { label: action[0], url: action[1] }
+  };
+
+  return {
+    ok: true,
+    mode: `assistant_${reason}_fallback`,
+    answer,
+    reply: answer
+  };
+}
+
+function getClientIp(req) {
+  const forwarded = String(req.headers["x-forwarded-for"] || "").split(",")[0].trim();
+  return forwarded || req.socket.remoteAddress || "unknown";
+}
+
+function isAllowedAssistantOrigin(req) {
+  const allowed = new Set([
+    "https://frontline-ai.co.uk",
+    "https://www.frontline-ai.co.uk",
+    "http://127.0.0.1",
+    "http://localhost"
+  ]);
+  const origin = req.headers.origin;
+  if (origin && !allowed.has(origin)) return false;
+
+  const referer = req.headers.referer;
+  if (!origin && referer) {
+    try {
+      const parsed = new URL(referer);
+      const refererOrigin = `${parsed.protocol}//${parsed.host}`;
+      if (!allowed.has(refererOrigin)) return false;
+    } catch {
+      return false;
+    }
+  }
+
+  return true;
+}
+
+function isBotishAssistantRequest(req) {
+  const contentType = String(req.headers["content-type"] || "").toLowerCase();
+  if (!contentType.includes("application/json")) return true;
+
+  const userAgent = String(req.headers["user-agent"] || "").trim();
+  if (!userAgent) return true;
+
+  return /\b(bot|crawler|spider|scrapy|python-requests|httpclient|wget|libwww|headless)\b/i.test(userAgent);
+}
+
+function isAssistantRateLimited(req) {
+  const now = Date.now();
+  const ip = getClientIp(req);
+  const current = assistantRateLimits.get(ip);
+
+  if (!current || now - current.windowStart > ASSISTANT_RATE_LIMIT_WINDOW_MS) {
+    assistantRateLimits.set(ip, { windowStart: now, count: 1 });
+    return false;
+  }
+
+  current.count += 1;
+  if (current.count > ASSISTANT_RATE_LIMIT_MAX) {
+    console.warn("[frontline-ai-api] rate_limited", ip);
+    return true;
+  }
+
+  return false;
+}
+
+function resetAssistantDailyUsageIfNeeded() {
+  const today = new Date().toISOString().slice(0, 10);
+  if (assistantDailyUsage.date !== today) {
+    assistantDailyUsage = { date: today, llmCalls: 0 };
+  }
+}
+
+function canAttemptAssistantLlmCall() {
+  resetAssistantDailyUsageIfNeeded();
+  if (assistantDailyUsage.llmCalls >= MAX_ASSISTANT_LLM_CALLS_PER_DAY) {
+    console.warn("[frontline-ai-api] daily_cap_reached");
+    return false;
+  }
+  assistantDailyUsage.llmCalls += 1;
+  return true;
+}
+
 let openAiWarningLogged = false;
 
 function logMissingOpenAiKeyOnce() {
@@ -836,6 +952,27 @@ function logMissingOpenAiKeyOnce() {
 
 function safeJsonParse(value) {
   try { return JSON.parse(value); } catch { return null; }
+}
+
+function assistantVisibleText(value, max = 220) {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "string" || typeof value === "number" || typeof value === "boolean") {
+    return cleanText(value, max);
+  }
+  if (Array.isArray(value)) {
+    for (const item of value) {
+      const text = assistantVisibleText(item, max);
+      if (text) return text;
+    }
+    return "";
+  }
+  if (typeof value === "object") {
+    for (const field of ["label", "title", "name", "short", "text", "description", "page", "url", "href"]) {
+      const text = assistantVisibleText(value[field], max);
+      if (text) return text;
+    }
+  }
+  return "";
 }
 
 function sanitizeLlmAction(action) {
@@ -875,11 +1012,11 @@ function sanitizeAssistantAnswer(answer, fallback, relevantDocs, message) {
     : [...new Set(relevantDocs.slice(0, 5).map(doc => normalizeInternalUrl(doc.url || doc.page)).filter(Boolean))];
 
   return {
-    title: cleanText(answer.title || fallback.title || "Frontline AI recommendation", 160),
-    short: cleanText(answer.short || fallback.short, 900),
+    title: assistantVisibleText(answer.title || fallback.title || "Frontline AI recommendation", 160),
+    short: assistantVisibleText(answer.short || fallback.short, 900),
     why: cleanText(commercialClose, 1100),
-    build: Array.isArray(answer.build) ? answer.build.map(item => cleanText(item, 220)).filter(Boolean).slice(0, 7) : fallback.build,
-    sources: Array.isArray(answer.sources) && answer.sources.length ? answer.sources.map(item => cleanText(item, 90)).filter(Boolean).slice(0, 5) : fallback.sources,
+    build: Array.isArray(answer.build) ? answer.build.map(item => assistantVisibleText(item, 220)).filter(Boolean).slice(0, 7) : fallback.build,
+    sources: Array.isArray(answer.sources) && answer.sources.length ? answer.sources.map(item => assistantVisibleText(item, 90)).filter(Boolean).slice(0, 5) : fallback.sources,
     source_pages: sourcePages,
     confidence: answer.confidence === "high" ? "high" : "medium",
     actions: contextActions.length ? contextActions : fallback.actions,
@@ -894,6 +1031,7 @@ async function askOpenAiAssistant(message, relevantDocs, fallback) {
     logMissingOpenAiKeyOnce();
     return null;
   }
+  if (!canAttemptAssistantLlmCall()) return null;
 
   const approvedContext = relevantDocs.map((doc, index) => ({
     id: index + 1,
@@ -904,7 +1042,7 @@ async function askOpenAiAssistant(message, relevantDocs, fallback) {
   }));
 
   const controller = new AbortController();
-  const timeout = setTimeout(() => controller.abort(), 12000);
+  const timeout = setTimeout(() => controller.abort(), OPENAI_ASSISTANT_TIMEOUT_MS);
 
   try {
     const response = await fetch("https://api.openai.com/v1/chat/completions", {
@@ -966,7 +1104,7 @@ async function askOpenAiAssistant(message, relevantDocs, fallback) {
     const parsed = safeJsonParse(content);
     return sanitizeAssistantAnswer(parsed, fallback, relevantDocs, message);
   } catch (err) {
-    console.warn("[frontline-ai-api] OpenAI assistant fallback", err.message);
+    console.warn("[frontline-ai-api]", err.name === "AbortError" ? "openai_timeout" : "OpenAI assistant fallback", err.message);
     return null;
   } finally {
     clearTimeout(timeout);
@@ -1107,14 +1245,42 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
+    if (url.pathname === "/api/assistant/query" && req.method !== "POST") {
+      return sendJson(res, 405, { ok: false, errors: ["Method not allowed."] });
+    }
+
     if (req.method === "POST" && url.pathname === "/api/assistant/query") {
-      const raw = await readBody(req);
+      if (!isAllowedAssistantOrigin(req)) {
+        console.warn("[frontline-ai-api] blocked_origin", getClientIp(req));
+        return sendJson(res, 403, assistantBlockedAnswer("blocked_origin"));
+      }
+
+      if (isBotishAssistantRequest(req)) {
+        console.warn("[frontline-ai-api] botish_request", getClientIp(req));
+        return sendJson(res, 403, assistantBlockedAnswer("blocked_request"));
+      }
+
+      if (isAssistantRateLimited(req)) {
+        return sendJson(res, 200, assistantBlockedAnswer("rate_limited"));
+      }
+
+      let raw = "";
+      try {
+        raw = await readBody(req, ASSISTANT_BODY_LIMIT_BYTES);
+      } catch {
+        return sendJson(res, 413, assistantBlockedAnswer("message_too_large"));
+      }
+
       let input = {};
       try { input = JSON.parse(raw || "{}"); }
-      catch { return sendJson(res, 400, { ok: false, errors: ["Invalid JSON."] }); }
+      catch { return sendJson(res, 400, assistantBlockedAnswer("invalid_json")); }
 
-      const message = cleanText(input.message, 1200);
-      if (!message) return sendJson(res, 400, { ok: false, errors: ["Message is required."] });
+      const rawMessage = String(input.message ?? "");
+      const message = cleanText(rawMessage, ASSISTANT_MESSAGE_LIMIT + 1);
+      if (!message) return sendJson(res, 400, assistantBlockedAnswer("empty_message"));
+      if (message.length > ASSISTANT_MESSAGE_LIMIT) {
+        return sendJson(res, 413, assistantBlockedAnswer("message_too_long"));
+      }
 
       const answer = await findAssistantAnswerWithKnowledge(message);
       return sendJson(res, 200, {
