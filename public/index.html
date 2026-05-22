@@ -2678,6 +2678,116 @@ h1{
   }
 }
 
+
+/* FRONTLINE_HOME_FIRST_VISIT_ASSISTANT_HINT_V1 */
+.flHomeIntroV1{
+  position:fixed;
+  inset:0;
+  z-index:400000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:22px;
+  background:rgba(0,5,15,.72);
+  backdrop-filter:blur(16px);
+}
+
+.flHomeIntroV1.isOpen{
+  display:flex;
+}
+
+.flHomeIntroCardV1{
+  width:min(520px,94vw);
+  border:1px solid rgba(112,190,255,.34);
+  border-radius:26px;
+  background:
+    radial-gradient(circle at 16% 0%,rgba(46,168,255,.20),transparent 38%),
+    linear-gradient(145deg,rgba(9,22,42,.96),rgba(3,8,18,.97));
+  box-shadow:0 30px 110px rgba(0,0,0,.62),0 0 60px rgba(46,168,255,.22);
+  padding:24px;
+  color:#eaf6ff;
+}
+
+.flHomeIntroTopV1{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:16px;
+}
+
+.flHomeIntroIconV1{
+  width:54px;
+  height:54px;
+  border-radius:18px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(112,190,255,.38);
+  background:rgba(46,168,255,.12);
+  box-shadow:0 0 26px rgba(46,168,255,.24);
+  font-weight:950;
+  color:#6fd4ff;
+}
+
+.flHomeIntroEyebrowV1{
+  color:#8fd4ff;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+}
+
+.flHomeIntroCardV1 h3{
+  margin:0;
+  font-size:24px;
+  line-height:1.08;
+  color:#fff;
+}
+
+.flHomeIntroCardV1 p{
+  margin:12px 0 0;
+  color:#c7d5e6;
+  font-size:15px;
+  line-height:1.6;
+}
+
+.flHomeIntroActionsV1{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-top:20px;
+}
+
+.flHomeIntroActionsV1 button{
+  min-height:42px;
+  border-radius:999px;
+  border:1px solid rgba(112,190,255,.34);
+  padding:0 16px;
+  font-weight:900;
+  cursor:pointer;
+  color:#fff;
+  background:rgba(255,255,255,.06);
+}
+
+.flHomeIntroActionsV1 .primary{
+  background:linear-gradient(135deg,#1678ff,#62d8ff);
+  border-color:rgba(255,255,255,.38);
+  box-shadow:0 16px 36px rgba(46,168,255,.24);
+}
+
+.flHomeIntroCloseV1{
+  position:absolute;
+  top:16px;
+  right:16px;
+  width:42px;
+  height:42px;
+  border-radius:14px;
+  border:1px solid rgba(112,190,255,.30);
+  background:rgba(4,12,25,.82);
+  color:#fff;
+  font-size:22px;
+  cursor:pointer;
+}
+
 </style>
   <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-exact-v2">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
@@ -3901,5 +4011,77 @@ h1{
 
   <script defer src="/assets/frontline-menu.js?v=20260521-menu-exact-v2"></script>
   <script defer src="/assets/frontline-assistant.js?v=20260520-frontline-assistant-v1"></script>
+
+<script>
+/* FRONTLINE_HOME_FIRST_VISIT_ASSISTANT_HINT_V1 */
+(function(){
+  function ready(fn){
+    if(document.readyState === "loading") document.addEventListener("DOMContentLoaded", fn);
+    else fn();
+  }
+
+  ready(function(){
+    var key = "frontlineHomeAssistantHintV1Seen";
+    var seen = false;
+
+    try {
+      seen = localStorage.getItem(key) === "1";
+    } catch(e) {
+      seen = window.__frontlineHomeAssistantHintV1Seen === true;
+    }
+
+    if(seen) return;
+
+    var modal = document.createElement("div");
+    modal.className = "flHomeIntroV1";
+    modal.innerHTML = ''
+      + '<button class="flHomeIntroCloseV1" type="button" aria-label="Close intro">×</button>'
+      + '<div class="flHomeIntroCardV1" role="dialog" aria-modal="true" aria-label="Frontline AI assistant introduction">'
+      + '  <div class="flHomeIntroTopV1">'
+      + '    <div class="flHomeIntroIconV1">AI</div>'
+      + '    <div><div class="flHomeIntroEyebrowV1">Frontline AI assistant</div><h3>Need help choosing where to start?</h3></div>'
+      + '  </div>'
+      + '  <p>Use the assistant in the corner to ask about AI websites, booking systems, RAG assistants, GaragePro, SalonBoss, LawFlow or managed AI services.</p>'
+      + '  <p>You can also open the page sections to explore the worker types and product examples.</p>'
+      + '  <div class="flHomeIntroActionsV1">'
+      + '    <button class="primary" type="button" data-home-intro-close>Got it</button>'
+      + '    <button type="button" data-home-intro-assistant>Open assistant</button>'
+      + '  </div>'
+      + '</div>';
+
+    document.body.appendChild(modal);
+
+    function close(){
+      modal.classList.remove("isOpen");
+      try { localStorage.setItem(key, "1"); }
+      catch(e) { window.__frontlineHomeAssistantHintV1Seen = true; }
+    }
+
+    function openAssistant(){
+      close();
+      var launcher = document.querySelector(".flai-assistant-launcher, [data-flai-assistant-open], .frontline-assistant-launcher, .assistantLauncher");
+      if(launcher) launcher.click();
+    }
+
+    modal.addEventListener("click", function(event){
+      if(event.target === modal || event.target.closest(".flHomeIntroCloseV1") || event.target.closest("[data-home-intro-close]")){
+        close();
+      }
+      if(event.target.closest("[data-home-intro-assistant]")){
+        openAssistant();
+      }
+    });
+
+    document.addEventListener("keydown", function(event){
+      if(event.key === "Escape") close();
+    });
+
+    setTimeout(function(){
+      modal.classList.add("isOpen");
+    }, 450);
+  });
+})();
+</script>
+
 </body>
 </html>
