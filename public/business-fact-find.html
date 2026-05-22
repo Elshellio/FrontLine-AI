@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Business Fact-Find | Frontline AI</title>
+<meta name="description" content="Answer a short guided Frontline AI business fact-find and get tailored AI workflow recommendations.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#020610;--panel:rgba(6,14,29,.82);--panel2:rgba(10,24,48,.66);--line:rgba(110,183,255,.28);--line2:rgba(118,210,255,.48);--blue:#1478ff;--blue2:#5ed8ff;--text:#f4f8ff;--muted:#aebed2;--soft:#dbe8f6;--ok:#7cf4c9;--warn:#ffd37a}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif}
+body:before{content:"";position:fixed;inset:0;background:radial-gradient(circle at 20% 4%,rgba(20,120,255,.24),transparent 34%),radial-gradient(circle at 86% 22%,rgba(94,216,255,.13),transparent 30%),linear-gradient(180deg,rgba(2,6,16,.34),rgba(2,6,16,.92)),url("/assets/optimized/assets__9.webp") center top/cover no-repeat;opacity:.92;pointer-events:none}
+a{color:inherit;text-decoration:none}
+button,input,textarea{font:inherit}
+.page{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:34px 22px}
+.shell{width:min(1120px,100%);display:grid;gap:22px}
+.top{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{display:flex;align-items:center;gap:12px}
+.brand img{width:48px;height:48px;border-radius:16px;border:1px solid var(--line2);box-shadow:0 0 34px rgba(94,216,255,.24)}
+.brand b,.headline h1,.panel h2,.resultTitle,.btn{font-family:Sora,Inter,Arial,sans-serif}
+.brand span{display:block;color:#8fd4ff;font-size:10px;font-weight:900;letter-spacing:.15em;text-transform:uppercase;margin-top:3px}
+.topLink{border:1px solid var(--line);border-radius:999px;padding:11px 15px;background:rgba(255,255,255,.055);color:#dcecff;font-weight:900;font-size:12px}
+.headline{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(280px,.95fr);gap:24px;align-items:end}
+.kicker{display:inline-flex;width:max-content;max-width:100%;border:1px solid var(--line);border-radius:999px;padding:8px 12px;color:#8fd4ff;background:rgba(94,216,255,.08);font-size:11px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}
+h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spacing:-.06em}
+.headline p{margin:0;color:#c7d5e7;font-size:17px;line-height:1.65;max-width:710px}
+.benefitStrip{border:1px solid var(--line);border-radius:24px;background:linear-gradient(145deg,rgba(8,20,40,.80),rgba(4,10,22,.62));box-shadow:0 26px 90px rgba(0,0,0,.36),inset 0 1px 0 rgba(255,255,255,.08);padding:18px;display:grid;gap:10px}
+.benefitStrip span{display:flex;align-items:center;gap:10px;color:#dbe8f6;font-weight:800;font-size:13px}
+.benefitStrip span:before{content:"";width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 0 18px rgba(94,216,255,.65)}
+.panel{position:relative;border:1px solid var(--line);border-radius:30px;background:linear-gradient(145deg,rgba(8,18,35,.92),rgba(3,8,18,.88));box-shadow:0 42px 140px rgba(0,0,0,.62),0 0 68px rgba(20,120,255,.18),inset 0 1px 0 rgba(255,255,255,.10);overflow:hidden}
+.panel:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 15% 0%,rgba(94,216,255,.16),transparent 34%);pointer-events:none}
+.panelInner{position:relative;padding:28px}
+.progressTop{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:22px}
+.progressText{color:#8fd4ff;font-size:11px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}
+.progressTrack{height:9px;flex:1;border:1px solid rgba(143,212,255,.18);border-radius:999px;background:rgba(255,255,255,.045);overflow:hidden}
+.progressFill{height:100%;width:0;background:linear-gradient(90deg,var(--blue),var(--blue2));box-shadow:0 0 24px rgba(94,216,255,.42);transition:width .22s ease}
+.questionGrid{display:grid;grid-template-columns:minmax(0,.78fr) minmax(280px,.42fr);gap:22px;align-items:start}
+.questionCard h2{margin:0 0 10px;font-size:clamp(28px,4vw,48px);line-height:1.02;letter-spacing:-.045em}
+.questionCard p{margin:0;color:#aebed2;line-height:1.58}
+.options{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.chip{border:1px solid rgba(143,212,255,.28);border-radius:999px;background:rgba(255,255,255,.055);color:#eff8ff;min-height:44px;padding:0 16px;font-weight:900;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
+.chip:hover{transform:translateY(-1px);border-color:rgba(143,226,255,.72);box-shadow:0 0 24px rgba(94,216,255,.18)}
+.chip.active{background:linear-gradient(135deg,var(--blue),var(--blue2));border-color:rgba(255,255,255,.54);box-shadow:0 18px 36px rgba(20,120,255,.26)}
+.sideCard{border:1px solid rgba(143,212,255,.20);border-radius:24px;background:rgba(255,255,255,.045);padding:16px}
+.sideCard label{display:block;color:#dff4ff;font-weight:950;font-size:12px;margin-bottom:9px}
+.sideCard textarea,.contactFields input{width:100%;border:1px solid rgba(255,255,255,.15);border-radius:16px;background:rgba(0,0,0,.20);color:#fff;outline:none;padding:13px 14px}
+.sideCard textarea{min-height:138px;resize:vertical;line-height:1.5}
+.hint{margin-top:10px;color:#8fa3bc;font-size:12px;line-height:1.45}
+.navActions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:24px}
+.btn{border:1px solid var(--line2);border-radius:999px;min-height:46px;padding:0 18px;background:rgba(255,255,255,.06);color:#fff;font-weight:900;cursor:pointer}
+.btn.primary{background:linear-gradient(135deg,var(--blue),var(--blue2));border-color:rgba(255,255,255,.40);box-shadow:0 18px 40px rgba(20,120,255,.26)}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.result{display:none}
+.panel.showResult .questionArea{display:none}
+.panel.showResult .result{display:block}
+.resultGrid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(300px,.48fr);gap:20px}
+.resultEyebrow{color:#8fd4ff;font-size:11px;font-weight:950;letter-spacing:.16em;text-transform:uppercase;margin-bottom:9px}
+.resultTitle{font-size:clamp(32px,4vw,56px);line-height:.98;letter-spacing:-.05em;margin:0 0 12px}
+.resultLead{color:#cbd8e8;line-height:1.65;margin:0 0 18px}
+.resultBlocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.resultBlock,.contactBox{border:1px solid rgba(143,212,255,.20);border-radius:22px;background:rgba(255,255,255,.045);padding:16px}
+.resultBlock h3,.contactBox h3{margin:0 0 9px;font-size:15px}
+.resultBlock ul{margin:0;padding-left:18px;color:#d5e3f3;line-height:1.55;font-size:14px}
+.resultBlock p{margin:0;color:#d5e3f3;line-height:1.58;font-size:14px}
+.contactFields{display:grid;gap:10px}
+.contactFields label{display:grid;gap:6px;color:#dff4ff;font-size:12px;font-weight:950}
+.smallPrint{color:#8fa3bc;font-size:12px;line-height:1.45;margin:10px 0 0}
+@media(max-width:920px){.page{align-items:flex-start}.headline,.questionGrid,.resultGrid,.resultBlocks{grid-template-columns:1fr}.panelInner{padding:22px}.top{align-items:flex-start}.benefitStrip{display:none}}
+@media(max-width:560px){.page{padding:20px 14px}.top{display:grid}.topLink{width:max-content}.navActions{display:grid;grid-template-columns:1fr}.btn{width:100%}h1{font-size:46px}.chip{width:100%;justify-content:center}.progressTop{display:grid}.progressTrack{width:100%}}
+</style>
+<link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-exact-v2">
+</head>
+<body>
+<div class="page">
+  <div class="shell">
+    <header class="top">
+      <a class="brand" href="/">
+        <img src="/assets/optimized/assets__4.webp" alt="Frontline AI">
+        <div><b>Frontline AI</b><span>Business Fact-Find</span></div>
+      </a>
+      <a class="topLink" href="/book-demo.html">Book a call</a>
+    </header>
+
+    <section class="headline">
+      <div>
+        <div class="kicker">Structured assessment</div>
+        <h1>Tell us how your business works.</h1>
+        <p>Answer a short guided fact-find and Frontline AI will suggest where AI could reduce admin pressure, recover missed opportunities, improve customer service and create a cleaner operating workflow.</p>
+      </div>
+      <div class="benefitStrip" aria-label="Fact-find outcomes">
+        <span>Identify the first controlled workflow worth improving</span>
+        <span>Spot admin, booking and follow-up pressure points</span>
+        <span>Carry the notes into your booking call</span>
+      </div>
+    </section>
+
+    <main class="panel" id="factFindPanel">
+      <div class="panelInner">
+        <div class="questionArea">
+          <div class="progressTop">
+            <div class="progressText" id="progressText">Step 1 of 10</div>
+            <div class="progressTrack" aria-hidden="true"><div class="progressFill" id="progressFill"></div></div>
+          </div>
+
+          <div class="questionGrid">
+            <section class="questionCard">
+              <h2 id="questionTitle"></h2>
+              <p id="questionHelper"></p>
+              <div class="options" id="options"></div>
+            </section>
+            <aside class="sideCard">
+              <label id="notesLabel" for="stepNotes">Optional notes</label>
+              <textarea id="stepNotes"></textarea>
+              <div class="hint" id="stepHint">Short notes help make the recommendation more useful.</div>
+            </aside>
+          </div>
+
+          <div class="navActions">
+            <button class="btn" type="button" id="backBtn">Back</button>
+            <button class="btn primary" type="button" id="nextBtn">Start Business Fact-Find</button>
+          </div>
+        </div>
+
+        <section class="result" id="result">
+          <div class="resultGrid">
+            <div>
+              <div class="resultEyebrow">Recommended focus</div>
+              <h2 class="resultTitle" id="resultTitle"></h2>
+              <p class="resultLead" id="resultWhy"></p>
+              <div class="resultBlocks">
+                <div class="resultBlock"><h3>Top 3 improvement areas</h3><ul id="topAreas"></ul></div>
+                <div class="resultBlock"><h3>Potential benefits</h3><ul id="benefits"></ul></div>
+                <div class="resultBlock"><h3>Potential cost-saving areas</h3><ul id="costSaving"></ul></div>
+                <div class="resultBlock"><h3>Suggested first workflow</h3><p id="workflow"></p></div>
+                <div class="resultBlock"><h3>Recommended delivery model</h3><p id="delivery"></p></div>
+              </div>
+            </div>
+            <aside class="contactBox">
+              <h3>Carry this fact-find into a call</h3>
+              <div class="contactFields">
+                <label>Name <input id="contactName" autocomplete="name"></label>
+                <label>Email <input id="contactEmail" type="email" autocomplete="email"></label>
+                <label>Phone <input id="contactPhone" autocomplete="tel"></label>
+              </div>
+              <button class="btn primary" type="button" id="bookBtn" style="width:100%;margin-top:14px">Lock in this fact-find and book a call</button>
+              <button class="btn" type="button" id="reviewBtn" style="width:100%;margin-top:10px">Review answers</button>
+              <p class="smallPrint">Your answers are stored in this browser and passed into the booking page as call notes.</p>
+            </aside>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</div>
+
+<script>
+const steps = [
+  {id:"business_type", question:"What type of business are we looking at?", helper:"Choose the closest match so the recommendation starts from the right operating model.", options:["Garage / workshop","Clinic / healthcare","Trade / field service","Property / maintenance","Hospitality / bookings","Legal / professional services","Other service business"], notes:"Business name / short description"},
+  {id:"missed_calls", question:"Do missed calls or slow replies currently lose the business opportunities?", helper:"This points to missed enquiry recovery and faster customer response workflows.", options:["Yes","No","Not sure"], notes:"Where do calls/messages get missed?"},
+  {id:"admin_pressure", question:"Is manual admin taking too much time each week?", helper:"Repeated re-keying, chasing and copying information can often be structured into a cleaner workflow.", options:["Yes","No","Not sure"], notes:"What admin tasks are most repetitive?"},
+  {id:"booking_control", question:"Are bookings, appointments or site visits hard to manage cleanly?", helper:"Booking friction is often a strong first workflow because it affects customers and staff at the same time.", options:["Yes","No","Not sure"], notes:"What causes the most friction?"},
+  {id:"follow_up", question:"Are quotes, callbacks, reminders or repeat-work prompts being missed?", helper:"Follow-up workflows help stop warm opportunities relying on memory.", options:["Yes","No","Not sure"], notes:"Which follow-ups are weakest?"},
+  {id:"scattered_info", question:"Is customer or job information scattered across inboxes, WhatsApp, spreadsheets, paper notes or people's heads?", helper:"Scattered information usually points toward dashboard visibility or integration work.", options:["Yes","No","Not sure"], notes:"Where does information currently live?"},
+  {id:"customer_response", question:"Would faster, more consistent customer response improve service or conversion?", helper:"Consistent response can improve trust before adding more people or more tools.", options:["Yes","No","Not sure"], notes:"What do customers currently wait for?"},
+  {id:"current_tools", question:"What systems are currently used?", helper:"Select every tool that matters. Disconnected tools often create hidden coordination cost.", options:["Paper / notebook","Spreadsheet","Email inbox","WhatsApp / SMS","CRM","Booking system","Calendar","Multiple disconnected systems","Mostly memory / informal handover"], notes:"Anything important about the current setup?", multi:true},
+  {id:"desired_first_improvement", question:"If we built one controlled AI workflow first, what should it improve?", helper:"Pick the improvement that would make the biggest practical difference first.", options:["Capture missed enquiries","Reduce admin","Improve booking control","Chase quotes and follow-ups","Send reminders","Create a clean dashboard","Join up disconnected systems","Not sure - recommend the best first step"], notes:"What would make the biggest difference?"},
+  {id:"contact", question:"Would you like to carry this fact-find into a call?", helper:"Review the recommendation, add contact details, then lock it into the booking page.", options:["Show my recommendation"], notes:"Anything else we should know before the call?"}
+];
+
+const scoreLabels = {
+  missed_enquiry_recovery:"Missed Enquiry Recovery Workflow",
+  admin_reduction:"Admin Pressure Reduction Workflow",
+  booking_control:"Booking and Appointment Control Workflow",
+  followup_automation:"Follow-Up and Reminder Workflow",
+  dashboard_visibility:"Business Operations Dashboard",
+  systems_integration:"Controlled AI Operating Workflow",
+  custom_operating_system:"Controlled AI Operating Workflow"
+};
+
+const workflows = {
+  missed_enquiry_recovery:"Capture missed calls, web enquiries and loose messages, create an owned callback/action record, acknowledge the customer and give the team a clear queue.",
+  admin_reduction:"Capture key customer/job details once, structure them into a clean record and route the next action without repeated manual re-keying.",
+  booking_control:"Collect customer details, appointment type, preferred time and notes, then create a structured booking request or provisional appointment workflow.",
+  followup_automation:"Track callbacks, quotes, appointments and repeat-work reminders so fewer opportunities rely on memory.",
+  dashboard_visibility:"Create one clean view of open enquiries, callbacks, bookings, reminders and completed actions.",
+  systems_integration:"Start with one painful repeat workflow, prove the value, then expand into a joined-up operating system over time.",
+  custom_operating_system:"Start with one painful repeat workflow, prove the value, then expand into a joined-up operating system over time."
+};
+
+const state = {index:0, answers:{}, notes:{}};
+const panel = document.getElementById("factFindPanel");
+const progressText = document.getElementById("progressText");
+const progressFill = document.getElementById("progressFill");
+const questionTitle = document.getElementById("questionTitle");
+const questionHelper = document.getElementById("questionHelper");
+const optionsEl = document.getElementById("options");
+const notesLabel = document.getElementById("notesLabel");
+const stepNotes = document.getElementById("stepNotes");
+const backBtn = document.getElementById("backBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+function currentStep(){ return steps[state.index]; }
+function asArray(value){ return Array.isArray(value) ? value : (value ? [value] : []); }
+function escapeHtml(value){ return String(value || "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char])); }
+
+function renderStep(){
+  const step = currentStep();
+  panel.classList.remove("showResult");
+  progressText.textContent = "Step " + (state.index + 1) + " of " + steps.length;
+  progressFill.style.width = (((state.index + 1) / steps.length) * 100) + "%";
+  questionTitle.textContent = step.question;
+  questionHelper.textContent = step.helper;
+  notesLabel.textContent = step.notes;
+  stepNotes.value = state.notes[step.id] || "";
+  const selected = asArray(state.answers[step.id]);
+  optionsEl.innerHTML = step.options.map(option => '<button class="chip' + (selected.includes(option) ? ' active' : '') + '" type="button" data-option="' + escapeHtml(option) + '">' + escapeHtml(option) + '</button>').join("");
+  optionsEl.querySelectorAll(".chip").forEach(button => {
+    button.addEventListener("click", () => {
+      const value = button.dataset.option;
+      if(step.multi){
+        const values = asArray(state.answers[step.id]);
+        state.answers[step.id] = values.includes(value) ? values.filter(item => item !== value) : values.concat(value);
+      }else{
+        state.answers[step.id] = value;
+      }
+      renderStep();
+    });
+  });
+  backBtn.disabled = state.index === 0;
+  nextBtn.textContent = state.index === steps.length - 1 ? "Generate recommendations" : (state.index === 0 ? "Start Business Fact-Find" : "Next");
+}
+
+function addScore(scores, key, amount){ scores[key] = (scores[key] || 0) + amount; }
+function answerWeight(answer){ return answer === "Yes" ? 3 : (answer === "Not sure" ? 1 : 0); }
+
+function scoreAnswers(){
+  const scores = {
+    missed_enquiry_recovery:0,
+    admin_reduction:0,
+    booking_control:0,
+    followup_automation:0,
+    dashboard_visibility:0,
+    systems_integration:0,
+    custom_operating_system:0
+  };
+  addScore(scores, "missed_enquiry_recovery", answerWeight(state.answers.missed_calls));
+  addScore(scores, "admin_reduction", answerWeight(state.answers.admin_pressure));
+  addScore(scores, "booking_control", answerWeight(state.answers.booking_control));
+  addScore(scores, "followup_automation", answerWeight(state.answers.follow_up));
+  const scattered = answerWeight(state.answers.scattered_info);
+  addScore(scores, "dashboard_visibility", scattered);
+  addScore(scores, "systems_integration", scattered);
+  addScore(scores, "missed_enquiry_recovery", answerWeight(state.answers.customer_response));
+  addScore(scores, "dashboard_visibility", answerWeight(state.answers.customer_response) > 0 ? 1 : 0);
+
+  asArray(state.answers.current_tools).forEach(tool => {
+    if(["Paper / notebook","Spreadsheet","Email inbox","WhatsApp / SMS","Multiple disconnected systems","Mostly memory / informal handover"].includes(tool)){
+      addScore(scores, "dashboard_visibility", 1);
+      addScore(scores, "systems_integration", 1);
+    }
+  });
+
+  const desiredMap = {
+    "Capture missed enquiries":"missed_enquiry_recovery",
+    "Reduce admin":"admin_reduction",
+    "Improve booking control":"booking_control",
+    "Chase quotes and follow-ups":"followup_automation",
+    "Send reminders":"followup_automation",
+    "Create a clean dashboard":"dashboard_visibility",
+    "Join up disconnected systems":"systems_integration"
+  };
+  const desired = desiredMap[state.answers.desired_first_improvement];
+  if(desired) addScore(scores, desired, 5);
+  if(state.answers.desired_first_improvement === "Not sure - recommend the best first step") addScore(scores, "custom_operating_system", 2);
+  return scores;
+}
+
+function recommendation(){
+  const scores = scoreAnswers();
+  const ranked = Object.entries(scores).sort((a,b) => b[1] - a[1]);
+  const winner = ranked[0][0];
+  const top = ranked.slice(0,3).map(([key]) => scoreLabels[key]);
+  const benefits = [
+    "Could reduce admin pressure by capturing cleaner information at the first point of contact.",
+    "May recover missed opportunities by turning loose enquiries into owned actions.",
+    "Helps staff work from one cleaner queue instead of relying on memory and scattered notes."
+  ];
+  const costSaving = [
+    "May reduce time spent chasing, re-keying and manually coordinating work.",
+    "Improves visibility before adding headcount.",
+    "Can reduce duplicated handling across inboxes, messages, spreadsheets and handovers."
+  ];
+  return {
+    scores,
+    winner,
+    focus: scoreLabels[winner],
+    why: "Based on your answers, the strongest starting point is a controlled workflow that improves visibility, response and follow-through without trying to rebuild the whole business at once.",
+    top,
+    benefits,
+    costSaving,
+    workflow: workflows[winner],
+    delivery: winner === "systems_integration" || winner === "custom_operating_system" ? "Start with a controlled discovery and one narrow workflow, then expand into a custom operating system when the first workflow proves value." : "Start as a supported monthly workflow, measure the operational value, then decide whether to expand into a deeper custom build."
+  };
+}
+
+function listHtml(items){ return items.map(item => "<li>" + escapeHtml(item) + "</li>").join(""); }
+
+function callNotes(rec){
+  const allNotes = Object.entries(state.notes).filter(([,value]) => value).map(([key,value]) => key.replace(/_/g," ") + ": " + value).join("\\n");
+  return [
+    "Business Fact-Find Summary",
+    "",
+    "Business type: " + (state.answers.business_type || ""),
+    "Business notes: " + (state.notes.business_type || ""),
+    "Missed calls / slow replies: " + (state.answers.missed_calls || "") + (state.notes.missed_calls ? " - " + state.notes.missed_calls : ""),
+    "Admin pressure: " + (state.answers.admin_pressure || "") + (state.notes.admin_pressure ? " - " + state.notes.admin_pressure : ""),
+    "Booking control: " + (state.answers.booking_control || "") + (state.notes.booking_control ? " - " + state.notes.booking_control : ""),
+    "Follow-up weakness: " + (state.answers.follow_up || "") + (state.notes.follow_up ? " - " + state.notes.follow_up : ""),
+    "Scattered information: " + (state.answers.scattered_info || "") + (state.notes.scattered_info ? " - " + state.notes.scattered_info : ""),
+    "Current tools: " + asArray(state.answers.current_tools).join(", "),
+    "Desired first improvement: " + (state.answers.desired_first_improvement || ""),
+    "Additional notes: " + allNotes,
+    "Recommended focus: " + rec.focus,
+    "Top improvement areas: " + rec.top.join(", "),
+    "Potential benefits: " + rec.benefits.join(" "),
+    "Suggested first workflow: " + rec.workflow,
+    "Recommended delivery model: " + rec.delivery
+  ].join("\\n");
+}
+
+function showResult(){
+  const rec = recommendation();
+  document.getElementById("resultTitle").textContent = rec.focus;
+  document.getElementById("resultWhy").textContent = rec.why;
+  document.getElementById("topAreas").innerHTML = listHtml(rec.top);
+  document.getElementById("benefits").innerHTML = listHtml(rec.benefits);
+  document.getElementById("costSaving").innerHTML = listHtml(rec.costSaving);
+  document.getElementById("workflow").textContent = rec.workflow;
+  document.getElementById("delivery").textContent = rec.delivery;
+  panel.classList.add("showResult");
+  try{
+    localStorage.setItem("frontlineBusinessFactFindV1", JSON.stringify({answers:state.answers, notes:state.notes, recommendation:rec, completed_at:new Date().toISOString()}));
+    localStorage.setItem("frontlineBusinessFactFindCallNotesV1", callNotes(rec));
+  }catch(error){}
+}
+
+stepNotes.addEventListener("input", () => { state.notes[currentStep().id] = stepNotes.value.trim(); });
+backBtn.addEventListener("click", () => { if(state.index > 0){ state.index -= 1; renderStep(); } });
+nextBtn.addEventListener("click", () => {
+  state.notes[currentStep().id] = stepNotes.value.trim();
+  if(state.index < steps.length - 1){ state.index += 1; renderStep(); return; }
+  showResult();
+});
+document.getElementById("reviewBtn").addEventListener("click", () => { panel.classList.remove("showResult"); renderStep(); });
+document.getElementById("bookBtn").addEventListener("click", () => {
+  const rec = recommendation();
+  const contact = {
+    name: document.getElementById("contactName").value.trim(),
+    email: document.getElementById("contactEmail").value.trim(),
+    phone: document.getElementById("contactPhone").value.trim()
+  };
+  const payload = {answers:state.answers, notes:state.notes, contact, recommendation:rec, completed_at:new Date().toISOString()};
+  const notes = callNotes(rec) + "\\n\\nContact lock-in:\\nName: " + contact.name + "\\nEmail: " + contact.email + "\\nPhone: " + contact.phone;
+  try{
+    localStorage.setItem("frontlineBusinessFactFindV1", JSON.stringify(payload));
+    localStorage.setItem("frontlineBusinessFactFindCallNotesV1", notes);
+  }catch(error){}
+  const params = new URLSearchParams({source:"business-fact-find", fact_find:"1", product_interest:"Custom AI Worker"});
+  window.location.href = "/book-demo.html?" + params.toString();
+});
+
+renderStep();
+</script>
+<script defer src="/assets/frontline-menu.js?v=20260522195356"></script>
+</body>
+</html>

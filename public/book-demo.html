@@ -63,6 +63,10 @@ textarea{min-height:46px;resize:vertical}
 .bookingSummary.show{display:block}
 .bookingSummary b{display:block}
 .bookingSummary span{display:block;color:#c8d7ea;margin-top:5px}
+.businessFactFindSummary{margin:0 0 10px;border:1px solid rgba(91,183,255,.46);border-radius:16px;padding:11px 12px;background:linear-gradient(145deg,rgba(20,120,255,.16),rgba(255,255,255,.045));box-shadow:inset 0 1px 0 rgba(255,255,255,.08);display:none}
+.businessFactFindSummary.show{display:block}
+.businessFactFindSummary b{display:block;font-family:Sora,Inter,Arial,sans-serif;font-size:14px}
+.businessFactFindSummary pre{margin:8px 0 0;white-space:pre-wrap;color:#d8e6f6;font:600 11px/1.48 Inter,Arial,sans-serif;max-height:220px;overflow:auto}
 @media(max-width:980px){.mainGrid,.formGrid{grid-template-columns:1fr}.top{align-items:flex-start;gap:16px}.shell{padding:22px 18px 60px}h1{font-size:40px}.panelTitle{display:block}.selectedBox{margin-top:16px}.slotList{grid-template-columns:repeat(2,1fr)}}
 </style>
   <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-exact-v2">
@@ -103,6 +107,7 @@ textarea{min-height:46px;resize:vertical}
 
       <section class="panel formCard">
         <div id="bookingSummary" class="bookingSummary"><b>Fact-find slot</b><span></span></div>
+        <div id="businessFactFindSummary" class="businessFactFindSummary"><b>Business Fact-Find Summary</b><pre></pre></div>
 
         <form id="demoForm">
           <input type="hidden" id="slot_start" name="slot_start">
@@ -210,9 +215,12 @@ function applyQueryPrefill(){
   const params = new URLSearchParams(window.location.search);
   const productInterest = params.get("product_interest");
   const notesHint = params.get("notes");
+  const fromBusinessFactFind = params.get("source") === "business-fact-find" && params.get("fact_find") === "1";
 
   const productSelect = document.getElementById("product_interest");
   const notes = document.getElementById("notes");
+  const businessFactFindSummary = document.getElementById("businessFactFindSummary");
+  const businessFactFindSummaryText = businessFactFindSummary ? businessFactFindSummary.querySelector("pre") : null;
 
   if(productInterest && productSelect){
     const wanted = productInterest.trim().toLowerCase();
@@ -224,6 +232,38 @@ function applyQueryPrefill(){
 
   if(notesHint && notes && !notes.value.trim()){
     notes.value = notesHint;
+  }
+
+  // FRONTLINE_BUSINESS_FACT_FIND_BOOKING_PREFILL_V1
+  if(fromBusinessFactFind){
+    let storedNotes = "";
+    let storedFactFind = null;
+    try{
+      storedNotes = localStorage.getItem("frontlineBusinessFactFindCallNotesV1") || "";
+      storedFactFind = JSON.parse(localStorage.getItem("frontlineBusinessFactFindV1") || "null");
+    }catch(error){
+      storedNotes = "";
+      storedFactFind = null;
+    }
+
+    if(storedNotes){
+      if(businessFactFindSummary && businessFactFindSummaryText){
+        businessFactFindSummaryText.textContent = storedNotes;
+        businessFactFindSummary.classList.add("show");
+      }
+      if(notes && !notes.value.trim()){
+        notes.value = storedNotes;
+      }
+    }
+
+    if(storedFactFind && storedFactFind.contact){
+      const name = document.getElementById("name");
+      const email = document.getElementById("email");
+      const phone = document.getElementById("phone");
+      if(name && storedFactFind.contact.name && !name.value.trim()) name.value = storedFactFind.contact.name;
+      if(email && storedFactFind.contact.email && !email.value.trim()) email.value = storedFactFind.contact.email;
+      if(phone && storedFactFind.contact.phone && !phone.value.trim()) phone.value = storedFactFind.contact.phone;
+    }
   }
 }
 
@@ -352,7 +392,7 @@ form.addEventListener("submit", async (event) => {
 
 loadSlots();
 </script>
-  <script defer src="/assets/frontline-menu.js?v=20260521-menu-exact-v2"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260522195356"></script>
   <script defer src="/assets/frontline-assistant.js?v=20260520-frontline-assistant-v1"></script>
 </body>
 </html>

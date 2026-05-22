@@ -39,6 +39,7 @@
     {
       title: "Start",
       items: [
+        { label: "Business Fact-Find", href: "/business-fact-find.html", meta: "Assessment", icon: "/assets/optimized/assets__menu-calendar.webp" },
         { label: "Book Fact-Find", href: "/book-demo.html", meta: "Calendar", icon: "/assets/optimized/assets__menu-calendar.webp" }
       ]
     },
