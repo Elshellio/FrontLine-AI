@@ -218,8 +218,9 @@
 
 .flai-assistant-body{
   flex:1;
+  min-height:0;
   overflow:auto;
-  padding:16px 16px 14px;
+  padding:18px 20px 16px;
   scrollbar-width:thin;
   scrollbar-color:rgba(91,183,255,.55) transparent;
 }
@@ -232,10 +233,10 @@
 
 .flai-assistant-message-bubble{
   max-width:88%;
-  padding:13px 14px;
+  padding:15px 16px;
   border-radius:18px;
   font-size:13px;
-  line-height:1.46;
+  line-height:1.54;
   color:#eaf4ff;
 }
 
@@ -243,13 +244,17 @@
   margin:0;
 }
 
+.flai-assistant-message-bubble p + p{
+  margin-top:9px;
+}
+
 .flai-assistant-message-bubble ul{
-  margin:8px 0 0;
+  margin:10px 0 0;
   padding-left:18px;
 }
 
 .flai-assistant-message-bubble li{
-  margin:4px 0;
+  margin:5px 0;
 }
 
 .flai-assistant-message-user{
@@ -266,6 +271,36 @@
   background:rgba(255,255,255,.065);
   border:1px solid rgba(255,255,255,.12);
   box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
+}
+
+.flai-assistant-message-thinking .flai-assistant-message-bubble{
+  max-width:max-content;
+  min-width:118px;
+  color:#cfe8ff;
+}
+
+.flai-assistant-thinking-dots{
+  display:inline-flex;
+  gap:4px;
+  margin-left:7px;
+  vertical-align:middle;
+}
+
+.flai-assistant-thinking-dots span{
+  width:5px;
+  height:5px;
+  border-radius:50%;
+  background:#8fd4ff;
+  opacity:.45;
+  animation:flai-assistant-thinking 1.1s ease-in-out infinite;
+}
+
+.flai-assistant-thinking-dots span:nth-child(2){
+  animation-delay:.16s;
+}
+
+.flai-assistant-thinking-dots span:nth-child(3){
+  animation-delay:.32s;
 }
 
 .flai-assistant-section-title{
@@ -338,24 +373,31 @@
   color:#fff;
 }
 
+/* FRONTLINE_ASSISTANT_TRUST_TOP_LAYOUT_V1 */
 .flai-assistant-trust{
-  margin:0 16px 14px;
-  padding:12px;
-  border-radius:18px;
+  flex:0 0 auto;
+  margin:12px 18px 0;
+  padding:10px 11px;
+  border-radius:16px;
   border:1px solid rgba(102,184,255,.24);
-  background:rgba(255,255,255,.045);
+  background:linear-gradient(135deg,rgba(22,120,255,.13),rgba(255,255,255,.04));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.08);
 }
 
 .flai-assistant-trust p{
-  margin:0 0 10px;
+  margin:0 0 7px;
   color:#cbd8e7;
-  font-size:11.5px;
-  line-height:1.35;
+  font-size:11px;
+  line-height:1.3;
   font-weight:800;
 }
 
+.flai-assistant-trust .flai-assistant-badges{
+  gap:6px;
+}
+
 .flai-assistant-badge{
-  padding:6px 8px;
+  padding:5px 7px;
   border-radius:999px;
   color:#bfe5ff;
   background:rgba(22,120,255,.12);
@@ -408,6 +450,11 @@
   50%{box-shadow:0 22px 64px rgba(0,0,0,.48),0 0 46px rgba(89,211,255,.46),inset 0 1px 0 rgba(255,255,255,.18)}
 }
 
+@keyframes flai-assistant-thinking{
+  0%,100%{transform:translateY(0);opacity:.38}
+  50%{transform:translateY(-3px);opacity:1}
+}
+
 @media(max-width:760px){
   .flai-assistant-root{
     right:12px;
@@ -449,8 +496,18 @@
     font-size:15px;
   }
 
+  .flai-assistant-body{
+    padding:16px 16px 14px;
+  }
+
   .flai-assistant-message-bubble{
     max-width:94%;
+    padding:14px 15px;
+  }
+
+  .flai-assistant-trust{
+    margin:10px 14px 0;
+    padding:9px 10px;
   }
 }
 

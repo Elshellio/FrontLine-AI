@@ -176,8 +176,7 @@
         <button class="flai-assistant-close" type="button" aria-label="Close Frontline AI Knowledge Assistant">×</button>
       </header>
 
-      <div class="flai-assistant-body" aria-live="polite"></div>
-
+      <!-- FRONTLINE_ASSISTANT_TRUST_TOP_LAYOUT_V1 -->
       <div class="flai-assistant-trust">
         <p>This assistant is a demo of the same controlled-knowledge system we can build for your business.</p>
         <div class="flai-assistant-badges">
@@ -187,6 +186,8 @@
           <span class="flai-assistant-badge">Fact-find routing</span>
         </div>
       </div>
+
+      <div class="flai-assistant-body" aria-live="polite"></div>
 
       <form class="flai-assistant-composer">
         <input class="flai-assistant-input" type="text" autocomplete="off" placeholder="Ask about calls, websites, RAG or automation">
@@ -214,8 +215,53 @@
     })[char]);
   }
 
+  function assistantText(value){
+    if(value === null || value === undefined) return "";
+    if(typeof value === "string" || typeof value === "number" || typeof value === "boolean") return String(value);
+    if(Array.isArray(value)){
+      for(const item of value){
+        const text = assistantText(item);
+        if(text) return text;
+      }
+      return "";
+    }
+    if(typeof value === "object"){
+      const fields = ["label","title","name","short","text","page","url","href"];
+      for(const field of fields){
+        const text = assistantText(value[field]);
+        if(text) return text;
+      }
+      return "";
+    }
+    return "";
+  }
+
+  function assistantList(items){
+    if(!Array.isArray(items)) return [];
+    return items.map(assistantText).filter(Boolean);
+  }
+
+  function assistantLink(item){
+    if(Array.isArray(item)){
+      const label = assistantText(item[0]);
+      const href = assistantText(item[1]);
+      return label && href ? [label, href, Boolean(item[2])] : null;
+    }
+    if(item && typeof item === "object"){
+      const label = assistantText(item.label || item.title || item.name || item.text || item.page || item.url || item.href);
+      const href = assistantText(item.url || item.href || item.page);
+      return label && href ? [label, href, Boolean(item.primary)] : null;
+    }
+    return null;
+  }
+
   function scrollToBottom(){
     body.scrollTop = body.scrollHeight;
+  }
+
+  function scrollMessageIntoView(message){
+    if(!message) return;
+    body.scrollTop = Math.max(0, message.offsetTop - body.offsetTop - 8);
   }
 
   function addUserMessage(text){
@@ -240,6 +286,19 @@
     body.appendChild(wrap);
   }
 
+  function addThinkingMessage(){
+    const wrap = document.createElement("div");
+    wrap.className = "flai-assistant-message flai-assistant-message-system flai-assistant-message-thinking";
+    wrap.innerHTML = `
+      <div class="flai-assistant-message-bubble" role="status">
+        <p>Thinking<span class="flai-assistant-thinking-dots" aria-hidden="true"><span></span><span></span><span></span></span></p>
+      </div>
+    `;
+    body.appendChild(wrap);
+    scrollMessageIntoView(wrap);
+    return wrap;
+  }
+
   function findResponse(text){
     const normalized = text.toLowerCase();
     if(normalized.includes("not sure") || normalized.includes("don't know") || normalized.includes("dont know")) return fallback;
@@ -252,38 +311,42 @@
     const seenUrls = new Set();
 
     function addAction(label, href, primary){
-      if(!label || !href || seenUrls.has(href)) return;
-      seenUrls.add(href);
-      actions.push([String(label), String(href), Boolean(primary)]);
+      const cleanLabel = assistantText(label);
+      const cleanHref = assistantText(href);
+      if(!cleanLabel || !cleanHref || seenUrls.has(cleanHref)) return;
+      seenUrls.add(cleanHref);
+      actions.push([cleanLabel, cleanHref, Boolean(primary)]);
     }
 
     if(Array.isArray(response.actions)){
-      response.actions
-        .filter(action => Array.isArray(action) && action.length >= 2)
-        .forEach(action => addAction(action[0], action[1], action[2]));
+      response.actions.forEach(action => {
+        const link = assistantLink(action);
+        if(link) addAction(link[0], link[1], link[2]);
+      });
     }
 
     if(response.suggested_cta && typeof response.suggested_cta === "object"){
-      addAction(response.suggested_cta.label, response.suggested_cta.url || response.suggested_cta.href, true);
+      const link = assistantLink(response.suggested_cta);
+      if(link) addAction(link[0], link[1], true);
     }
 
     if(Array.isArray(response.links)){
       response.links.forEach(link => {
-        if(Array.isArray(link)) addAction(link[0], link[1], false);
-        else if(link && typeof link === "object") addAction(link.label, link.url || link.href, false);
+        const normalizedLink = assistantLink(link);
+        if(normalizedLink) addAction(normalizedLink[0], normalizedLink[1], normalizedLink[2]);
       });
     }
 
-    const sources = Array.isArray(response.sources) ? response.sources : [];
-    const sourcePages = Array.isArray(response.source_pages) ? response.source_pages : [];
+    const sources = assistantList(Array.isArray(response.sources) ? response.sources : []);
+    const sourcePages = assistantList(Array.isArray(response.source_pages) ? response.source_pages : []);
     return {
-      title: response.title || "Frontline AI recommendation",
-      short: response.short || "",
-      why: response.why || "",
-      build: Array.isArray(response.build) ? response.build : [],
+      title: assistantText(response.title) || "Frontline AI recommendation",
+      short: assistantText(response.short),
+      why: assistantText(response.why),
+      build: assistantList(Array.isArray(response.build) ? response.build : []),
       sources: sources.length ? sources : sourcePages,
       source_pages: sourcePages,
-      confidence: response.confidence || "",
+      confidence: assistantText(response.confidence),
       actions: actions.length ? actions : fallback.actions
     };
   }
@@ -306,7 +369,7 @@
       });
   }
 
-  function addAssistantResponse(response){
+  function addAssistantResponse(response, replaceMessage){
     const wrap = document.createElement("div");
     wrap.className = "flai-assistant-message flai-assistant-message-system";
     const qualifiers = response.qualifiers ? `
@@ -314,35 +377,43 @@
         ${Object.keys(qualifierMap).map(label => `<button class="flai-assistant-qualifier" type="button" data-flai-assistant-prompt="${escapeHtml(qualifierMap[label])}">${escapeHtml(label)}</button>`).join("")}
       </div>
     ` : "";
-    const sourceText = response.sources && response.sources.length ? `Sources: ${response.sources.join(", ")}.` : "Source: based on approved Frontline AI material.";
+    const buildItems = assistantList(response.build);
+    const sourceItems = assistantList(response.sources);
+    const actionItems = Array.isArray(response.actions) ? response.actions.map(assistantLink).filter(Boolean) : [];
+    const sourceText = sourceItems.length ? `Sources: ${sourceItems.join(", ")}.` : "Source: based on approved Frontline AI material.";
     wrap.innerHTML = `
       <div class="flai-assistant-message-bubble">
         <span class="flai-assistant-section-title">Short answer</span>
-        <p>${escapeHtml(response.short)}</p>
+        <p>${escapeHtml(assistantText(response.short))}</p>
         <span class="flai-assistant-section-title">Recommended starting point</span>
-        <p><strong>${escapeHtml(response.title)}</strong></p>
+        <p><strong>${escapeHtml(assistantText(response.title))}</strong></p>
         <span class="flai-assistant-section-title">Why it fits</span>
-        <p>${escapeHtml(response.why)}</p>
+        <p>${escapeHtml(assistantText(response.why))}</p>
         <span class="flai-assistant-section-title">What Frontline AI would build</span>
-        <ul>${response.build.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
+        <ul>${buildItems.map(item => `<li>${escapeHtml(item)}</li>`).join("")}</ul>
         <div class="flai-assistant-source">${escapeHtml(sourceText)}</div>
       </div>
       ${qualifiers}
       <div class="flai-assistant-actions">
-        ${response.actions.map(([label, href, primary]) => `<a class="flai-assistant-action${primary ? " flai-assistant-action-primary" : ""}" href="${escapeHtml(href)}">${escapeHtml(label)}</a>`).join("")}
+        ${actionItems.map(([label, href, primary]) => `<a class="flai-assistant-action${primary ? " flai-assistant-action-primary" : ""}" href="${escapeHtml(href)}">${escapeHtml(label)}</a>`).join("")}
       </div>
     `;
-    body.appendChild(wrap);
-    scrollToBottom();
+    if(replaceMessage && replaceMessage.parentNode === body){
+      body.replaceChild(wrap, replaceMessage);
+    }else{
+      body.appendChild(wrap);
+    }
+    scrollMessageIntoView(wrap);
   }
 
   function submitMessage(text){
     const clean = text.trim();
     if(!clean) return;
     addUserMessage(clean);
+    const thinkingMessage = addThinkingMessage();
     askBackend(clean)
-      .then(addAssistantResponse)
-      .catch(() => window.setTimeout(() => addAssistantResponse(findResponse(clean)), 180));
+      .then(response => addAssistantResponse(response, thinkingMessage))
+      .catch(() => window.setTimeout(() => addAssistantResponse(findResponse(clean), thinkingMessage), 180));
   }
 
   function openAssistant(){
