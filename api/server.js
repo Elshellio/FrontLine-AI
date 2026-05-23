@@ -8,6 +8,7 @@ const crypto = require("crypto");
 const PORT = Number(process.env.PORT || 3401);
 const DATA_DIR = process.env.DATA_DIR || "/opt/frontline-ai/data";
 const REQUESTS_FILE = path.join(DATA_DIR, "demo-requests.jsonl");
+const REPORT_REQUESTS_FILE = path.join(DATA_DIR, "business-fact-find-report-requests.jsonl");
 const PRODUCT_KNOWLEDGE_FILE = path.join(__dirname, "product-knowledge.json");
 const SITE_KNOWLEDGE_FILE = path.join(__dirname, "site-knowledge.json");
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
@@ -17,6 +18,7 @@ const ASSISTANT_RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const ASSISTANT_RATE_LIMIT_MAX = 8;
 const MAX_ASSISTANT_LLM_CALLS_PER_DAY = Number(process.env.MAX_ASSISTANT_LLM_CALLS_PER_DAY || 100);
 const OPENAI_ASSISTANT_TIMEOUT_MS = Number(process.env.OPENAI_ASSISTANT_TIMEOUT_MS || 12000);
+const REPORT_REQUEST_BODY_LIMIT_BYTES = 80 * 1024;
 
 const assistantRateLimits = new Map();
 let assistantDailyUsage = {
@@ -397,6 +399,50 @@ function cleanText(value, max = 1000) {
 
 function cleanEmail(value) {
   return cleanText(value, 254).toLowerCase();
+}
+
+function isValidEmail(value) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail(value));
+}
+
+function configuredSalesInbox() {
+  return cleanEmail(
+    process.env.BOOK_DEMO_TO ||
+    process.env.DEMO_TO_EMAIL ||
+    process.env.SALES_EMAIL ||
+    process.env.CONTACT_EMAIL ||
+    process.env.MAIL_TO ||
+    process.env.SMTP_TO ||
+    process.env.FRONTLINE_SALES_INBOX ||
+    ""
+  );
+}
+
+function validateBusinessFactFindReportRequest(input) {
+  const errors = [];
+  const salesInbox = configuredSalesInbox();
+  const record = {
+    id: crypto.randomUUID(),
+    created_at: new Date().toISOString(),
+    source: cleanText(input.source, 80) || "business-fact-find-report-request",
+    sales_inbox_configured: Boolean(salesInbox),
+    visitor_email: cleanEmail(input.email),
+    extra_notes: cleanText(input.extra_notes, 1800),
+    draft_subject: cleanText(input.draft_subject, 180),
+    draft_body: cleanText(input.draft_body, 18000),
+    call_notes: cleanText(input.call_notes, 12000),
+    fact_find: input.fact_find && typeof input.fact_find === "object" ? input.fact_find : {}
+  };
+
+  if (!record.visitor_email) errors.push("Email address is required.");
+  if (record.visitor_email && !isValidEmail(record.visitor_email)) errors.push("Email address looks invalid.");
+  if (record.source !== "business-fact-find-report-request") errors.push("Choose a valid source.");
+  if (!record.draft_subject) errors.push("Draft subject is required.");
+  if (!record.draft_body) errors.push("Draft body is required.");
+  if (record.draft_body.length > 18000) errors.push("Draft body is too long.");
+  if (!salesInbox) errors.push("MISSING_SALES_INBOX_CONFIG");
+
+  return { record, errors, salesInbox };
 }
 
 function normalizeAssistantQuery(message) {
@@ -1289,6 +1335,60 @@ const server = http.createServer(async (req, res) => {
         answer,
         reply: answer
       });
+    }
+
+    if (req.method === "POST" && url.pathname === "/api/business-fact-find/report-request") {
+      let raw = "";
+      try {
+        raw = await readBody(req, REPORT_REQUEST_BODY_LIMIT_BYTES);
+      } catch {
+        return sendJson(res, 413, { ok: false, errors: ["Report request is too large."] });
+      }
+
+      let input = {};
+      try { input = JSON.parse(raw || "{}"); }
+      catch { return sendJson(res, 400, { ok: false, errors: ["Invalid JSON."] }); }
+
+      const { record, errors, salesInbox } = validateBusinessFactFindReportRequest(input);
+      if (errors.includes("MISSING_SALES_INBOX_CONFIG")) {
+        console.error("[frontline-ai-api] MISSING_SALES_INBOX_CONFIG");
+        return sendJson(res, 500, { ok: false, error: "MISSING_SALES_INBOX_CONFIG" });
+      }
+      if (errors.length) return sendJson(res, 400, { ok: false, errors });
+
+      const salesNotification = [
+        "Business Fact-Find Report Request",
+        "",
+        "Visitor email:",
+        record.visitor_email,
+        "",
+        "Extra notes:",
+        record.extra_notes,
+        "",
+        "Draft subject:",
+        record.draft_subject,
+        "",
+        "Draft body:",
+        record.draft_body,
+        "",
+        "Call notes:",
+        record.call_notes,
+        "",
+        "Source:",
+        record.source,
+        "",
+        "Timestamp:",
+        record.created_at
+      ].join("\n");
+
+      fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
+        ...record,
+        sales_inbox: salesInbox,
+        sales_subject: "New Business Fact-Find report request",
+        sales_body: salesNotification
+      }) + "\n", "utf8");
+
+      return sendJson(res, 200, { ok: true });
     }
 
     if (req.method === "POST" && (url.pathname === "/api/demo-request" || url.pathname === "/api/book-demo")) {

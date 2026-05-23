@@ -44,10 +44,15 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
 .chip{border:1px solid rgba(143,212,255,.28);border-radius:999px;background:rgba(255,255,255,.055);color:#eff8ff;min-height:44px;padding:0 16px;font-weight:900;cursor:pointer;transition:transform .18s ease,border-color .18s ease,background .18s ease,box-shadow .18s ease}
 .chip:hover{transform:translateY(-1px);border-color:rgba(143,226,255,.72);box-shadow:0 0 24px rgba(94,216,255,.18)}
 .chip.active{background:linear-gradient(135deg,var(--blue),var(--blue2));border-color:rgba(255,255,255,.54);box-shadow:0 18px 36px rgba(20,120,255,.26)}
-.sideCard{border:1px solid rgba(143,212,255,.20);border-radius:24px;background:rgba(255,255,255,.045);padding:16px}
-.sideCard label{display:block;color:#dff4ff;font-weight:950;font-size:12px;margin-bottom:9px}
-.sideCard textarea,.contactFields input{width:100%;border:1px solid rgba(255,255,255,.15);border-radius:16px;background:rgba(0,0,0,.20);color:#fff;outline:none;padding:13px 14px}
-.sideCard textarea{min-height:138px;resize:vertical;line-height:1.5}
+.sideCard{border:1px solid rgba(143,212,255,.34);border-radius:24px;background:radial-gradient(circle at 18% 0%,rgba(94,216,255,.12),transparent 38%),rgba(255,255,255,.06);padding:18px;box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 20px 60px rgba(0,0,0,.22)}
+.sideCard label{display:block;color:#fff;font-weight:950;font-size:15px;margin-bottom:7px}
+.notesSubcopy{margin:0 0 12px;color:#bfd5ea;font-size:12px;line-height:1.45}
+.notesCue{display:flex;gap:8px;align-items:flex-start;margin:0 0 12px;border:1px solid rgba(143,212,255,.22);border-radius:15px;padding:10px 11px;background:rgba(94,216,255,.075);color:#dff4ff;font-size:12px;line-height:1.42;font-weight:800}
+.notesCue:before{content:"";width:8px;height:8px;margin-top:4px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 0 16px rgba(94,216,255,.64);flex:0 0 auto}
+.sideCard textarea,.contactFields input{width:100%;border:1px solid rgba(143,212,255,.30);border-radius:16px;background:rgba(0,0,0,.25);color:#fff;outline:none;padding:13px 14px}
+.sideCard textarea{min-height:154px;resize:vertical;line-height:1.5;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
+.sideCard textarea:focus{border-color:rgba(143,226,255,.78);box-shadow:0 0 0 3px rgba(94,216,255,.12),inset 0 1px 0 rgba(255,255,255,.08)}
+.sideCard textarea::placeholder{color:#8fa8c0}
 .hint{margin-top:10px;color:#8fa3bc;font-size:12px;line-height:1.45}
 .navActions{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:24px}
 .btn{border:1px solid var(--line2);border-radius:999px;min-height:46px;padding:0 18px;background:rgba(255,255,255,.06);color:#fff;font-weight:900;cursor:pointer}
@@ -61,12 +66,24 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
 .resultTitle{font-size:clamp(32px,4vw,56px);line-height:.98;letter-spacing:-.05em;margin:0 0 12px}
 .resultLead{color:#cbd8e8;line-height:1.65;margin:0 0 18px}
 .resultBlocks{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.resultBlock,.contactBox{border:1px solid rgba(143,212,255,.20);border-radius:22px;background:rgba(255,255,255,.045);padding:16px}
-.resultBlock h3,.contactBox h3{margin:0 0 9px;font-size:15px}
+.resultBlock,.contactBox,.reportBox{border:1px solid rgba(143,212,255,.20);border-radius:22px;background:rgba(255,255,255,.045);padding:16px}
+.resultBlock h3,.contactBox h3,.reportBox h3{margin:0 0 9px;font-size:15px}
 .resultBlock ul{margin:0;padding-left:18px;color:#d5e3f3;line-height:1.55;font-size:14px}
 .resultBlock p{margin:0;color:#d5e3f3;line-height:1.58;font-size:14px}
+.secondaryList{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.secondaryList span{display:inline-flex;border:1px solid rgba(143,212,255,.24);border-radius:999px;padding:7px 10px;color:#eaf7ff;background:rgba(94,216,255,.08);font-size:12px;font-weight:900}
 .contactFields{display:grid;gap:10px}
 .contactFields label{display:grid;gap:6px;color:#dff4ff;font-size:12px;font-weight:950}
+.reportBox{margin-top:14px;display:none}
+.reportBox.show{display:block}
+.reportBox p{margin:0 0 12px;color:#cbd8e8;line-height:1.5;font-size:14px}
+.reportPreview{margin-top:14px;border:1px solid rgba(143,212,255,.24);border-radius:18px;background:rgba(0,0,0,.22);padding:14px;display:none}
+.reportPreview.show{display:block}
+.reportPreview h3{color:#fff}
+.reportMeta{display:grid;gap:5px;color:#dbe8f6;font-size:13px;margin-bottom:10px}
+.reportBody{white-space:pre-wrap;max-height:320px;overflow:auto;color:#d8e6f6;font:600 12px/1.55 Inter,Arial,sans-serif;border-top:1px solid rgba(143,212,255,.16);padding-top:10px}
+.reportStatus{margin-top:10px;color:#aebed2;font-weight:800;font-size:13px;line-height:1.45}
+.reportStatus.ok{color:var(--ok)}
+.reportStatus.err{color:#ffb4b4}
 .smallPrint{color:#8fa3bc;font-size:12px;line-height:1.45;margin:10px 0 0}
 @media(max-width:920px){.page{align-items:flex-start}.headline,.questionGrid,.resultGrid,.resultBlocks{grid-template-columns:1fr}.panelInner{padding:22px}.top{align-items:flex-start}.benefitStrip{display:none}}
 @media(max-width:560px){.page{padding:20px 14px}.top{display:grid}.topLink{width:max-content}.navActions{display:grid;grid-template-columns:1fr}.btn{width:100%}h1{font-size:46px}.chip{width:100%;justify-content:center}.progressTop{display:grid}.progressTrack{width:100%}}
@@ -112,9 +129,11 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
               <div class="options" id="options"></div>
             </section>
             <aside class="sideCard">
-              <label id="notesLabel" for="stepNotes">Optional notes</label>
-              <textarea id="stepNotes"></textarea>
-              <div class="hint" id="stepHint">Short notes help make the recommendation more useful.</div>
+              <label id="notesLabel" for="stepNotes">Add detail in your own words</label>
+              <p class="notesSubcopy" id="notesSubcopy">Optional, but useful. A few words here can make the recommendation much sharper.</p>
+              <div class="notesCue">Best results: click an answer, then add any useful detail.</div>
+              <textarea id="stepNotes" placeholder="Example: I’m busy at work and often miss appointment calls…"></textarea>
+              <div class="hint" id="stepHint">Use this for anything the buttons do not capture.</div>
             </aside>
           </div>
 
@@ -130,6 +149,8 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
               <div class="resultEyebrow">Recommended focus</div>
               <h2 class="resultTitle" id="resultTitle"></h2>
               <p class="resultLead" id="resultWhy"></p>
+              <div class="resultBlock" id="gutFeelBlock" style="margin-bottom:12px"><h3>Gut feel comparison</h3><p><b>Your gut feel:</b> <span id="gutFeelChoice"></span></p><p><b>Frontline AI recommendation:</b> <span id="assessmentRecommendation"></span></p><p id="gutFeelMessage"></p></div>
+              <div class="resultBlock" id="secondaryBlock" style="display:none;margin-bottom:12px"><h3>Secondary opportunities</h3><div class="secondaryList" id="secondaryOpportunities"></div></div>
               <div class="resultBlocks">
                 <div class="resultBlock"><h3>Top 3 improvement areas</h3><ul id="topAreas"></ul></div>
                 <div class="resultBlock"><h3>Potential benefits</h3><ul id="benefits"></ul></div>
@@ -146,8 +167,31 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
                 <label>Phone <input id="contactPhone" autocomplete="tel"></label>
               </div>
               <button class="btn primary" type="button" id="bookBtn" style="width:100%;margin-top:14px">Lock in this fact-find and book a call</button>
+              <div class="smallPrint" style="text-align:center;margin-top:14px">Not ready for a call?</div>
+              <button class="btn" type="button" id="showReportBtn" style="width:100%;margin-top:10px">Send me the report instead</button>
               <button class="btn" type="button" id="reviewBtn" style="width:100%;margin-top:10px">Review answers</button>
               <p class="smallPrint">Your answers are stored in this browser and passed into the booking page as call notes.</p>
+              <div class="reportBox" id="reportBox">
+                <h3>No problem. Add your email and we'll prepare your tailored AI opportunity report.</h3>
+                <div class="contactFields">
+                  <label>Email address * <input id="reportEmail" type="email" autocomplete="email"></label>
+                  <label>Optional notes <textarea id="reportNotes" rows="4"></textarea></label>
+                </div>
+                <button class="btn primary" type="button" id="previewReportBtn" style="width:100%;margin-top:12px">Generate draft report preview</button>
+                <div class="reportPreview" id="reportPreview">
+                  <h3>Draft report email</h3>
+                  <div class="reportMeta">
+                    <span><b>To:</b> <span id="draftTo"></span></span>
+                    <span><b>Subject:</b> <span id="draftSubject"></span></span>
+                  </div>
+                  <div class="reportBody" id="draftBody"></div>
+                  <div class="navActions" style="margin-top:14px">
+                    <button class="btn" type="button" id="editReportBtn">Edit details</button>
+                    <button class="btn primary" type="button" id="sendReportBtn">Send my report</button>
+                  </div>
+                </div>
+                <div class="reportStatus" id="reportStatus"></div>
+              </div>
             </aside>
           </div>
         </section>
@@ -165,12 +209,28 @@ const steps = [
   {id:"follow_up", question:"Are quotes, callbacks, reminders or repeat-work prompts being missed?", helper:"Follow-up workflows help stop warm opportunities relying on memory.", options:["Yes","No","Not sure"], notes:"Which follow-ups are weakest?"},
   {id:"scattered_info", question:"Is customer or job information scattered across inboxes, WhatsApp, spreadsheets, paper notes or people's heads?", helper:"Scattered information usually points toward dashboard visibility or integration work.", options:["Yes","No","Not sure"], notes:"Where does information currently live?"},
   {id:"customer_response", question:"Would faster, more consistent customer response improve service or conversion?", helper:"Consistent response can improve trust before adding more people or more tools.", options:["Yes","No","Not sure"], notes:"What do customers currently wait for?"},
-  {id:"current_tools", question:"What systems are currently used?", helper:"Select every tool that matters. Disconnected tools often create hidden coordination cost.", options:["Paper / notebook","Spreadsheet","Email inbox","WhatsApp / SMS","CRM","Booking system","Calendar","Multiple disconnected systems","Mostly memory / informal handover"], notes:"Anything important about the current setup?", multi:true},
-  {id:"desired_first_improvement", question:"If we built one controlled AI workflow first, what should it improve?", helper:"Pick the improvement that would make the biggest practical difference first.", options:["Capture missed enquiries","Reduce admin","Improve booking control","Chase quotes and follow-ups","Send reminders","Create a clean dashboard","Join up disconnected systems","Not sure - recommend the best first step"], notes:"What would make the biggest difference?"},
+  {id:"website_conversion", question:"Does your website currently turn visitors into useful enquiries, bookings or customer records?", helper:"A website can be more than a brochure: it can qualify visitors, capture useful details and hand them into a workflow.", options:["Yes","No","Not sure","We do not have a proper website"], notes:"What is weak about the website or online enquiry journey?"},
+  {id:"marketing_spend", question:"Do you currently spend money on marketing, ads or lead generation?", helper:"This helps spot whether paid attention is being measured and converted properly.", options:["Yes","No","Not sure","We have tried but it did not work well"], notes:"Where do you spend money? Google Ads, Facebook, Instagram, directories, SEO, agencies, flyers, anything else?"},
+  {id:"paid_ads_tracking", question:"Do you know roughly what you pay for leads or clicks?", helper:"Even rough cost-per-lead or CPC visibility can reveal whether campaigns need better tracking and follow-up.", options:["Yes","No","Not sure","We track it badly"], notes:"Add any CPC, cost-per-lead, monthly spend or campaign notes if known."},
+  {id:"social_media", question:"Is social media content currently consistent enough to bring in trust, enquiries or repeat attention?", helper:"Consistency matters when customers check whether a business looks active, credible and current.", options:["Yes","No","Not sure","We post when we remember"], notes:"What platforms do you use and what content is hardest to keep up with?"},
+  {id:"visual_assets", question:"Do you regularly need better photos, service images, product visuals or branded graphics?", helper:"Better visuals can support websites, ads, service pages, social posts and sales material.", options:["Yes","No","Not sure"], notes:"What images or visuals would help sell the business better?"},
+  {id:"video_presenter", question:"Would short videos, explainers, AI presenter clips or talking-head style content help customers understand or trust the service?", helper:"Short explainers can make a service easier to understand before someone enquires or books.", options:["Yes","No","Not sure"], notes:"What would you want videos to explain or sell?"},
+  {id:"newsletter_reactivation", question:"Do you regularly follow up with past customers, old leads or repeat-service opportunities?", helper:"Past customers and old enquiries are often easier to warm up than brand-new cold leads.", options:["Yes","No","Not sure","We should, but we do not"], notes:"What repeat work, reminders, offers or updates could be sent?"},
+  {id:"rag_knowledge", question:"Do customers or staff often need answers from documents, FAQs, price guides, policies, service information, manuals or internal knowledge?", helper:"Knowledge assistants work best when there is approved material people repeatedly need to search or ask about.", options:["Yes","No","Not sure"], notes:"What knowledge would be useful for an assistant to understand?"},
+  {id:"current_tools", question:"What systems are currently used?", helper:"Select every tool that matters. Disconnected tools often create hidden coordination cost.", options:["Paper / notebook","Spreadsheet","Email inbox","WhatsApp / SMS","CRM","Booking system","Calendar","Website","Website form","Online booking page","Google Ads","Facebook / Instagram Ads","Social media pages","Email newsletter tool","Analytics","Knowledge base","PDFs / documents","FAQ pages","Internal manuals","Service guides","Photo/video assets","Multiple disconnected systems","Mostly memory / informal handover"], notes:"Anything important about the current setup?", multi:true},
+  {id:"desired_first_improvement", question:"Before we analyse your answers, what is your gut feel?", helper:"Pick the area you think would make the biggest practical difference. We'll compare it with the recommendation generated from your answers.", options:["Capture missed enquiries","Reduce admin","Improve booking control","Chase quotes and follow-ups","Send reminders","Create a clean dashboard","Improve website conversion","Build a RAG / knowledge assistant","Improve ads and lead tracking","Improve social content","Create better images or videos","Reactivate past customers","Join up disconnected systems","Not sure - recommend the best first step"], notes:"Why does that feel like the biggest opportunity?"},
   {id:"contact", question:"Would you like to carry this fact-find into a call?", helper:"Review the recommendation, add contact details, then lock it into the booking page.", options:["Show my recommendation"], notes:"Anything else we should know before the call?"}
 ];
 
 const scoreLabels = {
+  calling_appointment_capture:"AI Calling & Appointment Capture Service",
+  website_conversion:"Website Conversion & Workflow Build",
+  rag_knowledge_assistant:"RAG Knowledge Assistant",
+  ad_engine_growth:"Ad Engine Growth System",
+  social_content_engine:"Social Content Engine",
+  visual_asset_generation:"AI Visual Asset Pack",
+  ai_video_presenters:"AI Video Presenter & Explainer System",
+  newsletter_reactivation:"Customer Reactivation & Newsletter Workflow",
   missed_enquiry_recovery:"Missed Enquiry Recovery Workflow",
   admin_reduction:"Admin Pressure Reduction Workflow",
   booking_control:"Booking and Appointment Control Workflow",
@@ -181,6 +241,14 @@ const scoreLabels = {
 };
 
 const workflows = {
+  calling_appointment_capture:"An AI calling and appointment capture workflow that answers or follows up on missed enquiries, captures the customer's details, appointment need and preferred time, then creates a booking request or callback record for the team.",
+  website_conversion:"A conversion-focused website or landing page with structured enquiry capture, booking/fact-find prompts and a clean handoff into email, dashboard, callback or booking workflow.",
+  rag_knowledge_assistant:"A controlled knowledge assistant trained on approved documents, service information, FAQs or internal material, with clear boundaries and escalation where a human should take over.",
+  ad_engine_growth:"A controlled ad-to-enquiry workflow with focused landing pages, structured lead capture, campaign tracking and follow-up actions.",
+  social_content_engine:"A content engine for social posts, captions, service explainers, proof posts and campaign material.",
+  visual_asset_generation:"A branded visual asset pack for website pages, ads, service cards, social posts and sales material.",
+  ai_video_presenters:"A set of short AI presenter or explainer videos for the website, social channels or campaign landing pages.",
+  newsletter_reactivation:"A newsletter or customer reactivation workflow for past customers, old enquiries, repeat-service reminders and useful updates.",
   missed_enquiry_recovery:"Capture missed calls, web enquiries and loose messages, create an owned callback/action record, acknowledge the customer and give the team a clear queue.",
   admin_reduction:"Capture key customer/job details once, structure them into a clean record and route the next action without repeated manual re-keying.",
   booking_control:"Collect customer details, appointment type, preferred time and notes, then create a structured booking request or provisional appointment workflow.",
@@ -206,6 +274,37 @@ function currentStep(){ return steps[state.index]; }
 function asArray(value){ return Array.isArray(value) ? value : (value ? [value] : []); }
 function escapeHtml(value){ return String(value || "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char])); }
 
+const notePrompts = {
+  missed_calls:"Example: I'm busy at work and often miss appointment calls...",
+  admin_pressure:"Example: We re-type customer details from messages into spreadsheets...",
+  booking_control:"Example: Customers wait for a callback, quote or booking confirmation...",
+  follow_up:"Example: Quotes and reminders get missed when the day gets busy...",
+  scattered_info:"Example: We use WhatsApp, email and paper notes and things get missed...",
+  customer_response:"Example: Customers wait for a callback, quote or booking confirmation...",
+  website_conversion:"Example: The website gets visits but the forms do not capture useful details...",
+  marketing_spend:"Example: We spend on Google Ads but don't really track cost per lead...",
+  paid_ads_tracking:"Example: We know the monthly spend but not which clicks become bookings...",
+  social_media:"Example: We post when we remember and struggle with captions or reels...",
+  visual_assets:"Example: We need better service images, before-and-after visuals or branded graphics...",
+  video_presenter:"Example: A short explainer could help customers understand what we do...",
+  newsletter_reactivation:"Example: Past customers could be reminded about repeat work or seasonal offers...",
+  rag_knowledge:"Example: Staff keep searching PDFs, policies, FAQs or service guides...",
+  current_tools:"Example: We use WhatsApp, email and paper notes and things get missed...",
+  desired_first_improvement:"Example: This feels biggest because it would save time or recover more enquiries...",
+  contact:"Example: Mention anything you want us to understand before the call..."
+};
+function isSimpleAutoAdvanceStep(step){
+  return step.autoAdvance === true || (!step.multi && step.options.length <= 4 && step.options.includes("Yes") && step.options.includes("No") && step.options.includes("Not sure"));
+}
+function shouldAutoAdvance(step){
+  return isSimpleAutoAdvanceStep(step) && document.activeElement !== stepNotes && !stepNotes.value.trim();
+}
+function goNext(){
+  state.notes[currentStep().id] = stepNotes.value.trim();
+  if(state.index < steps.length - 1){ state.index += 1; renderStep(); return; }
+  showResult();
+}
+
 function renderStep(){
   const step = currentStep();
   panel.classList.remove("showResult");
@@ -213,8 +312,10 @@ function renderStep(){
   progressFill.style.width = (((state.index + 1) / steps.length) * 100) + "%";
   questionTitle.textContent = step.question;
   questionHelper.textContent = step.helper;
-  notesLabel.textContent = step.notes;
+  notesLabel.textContent = "Add detail in your own words";
   stepNotes.value = state.notes[step.id] || "";
+  stepNotes.placeholder = notePrompts[step.id] || step.notes || "Example: Add any useful context that the buttons do not capture...";
+  document.getElementById("stepHint").textContent = step.notes;
   const selected = asArray(state.answers[step.id]);
   optionsEl.innerHTML = step.options.map(option => '<button class="chip' + (selected.includes(option) ? ' active' : '') + '" type="button" data-option="' + escapeHtml(option) + '">' + escapeHtml(option) + '</button>').join("");
   optionsEl.querySelectorAll(".chip").forEach(button => {
@@ -223,10 +324,15 @@ function renderStep(){
       if(step.multi){
         const values = asArray(state.answers[step.id]);
         state.answers[step.id] = values.includes(value) ? values.filter(item => item !== value) : values.concat(value);
-      }else{
-        state.answers[step.id] = value;
+        renderStep();
+        return;
       }
+      state.answers[step.id] = value;
       renderStep();
+      if(shouldAutoAdvance(step)){
+        window.clearTimeout(state.autoAdvanceTimer);
+        state.autoAdvanceTimer = window.setTimeout(goNext, 320);
+      }
     });
   });
   backBtn.disabled = state.index === 0;
@@ -238,6 +344,14 @@ function answerWeight(answer){ return answer === "Yes" ? 3 : (answer === "Not su
 
 function scoreAnswers(){
   const scores = {
+    calling_appointment_capture:0,
+    website_conversion:0,
+    rag_knowledge_assistant:0,
+    ad_engine_growth:0,
+    social_content_engine:0,
+    visual_asset_generation:0,
+    ai_video_presenters:0,
+    newsletter_reactivation:0,
     missed_enquiry_recovery:0,
     admin_reduction:0,
     booking_control:0,
@@ -261,6 +375,25 @@ function scoreAnswers(){
       addScore(scores, "dashboard_visibility", 1);
       addScore(scores, "systems_integration", 1);
     }
+    if(["Website","Website form","Online booking page"].includes(tool)){
+      addScore(scores, "website_conversion", 1);
+    }
+    if(["Google Ads","Facebook / Instagram Ads","Analytics"].includes(tool)){
+      addScore(scores, "ad_engine_growth", 2);
+    }
+    if(["Social media pages"].includes(tool)){
+      addScore(scores, "social_content_engine", 1);
+    }
+    if(["Photo/video assets"].includes(tool)){
+      addScore(scores, "visual_asset_generation", 1);
+      addScore(scores, "ai_video_presenters", 1);
+    }
+    if(["Email newsletter tool"].includes(tool)){
+      addScore(scores, "newsletter_reactivation", 1);
+    }
+    if(["Knowledge base","PDFs / documents","FAQ pages","Service guides","Internal manuals","Training material"].includes(tool)){
+      addScore(scores, "rag_knowledge_assistant", 2);
+    }
   });
 
   const desiredMap = {
@@ -270,11 +403,68 @@ function scoreAnswers(){
     "Chase quotes and follow-ups":"followup_automation",
     "Send reminders":"followup_automation",
     "Create a clean dashboard":"dashboard_visibility",
+    "Improve website conversion":"website_conversion",
+    "Build a RAG / knowledge assistant":"rag_knowledge_assistant",
+    "Improve ads and lead tracking":"ad_engine_growth",
+    "Improve social content":"social_content_engine",
+    "Create better images or videos":"visual_asset_generation",
+    "Reactivate past customers":"newsletter_reactivation",
     "Join up disconnected systems":"systems_integration"
   };
   const desired = desiredMap[state.answers.desired_first_improvement];
-  if(desired) addScore(scores, desired, 5);
-  if(state.answers.desired_first_improvement === "Not sure - recommend the best first step") addScore(scores, "custom_operating_system", 2);
+  if(desired) addScore(scores, desired, 2);
+  if(state.answers.desired_first_improvement === "Not sure - recommend the best first step") addScore(scores, "custom_operating_system", 1);
+
+  const notesText = Object.values(state.notes).join(" ").toLowerCase();
+  const answerText = Object.values(state.answers).flat().join(" ").toLowerCase();
+  const combined = notesText + " " + answerText;
+  const busyIntent = ["busy","unable to answer","do not answer","don't answer","dont answer","not answer","working","driving","with customers","in time"].some(term => combined.includes(term));
+  const callIntent = ["missed call","missed calls","slow replies","call","calls","phone","not answering"].some(term => combined.includes(term));
+  const appointmentIntent = ["appointment","appointments","booking","bookings","preferred time","site visit","schedule"].some(term => combined.includes(term));
+  const websiteWeak = ["No","Not sure","We do not have a proper website"].includes(state.answers.website_conversion);
+  if(websiteWeak && (state.answers.missed_calls === "Yes" || state.answers.booking_control === "Yes" || state.answers.customer_response === "Yes" || callIntent || appointmentIntent)){
+    addScore(scores, "website_conversion", 8);
+  }else if(websiteWeak){
+    addScore(scores, "website_conversion", 3);
+  }
+  const ragTerms = ["documents","document","pdf","manual","manuals","knowledge","faq","faqs","policy","policies","training","prices","price list","service guide","support answers","website assistant","knowledge assistant","rag"];
+  if(state.answers.rag_knowledge === "Yes" || ragTerms.some(term => combined.includes(term))){
+    addScore(scores, "rag_knowledge_assistant", 9);
+  }else if(state.answers.rag_knowledge === "Not sure"){
+    addScore(scores, "rag_knowledge_assistant", 2);
+  }
+  const marketingNotes = [state.notes.marketing_spend,state.notes.paid_ads_tracking].join(" ").toLowerCase();
+  const adTerms = ["google ads","facebook ads","instagram ads","cpc","cost per lead","cost-per-lead","campaign","campaigns","agency","paid ads","lead generation","monthly spend","directories","seo"];
+  if(state.answers.marketing_spend === "Yes") addScore(scores, "ad_engine_growth", 3);
+  if(state.answers.marketing_spend === "We have tried but it did not work well") addScore(scores, "ad_engine_growth", 7);
+  if(["No","Not sure","We track it badly"].includes(state.answers.paid_ads_tracking)) addScore(scores, "ad_engine_growth", 5);
+  if(adTerms.some(term => combined.includes(term) || marketingNotes.includes(term))) addScore(scores, "ad_engine_growth", 5);
+
+  const socialTerms = ["facebook","instagram","tiktok","linkedin","posts","reels","content","captions","social proof"];
+  if(["No","Not sure","We post when we remember"].includes(state.answers.social_media)) addScore(scores, "social_content_engine", state.answers.social_media === "We post when we remember" ? 6 : 4);
+  if(socialTerms.some(term => combined.includes(term))) addScore(scores, "social_content_engine", 4);
+
+  const visualTerms = ["photography","photo","photos","images","graphics","product images","service images","before and after","portfolio","branded graphics"];
+  if(state.answers.visual_assets === "Yes") addScore(scores, "visual_asset_generation", 7);
+  if(state.answers.visual_assets === "Not sure") addScore(scores, "visual_asset_generation", 2);
+  if(visualTerms.some(term => combined.includes(term))) addScore(scores, "visual_asset_generation", 5);
+
+  const videoTerms = ["video","videos","explainer","explainers","presenter","talking head","lip sync","spokesperson","demo videos","sales videos"];
+  if(state.answers.video_presenter === "Yes") addScore(scores, "ai_video_presenters", 7);
+  if(state.answers.video_presenter === "Not sure") addScore(scores, "ai_video_presenters", 3);
+  if(videoTerms.some(term => combined.includes(term))) addScore(scores, "ai_video_presenters", 5);
+
+  const reactivationTerms = ["newsletter","email campaign","email campaigns","old leads","past customers","reminders","reactivation","repeat work","repeat-service","repeat service","updates"];
+  if(state.answers.newsletter_reactivation === "We should, but we do not") addScore(scores, "newsletter_reactivation", 7);
+  if(["No","Not sure"].includes(state.answers.newsletter_reactivation)) addScore(scores, "newsletter_reactivation", 4);
+  if(reactivationTerms.some(term => combined.includes(term))) addScore(scores, "newsletter_reactivation", 5);
+
+  if((state.answers.missed_calls === "Yes" || callIntent) && (state.answers.booking_control === "Yes" || appointmentIntent)){
+    addScore(scores, "calling_appointment_capture", 9);
+  }
+  if(busyIntent && (callIntent || appointmentIntent)){
+    addScore(scores, "calling_appointment_capture", 6);
+  }
   return scores;
 }
 
@@ -288,6 +478,152 @@ function recommendation(){
     "May recover missed opportunities by turning loose enquiries into owned actions.",
     "Helps staff work from one cleaner queue instead of relying on memory and scattered notes."
   ];
+  if(winner === "calling_appointment_capture"){
+    return {
+      scores,
+      winner,
+      focus: "AI Calling & Appointment Capture Service",
+      why: "Your answers suggest the strongest opportunity is using an AI calling/reception workflow to capture appointment enquiries when you are busy, working, driving, with customers, or unable to answer in time.",
+      top: [
+        "Capture missed appointment enquiries",
+        "Turn calls into booking or callback records",
+        "Respond faster while the team is busy"
+      ],
+      benefits: [
+        "May recover appointment opportunities that are currently lost when nobody can answer quickly.",
+        "Helps customers get a faster response and a clearer next step.",
+        "Reduces reliance on memory, voicemail and scattered callback notes."
+      ],
+      costSaving: [
+        "May reduce time spent chasing callers back manually.",
+        "Can reduce duplicated admin when call details are captured once.",
+        "Improves visibility before adding front-desk capacity."
+      ],
+      workflow: workflows.calling_appointment_capture,
+      delivery: "Managed AI Reception / Appointment Capture Service"
+    };
+  }
+  if(winner === "website_conversion"){
+    return {
+      scores,
+      winner,
+      focus: "Website Conversion & Workflow Build",
+      why: "Your answers suggest the website may not be doing enough to turn visitors into enquiries, bookings or clean customer records. The opportunity is not just a better-looking website, but a controlled front-end journey that captures the right details and routes them into a useful workflow.",
+      top: [
+        "Turn website visits into structured enquiries",
+        "Improve trust and conversion",
+        "Connect the website to booking, callback or follow-up workflows"
+      ],
+      benefits: [
+        "More visitors pushed toward enquiry or booking action",
+        "Cleaner customer/job records from website forms",
+        "Less back-and-forth after weak enquiries",
+        "Better first impression and trust",
+        "Website connected to follow-up, booking or callback workflows",
+        "Less reliance on manual copying from forms and emails"
+      ],
+      costSaving: [
+        "May reduce time spent manually qualifying weak website enquiries.",
+        "Can reduce copying from forms and emails into separate tools.",
+        "Helps the website create cleaner handovers before adding admin capacity."
+      ],
+      workflow: workflows.website_conversion,
+      delivery: "Controlled Website & Workflow Build"
+    };
+  }
+  if(winner === "rag_knowledge_assistant"){
+    return {
+      scores,
+      winner,
+      focus: "RAG Knowledge Assistant",
+      why: "Your answers suggest customers or staff need faster answers from documents, FAQs, service information, policies, manuals or internal knowledge. A controlled knowledge assistant could help people find the right information without searching through files, inboxes or asking the same questions repeatedly.",
+      top: [
+        "Make approved knowledge easier to access",
+        "Reduce repeated staff/customer questions",
+        "Improve consistency of answers"
+      ],
+      benefits: [
+        "Faster answers from approved business knowledge",
+        "Less repeated questioning for staff",
+        "Better customer self-service",
+        "More consistent responses",
+        "Easier onboarding and training support",
+        "Reduced time spent searching documents or old messages"
+      ],
+      costSaving: [
+        "May reduce time spent searching documents or old messages.",
+        "Can reduce repeated internal questions and handover delays.",
+        "Helps approved knowledge work harder without relying on one person."
+      ],
+      workflow: workflows.rag_knowledge_assistant,
+      delivery: "RAG Knowledge Assistant / Controlled Knowledge Build"
+    };
+  }
+  if(winner === "ad_engine_growth"){
+    return {
+      scores,
+      winner,
+      focus: "Ad Engine Growth System",
+      why: "Your answers suggest there may be an opportunity to improve how marketing spend turns into tracked enquiries, leads and follow-up. The aim is not just more ads, but better capture, measurement and conversion from paid attention.",
+      top: ["Track paid enquiries more clearly","Improve ad-to-lead conversion","Connect campaign responses to follow-up workflow"],
+      benefits: ["Better visibility of marketing spend and response","Clearer lead capture from campaigns","Less wasted traffic from weak landing pages","Faster follow-up after ad enquiries","Better understanding of cost-per-lead or cost-per-booking","Campaign assets and pages that connect into workflow"],
+      costSaving: ["May reduce wasted spend from weak tracking or landing pages.","Can reduce manual campaign follow-up gaps.","Helps focus budget around enquiries that can be measured."],
+      workflow: workflows.ad_engine_growth,
+      delivery: "Ad Engine / Growth Workflow Build"
+    };
+  }
+  if(winner === "social_content_engine"){
+    return {
+      scores,
+      winner,
+      focus: "Social Content Engine",
+      why: "Your answers suggest the business could benefit from a more consistent content system that creates trust, keeps the brand active and supports enquiry generation.",
+      top: ["Create consistent social proof","Promote services and offers more clearly","Support campaigns with reusable content"],
+      benefits: ["More consistent posting","Stronger trust and visibility","Easier promotion of services and offers","Reusable content themes","Less time spent thinking up posts","Better support for campaigns and landing pages"],
+      costSaving: ["May reduce time spent starting content from scratch.","Can make campaign and service content more reusable.","Helps reduce sporadic one-off content effort."],
+      workflow: workflows.social_content_engine,
+      delivery: "Managed Social Content / AI Content Workflow"
+    };
+  }
+  if(winner === "visual_asset_generation"){
+    return {
+      scores,
+      winner,
+      focus: "AI Visual Asset Pack",
+      why: "Your answers suggest better images, graphics or service visuals could help the business explain and sell its services more clearly.",
+      top: ["Improve service and product visuals","Create campaign-ready graphics","Support website and social content"],
+      benefits: ["Better first impression","Stronger product or service pages","More usable campaign visuals","Better social media material","Less dependence on expensive one-off design work","Faster production of visual assets for new offers"],
+      costSaving: ["May reduce one-off design bottlenecks.","Can create reusable asset sets for repeated campaigns.","Helps new offers go live with fewer visual gaps."],
+      workflow: workflows.visual_asset_generation,
+      delivery: "AI Image / Visual Asset Build"
+    };
+  }
+  if(winner === "ai_video_presenters"){
+    return {
+      scores,
+      winner,
+      focus: "AI Video Presenter & Explainer System",
+      why: "Your answers suggest short explainers, AI presenter videos or talking-head style content could help customers understand the offer and build trust before they enquire.",
+      top: ["Explain services more clearly","Build trust before enquiries","Create reusable video assets"],
+      benefits: ["More engaging website and social content","Clearer explanation of services","Reusable video assets for campaigns","Better trust before a call or booking","Faster production than traditional video shoots","Useful for onboarding, FAQs and sales journeys"],
+      costSaving: ["May reduce reliance on traditional shoots for every explainer.","Can reuse video scripts across pages and campaigns.","Helps answer common questions before a call."],
+      workflow: workflows.ai_video_presenters,
+      delivery: "AI Presenter / Video Content Build"
+    };
+  }
+  if(winner === "newsletter_reactivation"){
+    return {
+      scores,
+      winner,
+      focus: "Customer Reactivation & Newsletter Workflow",
+      why: "Your answers suggest past customers, old leads or repeat-service opportunities may not be followed up consistently. A simple reactivation workflow could help keep the business in front of people who already know it.",
+      top: ["Prompt repeat opportunities","Use existing customer relationships better","Create regular customer touchpoints"],
+      benefits: ["More repeat opportunities prompted","Better use of existing customer relationships","Less reliance on memory","Regular customer touchpoints","More consistent reminder and update campaigns","Stronger long-term service visibility"],
+      costSaving: ["May reduce dependence on brand-new cold enquiries.","Can make follow-up less manual and memory-based.","Helps reuse existing customer lists more effectively."],
+      workflow: workflows.newsletter_reactivation,
+      delivery: "Customer Reactivation / Newsletter Workflow"
+    };
+  }
   const costSaving = [
     "May reduce time spent chasing, re-keying and manually coordinating work.",
     "Improves visibility before adding headcount.",
@@ -307,6 +643,52 @@ function recommendation(){
 }
 
 function listHtml(items){ return items.map(item => "<li>" + escapeHtml(item) + "</li>").join(""); }
+function gutFeelBucket(){
+  const map = {
+    "Capture missed enquiries":"missed_enquiry_recovery",
+    "Reduce admin":"admin_reduction",
+    "Improve booking control":"booking_control",
+    "Chase quotes and follow-ups":"followup_automation",
+    "Send reminders":"followup_automation",
+    "Create a clean dashboard":"dashboard_visibility",
+    "Improve website conversion":"website_conversion",
+    "Build a RAG / knowledge assistant":"rag_knowledge_assistant",
+    "Improve ads and lead tracking":"ad_engine_growth",
+    "Improve social content":"social_content_engine",
+    "Create better images or videos":"visual_asset_generation",
+    "Reactivate past customers":"newsletter_reactivation",
+    "Join up disconnected systems":"systems_integration"
+  };
+  return map[state.answers.desired_first_improvement] || "";
+}
+function gutFeelMatches(rec){
+  const gut = gutFeelBucket();
+  if(!gut || state.answers.desired_first_improvement === "Not sure - recommend the best first step") return false;
+  if(gut === rec.winner) return true;
+  if(["missed_enquiry_recovery","booking_control"].includes(gut) && rec.winner === "calling_appointment_capture") return true;
+  return false;
+}
+function gutFeelMessage(rec){
+  return gutFeelMatches(rec)
+    ? "Your instinct lines up with the assessment. This is likely a strong first workflow to explore."
+    : "Your instinct is useful, but your answers suggest another opportunity may be more urgent or commercially valuable first.";
+}
+function secondaryOpportunities(rec){
+  const labels = {
+    website_conversion:"Website conversion and enquiry capture",
+    rag_knowledge_assistant:"RAG / knowledge assistant",
+    ad_engine_growth:"Ad Engine / paid campaign workflow",
+    social_content_engine:"Social content engine",
+    visual_asset_generation:"Visual asset generation",
+    ai_video_presenters:"AI video presenter content",
+    newsletter_reactivation:"Newsletter / customer reactivation"
+  };
+  return Object.entries(rec.scores)
+    .filter(([key, score]) => key !== rec.winner && score >= 4 && labels[key])
+    .sort((a,b) => b[1] - a[1])
+    .slice(0,3)
+    .map(([key]) => labels[key]);
+}
 
 function callNotes(rec){
   const allNotes = Object.entries(state.notes).filter(([,value]) => value).map(([key,value]) => key.replace(/_/g," ") + ": " + value).join("\\n");
@@ -321,14 +703,86 @@ function callNotes(rec){
     "Follow-up weakness: " + (state.answers.follow_up || "") + (state.notes.follow_up ? " - " + state.notes.follow_up : ""),
     "Scattered information: " + (state.answers.scattered_info || "") + (state.notes.scattered_info ? " - " + state.notes.scattered_info : ""),
     "Current tools: " + asArray(state.answers.current_tools).join(", "),
-    "Desired first improvement: " + (state.answers.desired_first_improvement || ""),
+    "Website / online enquiry issues: " + (state.answers.website_conversion || "") + (state.notes.website_conversion ? " - " + state.notes.website_conversion : ""),
+    "Marketing / ads: " + (state.answers.marketing_spend || "") + (state.notes.marketing_spend ? " - " + state.notes.marketing_spend : ""),
+    "CPC / cost-per-lead: " + (state.answers.paid_ads_tracking || "") + (state.notes.paid_ads_tracking ? " - " + state.notes.paid_ads_tracking : ""),
+    "Social media: " + (state.answers.social_media || "") + (state.notes.social_media ? " - " + state.notes.social_media : ""),
+    "Visual assets: " + (state.answers.visual_assets || "") + (state.notes.visual_assets ? " - " + state.notes.visual_assets : ""),
+    "Video / AI presenter: " + (state.answers.video_presenter || "") + (state.notes.video_presenter ? " - " + state.notes.video_presenter : ""),
+    "Newsletter / reactivation: " + (state.answers.newsletter_reactivation || "") + (state.notes.newsletter_reactivation ? " - " + state.notes.newsletter_reactivation : ""),
+    "RAG / knowledge assistant: " + (state.answers.rag_knowledge || "") + (state.notes.rag_knowledge ? " - " + state.notes.rag_knowledge : ""),
+    "Gut feel: " + (state.answers.desired_first_improvement || ""),
     "Additional notes: " + allNotes,
     "Recommended focus: " + rec.focus,
+    "Primary recommendation: " + rec.focus,
+    "Secondary opportunities: " + (secondaryOpportunities(rec).join(", ") || "None highlighted"),
+    "Assessment recommendation: " + rec.focus,
+    "Gut feel match: " + gutFeelMessage(rec),
+    "Website recommendation: " + (rec.winner === "website_conversion" ? rec.focus : (rec.scores.website_conversion >= 4 ? "Secondary opportunity - Website conversion and enquiry capture" : "Not a leading opportunity from this fact-find")),
+    "Knowledge assistant recommendation: " + (rec.winner === "rag_knowledge_assistant" ? rec.focus : (rec.scores.rag_knowledge_assistant >= 4 ? "Secondary opportunity - RAG / knowledge assistant for FAQs and documents" : "Not a leading opportunity from this fact-find")),
     "Top improvement areas: " + rec.top.join(", "),
     "Potential benefits: " + rec.benefits.join(" "),
+    "Potential cost-saving areas: " + rec.costSaving.join(" "),
     "Suggested first workflow: " + rec.workflow,
     "Recommended delivery model: " + rec.delivery
   ].join("\\n");
+}
+
+function buildDraftReport(rec, email, extraNotes){
+  const summary = callNotes(rec);
+  return {
+    draft_subject: "Your Frontline AI Business Fact-Find Report",
+    draft_body: [
+      "Hi,",
+      "",
+      "Thanks for completing the Frontline AI Business Fact-Find. Based on your answers, this is the first opportunity we would look at.",
+      "",
+      "Recommended focus:",
+      rec.focus,
+      "",
+      "Why this matters:",
+      rec.why,
+      "",
+      "Top improvement areas:",
+      rec.top.map((item, index) => (index + 1) + ". " + item).join("\\n"),
+      "",
+      "Potential benefits:",
+      rec.benefits.map(item => "- " + item).join("\\n"),
+      "",
+      "Potential cost-saving areas:",
+      rec.costSaving.map(item => "- " + item).join("\\n"),
+      "",
+      "Suggested first workflow:",
+      rec.workflow,
+      "",
+      "Recommended delivery model:",
+      rec.delivery,
+      "",
+      "Gut feel comparison:",
+      "Your gut feel: " + (state.answers.desired_first_improvement || ""),
+      "Frontline AI recommendation: " + rec.focus,
+      "Gut feel match: " + gutFeelMessage(rec),
+      "",
+      "Wider opportunity findings:",
+      "Website / online enquiry issues: " + (state.answers.website_conversion || "") + (state.notes.website_conversion ? " - " + state.notes.website_conversion : ""),
+      "Marketing spend / ads: " + (state.answers.marketing_spend || "") + (state.notes.marketing_spend ? " - " + state.notes.marketing_spend : ""),
+      "CPC or cost-per-lead notes: " + (state.answers.paid_ads_tracking || "") + (state.notes.paid_ads_tracking ? " - " + state.notes.paid_ads_tracking : ""),
+      "Social media consistency: " + (state.answers.social_media || "") + (state.notes.social_media ? " - " + state.notes.social_media : ""),
+      "Visual asset needs: " + (state.answers.visual_assets || "") + (state.notes.visual_assets ? " - " + state.notes.visual_assets : ""),
+      "Video / AI presenter opportunity: " + (state.answers.video_presenter || "") + (state.notes.video_presenter ? " - " + state.notes.video_presenter : ""),
+      "Newsletter / reactivation opportunity: " + (state.answers.newsletter_reactivation || "") + (state.notes.newsletter_reactivation ? " - " + state.notes.newsletter_reactivation : ""),
+      "RAG / knowledge assistant opportunity: " + (state.answers.rag_knowledge || "") + (state.notes.rag_knowledge ? " - " + state.notes.rag_knowledge : ""),
+      "Primary recommendation: " + rec.focus,
+      "Secondary opportunities: " + (secondaryOpportunities(rec).join(", ") || "None highlighted"),
+      "",
+      "Your fact-find summary:",
+      summary,
+      "",
+      extraNotes ? "Extra notes:\\n" + extraNotes + "\\n" : "",
+      "Book a Fact-Find Call if you want to talk this through:",
+      window.location.origin + "/book-demo.html?source=business-fact-find&fact_find=1"
+    ].filter(Boolean).join("\\n")
+  };
 }
 
 function showResult(){
@@ -340,6 +794,19 @@ function showResult(){
   document.getElementById("costSaving").innerHTML = listHtml(rec.costSaving);
   document.getElementById("workflow").textContent = rec.workflow;
   document.getElementById("delivery").textContent = rec.delivery;
+  document.getElementById("gutFeelChoice").textContent = state.answers.desired_first_improvement || "Not answered";
+  document.getElementById("assessmentRecommendation").textContent = rec.focus;
+  document.getElementById("gutFeelMessage").textContent = gutFeelMessage(rec);
+  const secondaries = secondaryOpportunities(rec);
+  const secondaryBlock = document.getElementById("secondaryBlock");
+  const secondaryList = document.getElementById("secondaryOpportunities");
+  if(secondaries.length){
+    secondaryList.innerHTML = secondaries.map(item => "<span>" + escapeHtml(item) + "</span>").join("");
+    secondaryBlock.style.display = "block";
+  }else{
+    secondaryList.innerHTML = "";
+    secondaryBlock.style.display = "none";
+  }
   panel.classList.add("showResult");
   try{
     localStorage.setItem("frontlineBusinessFactFindV1", JSON.stringify({answers:state.answers, notes:state.notes, recommendation:rec, completed_at:new Date().toISOString()}));
@@ -347,13 +814,10 @@ function showResult(){
   }catch(error){}
 }
 
-stepNotes.addEventListener("input", () => { state.notes[currentStep().id] = stepNotes.value.trim(); });
-backBtn.addEventListener("click", () => { if(state.index > 0){ state.index -= 1; renderStep(); } });
-nextBtn.addEventListener("click", () => {
-  state.notes[currentStep().id] = stepNotes.value.trim();
-  if(state.index < steps.length - 1){ state.index += 1; renderStep(); return; }
-  showResult();
-});
+stepNotes.addEventListener("focus", () => { window.clearTimeout(state.autoAdvanceTimer); });
+stepNotes.addEventListener("input", () => { window.clearTimeout(state.autoAdvanceTimer); state.notes[currentStep().id] = stepNotes.value.trim(); });
+backBtn.addEventListener("click", () => { window.clearTimeout(state.autoAdvanceTimer); if(state.index > 0){ state.index -= 1; renderStep(); } });
+nextBtn.addEventListener("click", () => { window.clearTimeout(state.autoAdvanceTimer); goNext(); });
 document.getElementById("reviewBtn").addEventListener("click", () => { panel.classList.remove("showResult"); renderStep(); });
 document.getElementById("bookBtn").addEventListener("click", () => {
   const rec = recommendation();
@@ -370,6 +834,85 @@ document.getElementById("bookBtn").addEventListener("click", () => {
   }catch(error){}
   const params = new URLSearchParams({source:"business-fact-find", fact_find:"1", product_interest:"Custom AI Worker"});
   window.location.href = "/book-demo.html?" + params.toString();
+});
+const reportBox = document.getElementById("reportBox");
+const reportPreview = document.getElementById("reportPreview");
+const reportStatus = document.getElementById("reportStatus");
+const reportEmail = document.getElementById("reportEmail");
+const reportNotes = document.getElementById("reportNotes");
+const sendReportBtn = document.getElementById("sendReportBtn");
+let currentDraft = null;
+
+document.getElementById("showReportBtn").addEventListener("click", () => {
+  reportBox.classList.add("show");
+  reportStatus.textContent = "";
+  reportStatus.className = "reportStatus";
+  const contactEmail = document.getElementById("contactEmail").value.trim();
+  if(contactEmail && !reportEmail.value.trim()) reportEmail.value = contactEmail;
+  reportEmail.focus();
+});
+
+document.getElementById("previewReportBtn").addEventListener("click", () => {
+  const email = reportEmail.value.trim();
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+    reportStatus.className = "reportStatus err";
+    reportStatus.textContent = "Add a valid email address first.";
+    return;
+  }
+  const rec = recommendation();
+  currentDraft = buildDraftReport(rec, email, reportNotes.value.trim());
+  document.getElementById("draftTo").textContent = email;
+  document.getElementById("draftSubject").textContent = currentDraft.draft_subject;
+  document.getElementById("draftBody").textContent = currentDraft.draft_body;
+  reportPreview.classList.add("show");
+  reportStatus.textContent = "";
+  reportStatus.className = "reportStatus";
+});
+
+document.getElementById("editReportBtn").addEventListener("click", () => {
+  reportPreview.classList.remove("show");
+  reportStatus.textContent = "";
+  reportStatus.className = "reportStatus";
+  reportEmail.focus();
+});
+
+sendReportBtn.addEventListener("click", async () => {
+  const email = reportEmail.value.trim();
+  if(!currentDraft){
+    reportStatus.className = "reportStatus err";
+    reportStatus.textContent = "Generate the draft report preview first.";
+    return;
+  }
+  sendReportBtn.disabled = true;
+  reportStatus.className = "reportStatus";
+  reportStatus.textContent = "Sending report request...";
+  const rec = recommendation();
+  const factFind = {answers:state.answers, notes:state.notes, recommendation:rec};
+  const payload = {
+    email,
+    extra_notes: reportNotes.value.trim(),
+    draft_subject: currentDraft.draft_subject,
+    draft_body: currentDraft.draft_body,
+    fact_find: factFind,
+    call_notes: callNotes(rec),
+    source: "business-fact-find-report-request"
+  };
+  try{
+    const response = await fetch("/api/business-fact-find/report-request", {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify(payload)
+    });
+    const data = await response.json().catch(() => ({}));
+    if(!response.ok || !data.ok) throw new Error((data.errors || [data.error] || ["Request failed"]).filter(Boolean).join(" "));
+    reportStatus.className = "reportStatus ok";
+    reportStatus.innerHTML = "Thanks - we've captured your report request. If you decide you'd like to talk it through, you can still <a href=\"/book-demo.html?source=business-fact-find&fact_find=1\">book a fact-find call</a>.";
+  }catch(error){
+    reportStatus.className = "reportStatus err";
+    reportStatus.innerHTML = "Sorry, the report request could not be sent. Please try again or <a href=\"/book-demo.html?source=business-fact-find&fact_find=1\">book a fact-find call</a>.";
+  }finally{
+    sendReportBtn.disabled = false;
+  }
 });
 
 renderStep();
