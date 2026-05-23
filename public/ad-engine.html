@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-exact-v2">
+  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260523-sitescale-v1">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
   <style>
     :root{--bg:#03070f;--panel:rgba(8,18,36,.72);--text:#f7fbff;--muted:#aebbd0;--line:rgba(112,184,255,.25);--blue:#1678ff;--cyan:#62d8ff;--violet:#915cff;--gold:#f2dc9d}
@@ -34,7 +34,7 @@
     .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet));border-color:rgba(255,255,255,.26)}
     .btn:hover{transform:translateY(-2px);border-color:rgba(125,205,255,.72);box-shadow:0 18px 48px rgba(0,0,0,.32),0 0 30px rgba(38,132,255,.22)}
     .adEngineHero{padding:86px 0 44px}
-    .adEngineHeroGrid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(420px,1.18fr);gap:42px;align-items:center}
+    .adEngineHeroGrid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(420px,1.18fr);gap:42px;align-items:start}
     .adEnginePreviewFrame{position:relative;border:1px solid rgba(242,220,157,.34);border-radius:34px;padding:14px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(4,10,20,.74));box-shadow:0 34px 100px rgba(0,0,0,.42),0 0 60px rgba(242,220,157,.14),inset 0 1px 0 rgba(255,255,255,.10);overflow:hidden}
     .adEnginePreviewFrame:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 12%,rgba(242,220,157,.16),transparent 34%),radial-gradient(circle at 88% 38%,rgba(98,216,255,.12),transparent 34%);pointer-events:none}
     .adEnginePreviewFrame img{position:relative;display:block;width:100%;border-radius:24px;background:#06101d}
@@ -45,10 +45,18 @@
     .adEngineSection h2{font-size:clamp(34px,4vw,58px);line-height:1.02;margin:14px 0 0}
     .adEngineSection p{margin:0;color:#d0dae8;font-size:17px;line-height:1.66}
     .adEnginePrompt{color:#f2dc9d!important;font-size:13px!important;font-weight:950;letter-spacing:.08em;text-transform:uppercase}
-    .adEngineModules{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
-    .adEngineModule{min-height:76px;border:1px solid rgba(242,220,157,.24);border-radius:22px;color:#fff;background:linear-gradient(145deg,rgba(12,24,44,.82),rgba(5,12,24,.74));box-shadow:inset 0 1px 0 rgba(255,255,255,.06);font:inherit;font-weight:950;cursor:pointer;text-align:left;padding:18px 20px;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease}
-    .adEngineModule small{display:block;margin-bottom:6px;color:#8fd4ff;font-size:11px;font-weight:950;letter-spacing:.14em;text-transform:uppercase}
-    .adEngineModule:hover,.adEngineModule:focus-visible{transform:translateY(-2px);border-color:rgba(242,220,157,.54);background:linear-gradient(145deg,rgba(242,220,157,.13),rgba(7,15,29,.82));box-shadow:0 18px 46px rgba(0,0,0,.30),0 0 28px rgba(242,220,157,.13);outline:none}
+    .adEngineModules{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    .adEngineModule{--moduleAccent:#62d8ff;position:relative;display:flex;flex-direction:column;min-height:250px;border:1px solid rgba(125,205,255,.20);border-radius:24px;color:#fff;background:linear-gradient(180deg,rgba(9,22,42,.92),rgba(4,10,22,.88));box-shadow:0 22px 60px rgba(0,0,0,.30),inset 0 1px 0 rgba(255,255,255,.07);font:inherit;cursor:pointer;text-align:left;padding:0;overflow:hidden;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease}
+    .adEngineModule:before{content:"";display:block;height:76px;background:radial-gradient(circle at 18% 26%,color-mix(in srgb,var(--moduleAccent) 34%,transparent),transparent 34%),linear-gradient(135deg,color-mix(in srgb,var(--moduleAccent) 26%,rgba(10,24,46,.95)),rgba(5,12,24,.94));border-bottom:1px solid rgba(255,255,255,.08)}
+    .adEngineModuleIcon{position:absolute;top:18px;left:18px;display:grid;place-items:center;width:44px;height:44px;border:1px solid color-mix(in srgb,var(--moduleAccent) 46%,rgba(255,255,255,.12));border-radius:15px;background:linear-gradient(145deg,color-mix(in srgb,var(--moduleAccent) 28%,rgba(255,255,255,.08)),rgba(3,8,18,.78));box-shadow:0 16px 32px rgba(0,0,0,.28),0 0 24px color-mix(in srgb,var(--moduleAccent) 24%,transparent);color:#fff;font-size:13px;font-weight:950;letter-spacing:.04em}
+    .adEngineModuleBody{display:flex;flex:1;flex-direction:column;padding:18px}
+    .adEngineModuleLabel{display:block;margin-bottom:8px;color:color-mix(in srgb,var(--moduleAccent) 76%,#fff);font-size:11px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}
+    .adEngineModuleTitle{display:block;margin-bottom:8px;color:#fff;font-size:22px;font-weight:950;line-height:1.15}
+    .adEngineModuleDesc{display:block;color:#aebbd0;font-size:14px;font-weight:650;line-height:1.5}
+    .adEngineModuleCta{display:flex;align-items:center;justify-content:center;width:100%;min-height:42px;margin-top:auto;border:1px solid color-mix(in srgb,var(--moduleAccent) 48%,rgba(255,255,255,.12));border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--moduleAccent) 74%,#0b1528),color-mix(in srgb,var(--moduleAccent) 42%,#10213d));box-shadow:0 14px 34px color-mix(in srgb,var(--moduleAccent) 18%,transparent);color:#06101d;font-size:13px;font-weight:950}
+    .adEngineModule:hover,.adEngineModule:focus-visible{transform:translateY(-4px);border-color:color-mix(in srgb,var(--moduleAccent) 62%,rgba(255,255,255,.16));background:linear-gradient(180deg,rgba(12,28,52,.96),rgba(5,12,24,.92));box-shadow:0 28px 76px rgba(0,0,0,.42),0 0 34px color-mix(in srgb,var(--moduleAccent) 18%,transparent),inset 0 1px 0 rgba(255,255,255,.10);outline:none}
+    .adEngineModule:hover .adEngineModuleCta,.adEngineModule:focus-visible .adEngineModuleCta{filter:brightness(1.08);box-shadow:0 18px 42px color-mix(in srgb,var(--moduleAccent) 26%,transparent)}
+    .adEngineModule.isTeal{--moduleAccent:#35e6b5}.adEngineModule.isGold{--moduleAccent:#f2dc73}.adEngineModule.isPink{--moduleAccent:#d96cff}.adEngineModule.isOrange{--moduleAccent:#ff9d42}.adEngineModule.isBlue{--moduleAccent:#4f9cff}.adEngineModule.isCyan{--moduleAccent:#62d8ff}.adEngineModule.isPurple{--moduleAccent:#9b6cff}.adEngineModule.isCoral{--moduleAccent:#ff6f7d}
     .adEngineNote{margin-top:22px!important;padding:18px 20px;border:1px solid rgba(242,220,157,.22);border-radius:24px;background:linear-gradient(145deg,rgba(242,220,157,.09),rgba(8,14,24,.58));color:#f4e3aa!important;font-size:14px!important}
     .adEngineFinal{padding:62px 0 90px}
     .adEngineFinalBox{border:1px solid rgba(242,220,157,.26);border-radius:34px;padding:30px;background:linear-gradient(145deg,rgba(5,14,30,.78),rgba(8,16,30,.66));display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 30px 90px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08)}
@@ -56,16 +64,29 @@
     .adEngineFinalBox p{margin:0;color:#b9c6d6}
     .adEngineModal{position:fixed;inset:0;z-index:500000;display:none;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 18% 14%,rgba(242,220,157,.18),transparent 34%),rgba(0,4,12,.84);backdrop-filter:blur(18px)}
     .adEngineModal.isOpen{display:flex}
-    .adEngineModalPanel{position:relative;width:min(680px,94vw);border:1px solid rgba(242,220,157,.38);border-radius:30px;padding:30px;background:linear-gradient(145deg,rgba(8,18,35,.98),rgba(3,8,18,.97));box-shadow:0 44px 140px rgba(0,0,0,.72),0 0 70px rgba(242,220,157,.20),inset 0 1px 0 rgba(255,255,255,.10)}
+    .adEngineModalPanel{position:relative;width:min(780px,94vw);max-height:min(86vh,820px);overflow:auto;border:1px solid rgba(242,220,157,.38);border-radius:30px;padding:30px;background:linear-gradient(145deg,rgba(8,18,35,.98),rgba(3,8,18,.97));box-shadow:0 44px 140px rgba(0,0,0,.72),0 0 70px rgba(242,220,157,.20),inset 0 1px 0 rgba(255,255,255,.10)}
     .adEngineModalClose{position:absolute;top:14px;right:14px;width:42px;height:42px;border:1px solid rgba(242,220,157,.34);border-radius:15px;color:#fff;background:rgba(4,12,25,.82);font-size:24px;line-height:1;cursor:pointer}
     .adEngineModalClose:hover,.adEngineModalClose:focus-visible{outline:none;border-color:rgba(242,220,157,.72);box-shadow:0 0 24px rgba(242,220,157,.18)}
     .adEngineModalKicker{display:inline-flex;margin-bottom:12px;color:#f2dc9d;font-size:11px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}
     .adEngineModalTitle{font-family:Georgia,serif;font-size:clamp(32px,4vw,48px);line-height:1;margin:0 48px 16px 0;font-weight:500}
+    .modalModuleVisual{display:none;margin:0 0 22px;border:1px solid rgba(242,220,157,.24);border-radius:26px;padding:12px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(3,8,18,.74));box-shadow:0 22px 58px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}
+    .modalModuleVisual.isActive{display:grid;gap:16px}
+    .modalModuleVisual img{display:block;width:100%;max-height:360px;object-fit:contain;border-radius:18px;background:#06101d}
+    .modalModuleCopy{padding:0 4px 4px}
+    .modalModuleCopy h3{margin:0 0 8px!important;color:#f4e3aa!important;font-size:17px!important;letter-spacing:0!important;text-transform:none!important}
+    .modalModuleCopy p{color:#d4dfec!important;font-size:14px!important;line-height:1.65!important}
+    .modalVideoGallery{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+    .modalVideoGallery img{height:190px;object-fit:cover}
+    .adEngineModalHeadline{margin:-4px 0 20px!important;color:#f4e3aa!important;font-size:18px!important;font-weight:850;line-height:1.45!important}
     .adEngineModalPanel h3{margin:20px 0 8px;color:#f2dc9d;font-size:13px;letter-spacing:.10em;text-transform:uppercase}
     .adEngineModalPanel p{margin:0;color:#cbd8e8;line-height:1.65}
+    .adEngineModalList{display:grid;gap:8px;margin:10px 0 0;padding:0;list-style:none}
+    .adEngineModalList li{position:relative;padding-left:18px;color:#cbd8e8;line-height:1.55}
+    .adEngineModalList li:before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:999px;background:#f2dc9d;box-shadow:0 0 14px rgba(242,220,157,.30)}
     .adEngineBest{margin-top:20px;padding:14px 16px;border:1px solid rgba(242,220,157,.22);border-radius:18px;background:rgba(242,220,157,.08);color:#f4e3aa!important}
+    .adEngineModalFooter{margin-top:18px!important;padding-top:16px;border-top:1px solid rgba(242,220,157,.18);color:#aebbd0!important;font-size:13px!important}
     @media(max-width:980px){.adEngineHeroGrid,.adEngineSectionHead{grid-template-columns:1fr}.adEngineModules{grid-template-columns:repeat(2,1fr)}.adEngineFinalBox{display:block}.adEngineFinalBox .actions{margin-top:20px}}
-    @media(max-width:600px){.wrap{width:min(100% - 28px,1180px)}.nav{border-radius:22px}.brand img{width:40px;height:40px}.adEngineHero{padding:58px 0 30px}section{padding:44px 0}.adEnginePreviewFrame{border-radius:24px;padding:10px}.adEnginePreviewFrame img{border-radius:18px}.adEngineModules{grid-template-columns:1fr}.adEngineModule{min-height:62px}.adEngineModal{padding:14px}.adEngineModalPanel{padding:24px;border-radius:24px}.adEngineModalTitle{margin-right:42px}.adEngineFinal{padding-bottom:70px}}
+    @media(max-width:600px){.wrap{width:min(100% - 28px,1180px)}.nav{border-radius:22px}.brand img{width:40px;height:40px}.adEngineHero{padding:58px 0 30px}section{padding:44px 0}.adEnginePreviewFrame{border-radius:24px;padding:10px}.adEnginePreviewFrame img{border-radius:18px}.adEngineModules{grid-template-columns:1fr}.adEngineModule{min-height:230px}.adEngineModal{padding:14px}.adEngineModalPanel{padding:24px;border-radius:24px}.adEngineModalTitle{margin-right:42px}.modalVideoGallery{grid-template-columns:1fr}.modalVideoGallery img{height:auto;max-height:260px}.adEngineFinal{padding-bottom:70px}}
   </style>
 </head>
 <body>
@@ -106,15 +127,42 @@
             <p class="adEnginePrompt">Click a module below to see what it does.</p>
           </div>
           <div class="adEngineModules" aria-label="AdEngine modules">
-            <button class="adEngineModule" type="button" data-adengine-module="research"><small>01</small>Research</button>
-            <button class="adEngineModule" type="button" data-adengine-module="winners"><small>02</small>Winners</button>
-            <button class="adEngineModule" type="button" data-adengine-module="advertiser"><small>03</small>Advertiser</button>
-            <button class="adEngineModule" type="button" data-adengine-module="create"><small>04</small>Create</button>
-            <button class="adEngineModule" type="button" data-adengine-module="results"><small>05</small>Results</button>
-            <button class="adEngineModule" type="button" data-adengine-module="library"><small>06</small>Library</button>
-            <button class="adEngineModule" type="button" data-adengine-module="clone"><small>07</small>Clone</button>
-            <button class="adEngineModule" type="button" data-adengine-module="socials"><small>08</small>Socials</button>
-            <button class="adEngineModule" type="button" data-adengine-module="video-gen"><small>09</small>Video Gen</button>
+            <button class="adEngineModule isTeal" type="button" data-adengine-module="research">
+              <span class="adEngineModuleIcon">RE</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Research</span><span class="adEngineModuleDesc">Search terms and ingest intel</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isGold" type="button" data-adengine-module="winners">
+              <span class="adEngineModuleIcon">WI</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Winners</span><span class="adEngineModuleDesc">Winning creative tracker and decisions</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isPink" type="button" data-adengine-module="advertiser">
+              <span class="adEngineModuleIcon">AD</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Advertiser</span><span class="adEngineModuleDesc">Advertiser drill down and cohorts</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isOrange" type="button" data-adengine-module="create">
+              <span class="adEngineModuleIcon">CR</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Create</span><span class="adEngineModuleDesc">Copy and image generation</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isBlue" type="button" data-adengine-module="results">
+              <span class="adEngineModuleIcon">RS</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Results</span><span class="adEngineModuleDesc">Results grid and filtering</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isCyan" type="button" data-adengine-module="library">
+              <span class="adEngineModuleIcon">LI</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Library</span><span class="adEngineModuleDesc">Saved ad concepts and outputs</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isPurple" type="button" data-adengine-module="clone">
+              <span class="adEngineModuleIcon">CL</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Clone</span><span class="adEngineModuleDesc">Clone competitor creatives</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isCoral" type="button" data-adengine-module="socials">
+              <span class="adEngineModuleIcon">SO</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Socials</span><span class="adEngineModuleDesc">Generate social media campaigns</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
+            <button class="adEngineModule isTeal" type="button" data-adengine-module="video-gen">
+              <span class="adEngineModuleIcon">VG</span>
+              <span class="adEngineModuleBody"><span class="adEngineModuleLabel">Module</span><span class="adEngineModuleTitle">Video Gen</span><span class="adEngineModuleDesc">Storyboard and clip generation</span><span class="adEngineModuleCta">Open module</span></span>
+            </button>
           </div>
           <p class="adEngineNote">AdEngine does not copy competitor brands or assets. It studies public ad patterns, campaign structures and messaging angles, then helps create original campaigns for your business.</p>
         </div>
@@ -141,78 +189,258 @@
       <button class="adEngineModalClose" type="button" aria-label="Close AdEngine module">×</button>
       <span class="adEngineModalKicker">AdEngine module</span>
       <h2 class="adEngineModalTitle" id="adEngineModalTitle"></h2>
-      <h3>Explanation</h3>
-      <p class="adEngineModalExplanation"></p>
-      <h3>What the customer gets</h3>
-      <p class="adEngineModalBenefit"></p>
+      <div class="modalModuleVisual" data-modal-module-visual="research">
+        <img src="/assets/adengine-module-art/RESEARCHAE.webp?v=20260523-123300" alt="AdEngine Research module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>See the market before you build.</h3>
+          <p>Research gathers visible competitor activity into one place so you can see what is already being tested: hooks, offers, landing-page angles, repeated claims and long-running ad patterns. The point is not to copy competitors. It is to avoid starting blind.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="winners">
+        <img src="/assets/adengine-module-art/WINNERAI.webp?v=20260523-123300" alt="AdEngine Winners module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>Separate noise from proven patterns.</h3>
+          <p>Winners helps identify the campaigns that look more likely to be working: ads that have stayed live, creatives that appear repeatedly, offers that keep resurfacing, and angles that competitors seem to rely on. This gives you a shortlist of ideas worth studying before creating your own campaign.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="advertiser">
+        <img src="/assets/adengine-module-art/ADVERTISERAE.webp?v=20260523-123300" alt="AdEngine Advertiser module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>Understand each competitor at brand level.</h3>
+          <p>Advertiser Intelligence groups activity by advertiser, domain and ad record so you can see who is active, what they are pushing, what calls to action they repeat, and how their campaign structure changes across different ads.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="create">
+        <img src="/assets/adengine-module-art/createai.webp?v=20260523-123540" alt="AdEngine Create module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>Turn research into campaign-ready creative.</h3>
+          <p>Create helps move from saved campaign patterns into new hooks, copy angles, creative prompts and draft concepts that your team can review before anything goes live.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="results">
+        <img src="/assets/adengine-module-art/WINNERAI.webp?v=20260523-123540" alt="AdEngine Results module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>Keep useful campaign outputs visible.</h3>
+          <p>Results gives reviewed ideas, saved outputs and shortlisted campaign material a practical place to be checked, filtered and moved forward instead of disappearing after one session.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="library">
+        <img src="/assets/adengine-module-art/libraryae.webp?v=20260523-123300" alt="AdEngine Library module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>Keep campaign intelligence organised.</h3>
+          <p>Library gives approved ideas, saved outputs, campaign references and reusable creative material a central place to live, so useful work is not lost between research sessions, documents and browser tabs.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="clone">
+        <img src="/assets/adengine-module-art/CLONEAI.webp?v=20260523-123300" alt="AdEngine Clone module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>Rebuild the structure, not the asset.</h3>
+          <p>Clone takes the useful structure of a winning advert and turns it into a fresh, brand-safe creative direction. It is designed to preserve the strategic idea while changing the actual creative, wording, composition and visual treatment.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="socials">
+        <img src="/assets/adengine-module-art/SOCIALSAE.webp?v=20260523-123300" alt="AdEngine Socials module screenshot" loading="lazy" decoding="async">
+        <div class="modalModuleCopy">
+          <h3>Turn approved creative into usable social output.</h3>
+          <p>Socials converts selected creative into platform-ready post copy, titles, hashtags and short campaign snippets. It helps move from advert concept to usable campaign material without rewriting everything manually.</p>
+        </div>
+      </div>
+      <div class="modalModuleVisual" data-modal-module-visual="video-gen">
+        <div class="modalVideoGallery">
+          <img src="/assets/adengine-module-art/VIDEOGEN0.webp?v=20260523-123300" alt="AdEngine Video Gen workflow screenshot 1" loading="lazy" decoding="async">
+          <img src="/assets/adengine-module-art/VIDEOGEN1.webp?v=20260523-123300" alt="AdEngine Video Gen workflow screenshot 2" loading="lazy" decoding="async">
+          <img src="/assets/adengine-module-art/VIDEOGEN2.webp?v=20260523-123300" alt="AdEngine Video Gen workflow screenshot 3" loading="lazy" decoding="async">
+          <img src="/assets/adengine-module-art/VIDEOGEN3.webp?v=20260523-123300" alt="AdEngine Video Gen workflow screenshot 4" loading="lazy" decoding="async">
+        </div>
+        <div class="modalModuleCopy">
+          <h3>Move from campaign idea to video workflow.</h3>
+          <p>Video Gen supports a full production path: concept, storyboard, scene visuals, generated clips and final export. Show all four images as a small gallery inside the modal so users understand the workflow is multi-stage, not just a single video button.</p>
+        </div>
+      </div>
+      <p class="adEngineModalHeadline"></p>
+      <h3>What it does</h3>
+      <p class="adEngineModalDoes"></p>
+      <h3>Why it matters</h3>
+      <p class="adEngineModalMatters"></p>
+      <h3 class="adEngineModalSpotTitle"></h3>
+      <ul class="adEngineModalList"></ul>
+      <h3>What you get</h3>
+      <p class="adEngineModalGets"></p>
       <p class="adEngineBest"></p>
+      <p class="adEngineModalFooter">AdEngine studies public advertising patterns and campaign structures. It does not copy competitor brands, protected creative, logos or assets. The goal is to create original, brand-safe campaigns using better research.</p>
     </div>
   </div>
-  <script defer src="/assets/frontline-menu.js?v=20260522195356"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260523-exact-v7"></script>
   <script defer src="/assets/frontline-assistant.js?v=20260520-frontline-assistant-v1"></script>
   <script>
     (function(){
       var modules = {
         "research": {
           title: "Research",
-          explanation: "Find competitor ads, landing pages, messages and campaign angles.",
-          benefit: "See what other businesses in your market are already testing, so you are not starting from a blank page.",
-          best: "Understanding competitor positioning and campaign ideas."
+          headline: "Find the patterns your competitors are already testing in public.",
+          does: "AdEngine helps bring competitor research into one place by collecting and organising publicly visible ad activity, landing-page angles, offers, hooks and campaign messages.",
+          matters: "Good agencies do not usually start with a blank page. They look at the market first. They ask which adverts are still running, which hooks keep appearing, which offers are being repeated, and whether a brand tested dozens of creatives before narrowing down to a few long-running winners.",
+          spotTitle: "What AdEngine helps you spot",
+          spots: [
+            "Long-running ads that may indicate a working angle",
+            "Repeated hooks, claims, offers and formats",
+            "Competitors testing many creatives around one idea",
+            "Messages that appear across ads, landing pages and social content",
+            "Gaps where your business can position itself differently"
+          ],
+          gets: "A clearer view of what the market is already responding to, so your own campaigns are based on evidence rather than guesswork.",
+          best: "Competitor research, campaign planning, offer discovery and market positioning."
         },
         "winners": {
           title: "Winners",
-          explanation: "Shortlist the strongest campaign ideas and build a reusable swipe file.",
-          benefit: "Keep a record of the ideas worth learning from instead of losing them in screenshots and browser tabs.",
-          best: "Building a practical bank of proven ad angles."
+          headline: "Separate passing ideas from campaign angles worth keeping.",
+          does: "The Winners module is designed to help shortlist the strongest patterns and campaign ideas from the research stage.",
+          matters: "A business may launch 20 or 30 creative variations, but only one or two may survive long enough to become the real campaign. That narrowing process is where the useful information is. Long-running ideas, repeated hooks and reused creative structures often tell you more than a single flashy advert.",
+          spotTitle: "What AdEngine helps you spot",
+          spots: [
+            "Campaign ideas that keep coming back",
+            "Ads that appear to survive beyond short tests",
+            "Offers or hooks repeated in different formats",
+            "Creative themes worth saving into a swipe file",
+            "Angles that could inspire an original campaign"
+          ],
+          gets: "A practical bank of strong campaign ideas instead of a messy pile of screenshots, tabs and disconnected notes.",
+          best: "Building a swipe file, briefing campaigns, and deciding which ideas deserve creative work."
         },
         "advertiser": {
           title: "Advertiser",
-          explanation: "Review specific competitors and see the type of messages, offers and content they are putting into the market.",
-          benefit: "Understand how individual competitors present themselves and what themes keep appearing.",
-          best: "Competitor research and market positioning."
+          headline: "Understand how individual competitors position themselves.",
+          does: "The Advertiser module focuses on one competitor or brand at a time, so you can review their message, offer structure, campaign style and public ad activity.",
+          matters: "Competitors often reveal their strategy through repetition. If the same promise, pain point, audience or call-to-action keeps appearing, that tells you how they are trying to win attention.",
+          spotTitle: "What AdEngine helps you spot",
+          spots: [
+            "Competitor positioning",
+            "Common offers and calls to action",
+            "Repeated pain points",
+            "Ad style and tone",
+            "Whether they are pushing price, speed, trust, quality, emergency response, authority or convenience"
+          ],
+          gets: "A clearer understanding of how a competitor is presenting themselves, and where your own offer can be sharper or different.",
+          best: "Competitor profiling, local market research and positioning decisions."
         },
         "create": {
           title: "Create",
-          explanation: "Generate new ad variants, copy angles and creative briefs from approved campaign ideas.",
-          benefit: "Turn research into usable campaign concepts faster.",
-          best: "Creating new ads, offers, headlines and campaign briefs."
+          headline: "Turn research into original campaign ideas.",
+          does: "The Create module helps convert saved research and winning patterns into new ad variants, copy angles, creative briefs and campaign concepts.",
+          matters: "Research is only useful if it turns into action. The point is not to copy a competitor. The point is to understand the structure of what is working, then create your own brand-safe version with your own offer, tone and proof.",
+          spotTitle: "What AdEngine helps you create",
+          spots: [
+            "New ad hooks",
+            "Headline options",
+            "Offer angles",
+            "Creative briefs",
+            "Landing-page section ideas",
+            "Social post variations",
+            "Campaign concepts for review"
+          ],
+          gets: "Faster movement from market research to usable campaign material.",
+          best: "Ad creation, campaign brainstorming, creative briefs and offer testing."
         },
         "results": {
           title: "Results",
-          explanation: "Track generated ideas, saved outputs and reviewed campaign material.",
-          benefit: "Keep the useful work visible so good ideas do not disappear after one session.",
-          best: "Campaign review and internal follow-up."
+          headline: "Keep the useful outputs visible after the session ends.",
+          does: "The Results module keeps generated ideas, reviewed outputs, saved campaign material and useful research findings in one place.",
+          matters: "A lot of marketing work gets lost. Ideas sit in chats, screenshots, documents and browser tabs. Results gives the business a place to review what was created, what was useful, and what should be developed further.",
+          spotTitle: "What AdEngine helps you track",
+          spots: [
+            "Generated ad ideas",
+            "Saved research",
+            "Reviewed campaign outputs",
+            "Concepts marked for later",
+            "Ideas ready for human approval",
+            "Work that should move into production"
+          ],
+          gets: "A practical review trail instead of a one-off AI session.",
+          best: "Campaign follow-up, internal review and keeping useful ideas organised."
         },
         "library": {
           title: "Library",
-          explanation: "Store approved ads, messages, concepts and reusable campaign material.",
-          benefit: "Create a central place for reusable marketing assets and campaign ideas.",
-          best: "Keeping marketing work organised."
+          headline: "Build a reusable campaign intelligence library.",
+          does: "The Library module stores approved adverts, messages, campaign ideas, hooks, offers and reusable creative material.",
+          matters: "Good marketing compounds. Once you find useful angles, you should not have to rediscover them every month. A library gives the business a memory for campaign ideas.",
+          spotTitle: "What AdEngine helps you store",
+          spots: [
+            "Approved hooks",
+            "Winning angles",
+            "Competitor research notes",
+            "Campaign structures",
+            "Social content ideas",
+            "Brand-safe reusable copy",
+            "Creative examples for future briefs"
+          ],
+          gets: "A central place for campaign intelligence and reusable marketing assets.",
+          best: "Ongoing marketing, repeat campaigns, team handover and content planning."
         },
         "clone": {
           title: "Clone",
-          explanation: "Rebuild proven campaign structures into your own brand-safe campaigns.",
-          benefit: "Use the structure of strong campaigns without copying competitor brands, wording or assets.",
-          best: "Turning inspiration into original campaigns."
+          headline: "Rebuild the structure, not the stolen advert.",
+          does: "The Clone module helps turn a proven public campaign structure into a new, original campaign for your own business.",
+          matters: "Professional marketers often study the structure behind winning ads: the hook, the pain point, the proof, the offer, the call-to-action and the creative format. The ethical version is not to copy the competitor's brand, wording or assets. It is to understand the framework and rebuild it for your own business.",
+          spotTitle: "What AdEngine helps you rebuild",
+          spots: [
+            "Hook structure",
+            "Offer flow",
+            "Before/after angle",
+            "Problem-solution format",
+            "Testimonial or proof structure",
+            "Landing-page message flow",
+            "Social or video ad framework"
+          ],
+          gets: "Original campaign ideas inspired by proven structures, without copying protected creative or competitor branding.",
+          best: "Turning competitor research into brand-safe campaign drafts."
         },
         "socials": {
           title: "Socials",
-          explanation: "Generate social media posts and campaign content from approved concepts.",
-          benefit: "Turn ad research and campaign ideas into usable social content.",
-          best: "LinkedIn, Facebook, Instagram and regular content output."
+          headline: "Turn campaign research into consistent social output.",
+          does: "The Socials module helps generate social media posts and campaign content from approved ideas, saved research and selected campaign angles.",
+          matters: "Many businesses know they should post more, but they run out of angles. AdEngine lets social content come from real campaign thinking instead of random daily filler.",
+          spotTitle: "What AdEngine helps you create",
+          spots: [
+            "LinkedIn post ideas",
+            "Facebook posts",
+            "Instagram captions",
+            "Short campaign posts",
+            "Offer-led updates",
+            "Educational content",
+            "Follow-up content from approved ad angles"
+          ],
+          gets: "A more consistent content pipeline based on campaign strategy rather than guesswork.",
+          best: "Regular social output, campaign support and keeping a business visible."
         },
         "video-gen": {
           title: "Video Gen",
-          explanation: "Storyboard short clips and video ad concepts for later production.",
-          benefit: "Plan video hooks, scenes and scripts before spending time or money on production.",
-          best: "Short-form video ads and explainer content."
+          headline: "Plan video ads before spending money on production.",
+          does: "The Video Gen module helps storyboard short-form video ads, hooks, scenes, scripts and production ideas.",
+          matters: "Video can be expensive and slow if the idea is unclear. Before filming or editing, you need the hook, message, structure and call-to-action. AdEngine helps shape that plan first.",
+          spotTitle: "What AdEngine helps you plan",
+          spots: [
+            "Opening hooks",
+            "Short-form ad scripts",
+            "Scene-by-scene storyboards",
+            "Explainer video outlines",
+            "Before/after concepts",
+            "Founder-led talking points",
+            "Call-to-action endings"
+          ],
+          gets: "Clearer video concepts before production, editing or paid promotion.",
+          best: "Short-form video ads, explainer clips, social video and campaign planning."
         }
       };
       var modal = document.getElementById("adEngineModuleModal");
       if(!modal) return;
       var title = modal.querySelector(".adEngineModalTitle");
-      var explanation = modal.querySelector(".adEngineModalExplanation");
-      var benefit = modal.querySelector(".adEngineModalBenefit");
+      var moduleVisuals = modal.querySelectorAll("[data-modal-module-visual]");
+      var headline = modal.querySelector(".adEngineModalHeadline");
+      var does = modal.querySelector(".adEngineModalDoes");
+      var matters = modal.querySelector(".adEngineModalMatters");
+      var spotTitle = modal.querySelector(".adEngineModalSpotTitle");
+      var spotList = modal.querySelector(".adEngineModalList");
+      var gets = modal.querySelector(".adEngineModalGets");
       var best = modal.querySelector(".adEngineBest");
       var closeButton = modal.querySelector(".adEngineModalClose");
       var previousOverflow = "";
@@ -221,8 +449,20 @@
         var item = modules[key];
         if(!item) return;
         title.textContent = item.title;
-        explanation.textContent = item.explanation;
-        benefit.textContent = item.benefit;
+        moduleVisuals.forEach(function(visual){
+          visual.classList.toggle("isActive", visual.getAttribute("data-modal-module-visual") === key);
+        });
+        headline.textContent = item.headline;
+        does.textContent = item.does;
+        matters.textContent = item.matters;
+        spotTitle.textContent = item.spotTitle;
+        spotList.innerHTML = "";
+        item.spots.forEach(function(spot){
+          var li = document.createElement("li");
+          li.textContent = spot;
+          spotList.appendChild(li);
+        });
+        gets.textContent = item.gets;
         best.textContent = "Best for: " + item.best;
         previousOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";

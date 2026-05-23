@@ -8,13 +8,13 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260521-menu-exact-v2">
+  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260523-sitescale-v1">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
   <style>
     :root{--bg:#03070f;--panel:rgba(8,18,36,.72);--text:#f7fbff;--muted:#aebbd0;--line:rgba(112,184,255,.25);--blue:#1678ff;--cyan:#62d8ff;--violet:#915cff;--gold:#f2dc9d}
     *{box-sizing:border-box}
     body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:#03070f}
-    body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(2,6,16,.92),rgba(2,6,16,.54)),url("/assets/websites-home-new/background999.png") center/cover no-repeat;opacity:.95;pointer-events:none}
+    body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(2,6,16,.94),rgba(2,6,16,.56)),url("/assets/custom-build/backgroundcb.png") center right/cover no-repeat;opacity:.95;pointer-events:none}
     a{color:inherit;text-decoration:none}
     .page{position:relative;z-index:1}
     .wrap{width:min(1180px,calc(100% - 40px));margin:0 auto}
@@ -32,7 +32,8 @@
     .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid rgba(125,205,255,.36);border-radius:999px;background:rgba(2,7,18,.48);font-weight:900}
     .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet));border-color:rgba(255,255,255,.26)}
-    .visual{min-height:470px;border:1px solid rgba(125,205,255,.28);border-radius:34px;background:linear-gradient(180deg,rgba(2,6,16,.05),rgba(2,6,16,.48)),url("/assets/websites-final/website-dashboard-handoff.png") center/cover no-repeat;box-shadow:0 34px 100px rgba(0,0,0,.40),0 0 70px rgba(40,120,255,.22);position:relative;overflow:hidden}
+    .visual{min-height:470px;border:1px solid rgba(125,205,255,.28);border-radius:34px;background:linear-gradient(145deg,rgba(8,22,45,.82),rgba(3,8,18,.72));box-shadow:0 34px 100px rgba(0,0,0,.40),0 0 70px rgba(40,120,255,.22);position:relative;overflow:hidden;padding:14px}
+    .visual img{position:relative;z-index:1;width:100%;height:100%;min-height:442px;object-fit:cover;border-radius:24px;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
     .visual:after{content:"Custom AI Builds";position:absolute;left:24px;right:24px;bottom:24px;padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(2,7,18,.68);backdrop-filter:blur(16px);color:#e8f4ff;font-size:22px;font-weight:950}
     section{padding:52px 0}
     .sectionHead{display:grid;grid-template-columns:minmax(0,.9fr) minmax(320px,.7fr);gap:34px;align-items:end;margin-bottom:24px}
@@ -44,15 +45,64 @@
     .offerCard small{display:grid;place-items:center;width:44px;height:44px;border:1px solid rgba(125,205,255,.32);border-radius:16px;color:#9fdcff;background:rgba(8,22,45,.72);font-weight:950;margin-bottom:18px}
     .offerCard h3{margin:0 0 10px;font-size:22px;line-height:1.14}
     .offerCard p{margin:0;color:#b8c5d6;line-height:1.55}
+    .cbOperatingSection{position:relative;padding:74px 0;background:linear-gradient(180deg,rgba(2,6,16,.72),rgba(6,16,34,.82));border-top:1px solid rgba(112,184,255,.14);border-bottom:1px solid rgba(112,184,255,.14)}
+    .cbOperatingSection:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 12% 18%,rgba(98,216,255,.16),transparent 32%),radial-gradient(circle at 92% 22%,rgba(22,120,255,.14),transparent 34%);pointer-events:none}
+    .cbOperatingShell{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,.86fr) minmax(480px,1.14fr);gap:28px;align-items:stretch;border:1px solid rgba(125,205,255,.34);border-radius:36px;padding:24px;background:linear-gradient(145deg,rgba(6,16,34,.88),rgba(2,8,18,.78));box-shadow:0 34px 100px rgba(0,0,0,.38),0 0 52px rgba(38,132,255,.16),inset 0 1px 0 rgba(255,255,255,.08)}
+    .cbOperatingIntro{padding:14px 8px 14px 10px}
+    .cbOperatingIntro h2{margin:0 0 16px;color:#fff;font-size:clamp(38px,4.2vw,58px)!important;line-height:1.02!important;letter-spacing:-.045em!important}
+    .cbOperatingIntro p{margin:0;color:#d4dfed;font-size:17px;line-height:1.66}
+    .cbBuiltAround{margin-top:24px;border:1px solid rgba(125,205,255,.24);border-radius:24px;padding:18px;background:rgba(4,12,26,.58)}
+    .cbBuiltAround b{display:block;margin-bottom:12px;color:#8fd4ff;font-size:12px;letter-spacing:.16em;text-transform:uppercase}
+    .cbBuiltAround ul{display:grid;gap:10px;margin:0;padding:0;list-style:none}
+    .cbBuiltAround li{position:relative;padding-left:19px;color:#eef7ff;font-size:14px;line-height:1.42}
+    .cbBuiltAround li:before{content:"";position:absolute;left:0;top:.58em;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 14px rgba(98,216,255,.68)}
+    .cbOperatingPanel{border:1px solid rgba(98,165,215,.48);border-radius:30px;padding:20px;background:linear-gradient(145deg,#f7fbff,#dcecff);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 24px 70px rgba(0,0,0,.28)}
+    .cbFlowStrip{display:grid;grid-template-columns:repeat(5,1fr);gap:8px;margin-bottom:16px}
+    .cbFlowStrip span{display:flex;align-items:center;justify-content:center;min-height:38px;border:1px solid rgba(45,126,205,.28);border-radius:999px;background:rgba(255,255,255,.74);color:#092145;font-size:12px;font-weight:950}
+    .cbModuleGroup{display:grid;gap:10px;margin-top:12px}
+    .cbModuleGroupLabel{display:flex;align-items:center;gap:10px;color:#1263b6;font-size:11px;font-weight:950;letter-spacing:.16em;text-transform:uppercase}
+    .cbModuleGroupLabel:after{content:"";height:1px;flex:1;background:linear-gradient(90deg,rgba(18,99,182,.42),transparent)}
+    .cbModuleGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+    .cbModuleCard{border:1px solid rgba(45,126,205,.24);border-radius:18px;padding:14px;background:rgba(255,255,255,.82);box-shadow:0 12px 30px rgba(18,70,130,.10)}
+    .cbModuleCard h3{margin:0 0 7px;color:#061833;font-size:18px!important;line-height:1.12!important;letter-spacing:-.015em!important}
+    .cbModuleCard p{margin:0;color:#28435f;font-size:13px;line-height:1.48}
     .proofBand{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
     .proofItem{padding:20px}
     .proofItem b{display:block;color:#fff;margin-bottom:6px}
     .proofItem span{display:block;color:#b8c5d6;font-size:14px;line-height:1.45}
+    .cbProofSection{position:relative;padding:74px 0;background:linear-gradient(180deg,rgba(2,6,16,.28),rgba(5,14,30,.74));border-top:1px solid rgba(112,184,255,.12);border-bottom:1px solid rgba(112,184,255,.14)}
+    .cbProofSection:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 18% 8%,rgba(98,216,255,.16),transparent 34%),radial-gradient(circle at 84% 26%,rgba(22,120,255,.12),transparent 32%);pointer-events:none}
+    .cbProofSection .wrap{position:relative;z-index:1}
+    .cbProofSection .sectionHead{display:block;max-width:920px;margin:0 0 28px}
+    .cbProofSection .sectionHead h2{max-width:760px;margin:0 0 14px;font-size:clamp(38px,4.2vw,56px)!important;line-height:1.02!important;letter-spacing:-.045em!important}
+    .cbProofSection .sectionHead p{max-width:780px;margin:0;color:#d3deeb;font-size:17px!important;line-height:1.62!important}
+    .cbProofGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .cbProofCard{appearance:none;width:100%;display:grid;grid-template-rows:auto 1fr;gap:0;text-align:left;color:inherit;border:1px solid rgba(125,205,255,.36);border-radius:30px;background:linear-gradient(145deg,rgba(9,24,48,.86),rgba(3,10,22,.78));box-shadow:0 28px 80px rgba(0,0,0,.34),0 0 34px rgba(38,132,255,.14),inset 0 1px 0 rgba(255,255,255,.08);padding:0;overflow:hidden;cursor:pointer;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
+    .cbProofCard:hover,.cbProofCard:focus-visible{transform:translateY(-5px);border-color:rgba(125,205,255,.72);box-shadow:0 34px 96px rgba(0,0,0,.44),0 0 48px rgba(38,132,255,.24),inset 0 1px 0 rgba(255,255,255,.10);outline:none}
+    .cbProofImagePanel{margin:14px 14px 0;border:1px solid rgba(98,165,215,.48);border-radius:24px;background:linear-gradient(145deg,#f6fbff,#dcecff);box-shadow:inset 0 1px 0 rgba(255,255,255,.88),0 18px 44px rgba(0,0,0,.22);overflow:hidden}
+    .cbProofImagePanel img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;object-position:center}
+    .cbProofCopy{padding:19px 20px 20px}
+    .cbProofCopy h3{margin:0 0 8px;color:#fff;font-size:24px;line-height:1.08}
+    .cbProofCopy p{margin:0;color:#c5d2e2;font-size:15px;line-height:1.5}
+    .cbProofLink{display:inline-flex;margin-top:16px;align-items:center;gap:8px;color:#dff4ff;border:1px solid rgba(125,205,255,.34);border-radius:999px;padding:8px 12px;background:rgba(22,120,255,.10);font-size:12px;font-weight:950}
+    .cbProofModal{position:fixed;inset:0;z-index:250000;display:none;align-items:center;justify-content:center;padding:24px;background:radial-gradient(circle at 18% 12%,rgba(46,168,255,.20),transparent 34%),rgba(0,4,12,.84);backdrop-filter:blur(18px)}
+    .cbProofModal.isOpen{display:flex}
+    .cbProofModalPanel{position:relative;width:min(1060px,96vw);max-height:90vh;display:grid;grid-template-columns:minmax(300px,.95fr) minmax(0,1fr);gap:0;border:1px solid rgba(125,205,255,.54);border-radius:32px;background:linear-gradient(145deg,rgba(8,20,40,.98),rgba(3,8,18,.98));box-shadow:0 44px 140px rgba(0,0,0,.72),0 0 82px rgba(38,132,255,.24);overflow:auto}
+    .cbProofModalImage{margin:22px;border:1px solid rgba(98,165,215,.52);border-radius:24px;background:linear-gradient(145deg,#f8fcff,#dcecff);box-shadow:inset 0 1px 0 rgba(255,255,255,.9),0 24px 60px rgba(0,0,0,.28);overflow:hidden;align-self:start}
+    .cbProofModalImage img{display:block;width:100%;height:auto;max-height:66vh;object-fit:contain}
+    .cbProofModalCopy{padding:34px 34px 34px 10px}
+    .cbProofModalCopy h3{margin:0 48px 16px 0;color:#fff;font-size:clamp(32px,4vw,52px);line-height:1}
+    .cbProofModalCopy p{margin:0;color:#d2deec;font-size:16px;line-height:1.68}
+    .cbProofModalCopy ul{margin:22px 0 0;padding:0;display:grid;gap:10px;list-style:none}
+    .cbProofModalCopy li{position:relative;padding-left:20px;color:#edf7ff;font-size:14px;line-height:1.45}
+    .cbProofModalCopy li:before{content:"";position:absolute;left:0;top:.62em;width:8px;height:8px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--cyan));box-shadow:0 0 16px rgba(98,216,255,.72)}
+    .cbProofModalClose{position:absolute;right:18px;top:18px;z-index:3;width:44px;height:44px;border:1px solid rgba(125,205,255,.42);border-radius:15px;color:#fff;background:rgba(3,10,24,.82);font-size:24px;line-height:1;cursor:pointer}
+    .cbProofModalClose:hover,.cbProofModalClose:focus-visible{outline:none;border-color:rgba(125,205,255,.82);box-shadow:0 0 28px rgba(38,132,255,.34)}
     .final{padding:70px 0 90px}
     .finalBox{border:1px solid var(--line);border-radius:34px;padding:30px;background:rgba(5,14,30,.72);display:flex;justify-content:space-between;align-items:center;gap:20px;box-shadow:0 30px 90px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08)}
     .finalBox h2{font-size:34px;margin:0 0 8px}
     .finalBox p{margin:0;color:#b9c6d6}
-    @media(max-width:980px){.heroGrid,.sectionHead,.grid,.proofBand{grid-template-columns:1fr}.visual{min-height:330px}.finalBox{display:block}.finalBox .btn{margin-top:18px}}
+    @media(max-width:980px){.heroGrid,.sectionHead,.grid,.proofBand,.cbProofGrid,.cbProofModalPanel,.cbOperatingShell,.cbModuleGrid{grid-template-columns:1fr}.visual{min-height:330px}.finalBox{display:block}.finalBox .btn{margin-top:18px}.cbProofModalCopy{padding:0 24px 28px}.cbProofModalImage{margin:18px}.cbProofSection,.cbOperatingSection{padding:56px 0}.cbOperatingShell{padding:18px}.cbFlowStrip{grid-template-columns:1fr}}
   
 
 /* FRONTLINE_COMMERCIAL_PAGE_HOVER_V1 */
@@ -203,80 +253,106 @@
           <div>
             <div class="eyebrow">Custom AI Builds</div>
             <h1>Custom AI systems built around <span>your real process.</span></h1>
-            <p class="lead">For businesses that need more than an off-the-shelf tool: custom AI workers, dashboards, portals, call-flow systems, CRM-style records, Twilio, WhatsApp, SMS and workflow automation.</p>
+            <p class="lead">For businesses that need more than an off-the-shelf tool: custom AI workers, dashboards, portals, call-flow systems, CRM-style records, Twilio, WhatsApp, SMS and workflow automation — designed around how you actually work.</p>
             <div class="actions">
               <a class="btn primary" href="/book-demo.html?product_interest=Custom%20AI%20Build">Scope a Custom Build →</a>
               <a class="btn" href="/">Back to Frontline AI</a>
             </div>
           </div>
-          <div class="visual"></div>
+          <div class="visual"><img src="/assets/custom-build/cb-newimage.png" alt="Custom AI operating model and workflow architecture diagram"></div>
         </div>
       </section>
 
-      <section>
-        <div class="wrap">
-          <div class="sectionHead">
-            <h2>What this includes.</h2>
-            <p>This is a draft commercial page so the offer is visible in the menu now. We can replace sections with real proof, screenshots and campaign results as we build it out.</p>
+      <section class="cbOperatingSection">
+        <div class="wrap cbOperatingShell">
+          <div class="cbOperatingIntro">
+            <h2>Build around the way the business actually works.</h2>
+            <p>A custom build is not just an AI chatbot or a dashboard. It is a controlled operating layer: the screens, workflows, records, messages, handoffs and reporting that make the work move properly.</p>
+            <div class="cbBuiltAround">
+              <b>Built around</b>
+              <ul>
+                <li>the actual customer journey</li>
+                <li>the records the business needs</li>
+                <li>the handoffs between people and systems</li>
+                <li>the messages, calls and follow-ups</li>
+                <li>the reporting needed to manage the work</li>
+              </ul>
+            </div>
           </div>
-          <div class="grid">
-            <article class="offerCard">
-          <small>01</small>
-          <h3>Custom AI Workers</h3>
-          <p>Purpose-built assistants for intake, routing, support, sales, booking or operations.</p>
-        </article>
-<article class="offerCard">
-          <small>02</small>
-          <h3>Dashboards & Portals</h3>
-          <p>Internal views for teams, managers, records, queues and next actions.</p>
-        </article>
-<article class="offerCard">
-          <small>03</small>
-          <h3>Call Flow Builders</h3>
-          <p>Voice, SMS and workflow logic built around your actual customer journey.</p>
-        </article>
-<article class="offerCard">
-          <small>04</small>
-          <h3>CRM / Workflow Automation</h3>
-          <p>Structured records, statuses, notifications, follow-up and audit trails.</p>
-        </article>
-<article class="offerCard">
-          <small>05</small>
-          <h3>Twilio / WhatsApp / SMS</h3>
-          <p>Communication systems connected to calls, texts, reminders and handoffs.</p>
-        </article>
-<article class="offerCard">
-          <small>06</small>
-          <h3>Controlled Delivery</h3>
-          <p>Build, test, review and change control rather than fragile one-off automation.</p>
-        </article>
+          <div class="cbOperatingPanel">
+            <div class="cbFlowStrip" aria-label="Custom AI build operating flow">
+              <span>Input</span>
+              <span>Decision</span>
+              <span>Action</span>
+              <span>Record</span>
+              <span>Report</span>
+            </div>
+            <div class="cbModuleGroup">
+              <div class="cbModuleGroupLabel">Define the workflow</div>
+              <div class="cbModuleGrid">
+                <article class="cbModuleCard">
+                  <h3>Process & operating model</h3>
+                  <p>Map the real journey: inputs, rules, decisions, handoffs, exceptions and outputs.</p>
+                </article>
+                <article class="cbModuleCard">
+                  <h3>Custom AI workers</h3>
+                  <p>AI assistants built around the job they need to perform, not generic chatbot prompts.</p>
+                </article>
+              </div>
+            </div>
+            <div class="cbModuleGroup">
+              <div class="cbModuleGroupLabel">Build the system</div>
+              <div class="cbModuleGrid">
+                <article class="cbModuleCard">
+                  <h3>Dashboards & portals</h3>
+                  <p>Internal views for queues, records, status, reporting and manager oversight.</p>
+                </article>
+                <article class="cbModuleCard">
+                  <h3>Call-flow and message logic</h3>
+                  <p>Voice, SMS, WhatsApp and email flows connected to the actual customer journey.</p>
+                </article>
+              </div>
+            </div>
+            <div class="cbModuleGroup">
+              <div class="cbModuleGroupLabel">Control and improve</div>
+              <div class="cbModuleGrid">
+                <article class="cbModuleCard">
+                  <h3>CRM-style records & workflow</h3>
+                  <p>Structured records, statuses, notifications, follow-up actions and audit trails.</p>
+                </article>
+                <article class="cbModuleCard">
+                  <h3>Controlled delivery base</h3>
+                  <p>Build, test, review and extend safely instead of relying on fragile one-off automation.</p>
+                </article>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <section>
+      <section class="cbProofSection" id="custom-build-proof">
         <div class="wrap">
           <div class="sectionHead">
-            <h2>Proof slots ready to fill.</h2>
-            <p>Designed to accept real results, dashboards, examples, before/after comparisons and screenshots as they become available.</p>
+            <h2>Proof you can build around.</h2>
+            <p>A custom AI build becomes real through system diagrams, working screens, audit evidence and a scalable base that can grow without turning into a fragile one-off automation.</p>
           </div>
-          <div class="proofBand">
-            <div class="proofItem">
-          <b>System diagrams</b>
-          <span>Visualise the operating model before build.</span>
-        </div>
-<div class="proofItem">
-          <b>Screenshots</b>
-          <span>Drop in real module and dashboard examples.</span>
-        </div>
-<div class="proofItem">
-          <b>Audit trail</b>
-          <span>Show testing, release and change discipline.</span>
-        </div>
-<div class="proofItem">
-          <b>Scalable base</b>
-          <span>Start focused, then expand safely.</span>
-        </div>
+          <div class="cbProofGrid">
+            <button class="cbProofCard" type="button" data-proof-key="diagrams">
+              <span class="cbProofImagePanel"><img src="/assets/custom-build/cb1/image1cb.webp" alt="System diagram for custom AI operating model"></span>
+              <span class="cbProofCopy"><h3>System diagrams</h3><p>Map the operating model before anything is built.</p><span class="cbProofLink">View detail</span></span>
+            </button>
+            <button class="cbProofCard" type="button" data-proof-key="screenshots">
+              <span class="cbProofImagePanel"><img src="/assets/custom-build/cb1/image2cb.webp" alt="Custom AI dashboard and workflow screenshots"></span>
+              <span class="cbProofCopy"><h3>Screenshots</h3><p>Show real modules, dashboards and workflow screens.</p><span class="cbProofLink">View detail</span></span>
+            </button>
+            <button class="cbProofCard" type="button" data-proof-key="audit">
+              <span class="cbProofImagePanel"><img src="/assets/custom-build/cb1/image3cb.webp" alt="Audit trail and release evidence for custom AI build"></span>
+              <span class="cbProofCopy"><h3>Audit trail</h3><p>Show testing, release and change discipline.</p><span class="cbProofLink">View detail</span></span>
+            </button>
+            <button class="cbProofCard" type="button" data-proof-key="scale">
+              <span class="cbProofImagePanel"><img src="/assets/custom-build/cb1/image4cb.webp" alt="Scalable base for custom AI system expansion"></span>
+              <span class="cbProofCopy"><h3>Scalable base</h3><p>Start focused, then expand safely.</p><span class="cbProofLink">View detail</span></span>
+            </button>
           </div>
         </div>
       </section>
@@ -291,8 +367,94 @@
         </div>
       </section>
     </main>
+    <div class="cbProofModal" id="cbProofModal" aria-hidden="true">
+      <div class="cbProofModalPanel" role="dialog" aria-modal="true" aria-labelledby="cbProofModalTitle">
+        <button class="cbProofModalClose" type="button" aria-label="Close proof detail">×</button>
+        <div class="cbProofModalImage"><img id="cbProofModalImage" src="/assets/custom-build/cb1/image1cb.webp" alt=""></div>
+        <div class="cbProofModalCopy">
+          <h3 id="cbProofModalTitle">System diagrams</h3>
+          <p id="cbProofModalText"></p>
+          <ul id="cbProofModalBullets"></ul>
+        </div>
+      </div>
+    </div>
   </div>
-  <script defer src="/assets/frontline-menu.js?v=20260522195356"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260523-exact-v7"></script>
   <script defer src="/assets/frontline-assistant.js?v=20260520-frontline-assistant-v1"></script>
+  <script>
+    (function(){
+      const modal = document.getElementById("cbProofModal");
+      if(!modal) return;
+
+      const image = document.getElementById("cbProofModalImage");
+      const title = document.getElementById("cbProofModalTitle");
+      const text = document.getElementById("cbProofModalText");
+      const bullets = document.getElementById("cbProofModalBullets");
+      const closeButton = modal.querySelector(".cbProofModalClose");
+
+      const proofDetails = {
+        diagrams: {
+          title: "System diagrams",
+          image: "/assets/custom-build/cb1/image1cb.webp",
+          alt: "System diagram for custom AI operating model",
+          text: "A custom build should start with the way the business actually works. This stage maps the inputs, handoffs, decisions, rules, integrations and reporting needs before code is written. It helps avoid vague builds, hidden assumptions and disconnected automation. The output is a working blueprint that shows what information enters the system, how it moves, who needs to act, what can be automated and where oversight is required.",
+          bullets: ["Process flow and operating-model mapping","Inputs, decisions, exceptions and outputs","System boundaries and handoff points","Integration and data-flow planning","Build scope agreed before development starts"]
+        },
+        screenshots: {
+          title: "Screenshots",
+          image: "/assets/custom-build/cb1/image2cb.webp",
+          alt: "Custom AI dashboard and workflow screenshots",
+          text: "Once the system is taking shape, screenshots become proof that the work is moving beyond theory. They can show the actual dashboard, intake screen, queue, workflow view, reporting panel or client portal. These examples help the client understand what has been built, what is ready to test and what still needs refinement.",
+          bullets: ["Dashboard and portal examples","Workflow screens and record views","Intake, queue and status modules","Reporting and operational visibility","Useful for review, sign-off and sales proof"]
+        },
+        audit: {
+          title: "Audit trail",
+          image: "/assets/custom-build/cb1/image3cb.webp",
+          alt: "Audit trail and release evidence for custom AI build",
+          text: "A serious business system needs traceability. The audit layer should show what changed, who reviewed it, what was tested, when it was approved and what was released. This makes the build safer, easier to support and easier to improve because changes are not lost inside informal messages or guesswork.",
+          bullets: ["Change history and version tracking","Review and approval checkpoints","Testing and release evidence","Safer rollback and issue diagnosis","Clear record of delivery progress"]
+        },
+        scale: {
+          title: "Scalable base",
+          image: "/assets/custom-build/cb1/image4cb.webp",
+          alt: "Scalable base for custom AI system expansion",
+          text: "The first version should solve a clear business problem, but it should not trap the business in a throwaway build. A scalable base means the system can start with one focused workflow and later add more modules, users, integrations, dashboards, automations and controls without rebuilding everything from scratch.",
+          bullets: ["Start with one focused operational workflow","Add modules without breaking the base","Reuse records, permissions and reporting","Connect future tools and channels","Build for controlled expansion, not shortcuts"]
+        }
+      };
+
+      function openModal(key){
+        const detail = proofDetails[key];
+        if(!detail) return;
+        title.textContent = detail.title;
+        text.textContent = detail.text;
+        image.src = detail.image;
+        image.alt = detail.alt;
+        bullets.innerHTML = detail.bullets.map(item => `<li>${item}</li>`).join("");
+        modal.classList.add("isOpen");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+        closeButton.focus();
+      }
+
+      function closeModal(){
+        modal.classList.remove("isOpen");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-proof-key]").forEach(card => {
+        card.addEventListener("click", () => openModal(card.getAttribute("data-proof-key")));
+      });
+
+      closeButton.addEventListener("click", closeModal);
+      modal.addEventListener("click", event => {
+        if(event.target === modal) closeModal();
+      });
+      document.addEventListener("keydown", event => {
+        if(event.key === "Escape" && modal.classList.contains("isOpen")) closeModal();
+      });
+    })();
+  </script>
 </body>
 </html>

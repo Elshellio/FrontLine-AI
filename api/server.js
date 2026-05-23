@@ -1,6 +1,7 @@
 "use strict";
 
 const http = require("http");
+const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
@@ -417,6 +418,104 @@ function configuredSalesInbox() {
     ""
   );
 }
+
+
+/* FRONTLINE_FACT_FIND_REPORT_EMAIL_V1 */
+function outboundEmailFrom() {
+  return cleanEmail(
+    process.env.FRONTLINE_EMAIL_FROM ||
+    process.env.MAIL_FROM ||
+    process.env.EMAIL_FROM ||
+    process.env.RESEND_FROM ||
+    process.env.POSTMARK_FROM ||
+    "no-reply@frontline-ai.co.uk"
+  );
+}
+
+async function sendSalesNotificationEmail({ to, subject, text, replyTo }) {
+  const recipient = cleanEmail(to);
+  if (!recipient) throw new Error("MISSING_SALES_INBOX_CONFIG");
+
+  const cleanSubject = cleanText(subject, 180) || "New Frontline AI enquiry";
+  const cleanTextBody = String(text || "").slice(0, 50000);
+  const from = outboundEmailFrom();
+
+  /* FRONTLINE_OFFICE365_SMTP_V1 */
+  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
+    const port = Number(process.env.SMTP_PORT || 587);
+    const transporter = nodemailer.createTransport({
+      host: process.env.SMTP_HOST,
+      port,
+      secure: String(process.env.SMTP_SECURE || "").toLowerCase() === "true",
+      requireTLS: String(process.env.SMTP_REQUIRE_TLS || "true").toLowerCase() !== "false",
+      auth: {
+        user: process.env.SMTP_USER,
+        pass: process.env.SMTP_PASS
+      }
+    });
+
+    await transporter.sendMail({
+      from,
+      to: recipient,
+      replyTo: replyTo && isValidEmail(replyTo) ? replyTo : undefined,
+      subject: cleanSubject,
+      text: cleanTextBody
+    });
+
+    return { ok: true, provider: "smtp" };
+  }
+
+  if (process.env.RESEND_API_KEY) {
+    const response = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer " + process.env.RESEND_API_KEY,
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        from,
+        to: [recipient],
+        reply_to: replyTo && isValidEmail(replyTo) ? replyTo : undefined,
+        subject: cleanSubject,
+        text: cleanTextBody
+      })
+    });
+
+    if (!response.ok) {
+      const body = await response.text().catch(() => "");
+      throw new Error("RESEND_EMAIL_FAILED_" + response.status + " " + body.slice(0, 300));
+    }
+    return { ok: true, provider: "resend" };
+  }
+
+  if (process.env.POSTMARK_SERVER_TOKEN) {
+    const response = await fetch("https://api.postmarkapp.com/email", {
+      method: "POST",
+      headers: {
+        "X-Postmark-Server-Token": process.env.POSTMARK_SERVER_TOKEN,
+        "Content-Type": "application/json",
+        "Accept": "application/json"
+      },
+      body: JSON.stringify({
+        From: from,
+        To: recipient,
+        ReplyTo: replyTo && isValidEmail(replyTo) ? replyTo : undefined,
+        Subject: cleanSubject,
+        TextBody: cleanTextBody,
+        MessageStream: process.env.POSTMARK_MESSAGE_STREAM || "outbound"
+      })
+    });
+
+    if (!response.ok) {
+      const body = await response.text().catch(() => "");
+      throw new Error("POSTMARK_EMAIL_FAILED_" + response.status + " " + body.slice(0, 300));
+    }
+    return { ok: true, provider: "postmark" };
+  }
+
+  throw new Error("MISSING_EMAIL_PROVIDER_CONFIG");
+}
+
 
 function validateBusinessFactFindReportRequest(input) {
   const errors = [];
@@ -1388,7 +1487,39 @@ const server = http.createServer(async (req, res) => {
         sales_body: salesNotification
       }) + "\n", "utf8");
 
-      return sendJson(res, 200, { ok: true });
+      try {
+        const emailResult = await sendSalesNotificationEmail({
+          to: salesInbox,
+          subject: "New Business Fact-Find report request",
+          text: salesNotification,
+          replyTo: record.visitor_email
+        });
+
+        fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
+          id: record.id,
+          created_at: new Date().toISOString(),
+          event: "sales_email_sent",
+          provider: emailResult.provider,
+          sales_inbox: salesInbox
+        }) + "\n", "utf8");
+
+        return sendJson(res, 200, { ok: true, emailed: true });
+      } catch (emailError) {
+        console.error("[frontline-ai-api] FACT_FIND_REPORT_EMAIL_FAILED", emailError && emailError.message ? emailError.message : emailError);
+
+        fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
+          id: record.id,
+          created_at: new Date().toISOString(),
+          event: "sales_email_failed",
+          error: emailError && emailError.message ? emailError.message : String(emailError),
+          sales_inbox: salesInbox
+        }) + "\n", "utf8");
+
+        return sendJson(res, 500, {
+          ok: false,
+          error: "REPORT_REQUEST_EMAIL_FAILED"
+        });
+      }
     }
 
     if (req.method === "POST" && (url.pathname === "/api/demo-request" || url.pathname === "/api/book-demo")) {
