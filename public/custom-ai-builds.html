@@ -13,7 +13,7 @@
   <style>
     :root{--bg:#03070f;--panel:rgba(8,18,36,.72);--text:#f7fbff;--muted:#aebbd0;--line:rgba(112,184,255,.25);--blue:#1678ff;--cyan:#62d8ff;--violet:#915cff;--gold:#f2dc9d}
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:#03070f}
+    body{margin:0;font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;color:var(--text);background:#03070f}
     body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(2,6,16,.94),rgba(2,6,16,.56)),url("/assets/custom-build/backgroundcb.png") center right/cover no-repeat;opacity:.95;pointer-events:none}
     a{color:inherit;text-decoration:none}
     .page{position:relative;z-index:1}
@@ -23,21 +23,21 @@
     .brand{display:flex;align-items:center;gap:12px;font-weight:950}
     .brand img{width:46px;height:46px;border-radius:16px;object-fit:contain;border:1px solid var(--line);background:rgba(255,255,255,.04)}
     .nav a.btn{padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,var(--blue),var(--cyan));font-weight:900}
-    .hero{padding:86px 0 56px}
+    .hero{padding:50px 0 42px}
     .heroGrid{display:grid;grid-template-columns:minmax(0,.92fr) minmax(420px,1.08fr);gap:42px;align-items:center}
     .eyebrow{display:inline-flex;padding:9px 13px;border:1px solid var(--line);border-radius:999px;color:#8fd4ff;background:rgba(22,120,255,.10);font-size:11px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}
-    h1{font-family:Georgia,serif;font-size:clamp(50px,6.6vw,92px);line-height:.92;letter-spacing:-.055em;font-weight:500;margin:24px 0 18px}
+    h1{font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;font-size:clamp(44px,5.8vw,82px);line-height:.94;letter-spacing:-.035em;font-weight:700;margin:24px 0 18px}
     h1 span{color:#62d8ff}
-    .lead{max-width:680px;color:#d0dae8;font-size:18px;line-height:1.68}
-    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .lead{max-width:680px;color:#d0dae8;font-size:17px;line-height:1.56}
+    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid rgba(125,205,255,.36);border-radius:999px;background:rgba(2,7,18,.48);font-weight:900}
     .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet));border-color:rgba(255,255,255,.26)}
-    .visual{min-height:470px;border:1px solid rgba(125,205,255,.28);border-radius:34px;background:linear-gradient(145deg,rgba(8,22,45,.82),rgba(3,8,18,.72));box-shadow:0 34px 100px rgba(0,0,0,.40),0 0 70px rgba(40,120,255,.22);position:relative;overflow:hidden;padding:14px}
-    .visual img{position:relative;z-index:1;width:100%;height:100%;min-height:442px;object-fit:cover;border-radius:24px;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
+    .visual{min-height:410px;border:1px solid rgba(125,205,255,.28);border-radius:34px;background:linear-gradient(145deg,rgba(8,22,45,.82),rgba(3,8,18,.72));box-shadow:0 34px 100px rgba(0,0,0,.40),0 0 70px rgba(40,120,255,.22);position:relative;overflow:hidden;padding:14px}
+    .visual img{position:relative;z-index:1;width:100%;height:100%;min-height:382px;object-fit:cover;border-radius:24px;border:1px solid rgba(255,255,255,.12);box-shadow:inset 0 1px 0 rgba(255,255,255,.08)}
     .visual:after{content:"Custom AI Builds";position:absolute;left:24px;right:24px;bottom:24px;padding:18px 20px;border:1px solid rgba(255,255,255,.14);border-radius:24px;background:rgba(2,7,18,.68);backdrop-filter:blur(16px);color:#e8f4ff;font-size:22px;font-weight:950}
     section{padding:52px 0}
     .sectionHead{display:grid;grid-template-columns:minmax(0,.9fr) minmax(320px,.7fr);gap:34px;align-items:end;margin-bottom:24px}
-    .sectionHead h2{font-family:Georgia,serif;font-size:clamp(34px,4vw,58px);line-height:1.02;font-weight:500;margin:0}
+    .sectionHead h2{font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;font-size:clamp(34px,4vw,58px);line-height:1.02;font-weight:500;margin:0}
     .sectionHead p{margin:0;color:#b9c6d6;font-size:17px;line-height:1.65}
     .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
     .offerCard,.proofItem{border:1px solid rgba(112,184,255,.24);border-radius:28px;background:linear-gradient(145deg,rgba(10,24,46,.76),rgba(4,10,22,.70));box-shadow:0 24px 70px rgba(0,0,0,.26),inset 0 1px 0 rgba(255,255,255,.07)}

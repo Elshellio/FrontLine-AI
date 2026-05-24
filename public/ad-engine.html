@@ -13,7 +13,7 @@
   <style>
     :root{--bg:#03070f;--panel:rgba(8,18,36,.72);--text:#f7fbff;--muted:#aebbd0;--line:rgba(112,184,255,.25);--blue:#1678ff;--cyan:#62d8ff;--violet:#915cff;--gold:#f2dc9d}
     *{box-sizing:border-box}
-    body{margin:0;font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--text);background:#03070f}
+    body{margin:0;font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;color:var(--text);background:#03070f}
     body:before{content:"";position:fixed;inset:0;background:linear-gradient(90deg,rgba(2,6,16,.92),rgba(2,6,16,.54)),url("/assets/websites-home-new/background999.png") center/cover no-repeat;opacity:.95;pointer-events:none}
     a{color:inherit;text-decoration:none}
     .page{position:relative;z-index:1}
@@ -25,15 +25,15 @@
     .nav a.btn{padding:12px 18px;border-radius:999px;background:linear-gradient(135deg,var(--blue),var(--cyan));font-weight:900}
     section{padding:58px 0}
     .eyebrow,.sectionKicker{display:inline-flex;padding:9px 13px;border:1px solid rgba(242,220,157,.25);border-radius:999px;color:#f2dc9d;background:rgba(242,220,157,.08);font-size:11px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}
-    h1,.adEngineSection h2{font-family:Georgia,serif;font-weight:500}
-    h1{font-size:clamp(48px,6.4vw,92px);line-height:.92;letter-spacing:-.055em;margin:24px 0 18px}
+    h1,.adEngineSection h2{font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;font-weight:700}
+    h1{font-size:clamp(44px,5.8vw,82px);line-height:.94;letter-spacing:-.055em;margin:24px 0 18px}
     h1 span{color:#62d8ff}
-    .lead{max-width:720px;color:#d0dae8;font-size:18px;line-height:1.68}
-    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:30px}
+    .lead{max-width:720px;color:#d0dae8;font-size:17px;line-height:1.56}
+    .actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:20px}
     .btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 20px;border:1px solid rgba(125,205,255,.36);border-radius:999px;background:rgba(2,7,18,.48);font-weight:900;transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease}
     .btn.primary{background:linear-gradient(135deg,var(--blue),var(--violet));border-color:rgba(255,255,255,.26)}
     .btn:hover{transform:translateY(-2px);border-color:rgba(125,205,255,.72);box-shadow:0 18px 48px rgba(0,0,0,.32),0 0 30px rgba(38,132,255,.22)}
-    .adEngineHero{padding:86px 0 44px}
+    .adEngineHero{padding:50px 0 38px}
     .adEngineHeroGrid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(420px,1.18fr);gap:42px;align-items:start}
     .adEnginePreviewFrame{position:relative;border:1px solid rgba(242,220,157,.34);border-radius:34px;padding:14px;background:linear-gradient(145deg,rgba(255,255,255,.08),rgba(4,10,20,.74));box-shadow:0 34px 100px rgba(0,0,0,.42),0 0 60px rgba(242,220,157,.14),inset 0 1px 0 rgba(255,255,255,.10);overflow:hidden}
     .adEnginePreviewFrame:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 16% 12%,rgba(242,220,157,.16),transparent 34%),radial-gradient(circle at 88% 38%,rgba(98,216,255,.12),transparent 34%);pointer-events:none}
@@ -68,7 +68,7 @@
     .adEngineModalClose{position:absolute;top:14px;right:14px;width:42px;height:42px;border:1px solid rgba(242,220,157,.34);border-radius:15px;color:#fff;background:rgba(4,12,25,.82);font-size:24px;line-height:1;cursor:pointer}
     .adEngineModalClose:hover,.adEngineModalClose:focus-visible{outline:none;border-color:rgba(242,220,157,.72);box-shadow:0 0 24px rgba(242,220,157,.18)}
     .adEngineModalKicker{display:inline-flex;margin-bottom:12px;color:#f2dc9d;font-size:11px;font-weight:950;letter-spacing:.18em;text-transform:uppercase}
-    .adEngineModalTitle{font-family:Georgia,serif;font-size:clamp(32px,4vw,48px);line-height:1;margin:0 48px 16px 0;font-weight:500}
+    .adEngineModalTitle{font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;font-size:clamp(32px,4vw,48px);line-height:1;margin:0 48px 16px 0;font-weight:500}
     .modalModuleVisual{display:none;margin:0 0 22px;border:1px solid rgba(242,220,157,.24);border-radius:26px;padding:12px;background:linear-gradient(145deg,rgba(255,255,255,.075),rgba(3,8,18,.74));box-shadow:0 22px 58px rgba(0,0,0,.34),inset 0 1px 0 rgba(255,255,255,.08);overflow:hidden}
     .modalModuleVisual.isActive{display:grid;gap:16px}
     .modalModuleVisual img{display:block;width:100%;max-height:360px;object-fit:contain;border-radius:18px;background:#06101d}
