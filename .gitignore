@@ -7,3 +7,22 @@ dist/
 build/
 .cache/
 public/index.html.bak.*
+
+# Local backups / generated safety copies
+*.bak
+*.bak.*
+*.backup
+*_backups_*/
+backups/
+
+# Local runtime/data files
+data/
+*.jsonl
+
+# Temporary upload folders
+public/assets/*-upload/
+public/assets/tableboss-upload/
+
+# OS/editor noise
+.DS_Store
+Thumbs.db
