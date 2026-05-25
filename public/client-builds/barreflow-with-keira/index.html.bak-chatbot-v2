@@ -1,0 +1,5362 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- BARREFLOW_KIERA_TARGET_PAGE_V1 -->
+  <!-- BARREFLOW_SEO_LOCAL_V1 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <title>Barre Flow with Keira | Beginner-friendly barre classes in Stowmarket</title>
+  <meta name="description" content="Beginner-friendly barre classes in Stowmarket with Barre Flow with Keira. Build strength, balance, posture and confidence in a calm, supportive class.">
+  <link rel="canonical" href="https://frontline-ai.co.uk/client-builds/barreflow-with-keira/">
+
+  <meta property="og:title" content="Barre Flow with Keira">
+  <meta property="og:description" content="Beginner-friendly barre classes in Stowmarket. Strength, balance, posture and confidence in a calm, supportive class.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://frontline-ai.co.uk/client-builds/barreflow-with-keira/">
+  <meta property="og:image" content="https://frontline-ai.co.uk/client-builds/barreflow-with-keira/assets/final/og.webp">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="preload" as="image" href="./assets/final/hero.webp">
+  <link rel="preload" as="image" href="./assets/final/about.webp">
+
+  <style>
+    :root {
+      --ink: #211719;
+      --muted: #6f5d60;
+      --cream: #fff8f4;
+      --cream-2: #f7ece8;
+      --blush: #c97883;
+      --blush-2: #b66370;
+      --rose-dark: #7b3f4b;
+      --line: rgba(123, 63, 75, .18);
+      --glass: rgba(255, 250, 246, .72);
+      --glass-strong: rgba(255, 250, 246, .88);
+      --shadow: 0 28px 90px rgba(84, 46, 47, .16);
+      --shadow-soft: 0 18px 50px rgba(84, 46, 47, .10);
+      --radius: 30px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 4%, rgba(201,120,131,.18), transparent 34rem),
+        radial-gradient(circle at 88% 18%, rgba(236,199,187,.34), transparent 34rem),
+        linear-gradient(180deg, #fffaf7 0%, #f8eee9 48%, #fffaf7 100%);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing: -.04em;
+      line-height: .95;
+      margin: 0;
+      color: var(--ink);
+    }
+
+    h1 { font-size: clamp(4rem, 10vw, 8.6rem); max-width: 760px; }
+    h2 { font-size: clamp(2.7rem, 5.8vw, 5.4rem); max-width: 850px; }
+    h3 { font-size: clamp(1.35rem, 2.2vw, 2.15rem); }
+
+    p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 1.03rem;
+      line-height: 1.72;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    .wrap {
+      width: min(var(--max), calc(100% - 44px));
+      margin-inline: auto;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: .2em;
+      color: var(--rose-dark);
+      font-size: .76rem;
+      font-weight: 900;
+      margin-bottom: 1rem;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 48px;
+      padding: .92rem 1.35rem;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      font-weight: 900;
+      font-size: .92rem;
+      letter-spacing: .01em;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease, border-color .2s ease;
+      white-space: nowrap;
+    }
+
+    .button.primary {
+      background: linear-gradient(135deg, var(--blush), var(--rose-dark));
+      color: white;
+      box-shadow: 0 18px 42px rgba(123, 63, 75, .25);
+    }
+
+    .button.secondary {
+      background: rgba(255,255,255,.72);
+      color: var(--rose-dark);
+      border-color: rgba(123,63,75,.24);
+      backdrop-filter: blur(16px);
+    }
+
+    .button.light {
+      background: #fffaf7;
+      color: var(--rose-dark);
+      border-color: rgba(255,255,255,.5);
+    }
+
+    .button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 54px rgba(123, 63, 75, .22);
+    }
+
+    .site-nav {
+      position: fixed;
+      top: 18px;
+      left: 0;
+      right: 0;
+      z-index: 50;
+      pointer-events: none;
+    }
+
+    .nav-shell {
+      pointer-events: auto;
+      width: min(1180px, calc(100% - 36px));
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .78rem .9rem .78rem 1.25rem;
+      border: 1px solid rgba(123,63,75,.14);
+      background: rgba(255,250,246,.76);
+      backdrop-filter: blur(22px);
+      border-radius: 999px;
+      box-shadow: 0 16px 60px rgba(84,46,47,.12);
+    }
+
+    .brand {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.28rem;
+      letter-spacing: -.03em;
+      font-weight: 700;
+    }
+
+    .brand small {
+      font-family: Inter, system-ui, sans-serif;
+      color: var(--blush-2);
+      font-size: .67rem;
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      margin-top: .22rem;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: .88rem;
+      font-weight: 800;
+      color: #3a292c;
+    }
+
+    .nav-links a:hover { color: var(--rose-dark); }
+
+    .nav-cta {
+      min-height: 40px;
+      padding: .72rem 1.05rem;
+      font-size: .82rem;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: grid;
+      align-items: end;
+      padding: 7rem 0 4.2rem;
+      overflow: hidden;
+      isolation: isolate;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background:
+        linear-gradient(90deg, rgba(255,248,244,.98) 0%, rgba(255,248,244,.72) 38%, rgba(255,248,244,.20) 68%, rgba(255,248,244,.08) 100%),
+        linear-gradient(180deg, rgba(33,23,25,.02), rgba(33,23,25,.18)),
+        url("./assets/final/hero.webp") center / cover no-repeat;
+      transform: scale(1.015);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: auto 0 0;
+      height: 28%;
+      z-index: -2;
+      background: linear-gradient(180deg, transparent, #fff8f4);
+    }
+
+    .hero-glow {
+      position: absolute;
+      width: 42rem;
+      height: 42rem;
+      border-radius: 999px;
+      background: rgba(201,120,131,.22);
+      filter: blur(80px);
+      left: -12rem;
+      bottom: -12rem;
+      z-index: -1;
+    }
+
+    .hero-card {
+      width: min(720px, 100%);
+      padding: clamp(1.45rem, 4vw, 3rem);
+      border-radius: var(--radius);
+      border: 1px solid rgba(123,63,75,.18);
+      background: linear-gradient(135deg, rgba(255,250,246,.86), rgba(255,250,246,.62));
+      backdrop-filter: blur(22px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-card p {
+      max-width: 560px;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      color: #4b373b;
+      margin-top: 1rem;
+    }
+
+    .hero-sub {
+      margin-top: 1rem;
+      color: var(--rose-dark);
+      font-size: clamp(1.1rem, 2vw, 1.55rem);
+      font-weight: 900;
+      letter-spacing: -.02em;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .9rem;
+      margin-top: 1.4rem;
+    }
+
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .7rem;
+      margin-top: 1.45rem;
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .65rem .85rem;
+      border: 1px solid rgba(123,63,75,.18);
+      background: rgba(255,255,255,.62);
+      border-radius: 999px;
+      color: #52383e;
+      font-weight: 850;
+      font-size: .85rem;
+      backdrop-filter: blur(14px);
+    }
+
+    .chip::before {
+      content: "";
+      width: .5rem;
+      height: .5rem;
+      border-radius: 999px;
+      background: var(--blush);
+      box-shadow: 0 0 0 5px rgba(201,120,131,.13);
+    }
+
+    section {
+      position: relative;
+      padding: clamp(4.5rem, 8vw, 7.5rem) 0;
+    }
+
+    .section-head {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 460px);
+      gap: clamp(1.5rem, 5vw, 4rem);
+      align-items: end;
+      margin-bottom: 2rem;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(255,248,244,.50));
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap: 1.4rem;
+      align-items: stretch;
+    }
+
+    .intro-copy {
+      padding: clamp(1.4rem, 3vw, 2.3rem);
+    }
+
+    .steps {
+      padding: 1rem;
+      display: grid;
+      gap: .85rem;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 42px 1fr;
+      gap: .9rem;
+      padding: 1.05rem;
+      border-radius: 22px;
+      background: rgba(255,255,255,.68);
+      border: 1px solid rgba(123,63,75,.10);
+    }
+
+    .num {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: rgba(201,120,131,.14);
+      color: var(--rose-dark);
+      font-weight: 950;
+    }
+
+    .step strong, .benefit-card strong, .class-card strong {
+      display: block;
+      margin-bottom: .25rem;
+      color: var(--ink);
+      font-size: 1.05rem;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .benefit-card {
+      padding: 1.25rem;
+      min-height: 180px;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(circle at 100% 0%, rgba(201,120,131,.16), transparent 9rem),
+        rgba(255,255,255,.68);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .benefit-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 1rem;
+      color: var(--rose-dark);
+      background: rgba(201,120,131,.14);
+      font-weight: 950;
+    }
+
+    .classes-grid {
+      display: grid;
+      gap: .95rem;
+    }
+
+    .class-card {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr auto;
+      gap: 1.2rem;
+      align-items: center;
+      padding: 1.15rem;
+      border-radius: 26px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.72);
+      box-shadow: 0 12px 34px rgba(84,46,47,.07);
+    }
+
+    .tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-top: .2rem;
+      padding: .32rem .55rem;
+      border-radius: 999px;
+      background: rgba(201,120,131,.12);
+      color: var(--rose-dark);
+      font-size: .72rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .about {
+      background:
+        radial-gradient(circle at 10% 20%, rgba(201,120,131,.12), transparent 28rem),
+        linear-gradient(180deg, rgba(255,255,255,.22), rgba(255,248,244,.72));
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .95fr 1.05fr;
+      gap: clamp(1.4rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .image-card {
+      position: relative;
+      padding: .7rem;
+      border-radius: 34px;
+      overflow: hidden;
+    }
+
+    .image-card img {
+      width: 100%;
+      aspect-ratio: 4 / 4.7;
+      object-fit: cover;
+      border-radius: 26px;
+      box-shadow: inset 0 0 0 1px rgba(255,255,255,.3);
+    }
+
+    .image-badge {
+      position: absolute;
+      left: 1.35rem;
+      bottom: 1.35rem;
+      padding: .8rem 1rem;
+      border-radius: 18px;
+      background: rgba(255,250,246,.82);
+      border: 1px solid rgba(123,63,75,.16);
+      backdrop-filter: blur(16px);
+      box-shadow: 0 14px 40px rgba(84,46,47,.14);
+      font-weight: 950;
+      color: var(--rose-dark);
+    }
+
+    .about-copy {
+      padding: clamp(1.4rem, 3.5vw, 3rem);
+    }
+
+    .about-copy p + p { margin-top: .9rem; }
+
+    .booking {
+      padding: clamp(4rem, 8vw, 7rem) 0;
+      background:
+        linear-gradient(90deg, rgba(44,30,30,.88), rgba(123,63,75,.64)),
+        url("./assets/final/cta.webp") center / cover no-repeat;
+      color: white;
+    }
+
+    .booking h2, .booking p, .booking .eyebrow { color: white; }
+    .booking p { opacity: .92; }
+
+    .booking-grid {
+      display: grid;
+      grid-template-columns: 1fr minmax(300px, 440px);
+      gap: clamp(1.3rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .payment-card {
+      padding: 1.25rem;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.28);
+      background: rgba(255,255,255,.12);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 28px 80px rgba(0,0,0,.22);
+    }
+
+    .payment-card .button {
+      width: 100%;
+      margin-top: .7rem;
+    }
+
+    .payment-note {
+      margin-top: .9rem;
+      font-size: .9rem;
+      color: rgba(255,255,255,.82);
+    }
+
+
+    /* BARREFLOW_SESSION_CALENDAR_V1 */
+    .bf-session-calendar-section {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4.2rem, 8vw, 7rem) 0;
+      background:
+        radial-gradient(circle at 9% 14%, rgba(255,255,255,.86) 0 92px, transparent 93px),
+        radial-gradient(circle at 86% 10%, rgba(242,220,224,.78) 0 118px, transparent 119px),
+        radial-gradient(circle at 72% 86%, rgba(255,255,255,.72) 0 84px, transparent 85px),
+        linear-gradient(135deg, #fff8f4 0%, #f8e9e7 52%, #fffaf6 100%);
+      border-top: 1px solid rgba(123,63,75,.12);
+    }
+
+    .bf-session-calendar-section::before,
+    .bf-session-calendar-section::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+      border: 1px solid rgba(201,120,131,.16);
+      background: rgba(255,255,255,.28);
+      box-shadow: inset 0 0 0 18px rgba(255,255,255,.18);
+    }
+
+    .bf-session-calendar-section::before {
+      width: 210px;
+      height: 210px;
+      left: -80px;
+      top: 18%;
+    }
+
+    .bf-session-calendar-section::after {
+      width: 280px;
+      height: 280px;
+      right: -120px;
+      bottom: 10%;
+    }
+
+    .bf-session-shell {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(330px, .8fr);
+      gap: clamp(1.1rem, 3vw, 2rem);
+      align-items: start;
+      z-index: 1;
+    }
+
+    .bf-session-intro,
+    .bf-session-booking-panel,
+    .bf-session-group {
+      border: 1px solid rgba(123,63,75,.15);
+      background: rgba(255,255,255,.54);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 24px 70px rgba(84,46,47,.12);
+      border-radius: 30px;
+    }
+
+    .bf-session-intro {
+      padding: clamp(1.35rem, 3vw, 2.2rem);
+      margin-bottom: 1rem;
+    }
+
+    .bf-session-intro h2 { max-width: 820px; }
+    .bf-session-intro > p { max-width: 760px; }
+
+    .bf-schedule-note {
+      margin: 1.2rem 0 0;
+      padding: .9rem 1rem;
+      border-radius: 22px;
+      border: 1px solid rgba(201,120,131,.22);
+      background: rgba(242,220,224,.58);
+      color: #6b3b43;
+      font-weight: 800;
+    }
+
+    .bf-price-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .55rem;
+      margin-top: 1rem;
+    }
+
+    .bf-price-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      min-height: 38px;
+      padding: .5rem .8rem;
+      border-radius: 999px;
+      border: 1px solid rgba(123,63,75,.16);
+      background: rgba(255,255,255,.7);
+      color: #6b3b43;
+      font-weight: 900;
+      box-shadow: 0 10px 24px rgba(84,46,47,.06);
+    }
+
+    .bf-session-groups {
+      display: grid;
+      gap: 1rem;
+    }
+
+    .bf-session-group {
+      padding: 1rem;
+    }
+
+    .bf-session-group-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .3rem .35rem .9rem;
+      border-bottom: 1px solid rgba(123,63,75,.11);
+    }
+
+    .bf-session-group-head h3 {
+      margin: 0;
+      font-size: clamp(1.45rem, 4vw, 2rem);
+    }
+
+    .bf-launch-pill {
+      display: inline-flex;
+      align-items: center;
+      white-space: nowrap;
+      border-radius: 999px;
+      padding: .45rem .7rem;
+      background: #7b3f4b;
+      color: #fff;
+      font-size: .78rem;
+      font-weight: 900;
+    }
+
+    .bf-session-card-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: .75rem;
+      padding-top: .9rem;
+    }
+
+    .bf-session-card {
+      position: relative;
+      text-align: left;
+      width: 100%;
+      border: 1px solid rgba(123,63,75,.14);
+      border-radius: 24px;
+      padding: 1rem;
+      background: rgba(255,255,255,.66);
+      color: var(--ink);
+      cursor: pointer;
+      box-shadow: 0 16px 34px rgba(84,46,47,.08);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background .2s ease;
+    }
+
+    .bf-session-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(123,63,75,.32);
+      box-shadow: 0 22px 48px rgba(84,46,47,.13);
+    }
+
+    .bf-session-card.is-primary {
+      background: linear-gradient(145deg, rgba(255,255,255,.78), rgba(242,220,224,.72));
+      border-color: rgba(123,63,75,.26);
+    }
+
+    .bf-session-card.is-selected {
+      background: #7b3f4b;
+      border-color: #7b3f4b;
+      color: #fff;
+      box-shadow: 0 26px 60px rgba(123,63,75,.28);
+    }
+
+    .bf-session-card.is-selected p,
+    .bf-session-card.is-selected .bf-session-meta,
+    .bf-session-card.is-selected .bf-session-price { color: rgba(255,255,255,.86); }
+
+    .bf-session-day {
+      display: block;
+      margin-bottom: .4rem;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--rose-dark);
+    }
+
+    .bf-session-card.is-selected .bf-session-day { color: #f8dfe3; }
+
+    .bf-session-card strong {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.26rem;
+      line-height: 1.1;
+    }
+
+    .bf-session-meta,
+    .bf-session-price {
+      display: block;
+      margin-top: .45rem;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .bf-session-booking-panel {
+      position: sticky;
+      top: 96px;
+      padding: clamp(1.25rem, 3vw, 1.65rem);
+    }
+
+    .bf-selected-summary {
+      display: grid;
+      gap: .55rem;
+      margin: 1rem 0;
+      padding: 1rem;
+      border-radius: 24px;
+      border: 1px solid rgba(123,63,75,.14);
+      background: rgba(255,248,244,.74);
+    }
+
+    .bf-selected-summary strong {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.2rem;
+      color: #352529;
+    }
+
+    .bf-selected-summary span { color: var(--muted); }
+
+    .bf-booking-form {
+      display: grid;
+      gap: .9rem;
+    }
+
+    .bf-package-options {
+      display: grid;
+      gap: .55rem;
+    }
+
+    .bf-package-option {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .8rem;
+      padding: .78rem .85rem;
+      border-radius: 20px;
+      border: 1px solid rgba(123,63,75,.14);
+      background: rgba(255,255,255,.62);
+      cursor: pointer;
+      color: #352529;
+    }
+
+    .bf-package-option:has(input:checked) {
+      border-color: rgba(123,63,75,.42);
+      background: rgba(242,220,224,.66);
+      box-shadow: 0 10px 26px rgba(84,46,47,.08);
+    }
+
+    .bf-package-option input { width: auto; accent-color: #7b3f4b; }
+    .bf-package-option span { font-weight: 900; }
+
+    .bf-form-status,
+    .bf-question-panel {
+      min-height: 24px;
+      margin: .2rem 0 0;
+      color: #6b3b43;
+      font-size: .9rem;
+      font-weight: 800;
+    }
+
+    .bf-question-panel {
+      display: none;
+      padding: .9rem;
+      border-radius: 22px;
+      border: 1px solid rgba(123,63,75,.14);
+      background: rgba(255,255,255,.58);
+    }
+
+    .bf-question-panel.is-open { display: grid; gap: .7rem; }
+
+    .bf-secondary-action {
+      border: 0;
+      background: transparent;
+      color: #7b3f4b;
+      font-weight: 950;
+      text-decoration: underline;
+      text-underline-offset: 4px;
+      cursor: pointer;
+      padding: .35rem 0;
+    }
+
+    @media (max-width: 900px) {
+      .bf-session-shell { grid-template-columns: 1fr; }
+      .bf-session-booking-panel { position: static; }
+      .bf-session-card-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 560px) {
+      .bf-session-calendar-section { padding-inline: 0; }
+      .bf-session-intro,
+      .bf-session-booking-panel,
+      .bf-session-group { border-radius: 24px; }
+      .bf-session-group-head { align-items: flex-start; flex-direction: column; }
+      .bf-launch-pill { white-space: normal; }
+    }
+
+    /* BARREFLOW_MERCH_STORE_PAGE_V1 */
+    .bf-shop-cta-band {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(2.6rem, 6vw, 4.6rem) 0;
+      background:
+        radial-gradient(circle at 18% 22%, rgba(255,255,255,.78) 0 74px, transparent 75px),
+        radial-gradient(circle at 88% 78%, rgba(242,220,224,.70) 0 118px, transparent 119px),
+        linear-gradient(135deg, #fffaf6 0%, #f6e7e5 100%);
+      border-top: 1px solid rgba(123,63,75,.11);
+    }
+
+    .bf-shop-cta-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+      padding: clamp(1.25rem, 3vw, 2rem);
+      border: 1px solid rgba(123,63,75,.15);
+      border-radius: 30px;
+      background: rgba(255,255,255,.56);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 22px 64px rgba(84,46,47,.12);
+    }
+
+    .bf-shop-cta-card h2 {
+      margin-bottom: .55rem;
+      font-size: clamp(2rem, 5vw, 3.6rem);
+    }
+
+    .bf-shop-cta-card p {
+      max-width: 680px;
+    }
+
+    @media (max-width: 720px) {
+      .bf-shop-cta-card { grid-template-columns: 1fr; }
+      .bf-shop-cta-card .button { width: 100%; }
+    }
+
+    .assistant-section {
+      text-align: center;
+    }
+
+    .assistant-section .wrap {
+      max-width: 840px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 1.2rem;
+      align-items: start;
+    }
+
+    .contact-card, .form-card {
+      padding: clamp(1.35rem, 3vw, 2rem);
+    }
+
+    form {
+      display: grid;
+      gap: .9rem;
+    }
+
+    label {
+      display: grid;
+      gap: .35rem;
+      font-weight: 850;
+      color: #352529;
+      font-size: .9rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(123,63,75,.18);
+      border-radius: 18px;
+      background: rgba(255,255,255,.76);
+      padding: .95rem 1rem;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 130px;
+      resize: vertical;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(123,63,75,.42);
+      box-shadow: 0 0 0 4px rgba(201,120,131,.12);
+    }
+
+    .two {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .9rem;
+    }
+
+    footer {
+      padding: 2.1rem 0;
+      border-top: 1px solid rgba(123,63,75,.12);
+      background: rgba(255,250,246,.72);
+    }
+
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      color: var(--muted);
+      font-size: .92rem;
+    }
+
+    .chat-launcher {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 80;
+      width: 62px;
+      height: 62px;
+      border: 0;
+      border-radius: 22px;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(135deg, var(--blush), var(--rose-dark));
+      box-shadow: 0 22px 60px rgba(123,63,75,.34);
+      display: grid;
+      place-items: center;
+      font-size: 1.45rem;
+    }
+
+    .chat-panel {
+      position: fixed;
+      right: 22px;
+      bottom: 96px;
+      z-index: 81;
+      width: min(380px, calc(100vw - 28px));
+      border-radius: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(123,63,75,.16);
+      background: rgba(255,250,246,.92);
+      backdrop-filter: blur(20px);
+      box-shadow: 0 28px 90px rgba(84,46,47,.22);
+      transform: translateY(14px);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s ease, transform .2s ease;
+    }
+
+    .chat-panel.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .chat-head {
+      padding: 1rem 1.1rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+      background: linear-gradient(135deg, var(--blush), var(--rose-dark));
+    }
+
+    .chat-head strong { display: block; }
+    .chat-head span { font-size: .82rem; opacity: .86; }
+
+    .chat-close {
+      border: 0;
+      background: rgba(255,255,255,.18);
+      color: white;
+      border-radius: 999px;
+      width: 34px;
+      height: 34px;
+      cursor: pointer;
+    }
+
+    .chat-body {
+      padding: 1rem;
+      display: grid;
+      gap: .8rem;
+      max-height: 430px;
+      overflow: auto;
+    }
+
+    .bubble {
+      width: fit-content;
+      max-width: 92%;
+      padding: .78rem .9rem;
+      border-radius: 18px;
+      background: white;
+      color: #332327;
+      box-shadow: 0 10px 25px rgba(84,46,47,.08);
+      font-size: .92rem;
+      line-height: 1.45;
+    }
+
+    .bubble.user {
+      margin-left: auto;
+      background: #f2dce0;
+      color: #5b3038;
+    }
+
+    .quick-options {
+      display: grid;
+      gap: .45rem;
+    }
+
+    .quick-options button {
+      text-align: left;
+      border: 1px solid rgba(123,63,75,.16);
+      background: rgba(255,255,255,.72);
+      border-radius: 999px;
+      padding: .74rem .85rem;
+      color: var(--rose-dark);
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .chat-input {
+      display: flex;
+      gap: .5rem;
+      padding: .85rem;
+      border-top: 1px solid rgba(123,63,75,.12);
+      background: rgba(255,255,255,.48);
+    }
+
+    .chat-input input {
+      border-radius: 999px;
+      padding: .8rem .9rem;
+    }
+
+    .chat-input button {
+      border: 0;
+      border-radius: 999px;
+      padding: .8rem 1rem;
+      background: var(--rose-dark);
+      color: white;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    @media (max-width: 900px) {
+      .nav-links a:not(.button) { display: none; }
+      .hero { min-height: 92svh; padding-top: 6.8rem; }
+      .hero::before {
+        background:
+          linear-gradient(180deg, rgba(255,248,244,.48) 0%, rgba(255,248,244,.90) 64%, #fff8f4 100%),
+          url("./assets/final/hero.webp") 62% center / cover no-repeat;
+      }
+      .hero-card { margin-top: 30svh; }
+      .section-head, .intro-grid, .about-grid, .booking-grid, .contact-grid {
+        grid-template-columns: 1fr;
+      }
+      .benefits-grid { grid-template-columns: 1fr 1fr; }
+      .class-card {
+        grid-template-columns: 1fr;
+        gap: .65rem;
+      }
+      .class-card .button {
+        width: 100%;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 28px, var(--max)); }
+      .site-nav { top: 10px; }
+      .nav-shell {
+        width: calc(100% - 20px);
+        border-radius: 24px;
+        padding: .72rem;
+      }
+      .brand { font-size: 1.05rem; }
+      .brand small { display: none; }
+      .nav-cta { padding: .65rem .8rem; min-height: 38px; }
+      h1 { font-size: clamp(3.2rem, 17vw, 5.2rem); }
+      h2 { font-size: clamp(2.45rem, 12vw, 4rem); }
+      .hero-card { border-radius: 24px; }
+      .hero-actions .button { width: 100%; }
+      .benefits-grid { grid-template-columns: 1fr; }
+      .two { grid-template-columns: 1fr; }
+      .footer-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .chat-launcher {
+        right: 14px;
+        bottom: 14px;
+      }
+      .chat-panel {
+        right: 14px;
+        bottom: 86px;
+      }
+    }
+
+
+    /* BARREFLOW_LOGO_REWORK_WIRE_V1 */
+    .brand-image {
+      padding-left: 0 !important;
+      width: 245px;
+      max-width: 32vw;
+      display: flex;
+      align-items: center;
+    }
+
+    .brand-image::before {
+      display: none !important;
+    }
+
+    .brand-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+    }
+
+    @media (max-width: 700px) {
+      .brand-image {
+        width: 180px;
+        max-width: 54vw;
+      }
+    }
+
+
+    /* BARREFLOW_HERO_REBUILD_TARGET_V1 */
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+
+    .site-nav {
+      position: relative !important;
+      top: auto !important;
+      padding: 0 !important;
+      background: #fffaf7 !important;
+      border-bottom: 1px solid rgba(201,120,131,.12) !important;
+      box-shadow: none !important;
+    }
+
+    .nav-shell {
+      width: min(1160px, calc(100% - 48px)) !important;
+      margin: 0 auto !important;
+      padding: .65rem 0 !important;
+      border: 0 !important;
+      border-radius: 0 !important;
+      background: transparent !important;
+      box-shadow: none !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+    }
+
+    .brand,
+    .brand-image,
+    .brand-logo {
+      width: 185px !important;
+      max-width: 28vw !important;
+      padding-left: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+    }
+
+    .brand::before,
+    .brand-image::before,
+    .brand-logo::before {
+      display: none !important;
+    }
+
+    .brand img,
+    .brand-image img,
+    .brand-logo img {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
+
+    .nav-links {
+      display: flex !important;
+      align-items: center !important;
+      gap: 1.25rem !important;
+      margin-left: auto !important;
+    }
+
+    .nav-links a {
+      font-size: .82rem !important;
+      font-weight: 750 !important;
+      color: #2d2325 !important;
+    }
+
+    .nav-links a.button,
+    .nav-links .button,
+    .nav-cta {
+      min-height: 40px !important;
+      padding: .66rem 1.2rem !important;
+      border-radius: 6px !important;
+      background: #bf6675 !important;
+      color: #fff !important;
+      font-size: .7rem !important;
+      font-weight: 900 !important;
+      letter-spacing: .13em !important;
+      text-transform: uppercase !important;
+      box-shadow: none !important;
+    }
+
+    .hero-target {
+      min-height: auto !important;
+      padding: 0 !important;
+      background: #fffaf7 !important;
+      display: block !important;
+      overflow: hidden !important;
+    }
+
+    .hero-target::before,
+    .hero-target::after,
+    .hero-target .hero-glow {
+      display: none !important;
+      content: none !important;
+    }
+
+    .hero-stage {
+      width: min(1160px, calc(100% - 48px));
+      min-height: 585px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 43% 57%;
+      align-items: stretch;
+      position: relative;
+    }
+
+    .hero-copy-target {
+      position: relative;
+      z-index: 2;
+      padding: 2.2rem 2rem 1rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background: linear-gradient(90deg, #fffaf7 0%, rgba(255,250,247,.98) 72%, rgba(255,250,247,.72) 100%);
+    }
+
+    .hero-image-target {
+      min-height: 585px;
+      background:
+        linear-gradient(90deg, rgba(255,250,247,.62) 0%, rgba(255,250,247,.18) 18%, rgba(255,250,247,0) 44%),
+        url("./assets/final/hero-rework.webp") center center / cover no-repeat;
+    }
+
+    .hero-brandmark {
+      width: 360px !important;
+      max-width: 94% !important;
+      height: auto !important;
+      display: block !important;
+      margin: 0 0 1rem !important;
+    }
+
+    .hero-kicker {
+      margin: .05rem 0 0 !important;
+      color: #211719 !important;
+      font-size: .88rem !important;
+      line-height: 1.35 !important;
+      font-weight: 900 !important;
+      letter-spacing: .44em !important;
+      text-transform: uppercase !important;
+    }
+
+    .hero-main-copy {
+      margin: .9rem 0 0 !important;
+      max-width: 390px !important;
+      color: #211719 !important;
+      font-size: 1.32rem !important;
+      line-height: 1.22 !important;
+      font-weight: 500 !important;
+      letter-spacing: -.02em !important;
+    }
+
+    .hero-support-copy {
+      margin: .75rem 0 0 !important;
+      max-width: 425px !important;
+      color: #31272a !important;
+      font-size: .94rem !important;
+      line-height: 1.58 !important;
+    }
+
+    .hero-actions-target {
+      margin-top: 1.15rem !important;
+      display: flex !important;
+      gap: .8rem !important;
+      flex-wrap: wrap !important;
+    }
+
+    .hero-actions-target .button {
+      min-height: 42px !important;
+      padding: .7rem 1.35rem !important;
+      border-radius: 6px !important;
+      font-size: .72rem !important;
+      font-weight: 900 !important;
+      letter-spacing: .13em !important;
+      text-transform: uppercase !important;
+      box-shadow: none !important;
+    }
+
+    .hero-actions-target .button.primary {
+      background: #bf6675 !important;
+      color: #fff !important;
+    }
+
+    .hero-actions-target .button.secondary {
+      background: transparent !important;
+      color: #a85261 !important;
+      border: 1px solid rgba(191,102,117,.75) !important;
+    }
+
+    .hero-feature-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.05rem;
+      margin-top: 1.25rem;
+      max-width: 520px;
+    }
+
+    .hero-feature {
+      display: flex;
+      align-items: center;
+      gap: .62rem;
+      min-width: 0;
+    }
+
+    .hero-feature img {
+      width: 38px !important;
+      height: 38px !important;
+      object-fit: contain;
+      flex: 0 0 auto;
+    }
+
+    .hero-feature strong {
+      display: block;
+      color: #211719;
+      font-size: .82rem;
+      line-height: 1.08;
+      font-weight: 900;
+    }
+
+    .hero-feature small {
+      display: block;
+      color: #4c3b3f;
+      font-size: .77rem;
+      line-height: 1.18;
+      margin-top: .12rem;
+    }
+
+    @media (max-width: 900px) {
+      .nav-shell {
+        width: calc(100% - 28px) !important;
+      }
+
+      .brand,
+      .brand-image,
+      .brand-logo {
+        width: 160px !important;
+        max-width: 48vw !important;
+      }
+
+      .nav-links a:not(.button):not(.nav-cta) {
+        display: none !important;
+      }
+
+      .hero-stage {
+        width: 100%;
+        min-height: auto;
+        grid-template-columns: 1fr;
+      }
+
+      .hero-image-target {
+        order: 1;
+        min-height: 360px;
+        background-position: 58% center;
+      }
+
+      .hero-copy-target {
+        order: 2;
+        width: min(100% - 32px, 560px);
+        margin: -2.6rem auto 0;
+        padding: 1.35rem;
+        border-radius: 24px;
+        background: rgba(255,250,247,.94);
+        border: 1px solid rgba(201,120,131,.15);
+        box-shadow: 0 18px 50px rgba(84,46,47,.12);
+      }
+
+      .hero-brandmark {
+        width: min(340px, 100%) !important;
+      }
+
+      .hero-feature-row {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-image-target {
+        min-height: 315px;
+      }
+
+      .hero-actions-target .button {
+        width: 100% !important;
+      }
+    }
+
+
+
+
+    /* BARREFLOW_ABOUT_TARGET_SECTION_V1 */
+    .about-target-section {
+      padding: 0 !important;
+      background: #fffaf7;
+      border-top: 1px solid rgba(201,120,131,.08);
+      border-bottom: 1px solid rgba(201,120,131,.08);
+    }
+
+    .about-target-grid {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 39% 61%;
+      min-height: 275px;
+      align-items: stretch;
+    }
+
+    .about-target-copy {
+      padding: 2.3rem 2.2rem 2.2rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .about-target-eyebrow {
+      margin: 0 0 .65rem !important;
+      color: #bf6675 !important;
+      font-size: .72rem !important;
+      font-weight: 900 !important;
+      letter-spacing: .22em !important;
+      text-transform: uppercase !important;
+      line-height: 1.2 !important;
+    }
+
+    .about-target-copy h2 {
+      margin: 0 0 .8rem !important;
+      font-family: Georgia, "Times New Roman", serif !important;
+      font-size: clamp(2.1rem, 3vw, 3.05rem) !important;
+      line-height: .98 !important;
+      letter-spacing: -.035em !important;
+      color: #211719 !important;
+    }
+
+    .about-target-copy p {
+      max-width: 370px !important;
+      margin: 0 0 .62rem !important;
+      color: #2f2628 !important;
+      font-size: .9rem !important;
+      line-height: 1.5 !important;
+    }
+
+    .about-target-button {
+      width: fit-content;
+      margin-top: .55rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: .72rem 1.3rem;
+      border-radius: 6px;
+      background: #bf6675;
+      color: #fff;
+      font-size: .72rem;
+      font-weight: 900;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      box-shadow: none;
+    }
+
+    .about-target-image {
+      min-height: 275px;
+      overflow: hidden;
+      background: #f3e6e1;
+    }
+
+    .about-target-image img {
+      width: 100%;
+      height: 100%;
+      min-height: 275px;
+      display: block;
+      object-fit: cover;
+      object-position: center;
+    }
+
+    @media (max-width: 800px) {
+      .about-target-grid {
+        width: 100%;
+        grid-template-columns: 1fr;
+      }
+
+      .about-target-copy {
+        width: min(100% - 32px, 560px);
+        margin: 0 auto;
+        padding: 2.3rem 0;
+      }
+
+      .about-target-image {
+        min-height: 230px;
+      }
+
+      .about-target-image img {
+        min-height: 230px;
+      }
+    }
+
+
+    /* BARREFLOW_IMAGE_TREATMENT_V1 */
+
+    /* Hero image: target-style framed image panel */
+    .hero-stage {
+      gap: 1.15rem !important;
+      align-items: center !important;
+    }
+
+    .hero-image-target {
+      min-height: 545px !important;
+      border: 1.5px solid rgba(201,120,131,.38) !important;
+      border-radius: 28px !important;
+      overflow: hidden !important;
+      box-shadow:
+        0 22px 60px rgba(84,46,47,.13),
+        inset 0 1px 0 rgba(255,255,255,.4) !important;
+      transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease,
+        filter .28s ease !important;
+      background:
+        linear-gradient(90deg, rgba(255,250,247,.20) 0%, rgba(255,250,247,.02) 32%, rgba(255,250,247,0) 100%),
+        url("./assets/final/hero-rework.webp") center center / cover no-repeat !important;
+    }
+
+    .hero-image-target:hover {
+      transform: translateY(-4px) scale(1.008);
+      border-color: rgba(201,120,131,.62) !important;
+      box-shadow:
+        0 30px 78px rgba(84,46,47,.18),
+        inset 0 1px 0 rgba(255,255,255,.45) !important;
+      filter: saturate(1.03) contrast(1.02);
+    }
+
+    /* About rolled mat image: rounded pink frame + hover */
+    .about-target-image {
+      min-height: 300px !important;
+      padding: .65rem !important;
+      border: 1.5px solid rgba(201,120,131,.38) !important;
+      border-radius: 28px !important;
+      background:
+        linear-gradient(145deg, rgba(255,250,247,.78), rgba(247,228,222,.44)) !important;
+      box-shadow: 0 22px 60px rgba(84,46,47,.12) !important;
+      overflow: hidden !important;
+      transition:
+        transform .28s ease,
+        box-shadow .28s ease,
+        border-color .28s ease !important;
+    }
+
+    .about-target-image:hover {
+      transform: translateY(-4px);
+      border-color: rgba(201,120,131,.62) !important;
+      box-shadow: 0 30px 78px rgba(84,46,47,.17) !important;
+    }
+
+    .about-target-image img {
+      width: 100% !important;
+      height: 100% !important;
+      min-height: 285px !important;
+      display: block !important;
+      object-fit: cover !important;
+      object-position: center !important;
+      border-radius: 21px !important;
+      transition: transform .34s ease, filter .28s ease !important;
+    }
+
+    .about-target-image:hover img {
+      transform: scale(1.025);
+      filter: saturate(1.04) contrast(1.02);
+    }
+
+    .about-target-grid {
+      gap: 1.2rem !important;
+      align-items: center !important;
+    }
+
+    @media (max-width: 900px) {
+      .hero-stage {
+        gap: 0 !important;
+      }
+
+      .hero-image-target {
+        border-radius: 0 !important;
+        border-left: 0 !important;
+        border-right: 0 !important;
+        min-height: 360px !important;
+      }
+
+      .about-target-image {
+        margin: 0 auto 2rem !important;
+        width: min(100% - 32px, 680px) !important;
+      }
+    }
+
+
+    /* BARREFLOW_HERO_PINK_SECTION_V1 */
+    body {
+      background: #ffffff !important;
+    }
+
+    .site-nav,
+    .nav-shell {
+      background: #ffffff !important;
+    }
+
+    .hero-target {
+      background: #fff1f4 !important;
+      border-bottom: 1px solid rgba(201,120,131,.14) !important;
+    }
+
+    .hero-stage {
+      background: #fff1f4 !important;
+    }
+
+    .hero-copy-target {
+      background: transparent !important;
+    }
+
+    .hero-image-target {
+      background-color: #fff1f4 !important;
+    }
+
+    .about-target-section {
+      background: #ffffff !important;
+    }
+
+    .about-target-copy {
+      background: #ffffff !important;
+    }
+
+    .divider-after-hero {
+      background: linear-gradient(180deg, #fff1f4 0%, #ffffff 100%) !important;
+    }
+
+
+    /* BARREFLOW_FINAL_BARRE_SECTION_MODAL_V1 */
+    .bfk-barre-section {
+      position: relative;
+      padding: clamp(4.8rem, 7vw, 7rem) 0 !important;
+      overflow: hidden;
+      background:
+        linear-gradient(rgba(255,242,245,.58), rgba(255,242,245,.64)),
+        url("./assets/final/barre-section-bg.webp") center / cover no-repeat !important;
+      border-top: 1px solid rgba(201,120,131,.16);
+      border-bottom: 1px solid rgba(201,120,131,.16);
+      isolation: isolate;
+    }
+
+    .bfk-barre-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 8% 8%, rgba(236,188,196,.34), transparent 24rem),
+        radial-gradient(circle at 94% 88%, rgba(236,188,196,.38), transparent 27rem);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    .bfk-barre-wrap {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .bfk-barre-head {
+      max-width: 860px;
+      margin: 0 auto 2.8rem;
+      text-align: center;
+    }
+
+    .bfk-barre-eyebrow {
+      margin: 0 0 1rem !important;
+      color: #bf6675 !important;
+      font-size: .78rem !important;
+      font-weight: 950 !important;
+      letter-spacing: .28em !important;
+      text-transform: uppercase !important;
+    }
+
+    .bfk-barre-title {
+      margin: 0 !important;
+      font-family: Georgia, "Times New Roman", serif !important;
+      font-size: clamp(2.8rem, 5.1vw, 5.5rem) !important;
+      line-height: .94 !important;
+      letter-spacing: -.045em !important;
+      color: #211719 !important;
+      text-wrap: balance;
+    }
+
+    .bfk-barre-copy {
+      max-width: 760px !important;
+      margin: 1.25rem auto 0 !important;
+      color: #423236 !important;
+      font-size: 1.05rem !important;
+      line-height: 1.7 !important;
+      text-wrap: balance;
+    }
+
+    .bfk-barre-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.45rem;
+    }
+
+    .bfk-barre-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      appearance: none;
+      text-align: left;
+      border: 1.5px solid rgba(201,120,131,.34);
+      border-radius: 30px;
+      padding: 1.25rem;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,248,249,.72));
+      box-shadow:
+        0 24px 65px rgba(84,46,47,.11),
+        inset 0 1px 0 rgba(255,255,255,.74);
+      overflow: hidden;
+      min-height: 455px;
+      cursor: pointer;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+
+    .bfk-barre-card::after {
+      content: "";
+      position: absolute;
+      right: -3.8rem;
+      bottom: -3.8rem;
+      width: 11rem;
+      height: 11rem;
+      border-radius: 50%;
+      background: rgba(236,188,196,.42);
+      z-index: 0;
+    }
+
+    .bfk-barre-card:hover {
+      transform: translateY(-7px);
+      border-color: rgba(201,120,131,.68);
+      box-shadow:
+        0 34px 90px rgba(84,46,47,.18),
+        inset 0 1px 0 rgba(255,255,255,.78);
+    }
+
+    .bfk-card-number {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: .9rem;
+      color: #bf6675;
+      font-size: 1rem;
+      font-weight: 950;
+      letter-spacing: .12em;
+    }
+
+    .bfk-card-icon {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 3;
+      width: 62px;
+      height: 62px;
+      display: grid;
+      place-items: center;
+      border-radius: 999px;
+      background: rgba(255,255,255,.88);
+      border: 1px solid rgba(201,120,131,.28);
+      box-shadow: 0 16px 36px rgba(84,46,47,.12);
+    }
+
+    .bfk-card-icon img {
+      width: 40px;
+      height: 40px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .bfk-card-image {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      aspect-ratio: 1.95 / 1;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      border: 1px solid rgba(201,120,131,.22);
+      box-shadow: 0 14px 34px rgba(84,46,47,.11);
+      margin-bottom: 1.2rem;
+      background: #fff4f6;
+      transition: transform .32s ease, filter .28s ease;
+    }
+
+    .bfk-barre-card:hover .bfk-card-image {
+      transform: scale(1.025);
+      filter: saturate(1.04) contrast(1.02);
+    }
+
+    .bfk-card-title {
+      position: relative;
+      z-index: 2;
+      display: block;
+      color: #211719;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(1.8rem, 2.5vw, 2.65rem);
+      line-height: .98;
+      letter-spacing: -.04em;
+      margin-bottom: .75rem;
+    }
+
+    .bfk-card-rule {
+      position: relative;
+      z-index: 2;
+      width: 44px;
+      height: 2px;
+      border-radius: 999px;
+      background: #bf6675;
+      margin-bottom: .85rem;
+    }
+
+    .bfk-card-copy {
+      position: relative;
+      z-index: 2;
+      color: #4b3a3e;
+      font-size: .96rem;
+      line-height: 1.55;
+      margin-bottom: 1rem;
+    }
+
+    .bfk-card-link {
+      position: relative;
+      z-index: 2;
+      margin-top: auto;
+      color: #bf6675;
+      font-size: .86rem;
+      font-weight: 950;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .bfk-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: grid;
+      place-items: center;
+      padding: 1.4rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease;
+    }
+
+    .bfk-modal.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .bfk-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(33,23,25,.38);
+      backdrop-filter: blur(12px);
+    }
+
+    .bfk-modal-panel {
+      position: relative;
+      z-index: 2;
+      width: min(940px, 100%);
+      display: grid;
+      grid-template-columns: .98fr 1.02fr;
+      overflow: hidden;
+      border-radius: 34px;
+      border: 1.5px solid rgba(201,120,131,.48);
+      background: #fffaf7;
+      box-shadow: 0 38px 120px rgba(33,23,25,.28);
+      transform: translateY(16px) scale(.98);
+      transition: transform .24s ease;
+    }
+
+    .bfk-modal.open .bfk-modal-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    .bfk-modal-image-wrap {
+      min-height: 440px;
+      background: #fff1f3;
+      overflow: hidden;
+    }
+
+    .bfk-modal-image-wrap img {
+      width: 100%;
+      height: 100%;
+      min-height: 440px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .bfk-modal-copy {
+      padding: clamp(1.5rem, 4vw, 3rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .bfk-modal-eyebrow {
+      margin: 0 0 .8rem !important;
+      color: #bf6675 !important;
+      font-size: .76rem !important;
+      font-weight: 950 !important;
+      letter-spacing: .22em !important;
+      text-transform: uppercase !important;
+    }
+
+    .bfk-modal-copy h3 {
+      margin: 0 0 1rem !important;
+      font-family: Georgia, "Times New Roman", serif !important;
+      font-size: clamp(2.1rem, 4vw, 3.6rem) !important;
+      line-height: .98 !important;
+      letter-spacing: -.045em !important;
+      color: #211719 !important;
+    }
+
+    .bfk-modal-copy p {
+      color: #3d3033 !important;
+      font-size: 1rem !important;
+      line-height: 1.65 !important;
+      margin: 0 0 1rem !important;
+    }
+
+    .bfk-modal-copy ul {
+      margin: .2rem 0 1.3rem;
+      padding: 0;
+      list-style: none;
+      display: grid;
+      gap: .55rem;
+    }
+
+    .bfk-modal-copy li {
+      position: relative;
+      padding-left: 1.3rem;
+      color: #4b3a3e;
+      line-height: 1.45;
+    }
+
+    .bfk-modal-copy li::before {
+      content: "♡";
+      position: absolute;
+      left: 0;
+      color: #bf6675;
+      font-weight: 900;
+    }
+
+    .bfk-modal-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      z-index: 5;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(201,120,131,.28);
+      border-radius: 999px;
+      background: rgba(255,255,255,.9);
+      color: #7d424c;
+      font-size: 1.45rem;
+      cursor: pointer;
+      box-shadow: 0 12px 30px rgba(84,46,47,.12);
+    }
+
+    @media (max-width: 920px) {
+      .bfk-barre-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .bfk-barre-card {
+        min-height: auto;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .bfk-modal-panel {
+        grid-template-columns: 1fr;
+        max-height: 88vh;
+        overflow: auto;
+      }
+
+      .bfk-modal-image-wrap,
+      .bfk-modal-image-wrap img {
+        min-height: 240px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .bfk-barre-wrap {
+        width: calc(100% - 28px);
+      }
+
+      .bfk-barre-head {
+        text-align: left;
+      }
+
+      .bfk-card-icon {
+        width: 54px;
+        height: 54px;
+      }
+
+      .bfk-card-icon img {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+
+    /* BARREFLOW_HERO_BG_TEXT_LOGO_V1 */
+
+    .hero-target {
+      background:
+        radial-gradient(circle at 8% 10%, rgba(236,188,196,.45), transparent 24rem),
+        radial-gradient(circle at 94% 88%, rgba(236,188,196,.42), transparent 28rem),
+        linear-gradient(rgba(255,242,245,.36), rgba(255,242,245,.42)),
+        url("./assets/final/barre-section-bg.webp") center / cover no-repeat !important;
+      border-bottom: 1px solid rgba(201,120,131,.18) !important;
+    }
+
+    .hero-stage {
+      background: transparent !important;
+    }
+
+    .hero-copy-target {
+      background: transparent !important;
+    }
+
+    .hero-image-target {
+      background:
+        linear-gradient(90deg, rgba(255,242,245,.16) 0%, rgba(255,242,245,.03) 34%, rgba(255,242,245,0) 100%),
+        url("./assets/final/hero-rework.webp") center center / cover no-repeat !important;
+    }
+
+    .hero-text-logo {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin: 0 0 1.05rem;
+      line-height: 1;
+    }
+
+    .hero-text-logo-main {
+      display: block;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(4.2rem, 6vw, 6.7rem);
+      line-height: .85;
+      letter-spacing: -.045em;
+      color: #211719;
+      white-space: nowrap;
+    }
+
+    .hero-text-logo-script {
+      display: block;
+      margin-top: .1rem;
+      margin-left: .55rem;
+      font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive;
+      font-size: clamp(2.5rem, 4.2vw, 4.8rem);
+      line-height: .85;
+      letter-spacing: .02em;
+      color: #ff8f9e;
+      font-weight: 400;
+      white-space: nowrap;
+    }
+
+    .hero-kicker {
+      margin-top: .75rem !important;
+    }
+
+    @media (max-width: 900px) {
+      .hero-text-logo-main {
+        font-size: clamp(3.4rem, 12vw, 5rem);
+      }
+
+      .hero-text-logo-script {
+        font-size: clamp(2.1rem, 9vw, 3.7rem);
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero-text-logo-main {
+        font-size: clamp(3rem, 13vw, 4.3rem);
+      }
+
+      .hero-text-logo-script {
+        font-size: clamp(1.9rem, 9vw, 3.1rem);
+      }
+    }
+
+
+
+    /* BARREFLOW_CALIBRI_TYPOGRAPHY_V1 */
+
+    body,
+    p,
+    a,
+    button,
+    input,
+    textarea,
+    select,
+    label,
+    span,
+    small,
+    li {
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-style: normal !important;
+    }
+
+    main h2,
+    main h3,
+    .about-target-copy h2,
+    .about-target-copy h3,
+    .about-target-section h2,
+    .about-target-section h3,
+    .bfk-barre-title,
+    .bfk-card-title,
+    .bfk-modal-copy h3,
+    .barre-redesign-head h2,
+    .barre-redesign-card h3,
+    .section-head h2,
+    .benefit-card strong,
+    .class-card strong {
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-style: normal !important;
+      letter-spacing: -.025em !important;
+      font-weight: 700 !important;
+    }
+
+    .about-target-copy h2,
+    .about-target-section h2 {
+      font-size: clamp(2.1rem, 3vw, 3rem) !important;
+      line-height: 1.05 !important;
+    }
+
+    .bfk-barre-title {
+      font-size: clamp(2.7rem, 4.8vw, 5rem) !important;
+      line-height: .98 !important;
+    }
+
+    .bfk-card-title {
+      font-size: clamp(1.7rem, 2.3vw, 2.35rem) !important;
+      line-height: 1.02 !important;
+    }
+
+    .hero-kicker,
+    .about-target-eyebrow,
+    .bfk-barre-eyebrow,
+    .eyebrow {
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-style: normal !important;
+      font-weight: 800 !important;
+    }
+
+    /* Keep script styling ONLY in the hero text logo */
+    .hero-text-logo-main {
+      font-family: Georgia, "Times New Roman", serif !important;
+      font-style: normal !important;
+    }
+
+    .hero-text-logo-script {
+      font-family: "Brush Script MT", "Segoe Script", "Snell Roundhand", cursive !important;
+      font-style: normal !important;
+    }
+
+    /* Logo images are untouched */
+    .brand img,
+    .brand-image img,
+    .brand-logo img {
+      font-family: initial !important;
+    }
+
+
+    /* BARREFLOW_MENU_CARD_MAKEOVER_V1 */
+
+    .site-nav {
+      position: sticky !important;
+      top: 0 !important;
+      z-index: 80 !important;
+      padding: 1rem 0 !important;
+      background:
+        linear-gradient(rgba(255,250,251,.92), rgba(255,250,251,.92)),
+        url("./assets/final/barre-section-bg.webp") center / cover no-repeat !important;
+      border-bottom: 1px solid rgba(201,120,131,.14) !important;
+      box-shadow: 0 12px 34px rgba(84,46,47,.05) !important;
+    }
+
+    .nav-shell {
+      width: min(1180px, calc(100% - 48px)) !important;
+      margin: 0 auto !important;
+      padding: .8rem 1rem !important;
+      border-radius: 28px !important;
+      border: 1.5px solid rgba(201,120,131,.26) !important;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,249,.76)) !important;
+      box-shadow:
+        0 18px 46px rgba(84,46,47,.10),
+        inset 0 1px 0 rgba(255,255,255,.8) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 1.25rem !important;
+      backdrop-filter: blur(8px) !important;
+      -webkit-backdrop-filter: blur(8px) !important;
+    }
+
+    .brand,
+    .brand-image,
+    .brand-logo {
+      width: 210px !important;
+      max-width: 28vw !important;
+      padding-left: 0 !important;
+      display: flex !important;
+      align-items: center !important;
+      flex: 0 0 auto !important;
+    }
+
+    .brand::before,
+    .brand-image::before,
+    .brand-logo::before {
+      display: none !important;
+    }
+
+    .brand img,
+    .brand-image img,
+    .brand-logo img {
+      width: 100% !important;
+      height: auto !important;
+      display: block !important;
+      object-fit: contain !important;
+    }
+
+    .nav-links {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: flex-end !important;
+      gap: .45rem !important;
+      margin-left: auto !important;
+      padding: .38rem !important;
+      border-radius: 22px !important;
+      border: 1px solid rgba(201,120,131,.14) !important;
+      background: rgba(255,244,247,.72) !important;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.72) !important;
+    }
+
+    .nav-links a:not(.button):not(.nav-cta) {
+      min-height: 42px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      gap: .55rem !important;
+      padding: .68rem .92rem !important;
+      border-radius: 16px !important;
+      color: #332528 !important;
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-size: .88rem !important;
+      font-weight: 700 !important;
+      letter-spacing: .01em !important;
+      text-decoration: none !important;
+      transition:
+        transform .2s ease,
+        color .2s ease,
+        background .2s ease,
+        box-shadow .2s ease !important;
+    }
+
+    .nav-links a:not(.button):not(.nav-cta)::before {
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 22px !important;
+      height: 22px !important;
+      border-radius: 999px !important;
+      color: #bf6675 !important;
+      font-size: 1rem !important;
+      font-weight: 400 !important;
+      line-height: 1 !important;
+      opacity: .9 !important;
+    }
+
+    .nav-links a[href="#barre"]::before {
+      content: "♡";
+    }
+
+    .nav-links a[href="#classes"]::before {
+      content: "◷";
+    }
+
+    .nav-links a[href="#booking"]::before {
+      content: "↗";
+    }
+
+    .nav-links a[href="#sessions"]::before {
+      content: "✉";
+    }
+
+    .nav-links a:not(.button):not(.nav-cta):hover {
+      transform: translateY(-2px) !important;
+      color: #9f4f5d !important;
+      background: rgba(255,255,255,.82) !important;
+      box-shadow: 0 10px 24px rgba(84,46,47,.08) !important;
+    }
+
+    .nav-links .button,
+    .nav-links a.button,
+    .nav-cta {
+      min-height: 46px !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: .78rem 1.55rem !important;
+      border-radius: 16px !important;
+      border: 1px solid rgba(191,102,117,.38) !important;
+      background: linear-gradient(180deg, #cf7f91 0%, #bf6675 100%) !important;
+      color: #fff !important;
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-size: .78rem !important;
+      font-weight: 900 !important;
+      letter-spacing: .16em !important;
+      text-transform: uppercase !important;
+      box-shadow:
+        0 14px 30px rgba(191,102,117,.25),
+        inset 0 1px 0 rgba(255,255,255,.24) !important;
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease,
+        filter .2s ease !important;
+      white-space: nowrap !important;
+    }
+
+    .nav-links .button:hover,
+    .nav-links a.button:hover,
+    .nav-cta:hover {
+      transform: translateY(-2px) !important;
+      filter: saturate(1.04) !important;
+      box-shadow:
+        0 18px 38px rgba(191,102,117,.31),
+        inset 0 1px 0 rgba(255,255,255,.28) !important;
+    }
+
+    @media (max-width: 920px) {
+      .site-nav {
+        padding: .7rem 0 !important;
+      }
+
+      .nav-shell {
+        width: calc(100% - 24px) !important;
+        border-radius: 24px !important;
+        padding: .7rem .85rem !important;
+      }
+
+      .brand,
+      .brand-image,
+      .brand-logo {
+        width: 170px !important;
+        max-width: 46vw !important;
+      }
+
+      .nav-links {
+        background: transparent !important;
+        border: 0 !important;
+        box-shadow: none !important;
+        padding: 0 !important;
+      }
+
+      .nav-links a:not(.button):not(.nav-cta) {
+        display: none !important;
+      }
+
+      .nav-links .button,
+      .nav-links a.button,
+      .nav-cta {
+        min-height: 42px !important;
+        padding: .68rem 1.05rem !important;
+        border-radius: 14px !important;
+        font-size: .7rem !important;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .brand,
+      .brand-image,
+      .brand-logo {
+        width: 150px !important;
+      }
+
+      .nav-shell {
+        width: calc(100% - 18px) !important;
+        gap: .7rem !important;
+      }
+    }
+
+
+    /* BARREFLOW_MENU_BUBBLES_V1 */
+
+    .site-nav{
+      position: relative !important;
+      overflow: visible !important;
+      isolation: isolate !important;
+    }
+
+    .site-nav::before,
+    .site-nav::after{
+      content: "" !important;
+      position: absolute !important;
+      pointer-events: none !important;
+      z-index: 0 !important;
+      border-radius: 999px !important;
+      filter: blur(2px) !important;
+      opacity: 1 !important;
+    }
+
+    .site-nav::before{
+      width: 420px !important;
+      height: 420px !important;
+      left: -150px !important;
+      top: 18px !important;
+      background:
+        radial-gradient(circle at 58% 42%,
+          rgba(241,189,198,.38) 0%,
+          rgba(241,189,198,.20) 26%,
+          rgba(255,255,255,.00) 62%) !important;
+      box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,.52),
+        inset 0 0 0 18px rgba(255,255,255,.08) !important;
+      -webkit-mask-image: radial-gradient(circle at center, #000 0 72%, transparent 73%);
+              mask-image: radial-gradient(circle at center, #000 0 72%, transparent 73%);
+    }
+
+    .site-nav::after{
+      width: 380px !important;
+      height: 380px !important;
+      right: -135px !important;
+      top: 42px !important;
+      background:
+        radial-gradient(circle at 44% 44%,
+          rgba(241,189,198,.30) 0%,
+          rgba(241,189,198,.16) 28%,
+          rgba(255,255,255,0) 63%) !important;
+      box-shadow:
+        inset 0 0 0 2px rgba(255,255,255,.46),
+        inset 0 0 0 16px rgba(255,255,255,.07) !important;
+      -webkit-mask-image: radial-gradient(circle at center, #000 0 70%, transparent 71%);
+              mask-image: radial-gradient(circle at center, #000 0 70%, transparent 71%);
+    }
+
+    .nav-shell{
+      position: relative !important;
+      z-index: 2 !important;
+    }
+
+    @media (max-width: 1100px){
+      .site-nav::before{
+        width: 300px !important;
+        height: 300px !important;
+        left: -110px !important;
+        top: 24px !important;
+      }
+
+      .site-nav::after{
+        width: 270px !important;
+        height: 270px !important;
+        right: -95px !important;
+        top: 48px !important;
+      }
+    }
+
+    @media (max-width: 768px){
+      .site-nav::before{
+        width: 220px !important;
+        height: 220px !important;
+        left: -85px !important;
+        top: 40px !important;
+        opacity: .9 !important;
+      }
+
+      .site-nav::after{
+        width: 200px !important;
+        height: 200px !important;
+        right: -70px !important;
+        top: 58px !important;
+        opacity: .9 !important;
+      }
+    }
+
+
+    /* BARREFLOW_MENU_HOVER_REACTIVITY_V1 */
+
+    .nav-shell {
+      transform: translateY(0);
+      transition:
+        transform .24s ease,
+        box-shadow .24s ease,
+        border-color .24s ease,
+        background .24s ease !important;
+    }
+
+    .nav-shell:hover {
+      transform: translateY(-3px);
+      border-color: rgba(201,120,131,.42) !important;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.94), rgba(255,246,248,.86)) !important;
+      box-shadow:
+        0 26px 68px rgba(84,46,47,.15),
+        inset 0 1px 0 rgba(255,255,255,.86) !important;
+    }
+
+    .brand,
+    .brand-image,
+    .brand-logo {
+      transition:
+        transform .24s ease,
+        filter .24s ease,
+        opacity .24s ease !important;
+    }
+
+    .brand:hover,
+    .brand-image:hover,
+    .brand-logo:hover {
+      transform: translateY(-2px) scale(1.025);
+      filter: saturate(1.08) contrast(1.03);
+      opacity: .98;
+    }
+
+    .nav-links {
+      transition:
+        background .24s ease,
+        border-color .24s ease,
+        box-shadow .24s ease !important;
+    }
+
+    .nav-shell:hover .nav-links {
+      border-color: rgba(201,120,131,.24) !important;
+      background: rgba(255,241,245,.86) !important;
+      box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.82),
+        0 10px 28px rgba(84,46,47,.06) !important;
+    }
+
+    .nav-links a:not(.button):not(.nav-cta) {
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform .22s ease,
+        color .22s ease,
+        background .22s ease,
+        box-shadow .22s ease !important;
+    }
+
+    .nav-links a:not(.button):not(.nav-cta)::after {
+      content: "";
+      position: absolute;
+      left: 14px;
+      right: 14px;
+      bottom: 7px;
+      height: 2px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(191,102,117,.0), rgba(191,102,117,.72), rgba(191,102,117,.0));
+      transform: scaleX(0);
+      transform-origin: center;
+      transition: transform .22s ease;
+    }
+
+    .nav-links a:not(.button):not(.nav-cta):hover {
+      transform: translateY(-2px);
+      color: #9f4f5d !important;
+      background: rgba(255,255,255,.88) !important;
+      box-shadow: 0 12px 26px rgba(84,46,47,.09) !important;
+    }
+
+    .nav-links a:not(.button):not(.nav-cta):hover::after {
+      transform: scaleX(1);
+    }
+
+    .nav-links a:not(.button):not(.nav-cta)::before {
+      transition:
+        transform .22s ease,
+        color .22s ease,
+        opacity .22s ease !important;
+    }
+
+    .nav-links a:not(.button):not(.nav-cta):hover::before {
+      transform: translateY(-1px) scale(1.12);
+      color: #bf6675 !important;
+      opacity: 1 !important;
+    }
+
+    .nav-links .button,
+    .nav-links a.button,
+    .nav-cta {
+      position: relative;
+      overflow: hidden;
+      transition:
+        transform .22s ease,
+        box-shadow .22s ease,
+        filter .22s ease,
+        background .22s ease !important;
+    }
+
+    .nav-links .button::after,
+    .nav-links a.button::after,
+    .nav-cta::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      transform: translateX(-120%) skewX(-18deg);
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,.34), transparent);
+      transition: transform .5s ease;
+    }
+
+    .nav-links .button:hover,
+    .nav-links a.button:hover,
+    .nav-cta:hover {
+      transform: translateY(-3px) scale(1.025) !important;
+      filter: saturate(1.08) !important;
+      box-shadow:
+        0 20px 42px rgba(191,102,117,.34),
+        inset 0 1px 0 rgba(255,255,255,.32) !important;
+    }
+
+    .nav-links .button:hover::after,
+    .nav-links a.button:hover::after,
+    .nav-cta:hover::after {
+      transform: translateX(120%) skewX(-18deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .nav-shell,
+      .brand,
+      .brand-image,
+      .brand-logo,
+      .nav-links,
+      .nav-links a,
+      .nav-links a::before,
+      .nav-links a::after,
+      .nav-cta,
+      .nav-cta::after {
+        transition: none !important;
+        transform: none !important;
+      }
+    }
+
+
+    /* BARREFLOW_CLEAN_HTML_DIVIDERS_V1 */
+    .bfk-clean-divider {
+      position: relative;
+      width: min(520px, calc(100% - 48px));
+      height: 44px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+      z-index: 10;
+    }
+
+    .bfk-clean-divider::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 50%;
+      height: 1px;
+      transform: translateY(-50%);
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(201,120,131,.12) 12%,
+        rgba(201,120,131,.46) 50%,
+        rgba(201,120,131,.12) 88%,
+        transparent 100%
+      );
+    }
+
+    .bfk-clean-divider img {
+      position: relative;
+      z-index: 2;
+      width: 34px;
+      height: 34px;
+      object-fit: contain;
+      padding: 7px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.96);
+      border: 1px solid rgba(201,120,131,.28);
+      box-shadow: 0 10px 24px rgba(84,46,47,.08);
+    }
+
+    .bfk-divider-top {
+      margin-top: -2px;
+      margin-bottom: -18px;
+    }
+
+    .bfk-divider-hero-about,
+    .bfk-divider-about-barre,
+    .bfk-divider-barre-benefits,
+    .bfk-divider-benefits-classes,
+    .bfk-divider-classes-about,
+    .bfk-divider-about-booking {
+      margin-top: -22px;
+      margin-bottom: -22px;
+    }
+
+    @media (max-width: 700px) {
+      .bfk-clean-divider {
+        width: min(320px, calc(100% - 28px));
+        height: 36px;
+      }
+
+      .bfk-clean-divider img {
+        width: 30px;
+        height: 30px;
+        padding: 6px;
+      }
+    }
+
+
+    /* BARREFLOW_CLASSES_BUBBLE_REDESIGN_V1 */
+
+    .bfk-classes-section {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4.8rem, 7vw, 7rem) 0 !important;
+      background:
+        linear-gradient(rgba(255,242,245,.56), rgba(255,242,245,.62)),
+        url("./assets/final/barre-section-bg.webp") center / cover no-repeat !important;
+      border-top: 1px solid rgba(201,120,131,.16);
+      border-bottom: 1px solid rgba(201,120,131,.16);
+      isolation: isolate;
+    }
+
+    .bfk-classes-section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 12%, rgba(236,188,196,.38), transparent 23rem),
+        radial-gradient(circle at 92% 88%, rgba(236,188,196,.36), transparent 27rem);
+    }
+
+    .bfk-classes-wrap {
+      width: min(1160px, calc(100% - 48px));
+      margin: 0 auto;
+    }
+
+    .bfk-classes-head {
+      max-width: 880px;
+      margin: 0 auto 2.6rem;
+      text-align: center;
+    }
+
+    .bfk-classes-eyebrow {
+      margin: 0 0 .95rem !important;
+      color: #bf6675 !important;
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-size: .78rem !important;
+      font-weight: 950 !important;
+      letter-spacing: .28em !important;
+      text-transform: uppercase !important;
+    }
+
+    .bfk-classes-head h2 {
+      margin: 0 !important;
+      color: #211719 !important;
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-size: clamp(2.8rem, 5vw, 5.2rem) !important;
+      line-height: .96 !important;
+      letter-spacing: -.045em !important;
+      font-weight: 800 !important;
+    }
+
+    .bfk-classes-head p {
+      max-width: 720px !important;
+      margin: 1.15rem auto 0 !important;
+      color: #423236 !important;
+      font-size: 1.06rem !important;
+      line-height: 1.65 !important;
+    }
+
+    .bfk-classes-grid {
+      display: grid;
+      gap: 1.05rem;
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    .bfk-class-bubble {
+      position: relative;
+      display: grid;
+      grid-template-columns: 58px 74px minmax(0, 1fr) auto;
+      gap: 1.05rem;
+      align-items: center;
+      padding: 1.15rem 1.25rem;
+      border-radius: 28px;
+      border: 1.5px solid rgba(201,120,131,.32);
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,249,.76));
+      box-shadow:
+        0 22px 60px rgba(84,46,47,.10),
+        inset 0 1px 0 rgba(255,255,255,.78);
+      overflow: hidden;
+      transition:
+        transform .26s ease,
+        box-shadow .26s ease,
+        border-color .26s ease;
+    }
+
+    .bfk-class-bubble::after {
+      content: "";
+      position: absolute;
+      right: -3.6rem;
+      bottom: -4.1rem;
+      width: 11rem;
+      height: 11rem;
+      border-radius: 50%;
+      background: rgba(236,188,196,.38);
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .bfk-class-bubble:hover {
+      transform: translateY(-5px);
+      border-color: rgba(201,120,131,.66);
+      box-shadow:
+        0 32px 82px rgba(84,46,47,.16),
+        inset 0 1px 0 rgba(255,255,255,.82);
+    }
+
+    .bfk-class-number {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(201,120,131,.30);
+      color: #bf6675;
+      font-size: .9rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      box-shadow: 0 12px 26px rgba(84,46,47,.08);
+    }
+
+    .bfk-class-icon {
+      position: relative;
+      z-index: 2;
+      display: grid;
+      place-items: center;
+      width: 64px;
+      height: 64px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.86);
+      border: 1px solid rgba(201,120,131,.26);
+      box-shadow: 0 14px 32px rgba(84,46,47,.10);
+    }
+
+    .bfk-class-icon img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .bfk-class-copy {
+      position: relative;
+      z-index: 2;
+      min-width: 0;
+    }
+
+    .bfk-class-copy h3 {
+      margin: 0 0 .3rem !important;
+      color: #211719 !important;
+      font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+      font-size: clamp(1.45rem, 2.3vw, 2.05rem) !important;
+      line-height: 1.05 !important;
+      letter-spacing: -.03em !important;
+      font-weight: 800 !important;
+    }
+
+    .bfk-class-tag {
+      display: inline-flex;
+      width: fit-content;
+      margin-bottom: .55rem;
+      padding: .28rem .58rem;
+      border-radius: 999px;
+      background: rgba(201,120,131,.12);
+      color: #a85261;
+      font-size: .68rem;
+      font-weight: 950;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .bfk-class-copy p {
+      margin: 0 !important;
+      color: #4b3a3e !important;
+      font-size: .95rem !important;
+      line-height: 1.55 !important;
+    }
+
+    .bfk-class-button {
+      position: relative;
+      z-index: 2;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: .72rem 1.25rem;
+      border-radius: 999px;
+      border: 1px solid rgba(191,102,117,.55);
+      background: rgba(255,255,255,.70);
+      color: #9f4f5d;
+      font-family: Calibri, "Segoe UI", Arial, sans-serif;
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      white-space: nowrap;
+      transition:
+        transform .22s ease,
+        background .22s ease,
+        box-shadow .22s ease,
+        color .22s ease;
+    }
+
+    .bfk-class-button:hover {
+      transform: translateY(-2px);
+      background: #bf6675;
+      color: #fff;
+      box-shadow: 0 16px 34px rgba(191,102,117,.24);
+    }
+
+    @media (max-width: 900px) {
+      .bfk-class-bubble {
+        grid-template-columns: 54px minmax(0, 1fr);
+        gap: .95rem;
+      }
+
+      .bfk-class-icon {
+        display: none;
+      }
+
+      .bfk-class-button {
+        grid-column: 2;
+        width: fit-content;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .bfk-classes-wrap {
+        width: calc(100% - 28px);
+      }
+
+      .bfk-classes-head {
+        text-align: left;
+      }
+
+      .bfk-class-bubble {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+      }
+
+      .bfk-class-number {
+        width: 42px;
+        height: 42px;
+      }
+
+      .bfk-class-button {
+        grid-column: auto;
+        width: 100%;
+      }
+    }
+
+  </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SportsActivityLocation",
+    "name": "Barre Flow with Keira",
+    "description": "Beginner-friendly barre classes in Stowmarket focused on strength, balance, posture and confidence.",
+    "areaServed": {
+      "@type": "Place",
+      "name": "Stowmarket, Suffolk"
+    },
+    "url": "https://frontline-ai.co.uk/client-builds/barreflow-with-keira/",
+    "image": "https://frontline-ai.co.uk/client-builds/barreflow-with-keira/assets/final/og.webp",
+    "sport": "Barre"
+  }
+  </script>
+</head>
+
+<body>
+  <nav class="site-nav" aria-label="Primary navigation">
+    <div class="nav-shell">
+      <a href="#top" class="brand brand-image" aria-label="Barre Flow with Keira home">
+        <img src="./assets/final/logo-nav-cropped.webp" alt="Barre Flow with Keira">
+      </a>
+      <div class="nav-links">
+        <a href="#barre">What is barre?</a>
+        <a href="#classes">Classes</a>
+        <a href="#booking">Book</a>
+        <a href="/client-builds/barreflow-with-keira/shop.html">Shop</a>
+        <a href="#sessions">Contact</a>
+        <a href="#booking" class="button primary nav-cta">Book a Class</a>
+      </div>
+    </div>
+  </nav>
+<div class="bfk-clean-divider bfk-divider-top" aria-hidden="true"><img src="./assets/final/icon-heart-cropped.webp" alt=""></div>
+<header class="hero hero-target" id="top">
+    <div class="hero-stage">
+      <div class="hero-copy-target">
+        <div class="hero-text-logo" aria-hidden="true">
+          <span class="hero-text-logo-main">Barre Flow</span>
+          <span class="hero-text-logo-script">with Keira</span>
+        </div>
+        <h1 class="sr-only">Barre Flow with Keira — beginner-friendly barre classes in Stowmarket</h1>
+
+        <p class="hero-kicker">Strength • Balance • Flow</p>
+        <p class="hero-main-copy">Beginner-friendly barre classes in Stowmarket.</p>
+        <p class="hero-support-copy">A beautiful blend of ballet-inspired movement, Pilates, yoga and strength training to help you feel stronger, more balanced and confident in your body.</p>
+
+        <div class="hero-actions hero-actions-target">
+          <a class="button primary" href="#booking">Book a Class</a>
+          <button class="button secondary" type="button" data-open-chat>Ask a Question</button>
+        </div>
+
+        <div class="hero-feature-row" aria-label="Class highlights">
+          <span class="hero-feature"><img src="./assets/final/icon-person-cropped.webp" alt=""> <span><strong>All Levels</strong><small>Welcome</small></span></span>
+          <span class="hero-feature"><img src="./assets/final/icon-heart-cropped.webp" alt=""> <span><strong>Feel Stronger</strong><small>Every Class</small></span></span>
+          <span class="hero-feature"><img src="./assets/final/icon-leaf-cropped.webp" alt=""> <span><strong>Supportive</strong><small>Community</small></span></span>
+        </div>
+      </div>
+
+      <div class="hero-image-target" aria-hidden="true"></div>
+    </div>
+  </header>
+<main>
+<div class="bfk-clean-divider bfk-divider-hero-about" aria-hidden="true"><img src="./assets/final/icon-person-cropped.webp" alt=""></div>
+<section class="about-target-section" id="about-keira">
+      <div class="about-target-grid">
+        <article class="about-target-copy">
+          <p class="about-target-eyebrow">About Keira</p>
+          <h2>Hi, I’m Keira</h2>
+          <p>I’m a qualified barre instructor passionate about helping women feel strong, confident and empowered through movement.</p>
+          <p>My classes are beginner-friendly, welcoming and designed to help you build strength, improve posture and feel amazing both inside and out.</p>
+          <p>You’ll leave every class feeling taller, stronger and more energised.</p>
+          <a class="about-target-button" href="#about">More About Me</a>
+        </article>
+
+        <div class="about-target-image" aria-label="Barre Flow mat and class equipment">
+          <img src="./assets/final/rolled-mat.webp" alt="Barre Flow class mat, ball and water bottle in a calm studio" loading="lazy">
+        </div>
+      </div>
+    </section>
+<section id="barre" class="bfk-barre-section">
+      <div class="bfk-barre-wrap">
+        <div class="bfk-barre-head">
+          <p class="bfk-barre-eyebrow">What is barre?</p>
+          <h2 class="bfk-barre-title">A graceful way to build strength, posture and confidence.</h2>
+          <p class="bfk-barre-copy">
+            Barre blends ballet-inspired movement with Pilates-style control, low-impact strength and calm, guided flow.
+            It’s beginner-friendly, adaptable and designed to help you feel stronger without feeling overwhelmed.
+          </p>
+        </div>
+
+        <div class="bfk-barre-grid">
+          <button class="bfk-barre-card" type="button" data-barre-modal="low">
+            <span class="bfk-card-number">01</span>
+            <span class="bfk-card-icon"><img src="./assets/final/icon-leaf-cropped.webp" alt=""></span>
+            <img class="bfk-card-image" src="./assets/final/barre-card-low-impact.webp" alt="Low-impact barre movement setup" loading="lazy">
+            <span class="bfk-card-title">Low-impact movement</span>
+            <span class="bfk-card-rule"></span>
+            <span class="bfk-card-copy">Gentle on joints and easy to adapt — ideal if you want a kinder route into fitness.</span>
+            <span class="bfk-card-link">Learn more <span aria-hidden="true">→</span></span>
+          </button>
+
+          <button class="bfk-barre-card" type="button" data-barre-modal="strength">
+            <span class="bfk-card-number">02</span>
+            <span class="bfk-card-icon"><img src="./assets/final/icon-person-cropped.webp" alt=""></span>
+            <img class="bfk-card-image" src="./assets/final/barre-card-focused-strength.webp" alt="Focused strength at the barre" loading="lazy">
+            <span class="bfk-card-title">Focused strength</span>
+            <span class="bfk-card-rule"></span>
+            <span class="bfk-card-copy">Small, controlled movements target your legs, glutes, core, posture and balance.</span>
+            <span class="bfk-card-link">Learn more <span aria-hidden="true">→</span></span>
+          </button>
+
+          <button class="bfk-barre-card" type="button" data-barre-modal="support">
+            <span class="bfk-card-number">03</span>
+            <span class="bfk-card-icon"><img src="./assets/final/icon-heart-cropped.webp" alt=""></span>
+            <img class="bfk-card-image" src="./assets/final/barre-card-supportive-guidance.webp" alt="Supportive barre class guidance and calm studio equipment" loading="lazy">
+            <span class="bfk-card-title">Supportive guidance</span>
+            <span class="bfk-card-rule"></span>
+            <span class="bfk-card-copy">Welcoming coaching and clear options — no dance experience needed.</span>
+            <span class="bfk-card-link">Learn more <span aria-hidden="true">→</span></span>
+          </button>
+        </div>
+      </div>
+    </section>
+<div class="bfk-clean-divider bfk-divider-barre-benefits" aria-hidden="true"><img src="./assets/final/icon-heart-cropped.webp" alt=""></div>
+<section id="benefits">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Why join?</p>
+            <h2>Feel stronger without feeling overwhelmed.</h2>
+          </div>
+          <p>A class designed to help you leave feeling taller, steadier and more confident in your own body.</p>
+        </div>
+
+        <div class="benefits-grid">
+          <article class="benefit-card">
+            <div class="benefit-icon">01</div>
+            <strong>Beginner friendly</strong>
+            <p>Each movement is explained clearly with options so you can work at your own level.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon">02</div>
+            <strong>Posture focused</strong>
+            <p>Build awareness, alignment and control that carries into everyday movement.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon">03</div>
+            <strong>Supportive energy</strong>
+            <p>No pressure to perform. Just steady progress, thoughtful coaching and a welcoming room.</p>
+          </article>
+          <article class="benefit-card">
+            <div class="benefit-icon">04</div>
+            <strong>Real results</strong>
+            <p>Controlled strength work that leaves you feeling lifted, centred and capable.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+<div class="bfk-clean-divider bfk-divider-benefits-classes" aria-hidden="true"><img src="./assets/final/icon-person-cropped.webp" alt=""></div>
+
+    <section id="classes" class="bfk-classes-section">
+      <div class="bfk-classes-wrap">
+        <div class="bfk-classes-head">
+          <p class="bfk-classes-eyebrow">Classes</p>
+          <h2>What to expect</h2>
+          <p>Simple, welcoming barre classes for first-timers and anyone wanting low-impact strength with a calmer, more supportive feel.</p>
+        </div>
+
+        <div class="bfk-classes-grid">
+          <article class="bfk-class-bubble">
+            <span class="bfk-class-number">01</span>
+            <div class="bfk-class-icon">
+              <img src="./assets/final/icon-person-cropped.webp" alt="">
+            </div>
+            <div class="bfk-class-copy">
+              <h3>Foundation Barre Flow</h3>
+              <span class="bfk-class-tag">Best for first-timers</span>
+              <p>A welcoming introduction to barre basics, simple sequences and gentle strength work.</p>
+            </div>
+            <a class="bfk-class-button" href="#booking">Book a Class</a>
+          </article>
+
+          <article class="bfk-class-bubble">
+            <span class="bfk-class-number">02</span>
+            <div class="bfk-class-icon">
+              <img src="./assets/final/icon-heart-cropped.webp" alt="">
+            </div>
+            <div class="bfk-class-copy">
+              <h3>Strength and Balance</h3>
+              <span class="bfk-class-tag">Low-impact tone</span>
+              <p>Controlled movements for posture, core stability, legs and glutes, with plenty of options.</p>
+            </div>
+            <button class="bfk-class-button" type="button" data-open-chat>Ask a Question</button>
+          </article>
+
+          <article class="bfk-class-bubble">
+            <span class="bfk-class-number">03</span>
+            <div class="bfk-class-icon">
+              <img src="./assets/final/icon-leaf-cropped.webp" alt="">
+            </div>
+            <div class="bfk-class-copy">
+              <h3>What to bring</h3>
+              <span class="bfk-class-tag">Keep it simple</span>
+              <p>Comfortable clothing, water, and grippy socks if you have them. Mats and props can be confirmed before class.</p>
+            </div>
+            <a class="bfk-class-button" href="#sessions">Message Keira</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+<div class="bfk-clean-divider bfk-divider-classes-about" aria-hidden="true"><img src="./assets/final/icon-leaf-cropped.webp" alt=""></div>
+<section class="about" id="about">
+      <div class="wrap about-grid">
+        <div class="panel image-card">
+          <img src="./assets/final/about.webp" width="720" height="835" loading="lazy" alt="Keira, founder of Barre Flow with Keira, smiling in a calm barre studio">
+          <div class="image-badge">Warm, calm coaching</div>
+        </div>
+
+        <article class="panel about-copy">
+          <p class="eyebrow">About Keira</p>
+          <h2>Steady, supportive coaching from the first class.</h2>
+          <p>Keira created Barre Flow for people who want a graceful, supportive way to move. Classes are calm but purposeful, with careful guidance and a welcoming feel from the first session.</p>
+          <p>Whether you are new to barre, returning to fitness, or looking for a softer complement to your routine, you will be met where you are.</p>
+          <div class="hero-actions">
+            <a class="button primary" href="#booking">Book a Class</a>
+            <button class="button secondary" type="button" data-open-chat>Ask Keira</button>
+          </div>
+        </article>
+      </div>
+    </section>
+<div class="bfk-clean-divider bfk-divider-about-booking" aria-hidden="true"><img src="./assets/final/icon-heart-cropped.webp" alt=""></div>
+<section class="booking" id="booking">
+      <div class="wrap booking-grid">
+        <div>
+          <p class="eyebrow">Book a class</p>
+          <h2>Reserve your place, then pay securely.</h2>
+          <p style="margin-top:1rem;max-width:620px;">For this staging build, payment buttons are Stripe-ready placeholders. Live Stripe Checkout will be connected after pricing, class schedule and payment setup are confirmed.</p>
+        </div>
+
+        <div class="payment-card">
+          <!-- BARREFLOW_STRIPE_PLACEHOLDER_V1 -->
+          <a class="button light" href="#sessions">Pay class deposit</a>
+          <a class="button primary" href="#sessions">Book and pay securely</a>
+          <button class="button light" type="button" data-open-chat>Ask a Question</button>
+          <p class="payment-note">Secure Stripe Checkout placeholder. No live payment keys are stored on this page.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="sessions" class="bf-session-calendar-section" aria-labelledby="sessionCalendarTitle">
+      <div class="wrap bf-session-shell">
+        <div>
+          <div class="bf-session-intro">
+            <p class="eyebrow">Booking prototype</p>
+            <h2 id="sessionCalendarTitle">Choose your Barre Flow session</h2>
+            <p>Pick a class time, add your details, and reserve your place. Secure checkout will be connected once final pricing and payment setup are approved.</p>
+            <p class="bf-schedule-note">Client note: “My classes will be on Wednesdays starting first week in April.”</p>
+            <div class="bf-price-chips" aria-label="Package options">
+              <span class="bf-price-chip">Single class: £10</span>
+              <span class="bf-price-chip">5 class pass: £40</span>
+              <span class="bf-price-chip">10 class pass: £80</span>
+            </div>
+          </div>
+
+          <div class="bf-session-groups" aria-label="Available Barre Flow sessions">
+            <article class="bf-session-group">
+              <div class="bf-session-group-head">
+                <h3>Monday Mornings</h3>
+                <span class="bf-price-chip">Listed schedule option</span>
+              </div>
+              <div class="bf-session-card-grid">
+                <button class="bf-session-card" type="button" data-session-id="mon-0930">
+                  <span class="bf-session-day">Monday</span>
+                  <strong>Monday Mornings — Class 1</strong>
+                  <span class="bf-session-meta">9:30am</span>
+                  <span class="bf-session-meta">Stowmarket Community Centre, IP14 2BD</span>
+                  <span class="bf-session-price">£10 per class</span>
+                </button>
+                <button class="bf-session-card" type="button" data-session-id="mon-1030">
+                  <span class="bf-session-day">Monday</span>
+                  <strong>Monday Mornings — Class 2</strong>
+                  <span class="bf-session-meta">10:30am</span>
+                  <span class="bf-session-meta">Stowmarket Community Centre, IP14 2BD</span>
+                  <span class="bf-session-price">£10 per class</span>
+                </button>
+              </div>
+            </article>
+
+            <article class="bf-session-group">
+              <div class="bf-session-group-head">
+                <h3>Wednesday Evenings</h3>
+                <span class="bf-launch-pill">Primary April launch sessions</span>
+              </div>
+              <div class="bf-session-card-grid">
+                <button class="bf-session-card is-primary is-selected" type="button" data-session-id="wed-1800">
+                  <span class="bf-session-day">Wednesday</span>
+                  <strong>Wednesday Evenings — Class 1</strong>
+                  <span class="bf-session-meta">6:00pm</span>
+                  <span class="bf-session-meta">Stowmarket Community Centre, IP14 2BD</span>
+                  <span class="bf-session-price">£10 per class</span>
+                </button>
+                <button class="bf-session-card is-primary" type="button" data-session-id="wed-1900">
+                  <span class="bf-session-day">Wednesday</span>
+                  <strong>Wednesday Evenings — Class 2</strong>
+                  <span class="bf-session-meta">7:00pm</span>
+                  <span class="bf-session-meta">Stowmarket Community Centre, IP14 2BD</span>
+                  <span class="bf-session-price">£10 per class</span>
+                </button>
+              </div>
+            </article>
+          </div>
+        </div>
+
+        <aside class="bf-session-booking-panel" aria-label="Selected session booking form">
+          <p class="eyebrow">Reserve your place</p>
+          <h3>Booking details</h3>
+          <div class="bf-selected-summary" aria-live="polite">
+            <strong data-selected-title>Wednesday Evenings — Class 1</strong>
+            <span data-selected-time>6:00pm</span>
+            <span data-selected-location>Stowmarket Community Centre, IP14 2BD</span>
+            <span data-selected-package>Single class — £10</span>
+          </div>
+
+          <form class="bf-booking-form" id="sessionBookingForm">
+            <label>Name
+              <input name="name" autocomplete="name" placeholder="Your name" required>
+            </label>
+            <label>Email
+              <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+            </label>
+            <label>Phone
+              <input name="phone" type="tel" autocomplete="tel" placeholder="Best contact number">
+            </label>
+            <label>Selected session
+              <input name="selectedSession" id="selectedSessionInput" value="Wednesday Evenings — Class 1, 6:00pm" readonly>
+            </label>
+            <label>Package choice</label>
+            <div class="bf-package-options" role="radiogroup" aria-label="Package choice">
+              <label class="bf-package-option"><span>Single class — £10</span><input type="radio" name="package" value="Single class — £10" checked></label>
+              <label class="bf-package-option"><span>5 class pass — £40</span><input type="radio" name="package" value="5 class pass — £40"></label>
+              <label class="bf-package-option"><span>10 class pass — £80</span><input type="radio" name="package" value="10 class pass — £80"></label>
+            </div>
+            <label>Notes / first class questions
+              <textarea name="notes" placeholder="Tell Keira anything helpful before class..."></textarea>
+            </label>
+            <button class="button primary" type="submit">Reserve and continue to payment</button>
+            <button class="bf-secondary-action" type="button" id="askQuestionInstead">Ask a question instead</button>
+            <div class="bf-question-panel" id="sessionQuestionPanel">
+              <label>Quick question
+                <textarea id="sessionQuestionText" placeholder="Ask about class times, prices, what to bring, or booking..."></textarea>
+              </label>
+              <button class="button secondary" type="button" data-open-chat>Open chat assistant</button>
+            </div>
+            <p class="bf-form-status" id="sessionBookingStatus" aria-live="polite"></p>
+          </form>
+        </aside>
+      </div>
+    </section>
+
+    <section class="bf-shop-cta-band" aria-labelledby="shopPreviewTitle">
+      <div class="wrap">
+        <article class="bf-shop-cta-card">
+          <div>
+            <p class="eyebrow">Barre Flow shop</p>
+            <h2 id="shopPreviewTitle">Preview class essentials and branded favourites.</h2>
+            <p>Keira is preparing a small collection of Barre Flow products for class, recovery and everyday movement.</p>
+          </div>
+          <a class="button primary" href="/client-builds/barreflow-with-keira/shop.html">Visit the Shop</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-row">
+      <strong>Barre Flow with Keira</strong>
+      <span>Beginner-friendly barre classes in Stowmarket</span>
+    </div>
+  </footer>
+
+  <button class="chat-launcher" type="button" aria-label="Open enquiry assistant" data-open-chat>💬</button>
+
+  <aside class="chat-panel" id="chatPanel" aria-label="Barre Flow enquiry assistant">
+    <div class="chat-head">
+      <div>
+        <strong>Ask Keira</strong>
+        <span>Quick class enquiry assistant</span>
+      </div>
+      <button class="chat-close" type="button" aria-label="Close chat" id="chatClose">×</button>
+    </div>
+    <div class="chat-body" id="chatBody"></div>
+    <form class="chat-input" id="chatForm">
+      <input id="chatText" autocomplete="off" placeholder="Type your reply...">
+      <button type="submit">Send</button>
+    </form>
+  </aside>
+
+  <script>
+    // BARREFLOW_LIGHTWEIGHT_CHATBOT_V1
+    const chatPanel = document.getElementById("chatPanel");
+    const chatBody = document.getElementById("chatBody");
+    const chatForm = document.getElementById("chatForm");
+    const chatText = document.getElementById("chatText");
+    const chatClose = document.getElementById("chatClose");
+
+    const chatState = {
+      step: 0,
+      answers: {}
+    };
+
+    const steps = [
+      {
+        key: "newToBarre",
+        prompt: "Hi, I’m Keira’s quick assistant. Are you new to barre?",
+        options: ["Yes, first time", "I’ve tried barre before", "I’m just looking"]
+      },
+      {
+        key: "topic",
+        prompt: "What would you like help with?",
+        options: ["Class times", "Prices", "What to bring", "Booking"]
+      },
+      {
+        key: "name",
+        prompt: "What’s your name?",
+        options: []
+      },
+      {
+        key: "contact",
+        prompt: "What email or phone number should Keira use to reply?",
+        options: []
+      },
+      {
+        key: "message",
+        prompt: "Add any extra message for Keira.",
+        options: []
+      }
+    ];
+
+    function openChat() {
+      chatPanel.classList.add("open");
+      if (!chatBody.dataset.started) {
+        chatBody.dataset.started = "1";
+        botSay(steps[0].prompt, steps[0].options);
+      }
+      setTimeout(() => chatText.focus(), 150);
+    }
+
+    function closeChat() {
+      chatPanel.classList.remove("open");
+    }
+
+    function botSay(text, options = []) {
+      const bubble = document.createElement("div");
+      bubble.className = "bubble";
+      bubble.textContent = text;
+      chatBody.appendChild(bubble);
+
+      if (options.length) {
+        const list = document.createElement("div");
+        list.className = "quick-options";
+        options.forEach(option => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.textContent = option;
+          button.addEventListener("click", () => handleReply(option));
+          list.appendChild(button);
+        });
+        chatBody.appendChild(list);
+      }
+
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function userSay(text) {
+      const bubble = document.createElement("div");
+      bubble.className = "bubble user";
+      bubble.textContent = text;
+      chatBody.appendChild(bubble);
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    function clearOptions() {
+      chatBody.querySelectorAll(".quick-options").forEach(el => el.remove());
+    }
+
+    // BARREFLOW_MERCH_CHATBOT_REFERENCE_V1
+    function isShopQuestion(text) {
+      return /\b(merch|shop|products?|branded items?|socks?|hoodie|bottle|tote|bands?|journal)\b/i.test(text);
+    }
+
+    function handleReply(text) {
+      const value = String(text || "").trim();
+      if (!value) return;
+
+      clearOptions();
+      userSay(value);
+
+      if (isShopQuestion(value)) {
+        botSay("Keira is preparing a small Barre Flow shop with class essentials and branded items. You can preview it here: /client-builds/barreflow-with-keira/shop.html");
+        return;
+      }
+
+      const current = steps[chatState.step];
+      if (current) {
+        chatState.answers[current.key] = value;
+      }
+
+      chatState.step += 1;
+
+      const next = steps[chatState.step];
+      if (next) {
+        setTimeout(() => botSay(next.prompt, next.options), 350);
+      } else {
+        setTimeout(() => {
+          botSay("Thanks — Keira will get back to you shortly. For staging, I’ve logged this enquiry locally.");
+          console.log("Barre Flow chat enquiry:", chatState.answers);
+        }, 350);
+      }
+    }
+
+    document.querySelectorAll("[data-open-chat]").forEach(button => {
+      button.addEventListener("click", openChat);
+    });
+
+    chatClose.addEventListener("click", closeChat);
+
+    chatForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const value = chatText.value;
+      chatText.value = "";
+      handleReply(value);
+    });
+
+    const legacyEnquiryForm = document.getElementById("enquiryForm");
+    if (legacyEnquiryForm) {
+      legacyEnquiryForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(event.currentTarget).entries());
+        console.log("Barre Flow form enquiry:", data);
+        alert("Thanks — this staging form has logged the enquiry locally.");
+        event.currentTarget.reset();
+      });
+    }
+
+
+    // BARREFLOW_SESSION_CALENDAR_V1
+    const barreFlowSessions = {
+      "mon-0930": {
+        title: "Monday Mornings — Class 1",
+        day: "Monday",
+        time: "9:30am",
+        location: "Stowmarket Community Centre, IP14 2BD",
+        price: "£10 per class"
+      },
+      "mon-1030": {
+        title: "Monday Mornings — Class 2",
+        day: "Monday",
+        time: "10:30am",
+        location: "Stowmarket Community Centre, IP14 2BD",
+        price: "£10 per class"
+      },
+      "wed-1800": {
+        title: "Wednesday Evenings — Class 1",
+        day: "Wednesday",
+        time: "6:00pm",
+        location: "Stowmarket Community Centre, IP14 2BD",
+        price: "£10 per class"
+      },
+      "wed-1900": {
+        title: "Wednesday Evenings — Class 2",
+        day: "Wednesday",
+        time: "7:00pm",
+        location: "Stowmarket Community Centre, IP14 2BD",
+        price: "£10 per class"
+      }
+    };
+
+    const sessionCards = document.querySelectorAll("[data-session-id]");
+    const selectedTitle = document.querySelector("[data-selected-title]");
+    const selectedTime = document.querySelector("[data-selected-time]");
+    const selectedLocation = document.querySelector("[data-selected-location]");
+    const selectedPackage = document.querySelector("[data-selected-package]");
+    const selectedSessionInput = document.getElementById("selectedSessionInput");
+    const sessionBookingForm = document.getElementById("sessionBookingForm");
+    const sessionBookingStatus = document.getElementById("sessionBookingStatus");
+    const askQuestionInstead = document.getElementById("askQuestionInstead");
+    const sessionQuestionPanel = document.getElementById("sessionQuestionPanel");
+
+    function currentPackageChoice() {
+      const selected = document.querySelector('input[name="package"]:checked');
+      return selected ? selected.value : "Single class — £10";
+    }
+
+    function setSelectedSession(sessionId) {
+      const session = barreFlowSessions[sessionId];
+      if (!session) return;
+
+      sessionCards.forEach(card => {
+        card.classList.toggle("is-selected", card.dataset.sessionId === sessionId);
+        card.setAttribute("aria-pressed", card.dataset.sessionId === sessionId ? "true" : "false");
+      });
+
+      selectedTitle.textContent = session.title;
+      selectedTime.textContent = session.time;
+      selectedLocation.textContent = session.location;
+      selectedPackage.textContent = currentPackageChoice();
+      selectedSessionInput.value = `${session.title}, ${session.time}`;
+      selectedSessionInput.dataset.sessionId = sessionId;
+    }
+
+    sessionCards.forEach(card => {
+      card.setAttribute("aria-pressed", card.classList.contains("is-selected") ? "true" : "false");
+      card.addEventListener("click", () => setSelectedSession(card.dataset.sessionId));
+    });
+
+    document.querySelectorAll('input[name="package"]').forEach(input => {
+      input.addEventListener("change", () => {
+        selectedPackage.textContent = currentPackageChoice();
+      });
+    });
+
+    if (sessionBookingForm) {
+      sessionBookingForm.addEventListener("submit", event => {
+        event.preventDefault();
+        const data = Object.fromEntries(new FormData(sessionBookingForm).entries());
+        data.sessionId = selectedSessionInput.dataset.sessionId || "wed-1800";
+        console.log("Barre Flow session reservation prototype:", data);
+        sessionBookingStatus.textContent = "Payment checkout placeholder. Stripe will be connected after final pricing approval.";
+      });
+    }
+
+    if (askQuestionInstead && sessionQuestionPanel) {
+      askQuestionInstead.addEventListener("click", () => {
+        sessionQuestionPanel.classList.toggle("is-open");
+      });
+    }
+
+    setSelectedSession("wed-1800");
+  </script>
+<script>
+    // BARREFLOW_BARRE_MODAL_CARDS_V1
+    (() => {
+      const modal = document.getElementById("barreModal");
+      if (!modal) return;
+
+      const modalImage = document.getElementById("barreModalImage");
+      const modalEyebrow = document.getElementById("barreModalEyebrow");
+      const modalTitle = document.getElementById("barreModalTitle");
+      const modalText = document.getElementById("barreModalText");
+      const modalList = document.getElementById("barreModalList");
+
+      const content = {
+        "low-impact": {
+          eyebrow: "Beginner friendly",
+          title: "Low-impact movement",
+          image: "./assets/final/rolled-mat.webp",
+          text: "Barre is controlled and adaptable, making it a gentle way to move while still building real strength.",
+          points: [
+            "Kind on joints and easy to modify.",
+            "Ideal if you are returning to fitness.",
+            "Calm, steady movement without gym pressure."
+          ]
+        },
+        strength: {
+          eyebrow: "Strength • Balance • Flow",
+          title: "Focused strength",
+          image: "./assets/final/hero-rework.webp",
+          text: "Small movements can be surprisingly powerful. Barre helps activate muscles that support posture, balance and everyday confidence.",
+          points: [
+            "Targets legs, glutes, core and posture.",
+            "Builds control rather than rushing.",
+            "Leaves you feeling taller, stronger and centred."
+          ]
+        },
+        guidance: {
+          eyebrow: "Supportive coaching",
+          title: "Supportive guidance",
+          image: "./assets/final/rolled-mat.webp",
+          text: "You do not need dance experience or flexibility to start. Keira guides the class clearly so you can work at your own level.",
+          points: [
+            "Clear instructions throughout class.",
+            "Options for different confidence levels.",
+            "A welcoming, encouraging class atmosphere."
+          ]
+        }
+      };
+
+      function openModal(key) {
+        const item = content[key];
+        if (!item) return;
+
+        modalEyebrow.textContent = item.eyebrow;
+        modalTitle.textContent = item.title;
+        modalText.textContent = item.text;
+        modalImage.src = item.image;
+        modalImage.alt = item.title;
+
+        modalList.innerHTML = "";
+        item.points.forEach(point => {
+          const li = document.createElement("li");
+          li.textContent = point;
+          modalList.appendChild(li);
+        });
+
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-barre-modal]").forEach(button => {
+        button.addEventListener("click", () => openModal(button.dataset.barreModal));
+      });
+
+      document.querySelectorAll("[data-close-barre-modal]").forEach(button => {
+        button.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && modal.classList.contains("open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+
+  <div class="bfk-modal" id="barreModal" aria-hidden="true">
+    <div class="bfk-modal-backdrop" data-close-barre-modal></div>
+    <div class="bfk-modal-panel" role="dialog" aria-modal="true" aria-labelledby="barreModalTitle">
+      <button class="bfk-modal-close" type="button" data-close-barre-modal aria-label="Close">×</button>
+      <div class="bfk-modal-image-wrap">
+        <img id="barreModalImage" src="./assets/final/barre-card-low-impact.webp" alt="">
+      </div>
+      <div class="bfk-modal-copy">
+        <p id="barreModalEyebrow" class="bfk-modal-eyebrow">What is barre?</p>
+        <h3 id="barreModalTitle">Low-impact movement</h3>
+        <p id="barreModalText">Barre is calm, controlled and adaptable.</p>
+        <ul id="barreModalList"></ul>
+        <button class="button primary" type="button" data-open-chat data-close-barre-modal>Ask Keira</button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // BARREFLOW_FINAL_BARRE_SECTION_MODAL_V1
+    (() => {
+      const modal = document.getElementById("barreModal");
+      if (!modal) return;
+
+      const image = document.getElementById("barreModalImage");
+      const eyebrow = document.getElementById("barreModalEyebrow");
+      const title = document.getElementById("barreModalTitle");
+      const text = document.getElementById("barreModalText");
+      const list = document.getElementById("barreModalList");
+
+      const content = {
+        low: {
+          eyebrow: "Low-impact movement",
+          title: "Gentle, controlled and adaptable.",
+          image: "./assets/final/barre-card-low-impact.webp",
+          text: "Barre is a calm way to move with purpose. It supports strength and control without needing high-impact exercise.",
+          points: [
+            "Kind on joints and easy to adapt.",
+            "Suitable for beginners and returners.",
+            "A softer route into consistent movement."
+          ]
+        },
+        strength: {
+          eyebrow: "Focused strength",
+          title: "Small movements. Real strength.",
+          image: "./assets/final/barre-card-focused-strength.webp",
+          text: "Barre uses precise, controlled movement to wake up muscles that support posture, balance and everyday confidence.",
+          points: [
+            "Targets legs, glutes, core and posture.",
+            "Builds balance and body awareness.",
+            "Leaves you feeling taller and stronger."
+          ]
+        },
+        support: {
+          eyebrow: "Supportive guidance",
+          title: "Clear coaching from the first class.",
+          image: "./assets/final/barre-card-supportive-guidance.webp",
+          text: "You do not need dance experience or flexibility to begin. Keira gives clear guidance and options throughout.",
+          points: [
+            "Welcoming class atmosphere.",
+            "Options for different ability levels.",
+            "Confidence-building support throughout."
+          ]
+        }
+      };
+
+      function openModal(key) {
+        const item = content[key];
+        if (!item) return;
+
+        eyebrow.textContent = item.eyebrow;
+        title.textContent = item.title;
+        text.textContent = item.text;
+        image.src = item.image;
+        image.alt = item.title;
+
+        list.innerHTML = "";
+        item.points.forEach(point => {
+          const li = document.createElement("li");
+          li.textContent = point;
+          list.appendChild(li);
+        });
+
+        modal.classList.add("open");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.style.overflow = "hidden";
+      }
+
+      function closeModal() {
+        modal.classList.remove("open");
+        modal.setAttribute("aria-hidden", "true");
+        document.body.style.overflow = "";
+      }
+
+      document.querySelectorAll("[data-barre-modal]").forEach(button => {
+        button.addEventListener("click", () => openModal(button.dataset.barreModal));
+      });
+
+      document.querySelectorAll("[data-close-barre-modal]").forEach(button => {
+        button.addEventListener("click", closeModal);
+      });
+
+      document.addEventListener("keydown", event => {
+        if (event.key === "Escape" && modal.classList.contains("open")) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+
+
+<!-- BARREFLOW_KEIRA_COLLAGE_ABOUT_V1 START -->
+<style>
+  .keira-collage-about {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    padding: clamp(72px, 8vw, 118px) clamp(18px, 4vw, 62px);
+    background:
+      radial-gradient(circle at 24% 46%, rgba(188, 108, 126, .13), transparent 0 280px, transparent 281px),
+      radial-gradient(circle at 7% 72%, rgba(188, 108, 126, .08), transparent 0 210px, transparent 211px),
+      linear-gradient(180deg, #fffdfb 0%, #fbf5f2 100%);
+  }
+
+  .keira-collage-about::before,
+  .keira-collage-about::after {
+    content: "";
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  .keira-collage-about::before {
+    width: 620px;
+    height: 620px;
+    left: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(187, 104, 124, .08);
+    box-shadow: inset 0 0 0 1px rgba(187, 104, 124, .05);
+  }
+
+  .keira-collage-about::after {
+    width: 320px;
+    height: 320px;
+    right: -80px;
+    top: 90px;
+    background: rgba(187, 104, 124, .05);
+  }
+
+  .keira-collage-wrap {
+    width: min(1420px, 100%);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: minmax(560px, 1.1fr) minmax(460px, .9fr);
+    gap: clamp(36px, 5vw, 74px);
+    align-items: center;
+  }
+
+  .keira-collage {
+    position: relative;
+    min-height: 720px;
+  }
+
+  .keira-shot {
+    position: absolute;
+    margin: 0;
+    overflow: hidden;
+    border-radius: 30px;
+    background: rgba(255,255,255,.72);
+    border: 1px solid rgba(108, 64, 74, .14);
+    box-shadow: 0 24px 70px rgba(69, 43, 49, .13);
+    transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
+  }
+
+  .keira-shot:hover {
+    transform: translateY(-7px);
+    border-color: rgba(174, 93, 112, .28);
+    box-shadow: 0 34px 90px rgba(69, 43, 49, .18);
+  }
+
+  .keira-shot img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+  }
+
+  .keira-shot-main {
+    left: 0;
+    top: 105px;
+    width: 390px;
+    height: 560px;
+    z-index: 3;
+  }
+
+  .keira-shot-top {
+    left: 420px;
+    top: 70px;
+    width: 290px;
+    height: 280px;
+    z-index: 4;
+  }
+
+  .keira-shot-mid {
+    left: 420px;
+    top: 380px;
+    width: 330px;
+    height: 330px;
+    z-index: 2;
+  }
+
+  .keira-shot-low {
+    left: 160px;
+    top: 615px;
+    width: 240px;
+    height: 250px;
+    z-index: 5;
+  }
+
+  .keira-coaching-pill {
+    position: absolute;
+    left: 34px;
+    bottom: 28px;
+    z-index: 8;
+    padding: 14px 24px;
+    border-radius: 18px;
+    background: rgba(255,255,255,.86);
+    border: 1px solid rgba(157, 84, 101, .16);
+    box-shadow: 0 16px 40px rgba(55, 31, 37, .16);
+    color: #a65a6b;
+    font-size: 14px;
+    font-weight: 800;
+  }
+
+  .keira-about-card {
+    padding: clamp(38px, 5vw, 66px);
+    border-radius: 34px;
+    background: rgba(255,255,255,.68);
+    border: 1px solid rgba(108, 64, 74, .14);
+    box-shadow: 0 28px 90px rgba(69, 43, 49, .10);
+    backdrop-filter: blur(14px);
+  }
+
+  .keira-about-card .kicker {
+    margin: 0 0 24px;
+    color: #a85b6c;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: .42em;
+    text-transform: uppercase;
+  }
+
+  .keira-about-card h2 {
+    margin: 0 0 24px;
+    max-width: 590px;
+    color: #241d20;
+    font-size: clamp(50px, 5.4vw, 82px);
+    line-height: .95;
+    letter-spacing: -.06em;
+  }
+
+  .keira-about-card p {
+    margin: 0 0 20px;
+    max-width: 620px;
+    color: rgba(36, 29, 32, .66);
+    font-size: 16px;
+    line-height: 1.9;
+  }
+
+  .keira-about-actions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-top: 34px;
+  }
+
+  .keira-about-actions a {
+    min-height: 54px;
+    padding: 0 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    font-size: 14px;
+    font-weight: 900;
+    text-decoration: none;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+
+  .keira-about-actions a:first-child {
+    background: #ad6077;
+    color: #fff;
+    box-shadow: 0 18px 42px rgba(173, 96, 119, .28);
+  }
+
+  .keira-about-actions a:last-child {
+    background: rgba(255,255,255,.65);
+    color: #985466;
+    border: 1px solid rgba(173, 96, 119, .22);
+  }
+
+  .keira-about-actions a:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 24px 52px rgba(173, 96, 119, .20);
+  }
+
+  @media (max-width: 1120px) {
+    .keira-collage-wrap {
+      grid-template-columns: 1fr;
+    }
+
+    .keira-collage {
+      width: min(760px, 100%);
+      margin: 0 auto;
+    }
+  }
+
+  @media (max-width: 720px) {
+    .keira-collage-about {
+      padding: 54px 16px;
+    }
+
+    .keira-collage {
+      min-height: auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .keira-shot,
+    .keira-shot-main,
+    .keira-shot-top,
+    .keira-shot-mid,
+    .keira-shot-low {
+      position: relative;
+      inset: auto;
+      width: 100%;
+      height: 230px;
+      border-radius: 22px;
+    }
+
+    .keira-shot-main {
+      grid-column: 1 / -1;
+      height: 390px;
+    }
+
+    .keira-coaching-pill {
+      left: 18px;
+      bottom: 18px;
+      font-size: 13px;
+    }
+
+    .keira-about-card {
+      padding: 28px 20px;
+      border-radius: 28px;
+    }
+
+    .keira-about-card h2 {
+      font-size: 42px;
+    }
+  }
+</style>
+
+<script>
+(function(){
+  const marker = "BARREFLOW_KEIRA_COLLAGE_ABOUT_V1";
+  if (window[marker]) return;
+  window[marker] = true;
+
+  function run(){
+    const candidates = Array.from(document.querySelectorAll("section, main > div, body > div"));
+    const target = candidates.find(function(el){
+      const text = (el.innerText || "").toLowerCase();
+      return text.includes("about keira") && text.includes("steady") && text.includes("supportive coaching");
+    });
+
+    if (!target) {
+      console.warn("About Keira section not found");
+      return;
+    }
+
+    target.className = "keira-collage-about";
+    target.innerHTML = `
+      <div class="keira-collage-wrap">
+        <div class="keira-collage">
+          <figure class="keira-shot keira-shot-main">
+            <img src="/assets/client-builds/barreflow-with-keira/keira/keira-barre-extra.webp" alt="Keira smiling before class">
+            <figcaption class="keira-coaching-pill">Warm, calm coaching</figcaption>
+          </figure>
+
+          <figure class="keira-shot keira-shot-top">
+            <img src="/assets/client-builds/barreflow-with-keira/keira/keira-barre-leg-extension.webp" alt="Keira demonstrating a barre leg extension">
+          </figure>
+
+          <figure class="keira-shot keira-shot-mid">
+            <img src="/assets/client-builds/barreflow-with-keira/keira/keira-barre-side-reach.webp" alt="Keira demonstrating a barre side reach">
+          </figure>
+
+          <figure class="keira-shot keira-shot-low">
+            <img src="/assets/client-builds/barreflow-with-keira/keira/keira-standing-barre.webp" alt="Keira standing by the barre">
+          </figure>
+        </div>
+
+        <article class="keira-about-card">
+          <p class="kicker">About Keira</p>
+          <h2>Steady, supportive coaching from the first class.</h2>
+          <p>Keira created Barre Flow for people who want a graceful, supportive way to move. Classes are calm but purposeful, with careful guidance and a welcoming feel from the first session.</p>
+          <p>Whether you are new to barre, returning to fitness, or looking for a softer complement to your routine, you will be met where you are.</p>
+          <div class="keira-about-actions">
+            <a href="#booking">Book a Class</a>
+            <a href="#sessions">Ask Keira</a>
+          </div>
+        </article>
+      </div>
+    `;
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", run);
+  } else {
+    run();
+  }
+})();
+</script>
+<!-- BARREFLOW_KEIRA_COLLAGE_ABOUT_V1 END -->
+
+
+<!-- BARREFLOW_KEIRA_COLLAGE_POLISH_V1 START -->
+<style>
+  .keira-collage-about {
+    background:
+      radial-gradient(circle at 22% 44%, rgba(188, 108, 126, .18), transparent 0 330px, transparent 331px),
+      radial-gradient(circle at 96% 20%, rgba(188, 108, 126, .10), transparent 0 230px, transparent 231px),
+      radial-gradient(circle at 12% 84%, rgba(255, 255, 255, .88), transparent 0 220px, transparent 221px),
+      linear-gradient(180deg, #fffdfb 0%, #fbf4f1 52%, #fffafa 100%) !important;
+  }
+
+  .keira-collage-about::before {
+    width: 690px !important;
+    height: 690px !important;
+    left: 5% !important;
+    background:
+      radial-gradient(circle at 34% 30%, rgba(255,255,255,.72), transparent 0 120px, transparent 121px),
+      rgba(187, 104, 124, .085) !important;
+    box-shadow:
+      inset 0 0 0 1px rgba(187, 104, 124, .075),
+      0 36px 110px rgba(94, 48, 62, .07) !important;
+  }
+
+  .keira-collage-about::after {
+    width: 420px !important;
+    height: 420px !important;
+    right: -95px !important;
+    top: 42px !important;
+    background:
+      radial-gradient(circle at 45% 38%, rgba(255,255,255,.70), transparent 0 90px, transparent 91px),
+      rgba(187, 104, 124, .065) !important;
+    box-shadow: inset 0 0 0 1px rgba(187, 104, 124, .055) !important;
+  }
+
+  .keira-shot {
+    padding: 10px !important;
+    border-radius: 34px !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.94), rgba(255,248,246,.68)) !important;
+    border: 1px solid rgba(157, 84, 101, .18) !important;
+    box-shadow:
+      0 24px 60px rgba(74, 42, 50, .12),
+      0 8px 18px rgba(174, 93, 112, .08),
+      inset 0 1px 0 rgba(255,255,255,.92) !important;
+  }
+
+  .keira-shot::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border-radius: 25px;
+    pointer-events: none;
+    z-index: 2;
+    background:
+      linear-gradient(135deg, rgba(255,255,255,.22), transparent 38%),
+      radial-gradient(circle at 18% 12%, rgba(255,255,255,.25), transparent 0 90px, transparent 91px);
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.36);
+  }
+
+  .keira-shot::after {
+    content: "";
+    position: absolute;
+    inset: auto 28px -18px 28px;
+    height: 28px;
+    border-radius: 999px;
+    background: rgba(94, 48, 62, .14);
+    filter: blur(18px);
+    z-index: -1;
+  }
+
+  .keira-shot img {
+    border-radius: 25px !important;
+    filter: brightness(1.06) contrast(1.04) saturate(.96) !important;
+    transition: transform .45s ease, filter .45s ease !important;
+  }
+
+  .keira-shot:hover {
+    transform: translateY(-9px) scale(1.012) !important;
+    border-color: rgba(174, 93, 112, .34) !important;
+    box-shadow:
+      0 36px 86px rgba(74, 42, 50, .18),
+      0 12px 28px rgba(174, 93, 112, .13),
+      inset 0 1px 0 rgba(255,255,255,.94) !important;
+  }
+
+  .keira-shot:hover img {
+    transform: scale(1.025);
+    filter: brightness(1.1) contrast(1.05) saturate(1.02) !important;
+  }
+
+  .keira-shot-main {
+    border-radius: 38px !important;
+    box-shadow:
+      0 32px 90px rgba(74, 42, 50, .15),
+      0 12px 28px rgba(174, 93, 112, .12),
+      inset 0 1px 0 rgba(255,255,255,.94) !important;
+  }
+
+  .keira-shot-main img {
+    object-position: center center !important;
+  }
+
+  .keira-shot-top {
+    transform: rotate(.6deg);
+  }
+
+  .keira-shot-mid {
+    transform: rotate(-.45deg);
+  }
+
+  .keira-shot-low {
+    transform: rotate(.35deg);
+  }
+
+  .keira-shot-top:hover,
+  .keira-shot-mid:hover,
+  .keira-shot-low:hover {
+    transform: translateY(-9px) scale(1.012) rotate(0deg) !important;
+  }
+
+  .keira-coaching-pill {
+    left: 34px !important;
+    bottom: 32px !important;
+    padding: 14px 24px !important;
+    border-radius: 999px !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.94), rgba(255,248,246,.80)) !important;
+    border: 1px solid rgba(157, 84, 101, .20) !important;
+    color: #a25569 !important;
+    box-shadow:
+      0 18px 42px rgba(55, 31, 37, .16),
+      inset 0 1px 0 rgba(255,255,255,.95) !important;
+    backdrop-filter: blur(12px);
+  }
+
+  .keira-coaching-pill::before {
+    content: "";
+    width: 9px;
+    height: 9px;
+    margin-right: 9px;
+    display: inline-block;
+    border-radius: 999px;
+    background: #ad6077;
+    box-shadow: 0 0 0 7px rgba(173, 96, 119, .13);
+    vertical-align: middle;
+  }
+
+  .keira-about-card {
+    position: relative;
+    overflow: hidden;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.84), rgba(255,249,247,.66)) !important;
+    border: 1px solid rgba(157, 84, 101, .16) !important;
+    box-shadow:
+      0 34px 100px rgba(74, 42, 50, .12),
+      inset 0 1px 0 rgba(255,255,255,.95) !important;
+  }
+
+  .keira-about-card::before {
+    content: "";
+    position: absolute;
+    width: 230px;
+    height: 230px;
+    right: -72px;
+    top: -72px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(173,96,119,.13), transparent 68%);
+    pointer-events: none;
+  }
+
+  .keira-about-card::after {
+    content: "";
+    position: absolute;
+    inset: 14px;
+    border-radius: 26px;
+    border: 1px solid rgba(255,255,255,.62);
+    pointer-events: none;
+  }
+
+  .keira-about-card .kicker,
+  .keira-about-card h2,
+  .keira-about-card p,
+  .keira-about-actions {
+    position: relative;
+    z-index: 2;
+  }
+
+  .keira-about-actions a:first-child {
+    background: linear-gradient(135deg, #ad6077, #9d5268) !important;
+    box-shadow:
+      0 18px 42px rgba(173, 96, 119, .30),
+      inset 0 1px 0 rgba(255,255,255,.18) !important;
+  }
+
+  .keira-about-actions a:last-child {
+    background: rgba(255,255,255,.72) !important;
+    border: 1px solid rgba(173, 96, 119, .24) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.86) !important;
+  }
+
+  @media (max-width: 720px) {
+    .keira-shot {
+      padding: 7px !important;
+      border-radius: 26px !important;
+    }
+
+    .keira-shot img,
+    .keira-shot::before {
+      border-radius: 20px !important;
+    }
+
+    .keira-coaching-pill {
+      left: 18px !important;
+      bottom: 18px !important;
+    }
+  }
+</style>
+<!-- BARREFLOW_KEIRA_COLLAGE_POLISH_V1 END -->
+
+
+<!-- BARREFLOW_KEIRA_TEXT_CARD_POLISH_V1 START -->
+<style>
+  .keira-about-card {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 42px !important;
+    background:
+      radial-gradient(circle at 88% 10%, rgba(180, 95, 116, .13), transparent 0 150px, transparent 151px),
+      radial-gradient(circle at 12% 88%, rgba(255,255,255,.90), transparent 0 170px, transparent 171px),
+      linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,246,.68)) !important;
+    border: 1px solid rgba(158, 83, 101, .18) !important;
+    box-shadow:
+      0 34px 100px rgba(68, 38, 46, .12),
+      0 10px 30px rgba(173, 96, 119, .08),
+      inset 0 1px 0 rgba(255,255,255,.96) !important;
+    backdrop-filter: blur(18px) !important;
+  }
+
+  .keira-about-card::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 360px !important;
+    height: 360px !important;
+    right: -155px !important;
+    top: -150px !important;
+    border-radius: 999px !important;
+    background:
+      radial-gradient(circle at 42% 40%, rgba(255,255,255,.58), transparent 0 88px, transparent 89px),
+      rgba(177, 94, 114, .08) !important;
+    box-shadow: inset 0 0 0 1px rgba(177, 94, 114, .06) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+
+  .keira-about-card::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 16px !important;
+    border-radius: 32px !important;
+    border: 1px solid rgba(255,255,255,.68) !important;
+    box-shadow: inset 0 0 34px rgba(255,255,255,.26) !important;
+    pointer-events: none !important;
+    z-index: 1 !important;
+  }
+
+  .keira-about-card .kicker,
+  .keira-about-card h2,
+  .keira-about-card p,
+  .keira-about-actions {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  .keira-about-card .kicker {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    margin-bottom: 26px !important;
+    color: #aa5b70 !important;
+    letter-spacing: .44em !important;
+  }
+
+  .keira-about-card .kicker::before {
+    content: "" !important;
+    width: 9px !important;
+    height: 9px !important;
+    border-radius: 99px !important;
+    background: #ad6077 !important;
+    box-shadow: 0 0 0 7px rgba(173, 96, 119, .12) !important;
+  }
+
+  .keira-about-card h2 {
+    max-width: 620px !important;
+    color: #251d21 !important;
+    text-shadow: 0 1px 0 rgba(255,255,255,.65) !important;
+  }
+
+  .keira-about-card p {
+    max-width: 650px !important;
+    color: rgba(37, 29, 33, .66) !important;
+  }
+
+  .keira-about-actions a:first-child {
+    background: linear-gradient(135deg, #b5647b, #9d5167) !important;
+    color: #fff !important;
+    box-shadow:
+      0 18px 42px rgba(173, 96, 119, .30),
+      inset 0 1px 0 rgba(255,255,255,.22) !important;
+  }
+
+  .keira-about-actions a:last-child {
+    background: rgba(255,255,255,.72) !important;
+    color: #965366 !important;
+    border: 1px solid rgba(173, 96, 119, .24) !important;
+    box-shadow:
+      0 12px 28px rgba(68, 38, 46, .06),
+      inset 0 1px 0 rgba(255,255,255,.92) !important;
+  }
+
+  .keira-about-actions a:hover {
+    transform: translateY(-3px) !important;
+    box-shadow:
+      0 22px 52px rgba(173, 96, 119, .24),
+      inset 0 1px 0 rgba(255,255,255,.20) !important;
+  }
+</style>
+<!-- BARREFLOW_KEIRA_TEXT_CARD_POLISH_V1 END -->
+
+
+<!-- BARREFLOW_KEIRA_ABOUT_HOVER_REACTIVITY_V1 START -->
+<style>
+  .keira-collage-about {
+    --mx: 50%;
+    --my: 50%;
+  }
+
+  .keira-collage-about::before {
+    transition: transform .55s ease, opacity .55s ease !important;
+  }
+
+  .keira-collage-about:hover::before {
+    transform: translateY(-50%) translate3d(12px, -10px, 0) scale(1.025) !important;
+    opacity: 1 !important;
+  }
+
+  .keira-about-card {
+    transition:
+      transform .38s ease,
+      box-shadow .38s ease,
+      border-color .38s ease,
+      background .38s ease !important;
+  }
+
+  .keira-about-card:hover {
+    transform: translateY(-8px) !important;
+    border-color: rgba(173, 96, 119, .32) !important;
+    box-shadow:
+      0 46px 120px rgba(68, 38, 46, .16),
+      0 16px 42px rgba(173, 96, 119, .12),
+      inset 0 1px 0 rgba(255,255,255,.98) !important;
+  }
+
+  .keira-about-card:hover::before {
+    transform: translate3d(-12px, 12px, 0) scale(1.08) !important;
+  }
+
+  .keira-about-card::before {
+    transition: transform .55s ease !important;
+  }
+
+  .keira-about-card h2 {
+    transition: transform .38s ease, letter-spacing .38s ease !important;
+  }
+
+  .keira-about-card:hover h2 {
+    transform: translateY(-3px) !important;
+    letter-spacing: -.064em !important;
+  }
+
+  .keira-about-card p {
+    transition: transform .38s ease, color .38s ease !important;
+  }
+
+  .keira-about-card:hover p {
+    transform: translateY(-1px) !important;
+    color: rgba(37, 29, 33, .72) !important;
+  }
+
+  .keira-about-actions a {
+    position: relative !important;
+    overflow: hidden !important;
+  }
+
+  .keira-about-actions a::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.32) 48%, transparent 100%) !important;
+    transform: translateX(-130%) !important;
+    transition: transform .55s ease !important;
+    pointer-events: none !important;
+  }
+
+  .keira-about-actions a:hover::after {
+    transform: translateX(130%) !important;
+  }
+
+  .keira-shot {
+    will-change: transform;
+  }
+
+  .keira-shot-main:hover {
+    transform: translateY(-10px) scale(1.018) rotate(-.25deg) !important;
+  }
+
+  .keira-shot-top:hover {
+    transform: translateY(-10px) scale(1.025) rotate(1deg) !important;
+  }
+
+  .keira-shot-mid:hover {
+    transform: translateY(-10px) scale(1.025) rotate(-1deg) !important;
+  }
+
+  .keira-shot-low:hover {
+    transform: translateY(-10px) scale(1.025) rotate(.8deg) !important;
+  }
+
+  .keira-collage:hover .keira-shot:not(:hover) {
+    filter: saturate(.96) brightness(.98);
+  }
+
+  .keira-collage:hover .keira-shot-main:not(:hover) {
+    transform: translate3d(-4px, 2px, 0) scale(.995) !important;
+  }
+
+  .keira-collage:hover .keira-shot-top:not(:hover) {
+    transform: translate3d(5px, -3px, 0) rotate(.6deg) !important;
+  }
+
+  .keira-collage:hover .keira-shot-mid:not(:hover) {
+    transform: translate3d(4px, 4px, 0) rotate(-.45deg) !important;
+  }
+
+  .keira-collage:hover .keira-shot-low:not(:hover) {
+    transform: translate3d(-3px, 5px, 0) rotate(.35deg) !important;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .keira-collage-about *,
+    .keira-collage-about *::before,
+    .keira-collage-about *::after {
+      transition: none !important;
+      transform: none !important;
+    }
+  }
+</style>
+<!-- BARREFLOW_KEIRA_ABOUT_HOVER_REACTIVITY_V1 END -->
+
+
+
+
+<!-- BARREFLOW_RESERVE_BOX_POLISH_V1 START -->
+<style>
+  .bf-reserve-card-polish{
+    position:relative !important;
+    overflow:visible !important;
+    border-radius:34px !important;
+    padding:18px !important;
+    background:
+      radial-gradient(circle at 82% 12%, rgba(255,255,255,.14), transparent 0 120px, transparent 121px),
+      linear-gradient(145deg, rgba(198,122,143,.30), rgba(122,79,91,.46)) !important;
+    border:1px solid rgba(255,255,255,.26) !important;
+    box-shadow:
+      0 28px 70px rgba(51,27,34,.18),
+      0 10px 26px rgba(191,115,136,.14),
+      inset 0 1px 0 rgba(255,255,255,.30) !important;
+    backdrop-filter: blur(18px) saturate(1.08) !important;
+    transition:
+      transform .30s ease,
+      box-shadow .30s ease,
+      border-color .30s ease,
+      background .30s ease !important;
+    z-index:2 !important;
+  }
+
+  .bf-reserve-card-polish::before{
+    content:"" !important;
+    position:absolute !important;
+    inset:10px !important;
+    border-radius:24px !important;
+    border:1px solid rgba(255,255,255,.20) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.14) !important;
+    pointer-events:none !important;
+  }
+
+  .bf-reserve-card-polish::after{
+    content:"" !important;
+    position:absolute !important;
+    width:240px !important;
+    height:240px !important;
+    right:-78px !important;
+    top:50% !important;
+    transform:translateY(-50%) !important;
+    border-radius:999px !important;
+    background:radial-gradient(circle, rgba(205,132,151,.24) 0%, rgba(205,132,151,.10) 38%, transparent 72%) !important;
+    filter:blur(18px) !important;
+    z-index:-1 !important;
+    pointer-events:none !important;
+    transition: transform .35s ease, opacity .35s ease !important;
+    opacity:.95 !important;
+  }
+
+  .bf-reserve-card-polish:hover{
+    transform:translateY(-7px) scale(1.012) !important;
+    border-color:rgba(255,255,255,.38) !important;
+    box-shadow:
+      0 38px 90px rgba(51,27,34,.24),
+      0 14px 34px rgba(191,115,136,.18),
+      inset 0 1px 0 rgba(255,255,255,.34) !important;
+  }
+
+  .bf-reserve-card-polish:hover::after{
+    transform:translateY(-50%) scale(1.08) !important;
+    opacity:1 !important;
+  }
+
+  .bf-reserve-card-polish .bf-reserve-btn{
+    position:relative !important;
+    overflow:hidden !important;
+    min-height:48px !important;
+    border-radius:999px !important;
+    border:1px solid rgba(255,255,255,.14) !important;
+    transition:
+      transform .24s ease,
+      box-shadow .24s ease,
+      filter .24s ease,
+      background .24s ease !important;
+  }
+
+  .bf-reserve-card-polish .bf-reserve-btn::after{
+    content:"" !important;
+    position:absolute !important;
+    inset:0 !important;
+    background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,.20) 50%, transparent 100%) !important;
+    transform:translateX(-130%) !important;
+    transition:transform .55s ease !important;
+    pointer-events:none !important;
+  }
+
+  .bf-reserve-card-polish .bf-reserve-btn:hover{
+    transform:translateY(-2px) !important;
+    box-shadow:0 14px 26px rgba(54,28,35,.16) !important;
+    filter:brightness(1.03) !important;
+  }
+
+  .bf-reserve-card-polish .bf-reserve-btn:hover::after{
+    transform:translateX(130%) !important;
+  }
+
+  .bf-reserve-card-polish .bf-reserve-btn-primary{
+    background:linear-gradient(135deg, #c9778f, #9f5568) !important;
+    color:#fff !important;
+    border-color:rgba(255,255,255,.10) !important;
+    box-shadow:
+      0 14px 32px rgba(182,97,121,.24),
+      inset 0 1px 0 rgba(255,255,255,.18) !important;
+  }
+
+  .bf-reserve-card-polish .bf-reserve-btn-secondary{
+    background:rgba(255,250,249,.96) !important;
+    color:#905264 !important;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.82) !important;
+  }
+
+  .bf-reserve-card-polish p,
+  .bf-reserve-card-polish small,
+  .bf-reserve-card-polish span,
+  .bf-reserve-card-polish div{
+    color:#fff !important;
+  }
+
+  .bf-reserve-card-polish .bf-reserve-note{
+    opacity:.94 !important;
+    line-height:1.6 !important;
+    margin-top:14px !important;
+  }
+
+  @media (max-width: 900px){
+    .bf-reserve-card-polish{
+      padding:16px !important;
+      border-radius:28px !important;
+    }
+
+    .bf-reserve-card-polish::after{
+      width:180px !important;
+      height:180px !important;
+      right:-56px !important;
+    }
+  }
+</style>
+
+<script>
+(function(){
+  const marker = "BARREFLOW_RESERVE_BOX_POLISH_V1";
+  if (window[marker]) return;
+  window[marker] = true;
+
+  const norm = (s) => (s || "").replace(/\s+/g, " ").trim().toLowerCase();
+  const textHas = (el, parts) => {
+    const t = norm(el.innerText || "");
+    return parts.every(p => t.includes(p));
+  };
+
+  const candidates = Array.from(document.querySelectorAll("section, main > div, main > section, body > div"));
+  const reserveSection = candidates.find(el => textHas(el, ["reserve your place", "pay securely"]));
+
+  if (!reserveSection) {
+    console.warn("Reserve section not found");
+    return;
+  }
+
+  const actionCard = Array.from(reserveSection.querySelectorAll("div")).find(el =>
+    textHas(el, ["pay class deposit", "book and pay securely", "ask a question"])
+  );
+
+  if (!actionCard) {
+    console.warn("Reserve action card not found");
+    return;
+  }
+
+  actionCard.classList.add("bf-reserve-card-polish");
+
+  const controls = Array.from(actionCard.querySelectorAll("a,button"));
+  controls.forEach((el, i) => {
+    el.classList.add("bf-reserve-btn");
+    if (i === 1) {
+      el.classList.add("bf-reserve-btn-primary");
+    } else {
+      el.classList.add("bf-reserve-btn-secondary");
+    }
+  });
+
+  const note = Array.from(actionCard.querySelectorAll("p,small,div")).find(el =>
+    norm(el.innerText || "").includes("secure stripe checkout placeholder")
+  );
+  if (note) note.classList.add("bf-reserve-note");
+})();
+</script>
+<!-- BARREFLOW_RESERVE_BOX_POLISH_V1 END -->
+
+
+<!-- BARREFLOW_RESERVE_SECTION_BUBBLES_V1 START -->
+<style>
+  .bf-reserve-bubbles{
+    position:relative !important;
+    overflow:hidden !important;
+    isolation:isolate !important;
+  }
+
+  .bf-reserve-bubbles > *{
+    position:relative;
+    z-index:2;
+  }
+
+  .bf-reserve-bubbles::before,
+  .bf-reserve-bubbles::after{
+    content:"" !important;
+    position:absolute !important;
+    border-radius:999px !important;
+    pointer-events:none !important;
+    z-index:1 !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.10) !important;
+  }
+
+  .bf-reserve-bubbles::before{
+    width:340px !important;
+    height:340px !important;
+    left:58px !important;
+    top:76px !important;
+    background:
+      radial-gradient(circle at 38% 38%, rgba(255,255,255,.16) 0%, rgba(255,255,255,.08) 45%, rgba(255,255,255,0) 72%) !important;
+    filter:blur(.2px) !important;
+    opacity:.95 !important;
+  }
+
+  .bf-reserve-bubbles::after{
+    width:220px !important;
+    height:220px !important;
+    right:112px !important;
+    top:38px !important;
+    background:
+      radial-gradient(circle at 42% 42%, rgba(255,255,255,.14) 0%, rgba(255,255,255,.07) 48%, rgba(255,255,255,0) 72%) !important;
+    opacity:.88 !important;
+  }
+
+  .bf-reserve-bubble-layer{
+    position:absolute !important;
+    inset:0 !important;
+    pointer-events:none !important;
+    z-index:1 !important;
+  }
+
+  .bf-reserve-bubble{
+    position:absolute !important;
+    display:block !important;
+    border-radius:999px !important;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,.09) !important;
+    background:
+      radial-gradient(circle at 42% 42%, rgba(255,255,255,.14) 0%, rgba(255,255,255,.06) 46%, rgba(255,255,255,0) 72%) !important;
+  }
+
+  .bf-reserve-bubble-a{
+    width:180px !important;
+    height:180px !important;
+    left:210px !important;
+    bottom:26px !important;
+    opacity:.68 !important;
+  }
+
+  .bf-reserve-bubble-b{
+    width:150px !important;
+    height:150px !important;
+    right:370px !important;
+    bottom:76px !important;
+    opacity:.56 !important;
+  }
+
+  .bf-reserve-bubble-c{
+    width:120px !important;
+    height:120px !important;
+    right:40px !important;
+    bottom:34px !important;
+    opacity:.44 !important;
+  }
+
+  @media (max-width: 1100px){
+    .bf-reserve-bubbles::before{
+      width:250px !important;
+      height:250px !important;
+      left:24px !important;
+      top:96px !important;
+    }
+
+    .bf-reserve-bubbles::after{
+      width:170px !important;
+      height:170px !important;
+      right:32px !important;
+      top:54px !important;
+    }
+
+    .bf-reserve-bubble-a{
+      width:130px !important;
+      height:130px !important;
+      left:120px !important;
+      bottom:22px !important;
+    }
+
+    .bf-reserve-bubble-b{
+      width:110px !important;
+      height:110px !important;
+      right:220px !important;
+      bottom:54px !important;
+    }
+
+    .bf-reserve-bubble-c{
+      display:none !important;
+    }
+  }
+
+  @media (max-width: 760px){
+    .bf-reserve-bubbles::before{
+      width:180px !important;
+      height:180px !important;
+      left:-24px !important;
+      top:120px !important;
+      opacity:.75 !important;
+    }
+
+    .bf-reserve-bubbles::after{
+      width:120px !important;
+      height:120px !important;
+      right:-20px !important;
+      top:30px !important;
+      opacity:.6 !important;
+    }
+
+    .bf-reserve-bubble-a,
+    .bf-reserve-bubble-b,
+    .bf-reserve-bubble-c{
+      display:none !important;
+    }
+  }
+</style>
+
+<script>
+(function(){
+  const marker = "BARREFLOW_RESERVE_SECTION_BUBBLES_V1";
+  if (window[marker]) return;
+  window[marker] = true;
+
+  const norm = (s) => (s || "").replace(/\s+/g, " ").trim().toLowerCase();
+  const textHas = (el, parts) => {
+    const t = norm(el.innerText || "");
+    return parts.every(p => t.includes(p));
+  };
+
+  const candidates = Array.from(document.querySelectorAll("section, main > section, main > div, body > div"));
+  const reserveSection = candidates.find(el => textHas(el, ["reserve your place", "pay securely"]));
+
+  if (!reserveSection) {
+    console.warn("Reserve section not found");
+    return;
+  }
+
+  reserveSection.classList.add("bf-reserve-bubbles");
+
+  if (!reserveSection.querySelector(".bf-reserve-bubble-layer")) {
+    const layer = document.createElement("div");
+    layer.className = "bf-reserve-bubble-layer";
+    layer.innerHTML = `
+      <span class="bf-reserve-bubble bf-reserve-bubble-a"></span>
+      <span class="bf-reserve-bubble bf-reserve-bubble-b"></span>
+      <span class="bf-reserve-bubble bf-reserve-bubble-c"></span>
+    `;
+    reserveSection.insertBefore(layer, reserveSection.firstChild);
+  }
+})();
+</script>
+<!-- BARREFLOW_RESERVE_SECTION_BUBBLES_V1 END -->
+
+
+<!-- BARREFLOW_SESSIONS_AND_SHOP_CTA_POLISH_V1 START -->
+<style>
+  #sessions.bf-session-calendar-section {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background:
+      radial-gradient(circle at 12% 10%, rgba(181, 100, 123, .13), transparent 0 280px, transparent 281px),
+      radial-gradient(circle at 88% 18%, rgba(181, 100, 123, .10), transparent 0 250px, transparent 251px),
+      radial-gradient(circle at 82% 88%, rgba(255,255,255,.88), transparent 0 240px, transparent 241px),
+      linear-gradient(180deg, #fffdfb 0%, #fbf4f1 54%, #fffafa 100%) !important;
+  }
+
+  #sessions.bf-session-calendar-section::before,
+  #sessions.bf-session-calendar-section::after {
+    content: "" !important;
+    position: absolute !important;
+    border-radius: 999px !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  #sessions.bf-session-calendar-section::before {
+    width: 560px !important;
+    height: 560px !important;
+    left: -160px !important;
+    top: 90px !important;
+    background:
+      radial-gradient(circle at 42% 38%, rgba(255,255,255,.58), transparent 0 92px, transparent 93px),
+      rgba(181, 100, 123, .075) !important;
+    box-shadow: inset 0 0 0 1px rgba(181,100,123,.055) !important;
+  }
+
+  #sessions.bf-session-calendar-section::after {
+    width: 430px !important;
+    height: 430px !important;
+    right: -130px !important;
+    bottom: -80px !important;
+    background:
+      radial-gradient(circle at 48% 42%, rgba(255,255,255,.56), transparent 0 82px, transparent 83px),
+      rgba(181, 100, 123, .065) !important;
+    box-shadow: inset 0 0 0 1px rgba(181,100,123,.05) !important;
+  }
+
+  #sessions.bf-session-calendar-section > * {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  #sessions .bf-session-calendar-header,
+  #sessions .bf-session-group,
+  #sessions .bf-session-booking-panel {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 34px !important;
+    background:
+      radial-gradient(circle at 92% 8%, rgba(181,100,123,.11), transparent 0 140px, transparent 141px),
+      linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,246,.70)) !important;
+    border: 1px solid rgba(173, 96, 119, .17) !important;
+    box-shadow:
+      0 28px 80px rgba(72,39,48,.10),
+      0 8px 22px rgba(173,96,119,.07),
+      inset 0 1px 0 rgba(255,255,255,.94) !important;
+    backdrop-filter: blur(14px) !important;
+    transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease !important;
+  }
+
+  #sessions .bf-session-calendar-header::after,
+  #sessions .bf-session-group::after,
+  #sessions .bf-session-booking-panel::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 12px !important;
+    border-radius: 24px !important;
+    border: 1px solid rgba(255,255,255,.60) !important;
+    pointer-events: none !important;
+  }
+
+  #sessions .bf-session-calendar-header:hover,
+  #sessions .bf-session-group:hover,
+  #sessions .bf-session-booking-panel:hover {
+    transform: translateY(-6px) !important;
+    border-color: rgba(173, 96, 119, .30) !important;
+    box-shadow:
+      0 38px 98px rgba(72,39,48,.14),
+      0 12px 30px rgba(173,96,119,.11),
+      inset 0 1px 0 rgba(255,255,255,.96) !important;
+  }
+
+  #sessions h2,
+  #sessions h3,
+  #sessions strong {
+    color: #251d21 !important;
+    letter-spacing: -.045em !important;
+  }
+
+  #sessions p,
+  #sessions label,
+  #sessions span {
+    color: rgba(37, 29, 33, .68) !important;
+  }
+
+  #sessions .bf-session-card,
+  #sessions [data-session-id] {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 24px !important;
+    background:
+      linear-gradient(145deg, rgba(255,255,255,.86), rgba(255,248,246,.66)) !important;
+    border: 1px solid rgba(173, 96, 119, .15) !important;
+    box-shadow:
+      0 16px 44px rgba(72,39,48,.07),
+      inset 0 1px 0 rgba(255,255,255,.90) !important;
+    transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease, background .24s ease !important;
+  }
+
+  #sessions .bf-session-card::before,
+  #sessions [data-session-id]::before {
+    content: "" !important;
+    position: absolute !important;
+    width: 120px !important;
+    height: 120px !important;
+    right: -44px !important;
+    top: -46px !important;
+    border-radius: 999px !important;
+    background: rgba(181, 100, 123, .08) !important;
+    pointer-events: none !important;
+  }
+
+  #sessions .bf-session-card:hover,
+  #sessions [data-session-id]:hover {
+    transform: translateY(-5px) scale(1.01) !important;
+    border-color: rgba(173, 96, 119, .30) !important;
+    box-shadow:
+      0 24px 62px rgba(72,39,48,.12),
+      0 8px 18px rgba(173,96,119,.10),
+      inset 0 1px 0 rgba(255,255,255,.94) !important;
+  }
+
+  #sessions .bf-session-card.is-selected,
+  #sessions [data-session-id].is-selected,
+  #sessions [aria-pressed="true"] {
+    background:
+      radial-gradient(circle at 86% 12%, rgba(255,255,255,.15), transparent 0 120px, transparent 121px),
+      linear-gradient(145deg, #88465a, #7b4052) !important;
+    border-color: rgba(255,255,255,.22) !important;
+    box-shadow:
+      0 24px 70px rgba(124,64,82,.24),
+      inset 0 1px 0 rgba(255,255,255,.20) !important;
+  }
+
+  #sessions .bf-session-card.is-selected *,
+  #sessions [data-session-id].is-selected *,
+  #sessions [aria-pressed="true"] * {
+    color: #fff !important;
+  }
+
+  #sessions input,
+  #sessions select,
+  #sessions textarea {
+    border-radius: 18px !important;
+    border: 1px solid rgba(173, 96, 119, .18) !important;
+    background: rgba(255,255,255,.86) !important;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,.90) !important;
+    transition: border-color .22s ease, box-shadow .22s ease, background .22s ease !important;
+  }
+
+  #sessions input:focus,
+  #sessions select:focus,
+  #sessions textarea:focus {
+    outline: none !important;
+    border-color: rgba(173, 96, 119, .42) !important;
+    background: #fff !important;
+    box-shadow: 0 0 0 4px rgba(173, 96, 119, .10), inset 0 1px 0 rgba(255,255,255,.94) !important;
+  }
+
+  #sessions .button.primary,
+  #sessions button[type="submit"] {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, #b7657d, #9d5167) !important;
+    border: 1px solid rgba(173, 96, 119, .20) !important;
+    color: #fff !important;
+    box-shadow:
+      0 18px 42px rgba(173, 96, 119, .26),
+      inset 0 1px 0 rgba(255,255,255,.18) !important;
+    transition: transform .24s ease, box-shadow .24s ease, filter .24s ease !important;
+  }
+
+  #sessions .button.primary::after,
+  #sessions button[type="submit"]::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.28) 50%, transparent 100%) !important;
+    transform: translateX(-130%) !important;
+    transition: transform .55s ease !important;
+    pointer-events: none !important;
+  }
+
+  #sessions .button.primary:hover,
+  #sessions button[type="submit"]:hover {
+    transform: translateY(-3px) !important;
+    filter: brightness(1.03) !important;
+    box-shadow:
+      0 24px 54px rgba(173, 96, 119, .31),
+      inset 0 1px 0 rgba(255,255,255,.20) !important;
+  }
+
+  #sessions .button.primary:hover::after,
+  #sessions button[type="submit"]:hover::after {
+    transform: translateX(130%) !important;
+  }
+
+  .bf-shop-cta-band {
+    position: relative !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    padding: clamp(54px, 7vw, 92px) clamp(18px, 5vw, 72px) !important;
+    background:
+      radial-gradient(circle at 15% 35%, rgba(181, 100, 123, .13), transparent 0 260px, transparent 261px),
+      radial-gradient(circle at 88% 70%, rgba(181, 100, 123, .10), transparent 0 230px, transparent 231px),
+      linear-gradient(180deg, #fffdfb 0%, #fbf4f1 100%) !important;
+  }
+
+  .bf-shop-cta-band::before,
+  .bf-shop-cta-band::after {
+    content: "" !important;
+    position: absolute !important;
+    border-radius: 999px !important;
+    pointer-events: none !important;
+    z-index: 0 !important;
+  }
+
+  .bf-shop-cta-band::before {
+    width: 230px !important;
+    height: 230px !important;
+    left: 12% !important;
+    top: 36px !important;
+    background: rgba(255,255,255,.70) !important;
+    box-shadow: inset 0 0 0 1px rgba(181,100,123,.06) !important;
+  }
+
+  .bf-shop-cta-band::after {
+    width: 340px !important;
+    height: 340px !important;
+    right: 10% !important;
+    bottom: -90px !important;
+    background: rgba(181,100,123,.07) !important;
+    box-shadow: inset 0 0 0 1px rgba(181,100,123,.05) !important;
+  }
+
+  .bf-shop-cta-band > * {
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  .bf-shop-cta-band > div,
+  .bf-shop-cta-band article,
+  .bf-shop-cta-band .container {
+    border-radius: 34px !important;
+    background:
+      radial-gradient(circle at 92% 10%, rgba(181,100,123,.12), transparent 0 160px, transparent 161px),
+      linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,246,.70)) !important;
+    border: 1px solid rgba(173, 96, 119, .17) !important;
+    box-shadow:
+      0 28px 80px rgba(72,39,48,.10),
+      0 8px 22px rgba(173,96,119,.07),
+      inset 0 1px 0 rgba(255,255,255,.94) !important;
+    backdrop-filter: blur(14px) !important;
+    transition: transform .32s ease, box-shadow .32s ease, border-color .32s ease !important;
+  }
+
+  .bf-shop-cta-band > div:hover,
+  .bf-shop-cta-band article:hover,
+  .bf-shop-cta-band .container:hover {
+    transform: translateY(-7px) !important;
+    border-color: rgba(173, 96, 119, .30) !important;
+    box-shadow:
+      0 38px 98px rgba(72,39,48,.14),
+      0 12px 30px rgba(173,96,119,.11),
+      inset 0 1px 0 rgba(255,255,255,.96) !important;
+  }
+
+  .bf-shop-cta-band h2 {
+    color: #251d21 !important;
+    letter-spacing: -.052em !important;
+  }
+
+  .bf-shop-cta-band p {
+    color: rgba(37, 29, 33, .68) !important;
+  }
+
+  .bf-shop-cta-band .button.primary,
+  .bf-shop-cta-band a[href*="shop.html"] {
+    position: relative !important;
+    overflow: hidden !important;
+    border-radius: 999px !important;
+    background: linear-gradient(135deg, #b7657d, #9d5167) !important;
+    color: #fff !important;
+    border: 1px solid rgba(173, 96, 119, .20) !important;
+    box-shadow:
+      0 18px 42px rgba(173, 96, 119, .26),
+      inset 0 1px 0 rgba(255,255,255,.18) !important;
+    transition: transform .24s ease, box-shadow .24s ease, filter .24s ease !important;
+  }
+
+  .bf-shop-cta-band .button.primary::after,
+  .bf-shop-cta-band a[href*="shop.html"]::after {
+    content: "" !important;
+    position: absolute !important;
+    inset: 0 !important;
+    background: linear-gradient(120deg, transparent 0%, rgba(255,255,255,.28) 50%, transparent 100%) !important;
+    transform: translateX(-130%) !important;
+    transition: transform .55s ease !important;
+    pointer-events: none !important;
+  }
+
+  .bf-shop-cta-band .button.primary:hover,
+  .bf-shop-cta-band a[href*="shop.html"]:hover {
+    transform: translateY(-3px) !important;
+    filter: brightness(1.03) !important;
+    box-shadow:
+      0 24px 54px rgba(173, 96, 119, .31),
+      inset 0 1px 0 rgba(255,255,255,.20) !important;
+  }
+
+  .bf-shop-cta-band .button.primary:hover::after,
+  .bf-shop-cta-band a[href*="shop.html"]:hover::after {
+    transform: translateX(130%) !important;
+  }
+
+  @media (max-width: 760px) {
+    #sessions.bf-session-calendar-section::before,
+    #sessions.bf-session-calendar-section::after,
+    .bf-shop-cta-band::before,
+    .bf-shop-cta-band::after {
+      opacity: .55 !important;
+    }
+
+    #sessions .bf-session-calendar-header,
+    #sessions .bf-session-group,
+    #sessions .bf-session-booking-panel,
+    .bf-shop-cta-band > div,
+    .bf-shop-cta-band article,
+    .bf-shop-cta-band .container {
+      border-radius: 26px !important;
+    }
+  }
+</style>
+<!-- BARREFLOW_SESSIONS_AND_SHOP_CTA_POLISH_V1 END -->
+
+</body>
+</html>

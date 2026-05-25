@@ -1,0 +1,856 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <!-- BARREFLOW_MERCH_STORE_PAGE_V1 -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Barre Flow Shop | Barre Flow with Keira</title>
+  <meta name="description" content="Preview Barre Flow with Keira branded class essentials, recovery items and everyday movement products while the final shop catalogue is prepared.">
+  <link rel="canonical" href="https://frontline-ai.co.uk/client-builds/barreflow-with-keira/shop.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Barre Flow Shop">
+  <meta property="og:description" content="Branded essentials for class, recovery and everyday movement from Barre Flow with Keira.">
+  <meta property="og:url" content="https://frontline-ai.co.uk/client-builds/barreflow-with-keira/shop.html">
+  <meta property="og:image" content="https://frontline-ai.co.uk/client-builds/barreflow-with-keira/assets/final/og.webp">
+  <meta name="theme-color" content="#fff8f4">
+  <style>
+    /* BARREFLOW_MERCH_STORE_PAGE_V1 */
+    :root {
+      --cream: #fff8f4;
+      --cream-deep: #f8ebe8;
+      --blush: #dca1aa;
+      --rose: #bf6675;
+      --rose-dark: #7b3f4b;
+      --ink: #352529;
+      --muted: #715f61;
+      --line: rgba(123,63,75,.15);
+      --glass: rgba(255,255,255,.58);
+      --shadow: 0 24px 70px rgba(84,46,47,.12);
+      --max: 1160px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 8%, rgba(255,255,255,.88) 0 112px, transparent 113px),
+        radial-gradient(circle at 86% 18%, rgba(242,220,224,.75) 0 150px, transparent 151px),
+        radial-gradient(circle at 72% 86%, rgba(255,255,255,.72) 0 118px, transparent 119px),
+        linear-gradient(135deg, var(--cream) 0%, var(--cream-deep) 52%, #fffaf6 100%);
+      line-height: 1.55;
+    }
+
+    a { color: inherit; }
+    .wrap { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+    .kicker {
+      color: var(--rose-dark);
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, p { margin-top: 0; }
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-weight: 500;
+      line-height: 1.05;
+    }
+    h1 { font-size: clamp(3.4rem, 13vw, 7rem); margin-bottom: 1rem; }
+    h2 { font-size: clamp(2.2rem, 7vw, 4.2rem); margin-bottom: .9rem; }
+    h3 { font-size: 1.45rem; margin-bottom: .4rem; }
+    p { color: var(--muted); }
+
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      padding: .82rem 1.1rem;
+      border: 1px solid var(--rose-dark);
+      border-radius: 999px;
+      background: var(--rose-dark);
+      color: #fff;
+      font-weight: 900;
+      text-decoration: none;
+      cursor: pointer;
+      transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+      box-shadow: 0 16px 36px rgba(123,63,75,.22);
+    }
+    .button:hover { transform: translateY(-2px); box-shadow: 0 22px 46px rgba(123,63,75,.28); }
+    .button.secondary {
+      background: rgba(255,255,255,.68);
+      color: var(--rose-dark);
+      box-shadow: none;
+    }
+
+    .shop-nav {
+      position: sticky;
+      top: 14px;
+      z-index: 20;
+      padding: .9rem 0;
+    }
+    .nav-shell {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: .75rem;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      background: rgba(255,250,246,.78);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 16px 44px rgba(84,46,47,.08);
+    }
+    .brand {
+      padding-left: .7rem;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.18rem;
+      text-decoration: none;
+    }
+    .nav-actions { display: flex; align-items: center; gap: .55rem; }
+
+    .bf-shop-hero {
+      position: relative;
+      overflow: hidden;
+      padding: clamp(4rem, 9vw, 7rem) 0 clamp(3rem, 7vw, 5rem);
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(280px, 430px);
+      gap: clamp(1.4rem, 4vw, 3rem);
+      align-items: center;
+    }
+    .hero-copy p { max-width: 720px; font-size: 1.08rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
+
+    .preview-stack {
+      position: relative;
+      min-height: 360px;
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: var(--glass);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .preview-stack::before,
+    .preview-stack::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(242,220,224,.72);
+    }
+    .preview-stack::before { width: 190px; height: 190px; right: -44px; top: -34px; }
+    .preview-stack::after { width: 150px; height: 150px; left: -38px; bottom: -34px; background: rgba(255,255,255,.75); }
+    .mock-bottle, .mock-socks, .mock-tote {
+      position: absolute;
+      z-index: 1;
+      border: 1px solid rgba(123,63,75,.16);
+      background: rgba(255,255,255,.68);
+      box-shadow: 0 18px 45px rgba(84,46,47,.12);
+    }
+    .mock-bottle {
+      width: 86px;
+      height: 230px;
+      right: 20%;
+      bottom: 48px;
+      border-radius: 42px 42px 22px 22px;
+    }
+    .mock-bottle::before {
+      content: "";
+      position: absolute;
+      top: -24px;
+      left: 25px;
+      width: 36px;
+      height: 34px;
+      border-radius: 16px 16px 8px 8px;
+      background: var(--ink);
+    }
+    .mock-bottle::after {
+      content: "Barre Flow";
+      position: absolute;
+      inset: 62px auto auto 27px;
+      writing-mode: vertical-rl;
+      color: var(--rose-dark);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+    .mock-socks {
+      width: 150px;
+      height: 78px;
+      left: 42px;
+      bottom: 72px;
+      border-radius: 42px 42px 18px 18px;
+      transform: rotate(-8deg);
+      background: #f4dbe0;
+    }
+    .mock-tote {
+      width: 150px;
+      height: 160px;
+      left: 80px;
+      top: 50px;
+      border-radius: 12px 12px 26px 26px;
+    }
+    .mock-tote::before {
+      content: "";
+      position: absolute;
+      left: 40px;
+      top: -32px;
+      width: 70px;
+      height: 56px;
+      border: 9px solid rgba(123,63,75,.24);
+      border-bottom: 0;
+      border-radius: 46px 46px 0 0;
+    }
+    .mock-tote::after {
+      content: "BF";
+      position: absolute;
+      inset: 54px 0 auto;
+      text-align: center;
+      color: var(--rose-dark);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 2.1rem;
+    }
+
+    .bf-shop-grid-section,
+    .bf-shop-interest-section {
+      position: relative;
+      padding: clamp(3rem, 7vw, 5rem) 0;
+    }
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: end;
+      margin-bottom: 1.2rem;
+    }
+    .section-head p { max-width: 620px; }
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1rem;
+    }
+    .product-card {
+      display: grid;
+      gap: .9rem;
+      padding: 1rem;
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      background: rgba(255,255,255,.56);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 50px rgba(84,46,47,.10);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(123,63,75,.30);
+      box-shadow: 0 26px 68px rgba(84,46,47,.15);
+    }
+    .product-art {
+      position: relative;
+      min-height: 190px;
+      border-radius: 24px;
+      border: 1px solid rgba(123,63,75,.12);
+      background:
+        radial-gradient(circle at 24% 24%, rgba(255,255,255,.82) 0 46px, transparent 47px),
+        linear-gradient(145deg, #f8e6e5, #fffaf6);
+      overflow: hidden;
+    }
+    .product-art::before {
+      content: attr(data-icon);
+      position: absolute;
+      inset: 0;
+      display: grid;
+      place-items: center;
+      color: rgba(123,63,75,.72);
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 4.6rem;
+    }
+    .product-art::after {
+      content: "";
+      position: absolute;
+      right: -28px;
+      bottom: -38px;
+      width: 130px;
+      height: 130px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.62);
+    }
+    .product-meta {
+      display: flex;
+      justify-content: space-between;
+      gap: .7rem;
+      align-items: center;
+      color: var(--rose-dark);
+      font-size: .78rem;
+      font-weight: 950;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      border-radius: 999px;
+      padding: .4rem .62rem;
+      color: var(--rose-dark);
+      background: rgba(242,220,224,.72);
+      font-size: .78rem;
+      font-weight: 900;
+    }
+    .price {
+      color: var(--ink);
+      font-weight: 950;
+      font-size: 1.1rem;
+    }
+    .product-card .button { width: 100%; }
+
+    .interest-card {
+      display: grid;
+      grid-template-columns: .85fr 1.15fr;
+      gap: clamp(1rem, 3vw, 2rem);
+      padding: clamp(1.25rem, 3vw, 2rem);
+      border: 1px solid var(--line);
+      border-radius: 34px;
+      background: rgba(255,255,255,.58);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+    form { display: grid; gap: .9rem; }
+    label {
+      display: grid;
+      gap: .35rem;
+      color: var(--ink);
+      font-size: .9rem;
+      font-weight: 850;
+    }
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(123,63,75,.18);
+      border-radius: 18px;
+      background: rgba(255,255,255,.76);
+      padding: .95rem 1rem;
+      font: inherit;
+      color: var(--ink);
+      outline: none;
+    }
+    textarea { min-height: 128px; resize: vertical; }
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(123,63,75,.42);
+      box-shadow: 0 0 0 4px rgba(201,120,131,.12);
+    }
+    .status {
+      min-height: 24px;
+      margin: 0;
+      color: var(--rose-dark);
+      font-size: .92rem;
+      font-weight: 850;
+    }
+    footer {
+      padding: 2rem 0;
+      border-top: 1px solid var(--line);
+      background: rgba(255,250,246,.72);
+      color: var(--muted);
+    }
+    footer .wrap {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    footer strong { font-family: Georgia, "Times New Roman", serif; color: var(--ink); }
+
+    @media (max-width: 900px) {
+      .hero-grid,
+      .interest-card { grid-template-columns: 1fr; }
+      .product-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .preview-stack { min-height: 300px; }
+    }
+
+    @media (max-width: 620px) {
+      .nav-shell { align-items: stretch; flex-direction: column; }
+      .brand { padding-left: 0; }
+      .nav-actions { display: grid; grid-template-columns: 1fr; }
+      .section-head { align-items: flex-start; flex-direction: column; }
+      .product-grid { grid-template-columns: 1fr; }
+      .button { width: 100%; }
+      footer .wrap { align-items: flex-start; flex-direction: column; }
+    }
+
+  /* BARREFLOW_SHOP_COMPACT_SAFE_V1 START */
+
+  body {
+    background:
+      radial-gradient(circle at 12% 8%, rgba(181,100,123,.10), transparent 0 260px, transparent 261px),
+      radial-gradient(circle at 86% 16%, rgba(181,100,123,.08), transparent 0 240px, transparent 241px),
+      radial-gradient(circle at 72% 88%, rgba(255,255,255,.72), transparent 0 230px, transparent 231px),
+      linear-gradient(180deg, #fffdfb 0%, #fbf4f1 52%, #fffafa 100%) !important;
+  }
+
+  .wrap {
+    width: min(1040px, calc(100% - 36px)) !important;
+  }
+
+  .bf-shop-hero {
+    padding: 38px 0 34px !important;
+  }
+
+  .bf-shop-hero .wrap {
+    display: grid !important;
+    grid-template-columns: minmax(0, .95fr) minmax(280px, .72fr) !important;
+    gap: 34px !important;
+    align-items: center !important;
+  }
+
+  .bf-shop-hero h1 {
+    font-size: clamp(48px, 5.2vw, 76px) !important;
+    line-height: .92 !important;
+    letter-spacing: -.055em !important;
+    margin: 0 0 14px !important;
+  }
+
+  .bf-shop-hero p {
+    max-width: 560px !important;
+    font-size: 14px !important;
+    line-height: 1.65 !important;
+    margin: 0 0 18px !important;
+  }
+
+  .bf-shop-hero .button {
+    min-height: 38px !important;
+    padding: 0 18px !important;
+    font-size: 12px !important;
+  }
+
+  .hero-product-art {
+    min-height: 230px !important;
+    border-radius: 30px !important;
+    box-shadow:
+      0 28px 80px rgba(72,39,48,.10),
+      inset 0 1px 0 rgba(255,255,255,.92) !important;
+  }
+
+  .bf-shop-grid-section {
+    padding: 34px 0 32px !important;
+  }
+
+  .shop-heading {
+    display: grid !important;
+    grid-template-columns: minmax(0, .75fr) minmax(220px, .45fr) !important;
+    gap: 28px !important;
+    align-items: end !important;
+    margin-bottom: 18px !important;
+  }
+
+  .shop-heading h2 {
+    font-size: clamp(36px, 4.2vw, 58px) !important;
+    line-height: .94 !important;
+    letter-spacing: -.052em !important;
+    margin: 0 !important;
+  }
+
+  .shop-heading p {
+    font-size: 13px !important;
+    line-height: 1.6 !important;
+    margin: 0 !important;
+  }
+
+  .shop-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+    gap: 14px !important;
+  }
+
+  .product-card {
+    min-height: auto !important;
+    padding: 14px !important;
+    border-radius: 22px !important;
+    background:
+      radial-gradient(circle at 86% 12%, rgba(181,100,123,.10), transparent 0 92px, transparent 93px),
+      linear-gradient(145deg, rgba(255,255,255,.88), rgba(255,248,246,.70)) !important;
+    box-shadow:
+      0 18px 52px rgba(72,39,48,.08),
+      0 6px 16px rgba(173,96,119,.06),
+      inset 0 1px 0 rgba(255,255,255,.94) !important;
+    transition: transform .24s ease, box-shadow .24s ease, border-color .24s ease !important;
+  }
+
+  .product-card:hover {
+    transform: translateY(-5px) scale(1.008) !important;
+    box-shadow:
+      0 28px 72px rgba(72,39,48,.13),
+      0 10px 24px rgba(173,96,119,.10),
+      inset 0 1px 0 rgba(255,255,255,.96) !important;
+  }
+
+  .product-art {
+    height: 88px !important;
+    min-height: 88px !important;
+    border-radius: 17px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .product-art span {
+    font-size: 34px !important;
+  }
+
+  .product-meta {
+    font-size: 10px !important;
+    margin-bottom: 8px !important;
+  }
+
+  .product-card h3 {
+    font-size: 17px !important;
+    line-height: 1.08 !important;
+    margin: 0 0 7px !important;
+    letter-spacing: -.035em !important;
+  }
+
+  .product-card p {
+    font-size: 12px !important;
+    line-height: 1.55 !important;
+    margin: 0 0 8px !important;
+  }
+
+  .product-card .tag,
+  .product-card .badge {
+    min-height: 22px !important;
+    padding: 0 9px !important;
+    font-size: 9px !important;
+  }
+
+  .product-card .button {
+    min-height: 30px !important;
+    padding: 0 12px !important;
+    font-size: 10px !important;
+    margin-top: 8px !important;
+  }
+
+  .bf-shop-interest-section {
+    padding: 30px 0 48px !important;
+  }
+
+  .interest-card {
+    padding: 24px !important;
+    border-radius: 28px !important;
+    display: grid !important;
+    grid-template-columns: minmax(240px, .7fr) minmax(360px, 1.1fr) !important;
+    gap: 28px !important;
+    align-items: start !important;
+  }
+
+  .interest-card h2 {
+    font-size: clamp(34px, 4vw, 54px) !important;
+    line-height: .95 !important;
+    letter-spacing: -.052em !important;
+    margin: 0 0 10px !important;
+  }
+
+  .interest-card p {
+    font-size: 13px !important;
+    line-height: 1.65 !important;
+  }
+
+  .interest-card label {
+    font-size: 11px !important;
+  }
+
+  .interest-card input,
+  .interest-card select,
+  .interest-card textarea {
+    min-height: 38px !important;
+    border-radius: 13px !important;
+    font-size: 12px !important;
+    padding: 8px 12px !important;
+  }
+
+  .interest-card textarea {
+    min-height: 86px !important;
+  }
+
+  .interest-card .button {
+    min-height: 38px !important;
+    font-size: 11px !important;
+  }
+
+  @media (max-width: 900px) {
+    .bf-shop-hero .wrap,
+    .shop-heading,
+    .interest-card {
+      grid-template-columns: 1fr !important;
+    }
+
+    .shop-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .shop-grid {
+      grid-template-columns: 1fr !important;
+    }
+
+    .bf-shop-hero h1 {
+      font-size: 44px !important;
+    }
+  }
+
+  /* BARREFLOW_SHOP_COMPACT_SAFE_V1 END */
+
+  /* BARREFLOW_SHOP_FONT_CORRECT_V2 START */
+
+  body,
+  button,
+  input,
+  select,
+  textarea,
+  label,
+  p,
+  a,
+  span,
+  small,
+  .button,
+  .kicker,
+  .product-meta,
+  .tag,
+  .price,
+  footer,
+  h1,
+  h2,
+  h3,
+  .hero-logo,
+  footer strong {
+    font-family: Calibri, "Segoe UI", Arial, sans-serif !important;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-weight: 700 !important;
+    letter-spacing: -.035em !important;
+    color: #2b2226 !important;
+  }
+
+  .bf-shop-hero h1 {
+    font-size: clamp(3.4rem, 5.8vw, 5.9rem) !important;
+    line-height: .92 !important;
+    letter-spacing: -.045em !important;
+    font-weight: 700 !important;
+    max-width: 560px !important;
+  }
+
+  .shop-heading h2,
+  .interest-card h2 {
+    font-size: clamp(2.55rem, 4.4vw, 4.35rem) !important;
+    line-height: .94 !important;
+    letter-spacing: -.04em !important;
+    font-weight: 700 !important;
+  }
+
+  .product-card h3 {
+    font-size: 1.22rem !important;
+    line-height: 1.12 !important;
+    letter-spacing: -.025em !important;
+    font-weight: 700 !important;
+  }
+
+  .kicker,
+  .product-meta,
+  .tag,
+  .badge {
+    letter-spacing: .18em !important;
+    text-transform: uppercase !important;
+    font-weight: 800 !important;
+  }
+
+  .bf-shop-hero p,
+  .shop-heading p,
+  .product-card p,
+  .interest-card p {
+    font-size: .94rem !important;
+    line-height: 1.62 !important;
+    letter-spacing: .005em !important;
+  }
+
+  .product-card p {
+    font-size: .84rem !important;
+  }
+
+  /* BARREFLOW_SHOP_FONT_CORRECT_V2 END */
+
+</style>
+
+
+</head>
+<body>
+  <nav class="shop-nav" aria-label="Shop navigation">
+    <div class="wrap nav-shell">
+      <a class="brand" href="/client-builds/barreflow-with-keira/">Barre Flow with Keira</a>
+      <div class="nav-actions">
+        <a class="button secondary" href="/client-builds/barreflow-with-keira/">Back to Barre Flow</a>
+        <a class="button" href="/client-builds/barreflow-with-keira/#sessions">Book a Class</a>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="bf-shop-hero">
+      <div class="wrap hero-grid">
+        <div class="hero-copy">
+          <p class="kicker">Merch Store</p>
+          <h1>Barre Flow Shop</h1>
+          <p>Branded essentials for class, recovery and everyday movement. Products shown here are preview items while the final drop-ship catalogue is prepared.</p>
+          <div class="hero-actions">
+            <a class="button secondary" href="/client-builds/barreflow-with-keira/">Back to Barre Flow</a>
+            <a class="button" href="/client-builds/barreflow-with-keira/#sessions">Book a Class</a>
+          </div>
+        </div>
+        <div class="preview-stack" aria-hidden="true">
+          <span class="mock-tote"></span>
+          <span class="mock-socks"></span>
+          <span class="mock-bottle"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="bf-shop-grid-section" aria-labelledby="productsTitle">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Preview catalogue</p>
+            <h2 id="productsTitle">Class essentials, softly branded.</h2>
+          </div>
+          <p>These products are static demo items for design sign-off. Drop-ship fulfilment, checkout and stock management will be connected later.</p>
+        </div>
+
+        <div class="product-grid">
+          <article class="product-card" data-product="Barre Flow Grip Socks">
+            <div class="product-art" data-icon="S"></div>
+            <div class="product-meta"><span>Class essentials</span><span class="price">£14</span></div>
+            <h3>Barre Flow Grip Socks</h3>
+            <span class="badge">Best for class</span>
+            <p>Soft grip socks for stable barre work and studio movement.</p>
+            <span class="badge">Coming soon</span>
+            <button class="button secondary" type="button" data-interest="Barre Flow Grip Socks">Register interest</button>
+          </article>
+
+          <article class="product-card" data-product="Barre Flow Water Bottle">
+            <div class="product-art" data-icon="B"></div>
+            <div class="product-meta"><span>Everyday</span><span class="price">£18</span></div>
+            <h3>Barre Flow Water Bottle</h3>
+            <span class="badge">Branded favourite</span>
+            <p>A simple reusable bottle for class, walks and daily hydration.</p>
+            <span class="badge">Coming soon</span>
+            <button class="button secondary" type="button" data-interest="Barre Flow Water Bottle">Register interest</button>
+          </article>
+
+          <article class="product-card" data-product="Barre Flow Tote Bag">
+            <div class="product-art" data-icon="T"></div>
+            <div class="product-meta"><span>Studio carry</span><span class="price">£22</span></div>
+            <h3>Barre Flow Tote Bag</h3>
+            <span class="badge">Easy carry</span>
+            <p>A soft branded tote for socks, layers, water and class extras.</p>
+            <span class="badge">Coming soon</span>
+            <button class="button secondary" type="button" data-interest="Barre Flow Tote Bag">Register interest</button>
+          </article>
+
+          <article class="product-card" data-product="Barre Flow Stretch Band">
+            <div class="product-art" data-icon="∞"></div>
+            <div class="product-meta"><span>Home practice</span><span class="price">£12</span></div>
+            <h3>Barre Flow Stretch Band</h3>
+            <span class="badge">Home support</span>
+            <p>A light resistance band for gentle strength and mobility work.</p>
+            <span class="badge">Coming soon</span>
+            <button class="button secondary" type="button" data-interest="Barre Flow Stretch Band">Register interest</button>
+          </article>
+
+          <article class="product-card" data-product="Barre Flow Hoodie">
+            <div class="product-art" data-icon="H"></div>
+            <div class="product-meta"><span>Apparel</span><span class="price">£42</span></div>
+            <h3>Barre Flow Hoodie</h3>
+            <span class="badge">Warm layer</span>
+            <p>A relaxed branded layer for before and after class.</p>
+            <span class="badge">Coming soon</span>
+            <button class="button secondary" type="button" data-interest="Barre Flow Hoodie">Register interest</button>
+          </article>
+
+          <article class="product-card" data-product="Barre Flow Journal">
+            <div class="product-art" data-icon="J"></div>
+            <div class="product-meta"><span>Wellness</span><span class="price">£10</span></div>
+            <h3>Barre Flow Journal</h3>
+            <span class="badge">Progress notes</span>
+            <p>A simple notebook for goals, class notes and weekly intentions.</p>
+            <span class="badge">Coming soon</span>
+            <button class="button secondary" type="button" data-interest="Barre Flow Journal">Register interest</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="bf-shop-interest-section" id="interest" aria-labelledby="interestTitle">
+      <div class="wrap interest-card">
+        <div>
+          <p class="kicker">Interest list</p>
+          <h2 id="interestTitle">Register product interest</h2>
+          <p>Choose a preview item and leave your details. This does not send yet; it logs locally for staging review.</p>
+        </div>
+        <form id="shopInterestForm">
+          <label>Name
+            <input name="name" autocomplete="name" placeholder="Your name" required>
+          </label>
+          <label>Email
+            <input name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          </label>
+          <label>Product interest
+            <select name="product" id="productInterest">
+              <option>Barre Flow Grip Socks</option>
+              <option>Barre Flow Water Bottle</option>
+              <option>Barre Flow Tote Bag</option>
+              <option>Barre Flow Stretch Band</option>
+              <option>Barre Flow Hoodie</option>
+              <option>Barre Flow Journal</option>
+            </select>
+          </label>
+          <label>Notes
+            <textarea name="notes" placeholder="Sizing, colour preferences, or anything you would like Keira to know..."></textarea>
+          </label>
+          <button class="button" type="submit">Register interest</button>
+          <p class="status" id="interestStatus" aria-live="polite"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <strong>Barre Flow Shop</strong>
+      <span>Preview store only. Payments and fulfilment are not connected.</span>
+    </div>
+  </footer>
+
+  <script>
+    // BARREFLOW_MERCH_STORE_PAGE_V1
+    const productInterest = document.getElementById("productInterest");
+    const interestStatus = document.getElementById("interestStatus");
+    const shopInterestForm = document.getElementById("shopInterestForm");
+
+    document.querySelectorAll("[data-interest]").forEach((button) => {
+      button.addEventListener("click", () => {
+        productInterest.value = button.dataset.interest;
+        interestStatus.textContent = `${button.dataset.interest} selected. Add your details below.`;
+        document.getElementById("interest").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
+
+    shopInterestForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const data = Object.fromEntries(new FormData(shopInterestForm).entries());
+      console.log("Barre Flow shop interest prototype:", data);
+      interestStatus.textContent = "Thanks — this is a preview store. Product interest capture will be connected after the final catalogue is approved.";
+    });
+  </script>
+</body>
+</html>
