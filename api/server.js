@@ -12,6 +12,8 @@ const REQUESTS_FILE = path.join(DATA_DIR, "demo-requests.jsonl");
 const REPORT_REQUESTS_FILE = path.join(DATA_DIR, "business-fact-find-report-requests.jsonl");
 const PRODUCT_KNOWLEDGE_FILE = path.join(__dirname, "product-knowledge.json");
 const SITE_KNOWLEDGE_FILE = path.join(__dirname, "site-knowledge.json");
+const FRONTLINE_MS_SCOPES = "offline_access User.Read Mail.Send";
+const FRONTLINE_MS_TOKEN_FILE = process.env.FRONTLINE_MS_TOKEN_FILE || path.join(DATA_DIR, "ms-oauth-token.json");
 const OPENAI_MODEL = process.env.OPENAI_MODEL || "gpt-4o-mini";
 const ASSISTANT_BODY_LIMIT_BYTES = 8 * 1024;
 const ASSISTANT_MESSAGE_LIMIT = 750;
@@ -398,12 +400,182 @@ function cleanText(value, max = 1000) {
     .slice(0, max);
 }
 
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
 function cleanEmail(value) {
   return cleanText(value, 254).toLowerCase();
 }
 
 function isValidEmail(value) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail(value));
+}
+
+function graphTenantId() {
+  return cleanText(process.env.FRONTLINE_MS_TENANT_ID, 120) || "organizations";
+}
+
+function graphRedirectUri() {
+  return cleanText(process.env.FRONTLINE_MS_REDIRECT_URI, 500) || "https://frontline-ai.co.uk/api/ms/callback";
+}
+
+function graphTokenEndpoint() {
+  return `https://login.microsoftonline.com/${encodeURIComponent(graphTenantId())}/oauth2/v2.0/token`;
+}
+
+function graphAuthEndpoint() {
+  return `https://login.microsoftonline.com/${encodeURIComponent(graphTenantId())}/oauth2/v2.0/authorize`;
+}
+
+function graphIsConfigured() {
+  return Boolean(
+    cleanText(process.env.FRONTLINE_MS_CLIENT_ID, 200) &&
+    cleanText(process.env.FRONTLINE_MS_CLIENT_SECRET, 500) &&
+    graphRedirectUri() &&
+    cleanText(process.env.FRONTLINE_SALES_INBOX, 254)
+  );
+}
+
+function graphStateSignature(payload) {
+  const secret = cleanText(process.env.FRONTLINE_MS_CONNECT_ADMIN_SECRET, 500);
+  return crypto.createHmac("sha256", secret).update(payload).digest("hex");
+}
+
+function createGraphOauthState() {
+  const payload = `${Date.now()}.${crypto.randomBytes(16).toString("hex")}`;
+  return `${payload}.${graphStateSignature(payload)}`;
+}
+
+function isValidGraphOauthState(state) {
+  const value = cleanText(state, 300);
+  const parts = value.split(".");
+  if (parts.length !== 3) return false;
+  const payload = `${parts[0]}.${parts[1]}`;
+  const expected = graphStateSignature(payload);
+  const supplied = parts[2];
+  if (expected.length !== supplied.length) return false;
+  const expectedBuffer = Buffer.from(expected);
+  const suppliedBuffer = Buffer.from(supplied);
+  if (!crypto.timingSafeEqual(expectedBuffer, suppliedBuffer)) return false;
+  const createdAt = Number(parts[0]);
+  return Number.isFinite(createdAt) && Date.now() - createdAt < 10 * 60 * 1000;
+}
+
+function readGraphToken() {
+  try {
+    if (!fs.existsSync(FRONTLINE_MS_TOKEN_FILE)) return null;
+    return JSON.parse(fs.readFileSync(FRONTLINE_MS_TOKEN_FILE, "utf8"));
+  } catch (err) {
+    console.error("[frontline-ai-api] MS_TOKEN_READ_FAILED", err && err.message ? err.message : err);
+    return null;
+  }
+}
+
+function writeGraphToken(token) {
+  fs.mkdirSync(path.dirname(FRONTLINE_MS_TOKEN_FILE), { recursive: true });
+  fs.writeFileSync(FRONTLINE_MS_TOKEN_FILE, JSON.stringify(token, null, 2), { mode: 0o600 });
+  fs.chmodSync(FRONTLINE_MS_TOKEN_FILE, 0o600);
+}
+
+async function graphTokenRequest(params) {
+  const response = await fetch(graphTokenEndpoint(), {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: cleanText(process.env.FRONTLINE_MS_CLIENT_ID, 200),
+      client_secret: cleanText(process.env.FRONTLINE_MS_CLIENT_SECRET, 500),
+      ...params
+    }).toString()
+  });
+  const body = await response.text();
+  let parsed = {};
+  try { parsed = JSON.parse(body || "{}"); } catch {}
+  if (!response.ok) {
+    throw new Error(`MICROSOFT_GRAPH_TOKEN_FAILED_${response.status} ${body.slice(0, 300)}`);
+  }
+  return parsed;
+}
+
+async function exchangeGraphCodeForToken(code) {
+  const token = await graphTokenRequest({
+    grant_type: "authorization_code",
+    code,
+    redirect_uri: graphRedirectUri(),
+    scope: FRONTLINE_MS_SCOPES
+  });
+  const stored = {
+    ...token,
+    created_at: new Date().toISOString(),
+    expires_at: new Date(Date.now() + Number(token.expires_in || 0) * 1000).toISOString()
+  };
+  writeGraphToken(stored);
+  return stored;
+}
+
+async function graphAccessToken() {
+  if (!graphIsConfigured()) throw new Error("MICROSOFT_GRAPH_NOT_CONFIGURED");
+  const token = readGraphToken();
+  if (!token || !token.refresh_token) throw new Error("MICROSOFT_GRAPH_NOT_CONNECTED");
+
+  const expiresAt = token.expires_at ? new Date(token.expires_at).getTime() : 0;
+  if (token.access_token && expiresAt - Date.now() > 2 * 60 * 1000) return token.access_token;
+
+  const refreshed = await graphTokenRequest({
+    grant_type: "refresh_token",
+    refresh_token: token.refresh_token,
+    redirect_uri: graphRedirectUri(),
+    scope: FRONTLINE_MS_SCOPES
+  });
+  const stored = {
+    ...token,
+    ...refreshed,
+    refresh_token: refreshed.refresh_token || token.refresh_token,
+    refreshed_at: new Date().toISOString(),
+    expires_at: new Date(Date.now() + Number(refreshed.expires_in || 0) * 1000).toISOString()
+  };
+  writeGraphToken(stored);
+  return stored.access_token;
+}
+
+async function sendMicrosoftGraphMail({ to, subject, text, replyTo }) {
+  const recipient = cleanEmail(to);
+  if (!recipient) throw new Error("MISSING_FRONTLINE_SALES_INBOX");
+  const accessToken = await graphAccessToken();
+  const message = {
+    subject: cleanText(subject, 255) || "Frontline AI report request",
+    body: {
+      contentType: "Text",
+      content: String(text || "").slice(0, 50000)
+    },
+    toRecipients: [{ emailAddress: { address: recipient } }]
+  };
+  if (replyTo && isValidEmail(replyTo)) {
+    message.replyTo = [{ emailAddress: { address: cleanEmail(replyTo) } }];
+  }
+
+  const response = await fetch("https://graph.microsoft.com/v1.0/me/sendMail", {
+    method: "POST",
+    headers: {
+      "Authorization": `Bearer ${accessToken}`,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      message,
+      saveToSentItems: true
+    })
+  });
+
+  if (!response.ok) {
+    const body = await response.text().catch(() => "");
+    throw new Error(`MICROSOFT_GRAPH_SENDMAIL_FAILED_${response.status} ${body.slice(0, 300)}`);
+  }
+
+  return { ok: true, provider: "microsoft_graph", mode: "sent" };
 }
 
 function configuredSalesInbox() {
@@ -1373,6 +1545,55 @@ function validateBooking(input) {
   return { record, errors };
 }
 
+function buildDemoBookingSalesNotification(record) {
+  const value = (item) => item || "Not provided";
+  return [
+    "New Frontline AI demo booking",
+    "",
+    "Name:",
+    value(record.name),
+    "",
+    "Company:",
+    value(record.company),
+    "",
+    "Phone:",
+    value(record.phone),
+    "",
+    "Email:",
+    value(record.email),
+    "",
+    "Slot label:",
+    value(record.slot_label),
+    "",
+    "Slot start:",
+    value(record.slot_start),
+    "",
+    "Product interest:",
+    value(record.product_interest),
+    "",
+    "Business size:",
+    value(record.business_size),
+    "",
+    "Preferred contact:",
+    value(record.preferred_contact),
+    "",
+    "Website:",
+    value(record.website),
+    "",
+    "Business links:",
+    value(record.business_links),
+    "",
+    "Notes:",
+    value(record.notes),
+    "",
+    "Booking ID:",
+    value(record.id),
+    "",
+    "Timestamp:",
+    value(record.created_at)
+  ].join("\n");
+}
+
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://127.0.0.1");
@@ -1436,6 +1657,59 @@ const server = http.createServer(async (req, res) => {
       });
     }
 
+    if (req.method === "GET" && url.pathname === "/api/ms/status") {
+      const token = readGraphToken();
+      return sendJson(res, 200, {
+        ok: true,
+        configured: graphIsConfigured(),
+        connected: Boolean(token && token.refresh_token),
+        expires_at: token && token.expires_at ? token.expires_at : null
+      });
+    }
+
+    if (req.method === "GET" && url.pathname === "/api/ms/connect") {
+      const suppliedSecret = cleanText(url.searchParams.get("secret"), 500);
+      const adminSecret = cleanText(process.env.FRONTLINE_MS_CONNECT_ADMIN_SECRET, 500);
+      if (!adminSecret || suppliedSecret !== adminSecret) {
+        return sendJson(res, 403, { ok: false, error: "Invalid Microsoft connect secret." });
+      }
+      if (!graphIsConfigured()) {
+        return sendJson(res, 500, { ok: false, error: "MICROSOFT_GRAPH_NOT_CONFIGURED" });
+      }
+      const authUrl = new URL(graphAuthEndpoint());
+      authUrl.searchParams.set("client_id", cleanText(process.env.FRONTLINE_MS_CLIENT_ID, 200));
+      authUrl.searchParams.set("response_type", "code");
+      authUrl.searchParams.set("redirect_uri", graphRedirectUri());
+      authUrl.searchParams.set("response_mode", "query");
+      authUrl.searchParams.set("scope", FRONTLINE_MS_SCOPES);
+      authUrl.searchParams.set("state", createGraphOauthState());
+      res.writeHead(302, { Location: authUrl.toString() });
+      return res.end();
+    }
+
+    if (req.method === "GET" && url.pathname === "/api/ms/callback") {
+      if (!graphIsConfigured()) {
+        return sendJson(res, 500, { ok: false, error: "MICROSOFT_GRAPH_NOT_CONFIGURED" });
+      }
+      const error = cleanText(url.searchParams.get("error"), 200);
+      if (error) {
+        return sendJson(res, 400, { ok: false, error, error_description: cleanText(url.searchParams.get("error_description"), 1000) });
+      }
+      const code = cleanText(url.searchParams.get("code"), 2000);
+      const state = cleanText(url.searchParams.get("state"), 300);
+      if (!code || !isValidGraphOauthState(state)) {
+        return sendJson(res, 400, { ok: false, error: "Invalid Microsoft OAuth callback." });
+      }
+      try {
+        const token = await exchangeGraphCodeForToken(code);
+        res.writeHead(200, { "Content-Type": "text/html; charset=utf-8" });
+        return res.end(`<!doctype html><html><head><title>Microsoft connected</title></head><body><h1>Microsoft Graph connected</h1><p>Frontline AI can now send report request emails through Microsoft Graph.</p><p>Token expires at ${escapeHtml(token.expires_at || "")}.</p></body></html>`);
+      } catch (err) {
+        console.error("[frontline-ai-api] MICROSOFT_GRAPH_CALLBACK_FAILED", err && err.message ? err.message : err);
+        return sendJson(res, 500, { ok: false, error: "MICROSOFT_GRAPH_CALLBACK_FAILED" });
+      }
+    }
+
     if (req.method === "POST" && url.pathname === "/api/business-fact-find/report-request") {
       let raw = "";
       try {
@@ -1448,30 +1722,63 @@ const server = http.createServer(async (req, res) => {
       try { input = JSON.parse(raw || "{}"); }
       catch { return sendJson(res, 400, { ok: false, errors: ["Invalid JSON."] }); }
 
-      const { record, errors, salesInbox } = validateBusinessFactFindReportRequest(input);
-      if (errors.includes("MISSING_SALES_INBOX_CONFIG")) {
-        console.error("[frontline-ai-api] MISSING_SALES_INBOX_CONFIG");
-        return sendJson(res, 500, { ok: false, error: "MISSING_SALES_INBOX_CONFIG" });
-      }
+      const { record, errors } = validateBusinessFactFindReportRequest(input);
       if (errors.length) return sendJson(res, 400, { ok: false, errors });
 
+      const salesInbox = cleanEmail(process.env.FRONTLINE_SALES_INBOX);
+      if (!salesInbox) {
+        return sendJson(res, 500, { ok: false, error: "MISSING_FRONTLINE_SALES_INBOX" });
+      }
+
       const salesNotification = [
-        "Business Fact-Find Report Request",
+        "Frontline AI report request",
         "",
-        "Visitor email:",
+        "Requester email:",
         record.visitor_email,
         "",
-        "Extra notes:",
-        record.extra_notes,
+        "Call notes:",
+        record.call_notes || "Not provided",
+        "",
+        "Full report draft:",
+        "",
+        record.draft_body
+      ].join("\n");
+
+      const graphStatus = {
+        configured: graphIsConfigured(),
+        connected: Boolean(readGraphToken()?.refresh_token)
+      };
+      if (!graphStatus.configured || !graphStatus.connected) {
+        fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
+          ...record,
+          sales_inbox: salesInbox,
+          sales_subject: record.draft_subject,
+          sales_body: salesNotification
+        }) + "\n", "utf8");
+        fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
+          id: record.id,
+          created_at: new Date().toISOString(),
+          event: "sales_email_failed",
+          provider: "microsoft_graph",
+          error: graphStatus.configured ? "MICROSOFT_GRAPH_NOT_CONNECTED" : "MICROSOFT_GRAPH_NOT_CONFIGURED",
+          sales_inbox: salesInbox
+        }) + "\n", "utf8");
+        return sendJson(res, 500, {
+          ok: false,
+          error: graphStatus.configured ? "MICROSOFT_GRAPH_NOT_CONNECTED" : "MICROSOFT_GRAPH_NOT_CONFIGURED",
+          email: {
+            ok: false,
+            provider: "microsoft_graph",
+            mode: graphStatus.configured ? "not_connected" : "not_configured"
+          }
+        });
+      }
+
+      const logBody = [
+        salesNotification,
         "",
         "Draft subject:",
         record.draft_subject,
-        "",
-        "Draft body:",
-        record.draft_body,
-        "",
-        "Call notes:",
-        record.call_notes,
         "",
         "Source:",
         record.source,
@@ -1483,16 +1790,16 @@ const server = http.createServer(async (req, res) => {
       fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
         ...record,
         sales_inbox: salesInbox,
-        sales_subject: "New Business Fact-Find report request",
-        sales_body: salesNotification
+        sales_subject: record.draft_subject,
+        sales_body: logBody
       }) + "\n", "utf8");
 
       try {
-        const emailResult = await sendSalesNotificationEmail({
+        const emailResult = await sendMicrosoftGraphMail({
           to: salesInbox,
-          subject: "New Business Fact-Find report request",
+          subject: record.draft_subject,
           text: salesNotification,
-          replyTo: record.visitor_email
+          replyTo: isValidEmail(record.visitor_email) ? record.visitor_email : undefined
         });
 
         fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
@@ -1503,21 +1810,30 @@ const server = http.createServer(async (req, res) => {
           sales_inbox: salesInbox
         }) + "\n", "utf8");
 
-        return sendJson(res, 200, { ok: true, emailed: true });
+        return sendJson(res, 200, {
+          ok: true,
+          email: emailResult
+        });
       } catch (emailError) {
-        console.error("[frontline-ai-api] FACT_FIND_REPORT_EMAIL_FAILED", emailError && emailError.message ? emailError.message : emailError);
+        console.error("[frontline-ai-api] FACT_FIND_REPORT_GRAPH_EMAIL_FAILED", emailError && emailError.message ? emailError.message : emailError);
 
         fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
           id: record.id,
           created_at: new Date().toISOString(),
           event: "sales_email_failed",
+          provider: "microsoft_graph",
           error: emailError && emailError.message ? emailError.message : String(emailError),
           sales_inbox: salesInbox
         }) + "\n", "utf8");
 
         return sendJson(res, 500, {
           ok: false,
-          error: "REPORT_REQUEST_EMAIL_FAILED"
+          error: "MICROSOFT_GRAPH_SENDMAIL_FAILED",
+          email: {
+            ok: false,
+            provider: "microsoft_graph",
+            mode: "failed"
+          }
         });
       }
     }
@@ -1533,13 +1849,53 @@ const server = http.createServer(async (req, res) => {
 
       fs.appendFileSync(REQUESTS_FILE, JSON.stringify(record) + "\n", "utf8");
 
-      return sendJson(res, 200, {
-        ok: true,
-        id: record.id,
-        slot_label: record.slot_label,
-        slot_start: record.slot_start,
-        message: "Demo booking received."
-      });
+      const salesInbox = configuredSalesInbox();
+      const salesNotification = buildDemoBookingSalesNotification(record);
+
+      try {
+        const emailResult = await sendSalesNotificationEmail({
+          to: salesInbox,
+          subject: "New Frontline AI demo booking",
+          text: salesNotification,
+          replyTo: isValidEmail(record.email) ? record.email : undefined
+        });
+
+        fs.appendFileSync(REQUESTS_FILE, JSON.stringify({
+          id: record.id,
+          created_at: new Date().toISOString(),
+          event: "sales_email_sent",
+          provider: emailResult.provider,
+          sales_inbox: salesInbox
+        }) + "\n", "utf8");
+
+        return sendJson(res, 200, {
+          ok: true,
+          emailed: true,
+          id: record.id,
+          slot_label: record.slot_label,
+          slot_start: record.slot_start,
+          message: "Demo booking received."
+        });
+      } catch (emailError) {
+        console.error("[frontline-ai-api] BOOK_DEMO_EMAIL_FAILED", emailError && emailError.message ? emailError.message : emailError);
+
+        fs.appendFileSync(REQUESTS_FILE, JSON.stringify({
+          id: record.id,
+          created_at: new Date().toISOString(),
+          event: "sales_email_failed",
+          error: emailError && emailError.message ? emailError.message : String(emailError),
+          sales_inbox: salesInbox
+        }) + "\n", "utf8");
+
+        return sendJson(res, 200, {
+          ok: true,
+          emailed: false,
+          id: record.id,
+          slot_label: record.slot_label,
+          slot_start: record.slot_start,
+          message: "Demo booking received, but email notification failed."
+        });
+      }
     }
 
     sendJson(res, 404, { ok: false, error: "Not found" });
