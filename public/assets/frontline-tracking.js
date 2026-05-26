@@ -19,17 +19,41 @@
     }
   }
 
+  function safeParams(params){
+    var allowed = ["page_path", "button_label", "flow_name", "step_number", "selected_route"];
+    var source = params || {};
+    var clean = {};
+    allowed.forEach(function(key){
+      if(source[key] === undefined || source[key] === null) return;
+      clean[key] = source[key];
+    });
+    return clean;
+  }
+
   window.frontlineTrack = function(eventName, params) {
+    var cleanParams = safeParams(params);
     try {
       if (typeof window.gtag === "function") {
-        window.gtag("event", eventName, params || {});
-      }
-      if (location.search.includes("debug_tracking=1")) {
-        console.log("[Frontline tracking]", eventName, params || {});
+        window.gtag("event", eventName, cleanParams);
       }
     } catch (err) {
       if (location.search.includes("debug_tracking=1")) {
-        console.warn("[Frontline tracking failed]", err);
+        console.warn("[Frontline GA4 tracking failed]", err);
+      }
+    }
+    try {
+      if (typeof window.fbq === "function") {
+        window.fbq("trackCustom", eventName, cleanParams);
+        if(eventName === "report_email_requested" || eventName === "callback_requested"){
+          window.fbq("track", "Lead", cleanParams);
+        }
+      }
+      if (location.search.includes("debug_tracking=1")) {
+        console.log("[Frontline tracking]", eventName, cleanParams);
+      }
+    } catch (err) {
+      if (location.search.includes("debug_tracking=1")) {
+        console.warn("[Frontline Meta tracking failed]", err);
       }
     }
   };
