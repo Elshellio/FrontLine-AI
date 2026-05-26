@@ -1,6 +1,15 @@
 <!doctype html>
 <html lang="en">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-71ZZQ9G74E"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-71ZZQ9G74E");
+</script>
+<script defer src="/assets/frontline-tracking.js"></script>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Business Fact-Find | Frontline AI</title>
@@ -49,7 +58,8 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
 .notesSubcopy{margin:0 0 12px;color:#bfd5ea;font-size:12px;line-height:1.45}
 .notesCue{display:flex;gap:8px;align-items:flex-start;margin:0 0 12px;border:1px solid rgba(143,212,255,.22);border-radius:15px;padding:10px 11px;background:rgba(94,216,255,.075);color:#dff4ff;font-size:12px;line-height:1.42;font-weight:800}
 .notesCue:before{content:"";width:8px;height:8px;margin-top:4px;border-radius:50%;background:linear-gradient(135deg,var(--blue),var(--blue2));box-shadow:0 0 16px rgba(94,216,255,.64);flex:0 0 auto}
-.sideCard textarea,.contactFields input{width:100%;border:1px solid rgba(143,212,255,.30);border-radius:16px;background:rgba(0,0,0,.25);color:#fff;outline:none;padding:13px 14px}
+	.sideCard textarea,.contactFields input,.contactFields textarea{width:100%;border:1px solid rgba(143,212,255,.30);border-radius:16px;background:rgba(0,0,0,.25);color:#fff;outline:none;padding:13px 14px}
+	.contactFields textarea{resize:vertical;min-height:96px;line-height:1.5}
 .sideCard textarea{min-height:154px;resize:vertical;line-height:1.5;box-shadow:inset 0 1px 0 rgba(255,255,255,.05)}
 .sideCard textarea:focus{border-color:rgba(143,226,255,.78);box-shadow:0 0 0 3px rgba(94,216,255,.12),inset 0 1px 0 rgba(255,255,255,.08)}
 .sideCard textarea::placeholder{color:#8fa8c0}
@@ -71,22 +81,21 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
 .resultBlock ul{margin:0;padding-left:18px;color:#d5e3f3;line-height:1.55;font-size:14px}
 .resultBlock p{margin:0;color:#d5e3f3;line-height:1.58;font-size:14px}
 .secondaryList{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}.secondaryList span{display:inline-flex;border:1px solid rgba(143,212,255,.24);border-radius:999px;padding:7px 10px;color:#eaf7ff;background:rgba(94,216,255,.08);font-size:12px;font-weight:900}
-.contactFields{display:grid;gap:10px}
-.contactFields label{display:grid;gap:6px;color:#dff4ff;font-size:12px;font-weight:950}
+	.contactFields{display:grid;gap:10px}
+	.contactFields label{display:grid;gap:6px;color:#dff4ff;font-size:12px;font-weight:950}
+	.choiceButtons{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin:12px 0 14px}
+	.choiceButtons .btn{width:100%}
+	.conversionForm{display:none;margin-top:12px}
+	.conversionForm.show{display:block}
 .reportBox{margin-top:14px;display:none}
 .reportBox.show{display:block}
 .reportBox p{margin:0 0 12px;color:#cbd8e8;line-height:1.5;font-size:14px}
-.reportPreview{margin-top:14px;border:1px solid rgba(143,212,255,.24);border-radius:18px;background:rgba(0,0,0,.22);padding:14px;display:none}
-.reportPreview.show{display:block}
-.reportPreview h3{color:#fff}
-.reportMeta{display:grid;gap:5px;color:#dbe8f6;font-size:13px;margin-bottom:10px}
-.reportBody{white-space:pre-wrap;max-height:320px;overflow:auto;color:#d8e6f6;font:600 12px/1.55 Inter,Arial,sans-serif;border-top:1px solid rgba(143,212,255,.16);padding-top:10px}
-.reportStatus{margin-top:10px;color:#aebed2;font-weight:800;font-size:13px;line-height:1.45}
+	.reportStatus{margin-top:10px;color:#aebed2;font-weight:800;font-size:13px;line-height:1.45}
 .reportStatus.ok{color:var(--ok)}
 .reportStatus.err{color:#ffb4b4}
 .smallPrint{color:#8fa3bc;font-size:12px;line-height:1.45;margin:10px 0 0}
 @media(max-width:920px){.page{align-items:flex-start}.headline,.questionGrid,.resultGrid,.resultBlocks{grid-template-columns:1fr}.panelInner{padding:22px}.top{align-items:flex-start}.benefitStrip{display:none}}
-@media(max-width:560px){.page{padding:20px 14px}.top{display:grid}.topLink{width:max-content}.navActions{display:grid;grid-template-columns:1fr}.btn{width:100%}h1{font-size:46px}.chip{width:100%;justify-content:center}.progressTop{display:grid}.progressTrack{width:100%}}
+	@media(max-width:560px){.page{padding:20px 14px}.top{display:grid}.topLink{width:max-content}.navActions,.choiceButtons{display:grid;grid-template-columns:1fr}.btn{width:100%}h1{font-size:46px}.chip{width:100%;justify-content:center}.progressTop{display:grid}.progressTrack{width:100%}}
 </style>
 <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260523-sitescale-v1">
 </head>
@@ -160,38 +169,29 @@ h1{margin:18px 0 12px;font-size:clamp(44px,7vw,82px);line-height:.92;letter-spac
               </div>
             </div>
             <aside class="contactBox">
-              <h3>Carry this fact-find into a call</h3>
-              <div class="contactFields">
-                <label>Name <input id="contactName" autocomplete="name"></label>
-                <label>Email <input id="contactEmail" type="email" autocomplete="email"></label>
-                <label>Phone <input id="contactPhone" autocomplete="tel"></label>
+              <h3>Would you like to book a call or receive this by email?</h3>
+              <div class="choiceButtons">
+                <button class="btn primary" type="button" id="chooseCallBtn">Book a call</button>
+                <button class="btn primary" type="button" id="chooseReportBtn">Send me the report</button>
               </div>
-              <button class="btn primary" type="button" id="bookBtn" style="width:100%;margin-top:14px">Lock in this fact-find and book a call</button>
-              <div class="smallPrint" style="text-align:center;margin-top:14px">Not ready for a call?</div>
-              <button class="btn" type="button" id="showReportBtn" style="width:100%;margin-top:10px">Send me the report instead</button>
-              <button class="btn" type="button" id="reviewBtn" style="width:100%;margin-top:10px">Review answers</button>
-              <p class="smallPrint">Your answers are stored in this browser and passed into the booking page as call notes.</p>
-              <div class="reportBox" id="reportBox">
-                <h3>No problem. Add your email and we'll prepare your tailored AI opportunity report.</h3>
+              <div class="conversionForm" id="callForm">
+                <div class="contactFields">
+                  <label>Name * <input id="contactName" autocomplete="name"></label>
+                  <label>Email * <input id="contactEmail" type="email" autocomplete="email"></label>
+                  <label>Phone * <input id="contactPhone" autocomplete="tel"></label>
+                  <label>Optional notes <textarea id="callExtraNotes" rows="4"></textarea></label>
+                </div>
+                <button class="btn primary" type="button" id="bookBtn" style="width:100%;margin-top:14px">Request my call</button>
+              </div>
+              <div class="conversionForm" id="reportBox">
                 <div class="contactFields">
                   <label>Email address * <input id="reportEmail" type="email" autocomplete="email"></label>
-                  <label>Optional notes <textarea id="reportNotes" rows="4"></textarea></label>
                 </div>
-                <button class="btn primary" type="button" id="previewReportBtn" style="width:100%;margin-top:12px">Generate draft report preview</button>
-                <div class="reportPreview" id="reportPreview">
-                  <h3>Draft report email</h3>
-                  <div class="reportMeta">
-                    <span><b>To:</b> <span id="draftTo"></span></span>
-                    <span><b>Subject:</b> <span id="draftSubject"></span></span>
-                  </div>
-                  <div class="reportBody" id="draftBody"></div>
-                  <div class="navActions" style="margin-top:14px">
-                    <button class="btn" type="button" id="editReportBtn">Edit details</button>
-                    <button class="btn primary" type="button" id="sendReportBtn">Send my report</button>
-                  </div>
-                </div>
-                <div class="reportStatus" id="reportStatus"></div>
+                <button class="btn primary" type="button" id="sendReportBtn" style="width:100%;margin-top:12px">Send my report</button>
               </div>
+              <div class="reportStatus" id="reportStatus"></div>
+              <button class="btn" type="button" id="reviewBtn" style="width:100%;margin-top:10px">Review answers</button>
+              <p class="smallPrint">Your answers are stored in this browser so you can review them before sending.</p>
             </aside>
           </div>
         </section>
@@ -218,8 +218,7 @@ const steps = [
   {id:"newsletter_reactivation", question:"Do you regularly follow up with past customers, old leads or repeat-service opportunities?", helper:"Past customers and old enquiries are often easier to warm up than brand-new cold leads.", options:["Yes","No","Not sure","We should, but we do not"], notes:"What repeat work, reminders, offers or updates could be sent?"},
   {id:"rag_knowledge", question:"Do customers or staff often need answers from documents, FAQs, price guides, policies, service information, manuals or internal knowledge?", helper:"Knowledge assistants work best when there is approved material people repeatedly need to search or ask about.", options:["Yes","No","Not sure"], notes:"What knowledge would be useful for an assistant to understand?"},
   {id:"current_tools", question:"What systems are currently used?", helper:"Select every tool that matters. Disconnected tools often create hidden coordination cost.", options:["Paper / notebook","Spreadsheet","Email inbox","WhatsApp / SMS","CRM","Booking system","Calendar","Website","Website form","Online booking page","Google Ads","Facebook / Instagram Ads","Social media pages","Email newsletter tool","Analytics","Knowledge base","PDFs / documents","FAQ pages","Internal manuals","Service guides","Photo/video assets","Multiple disconnected systems","Mostly memory / informal handover"], notes:"Anything important about the current setup?", multi:true},
-  {id:"desired_first_improvement", question:"Before we analyse your answers, what is your gut feel?", helper:"Pick the area you think would make the biggest practical difference. We'll compare it with the recommendation generated from your answers.", options:["Capture missed enquiries","Reduce admin","Improve booking control","Chase quotes and follow-ups","Send reminders","Create a clean dashboard","Improve website conversion","Build a RAG / knowledge assistant","Improve ads and lead tracking","Improve social content","Create better images or videos","Reactivate past customers","Join up disconnected systems","Not sure - recommend the best first step"], notes:"Why does that feel like the biggest opportunity?"},
-  {id:"contact", question:"Would you like to carry this fact-find into a call?", helper:"Review the recommendation, add contact details, then lock it into the booking page.", options:["Show my recommendation"], notes:"Anything else we should know before the call?"}
+  {id:"desired_first_improvement", question:"Before we analyse your answers, what is your gut feel?", helper:"Pick the area you think would make the biggest practical difference. We'll compare it with the recommendation generated from your answers.", options:["Capture missed enquiries","Reduce admin","Improve booking control","Chase quotes and follow-ups","Send reminders","Create a clean dashboard","Improve website conversion","Build a RAG / knowledge assistant","Improve ads and lead tracking","Improve social content","Create better images or videos","Reactivate past customers","Join up disconnected systems","Not sure - recommend the best first step"], notes:"Why does that feel like the biggest opportunity?", autoAdvance:true}
 ];
 
 const scoreLabels = {
@@ -258,7 +257,7 @@ const workflows = {
   custom_operating_system:"Start with one painful repeat workflow, prove the value, then expand into a joined-up operating system over time."
 };
 
-const state = {index:0, answers:{}, notes:{}};
+const state = {index:0, answers:{}, notes:{}, tracking:{}};
 const panel = document.getElementById("factFindPanel");
 const progressText = document.getElementById("progressText");
 const progressFill = document.getElementById("progressFill");
@@ -273,6 +272,13 @@ const nextBtn = document.getElementById("nextBtn");
 function currentStep(){ return steps[state.index]; }
 function asArray(value){ return Array.isArray(value) ? value : (value ? [value] : []); }
 function escapeHtml(value){ return String(value || "").replace(/[&<>"']/g, char => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[char])); }
+function trackFactFind(eventName, params){
+  if(typeof window.frontlineTrack !== "function") return;
+  window.frontlineTrack(eventName, Object.assign({
+    page_path: location.pathname,
+    flow_name: "business_fact_find"
+  }, params || {}));
+}
 
 const notePrompts = {
   missed_calls:"Example: I'm busy at work and often miss appointment calls...",
@@ -321,6 +327,13 @@ function renderStep(){
   optionsEl.querySelectorAll(".chip").forEach(button => {
     button.addEventListener("click", () => {
       const value = button.dataset.option;
+      if(!state.tracking.started){
+        state.tracking.started = true;
+        trackFactFind("fact_find_started", {
+          step_number: state.index + 1,
+          selected_route: step.id
+        });
+      }
       if(step.multi){
         const values = asArray(state.answers[step.id]);
         state.answers[step.id] = values.includes(value) ? values.filter(item => item !== value) : values.concat(value);
@@ -336,7 +349,7 @@ function renderStep(){
     });
   });
   backBtn.disabled = state.index === 0;
-  nextBtn.textContent = state.index === steps.length - 1 ? "Generate recommendations" : (state.index === 0 ? "Start Business Fact-Find" : "Next");
+  nextBtn.textContent = state.index === steps.length - 1 ? "Finish fact-find" : (state.index === 0 ? "Start Business Fact-Find" : "Next");
 }
 
 function addScore(scores, key, amount){ scores[key] = (scores[key] || 0) + amount; }
@@ -787,6 +800,13 @@ function buildDraftReport(rec, email, extraNotes){
 
 function showResult(){
   const rec = recommendation();
+  if(!state.tracking.completed){
+    state.tracking.completed = true;
+    trackFactFind("fact_find_completed", {
+      step_number: steps.length,
+      selected_route: rec.winner
+    });
+  }
   document.getElementById("resultTitle").textContent = rec.focus;
   document.getElementById("resultWhy").textContent = rec.why;
   document.getElementById("topAreas").innerHTML = listHtml(rec.top);
@@ -808,6 +828,10 @@ function showResult(){
     secondaryBlock.style.display = "none";
   }
   panel.classList.add("showResult");
+  document.getElementById("callForm").classList.remove("show");
+  reportBox.classList.remove("show");
+  reportStatus.textContent = "";
+  reportStatus.className = "reportStatus";
   try{
     localStorage.setItem("frontlineBusinessFactFindV1", JSON.stringify({answers:state.answers, notes:state.notes, recommendation:rec, completed_at:new Date().toISOString()}));
     localStorage.setItem("frontlineBusinessFactFindCallNotesV1", callNotes(rec));
@@ -819,97 +843,158 @@ stepNotes.addEventListener("input", () => { window.clearTimeout(state.autoAdvanc
 backBtn.addEventListener("click", () => { window.clearTimeout(state.autoAdvanceTimer); if(state.index > 0){ state.index -= 1; renderStep(); } });
 nextBtn.addEventListener("click", () => { window.clearTimeout(state.autoAdvanceTimer); goNext(); });
 document.getElementById("reviewBtn").addEventListener("click", () => { panel.classList.remove("showResult"); renderStep(); });
-document.getElementById("bookBtn").addEventListener("click", () => {
+const callForm = document.getElementById("callForm");
+const reportBox = document.getElementById("reportBox");
+const reportStatus = document.getElementById("reportStatus");
+const reportEmail = document.getElementById("reportEmail");
+const sendReportBtn = document.getElementById("sendReportBtn");
+const bookBtn = document.getElementById("bookBtn");
+const chooseCallBtn = document.getElementById("chooseCallBtn");
+const chooseReportBtn = document.getElementById("chooseReportBtn");
+
+function validEmail(value){
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(value || "").trim());
+}
+
+function showConversionForm(kind){
+  if(kind === "report" && !state.tracking.reportRequested){
+    state.tracking.reportRequested = true;
+    trackFactFind("report_email_requested", {
+      selected_route: "report"
+    });
+  }
+  if(kind === "call" && !state.tracking.callbackRequested){
+    state.tracking.callbackRequested = true;
+    trackFactFind("callback_requested", {
+      selected_route: "call"
+    });
+  }
+  callForm.classList.toggle("show", kind === "call");
+  reportBox.classList.toggle("show", kind === "report");
+  reportStatus.textContent = "";
+  reportStatus.className = "reportStatus";
+  const contactEmail = document.getElementById("contactEmail").value.trim();
+  if(kind === "report"){
+    if(contactEmail && !reportEmail.value.trim()) reportEmail.value = contactEmail;
+    reportEmail.focus();
+  }else{
+    if(reportEmail.value.trim() && !contactEmail) document.getElementById("contactEmail").value = reportEmail.value.trim();
+    document.getElementById("contactName").focus();
+  }
+}
+
+async function postReportRequest(payload){
+  const response = await fetch("/api/business-fact-find/report-request", {
+    method: "POST",
+    headers: {"Content-Type":"application/json"},
+    body: JSON.stringify(payload)
+  });
+  const data = await response.json().catch(() => ({}));
+  if(!response.ok || !data.ok) throw new Error((data.errors || [data.error] || ["Request failed"]).filter(Boolean).join(" "));
+  return data;
+}
+
+function reportPayload(email, rec, extraNotes){
+  const draft = buildDraftReport(rec, email, extraNotes);
+  return {
+    email,
+    extra_notes: extraNotes,
+    draft_subject: draft.draft_subject,
+    draft_body: draft.draft_body,
+    fact_find: {answers:state.answers, notes:state.notes, recommendation:rec},
+    call_notes: callNotes(rec),
+    source: "business-fact-find-report-request"
+  };
+}
+
+function callRequestPayload(contact, rec, extraNotes){
+  const topAreas = rec.top.join(", ");
+  return {
+    email: contact.email,
+    extra_notes: extraNotes,
+    draft_subject: "Frontline AI call request - " + rec.focus,
+    draft_body: [
+      "Frontline AI call request",
+      "",
+      "Name: " + contact.name,
+      "Email: " + contact.email,
+      "Phone: " + contact.phone,
+      "",
+      "Selected recommendation:",
+      rec.focus,
+      "",
+      "Top improvement areas:",
+      topAreas,
+      "",
+      "Optional notes:",
+      extraNotes || "Not provided",
+      "",
+      "Fact-find notes:",
+      callNotes(rec)
+    ].join("\n"),
+    fact_find: {answers:state.answers, notes:state.notes, contact, recommendation:rec},
+    call_notes: callNotes(rec) + "\n\nCall request contact:\nName: " + contact.name + "\nEmail: " + contact.email + "\nPhone: " + contact.phone + "\nOptional notes: " + (extraNotes || ""),
+    source: "business-fact-find-report-request"
+  };
+}
+
+chooseCallBtn.addEventListener("click", () => showConversionForm("call"));
+chooseReportBtn.addEventListener("click", () => showConversionForm("report"));
+
+bookBtn.addEventListener("click", async () => {
   const rec = recommendation();
   const contact = {
     name: document.getElementById("contactName").value.trim(),
     email: document.getElementById("contactEmail").value.trim(),
     phone: document.getElementById("contactPhone").value.trim()
   };
+  if(!contact.name || !validEmail(contact.email) || !contact.phone){
+    reportStatus.className = "reportStatus err";
+    reportStatus.textContent = "Add your name, a valid email address and phone number first.";
+    return;
+  }
   const payload = {answers:state.answers, notes:state.notes, contact, recommendation:rec, completed_at:new Date().toISOString()};
   const notes = callNotes(rec) + "\\n\\nContact lock-in:\\nName: " + contact.name + "\\nEmail: " + contact.email + "\\nPhone: " + contact.phone;
   try{
     localStorage.setItem("frontlineBusinessFactFindV1", JSON.stringify(payload));
     localStorage.setItem("frontlineBusinessFactFindCallNotesV1", notes);
   }catch(error){}
-  const params = new URLSearchParams({source:"business-fact-find", fact_find:"1", product_interest:"Custom AI Worker"});
-  window.location.href = "/book-demo.html?" + params.toString();
-});
-const reportBox = document.getElementById("reportBox");
-const reportPreview = document.getElementById("reportPreview");
-const reportStatus = document.getElementById("reportStatus");
-const reportEmail = document.getElementById("reportEmail");
-const reportNotes = document.getElementById("reportNotes");
-const sendReportBtn = document.getElementById("sendReportBtn");
-let currentDraft = null;
-
-document.getElementById("showReportBtn").addEventListener("click", () => {
-  reportBox.classList.add("show");
-  reportStatus.textContent = "";
+  bookBtn.disabled = true;
   reportStatus.className = "reportStatus";
-  const contactEmail = document.getElementById("contactEmail").value.trim();
-  if(contactEmail && !reportEmail.value.trim()) reportEmail.value = contactEmail;
-  reportEmail.focus();
-});
-
-document.getElementById("previewReportBtn").addEventListener("click", () => {
-  const email = reportEmail.value.trim();
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+  reportStatus.textContent = "Sending call request...";
+  try{
+    await postReportRequest(callRequestPayload(contact, rec, document.getElementById("callExtraNotes").value.trim()));
+    reportStatus.className = "reportStatus ok";
+    reportStatus.textContent = "Thanks — we'll contact you to arrange the call.";
+    callForm.classList.remove("show");
+  }catch(error){
     reportStatus.className = "reportStatus err";
-    reportStatus.textContent = "Add a valid email address first.";
-    return;
+    reportStatus.textContent = "Sorry, the call request could not be sent. Please try again.";
+  }finally{
+    bookBtn.disabled = false;
   }
-  const rec = recommendation();
-  currentDraft = buildDraftReport(rec, email, reportNotes.value.trim());
-  document.getElementById("draftTo").textContent = email;
-  document.getElementById("draftSubject").textContent = currentDraft.draft_subject;
-  document.getElementById("draftBody").textContent = currentDraft.draft_body;
-  reportPreview.classList.add("show");
-  reportStatus.textContent = "";
-  reportStatus.className = "reportStatus";
-});
-
-document.getElementById("editReportBtn").addEventListener("click", () => {
-  reportPreview.classList.remove("show");
-  reportStatus.textContent = "";
-  reportStatus.className = "reportStatus";
-  reportEmail.focus();
 });
 
 sendReportBtn.addEventListener("click", async () => {
   const email = reportEmail.value.trim();
-  if(!currentDraft){
+  if(!validEmail(email)){
     reportStatus.className = "reportStatus err";
-    reportStatus.textContent = "Generate the draft report preview first.";
+    reportStatus.textContent = "Add a valid email address first.";
     return;
   }
   sendReportBtn.disabled = true;
+  reportStatus.textContent = "";
   reportStatus.className = "reportStatus";
-  reportStatus.textContent = "Sending report request...";
+  reportStatus.textContent = "Sending report...";
   const rec = recommendation();
-  const factFind = {answers:state.answers, notes:state.notes, recommendation:rec};
-  const payload = {
-    email,
-    extra_notes: reportNotes.value.trim(),
-    draft_subject: currentDraft.draft_subject,
-    draft_body: currentDraft.draft_body,
-    fact_find: factFind,
-    call_notes: callNotes(rec),
-    source: "business-fact-find-report-request"
-  };
   try{
-    const response = await fetch("/api/business-fact-find/report-request", {
-      method: "POST",
-      headers: {"Content-Type":"application/json"},
-      body: JSON.stringify(payload)
-    });
-    const data = await response.json().catch(() => ({}));
-    if(!response.ok || !data.ok) throw new Error((data.errors || [data.error] || ["Request failed"]).filter(Boolean).join(" "));
+    await postReportRequest(reportPayload(email, rec, ""));
     reportStatus.className = "reportStatus ok";
-    reportStatus.innerHTML = "Thanks - we've captured your report request. If you decide you'd like to talk it through, you can still <a href=\"/book-demo.html?source=business-fact-find&fact_find=1\">book a fact-find call</a>.";
+    reportStatus.textContent = "Thanks — your report has been sent.";
+    reportBox.classList.remove("show");
   }catch(error){
     reportStatus.className = "reportStatus err";
-    reportStatus.innerHTML = "Sorry, the report request could not be sent. Please try again or <a href=\"/book-demo.html?source=business-fact-find&fact_find=1\">book a fact-find call</a>.";
+    reportStatus.textContent = "Sorry, the report could not be sent. Please try again.";
   }finally{
     sendReportBtn.disabled = false;
   }
