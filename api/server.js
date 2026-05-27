@@ -1,7 +1,6 @@
 "use strict";
 
 const http = require("http");
-const nodemailer = require("nodemailer");
 const fs = require("fs");
 const path = require("path");
 const crypto = require("crypto");
@@ -667,9 +666,13 @@ async function graphAccessToken() {
   return stored.access_token;
 }
 
-async function sendMicrosoftGraphMail({ to, subject, text, html, replyTo }) {
+async function sendMicrosoftGraphMail({ to, cc, subject, text, html, replyTo }) {
   const recipient = cleanEmail(to);
   if (!recipient) throw new Error("MISSING_FRONTLINE_SALES_INBOX");
+  const ccRecipients = []
+    .concat(cc || [])
+    .map(item => cleanEmail(item))
+    .filter(Boolean);
   const accessToken = await graphAccessToken();
   const htmlBody = html ? String(html).slice(0, 100000) : "";
   const textBody = String(text || "").slice(0, 50000);
@@ -681,6 +684,9 @@ async function sendMicrosoftGraphMail({ to, subject, text, html, replyTo }) {
     },
     toRecipients: [{ emailAddress: { address: recipient } }]
   };
+  if (ccRecipients.length) {
+    message.ccRecipients = ccRecipients.map(address => ({ emailAddress: { address } }));
+  }
   if (replyTo && isValidEmail(replyTo)) {
     message.replyTo = [{ emailAddress: { address: cleanEmail(replyTo) } }];
   }
@@ -737,82 +743,12 @@ async function sendSalesNotificationEmail({ to, subject, text, replyTo }) {
 
   const cleanSubject = cleanText(subject, 180) || "New Frontline AI enquiry";
   const cleanTextBody = String(text || "").slice(0, 50000);
-  const from = outboundEmailFrom();
-
-  /* FRONTLINE_OFFICE365_SMTP_V1 */
-  if (process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS) {
-    const port = Number(process.env.SMTP_PORT || 587);
-    const transporter = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port,
-      secure: String(process.env.SMTP_SECURE || "").toLowerCase() === "true",
-      requireTLS: String(process.env.SMTP_REQUIRE_TLS || "true").toLowerCase() !== "false",
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS
-      }
-    });
-
-    await transporter.sendMail({
-      from,
-      to: recipient,
-      replyTo: replyTo && isValidEmail(replyTo) ? replyTo : undefined,
-      subject: cleanSubject,
-      text: cleanTextBody
-    });
-
-    return { ok: true, provider: "smtp" };
-  }
-
-  if (process.env.RESEND_API_KEY) {
-    const response = await fetch("https://api.resend.com/emails", {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer " + process.env.RESEND_API_KEY,
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        from,
-        to: [recipient],
-        reply_to: replyTo && isValidEmail(replyTo) ? replyTo : undefined,
-        subject: cleanSubject,
-        text: cleanTextBody
-      })
-    });
-
-    if (!response.ok) {
-      const body = await response.text().catch(() => "");
-      throw new Error("RESEND_EMAIL_FAILED_" + response.status + " " + body.slice(0, 300));
-    }
-    return { ok: true, provider: "resend" };
-  }
-
-  if (process.env.POSTMARK_SERVER_TOKEN) {
-    const response = await fetch("https://api.postmarkapp.com/email", {
-      method: "POST",
-      headers: {
-        "X-Postmark-Server-Token": process.env.POSTMARK_SERVER_TOKEN,
-        "Content-Type": "application/json",
-        "Accept": "application/json"
-      },
-      body: JSON.stringify({
-        From: from,
-        To: recipient,
-        ReplyTo: replyTo && isValidEmail(replyTo) ? replyTo : undefined,
-        Subject: cleanSubject,
-        TextBody: cleanTextBody,
-        MessageStream: process.env.POSTMARK_MESSAGE_STREAM || "outbound"
-      })
-    });
-
-    if (!response.ok) {
-      const body = await response.text().catch(() => "");
-      throw new Error("POSTMARK_EMAIL_FAILED_" + response.status + " " + body.slice(0, 300));
-    }
-    return { ok: true, provider: "postmark" };
-  }
-
-  throw new Error("MISSING_EMAIL_PROVIDER_CONFIG");
+  return sendMicrosoftGraphMail({
+    to: recipient,
+    subject: cleanSubject,
+    text: cleanTextBody,
+    replyTo
+  });
 }
 
 
@@ -1719,6 +1655,28 @@ function buildDemoBookingSalesNotification(record) {
   ].join("\n");
 }
 
+function buildDemoBookingCustomerConfirmation(record) {
+  const value = (item) => item || "Not provided";
+  return [
+    "Hello " + value(record.name) + ",",
+    "",
+    "Thanks for requesting a Frontline AI fact-find. We have received your request.",
+    "",
+    "Selected slot:",
+    value(record.slot_label),
+    "",
+    "Timezone:",
+    "Europe/London",
+    "",
+    "Product interest:",
+    value(record.product_interest),
+    "",
+    "Frontline AI will contact you using your preferred contact method to confirm the next step.",
+    "",
+    "Frontline AI"
+  ].join("\n");
+}
+
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://127.0.0.1");
@@ -1981,6 +1939,7 @@ const server = http.createServer(async (req, res) => {
 
       const salesInbox = configuredSalesInbox();
       const salesNotification = buildDemoBookingSalesNotification(record);
+      let salesEmailSent = false;
 
       try {
         const emailResult = await sendSalesNotificationEmail({
@@ -1997,15 +1956,7 @@ const server = http.createServer(async (req, res) => {
           provider: emailResult.provider,
           sales_inbox: salesInbox
         }) + "\n", "utf8");
-
-        return sendJson(res, 200, {
-          ok: true,
-          emailed: true,
-          id: record.id,
-          slot_label: record.slot_label,
-          slot_start: record.slot_start,
-          message: "Demo booking received."
-        });
+        salesEmailSent = true;
       } catch (emailError) {
         console.error("[frontline-ai-api] BOOK_DEMO_EMAIL_FAILED", emailError && emailError.message ? emailError.message : emailError);
 
@@ -2013,19 +1964,52 @@ const server = http.createServer(async (req, res) => {
           id: record.id,
           created_at: new Date().toISOString(),
           event: "sales_email_failed",
+          provider: "microsoft_graph",
           error: emailError && emailError.message ? emailError.message : String(emailError),
           sales_inbox: salesInbox
         }) + "\n", "utf8");
-
-        return sendJson(res, 200, {
-          ok: true,
-          emailed: false,
-          id: record.id,
-          slot_label: record.slot_label,
-          slot_start: record.slot_start,
-          message: "Demo booking received, but email notification failed."
-        });
       }
+
+      if (record.email && isValidEmail(record.email)) {
+        try {
+          const customerEmailResult = await sendMicrosoftGraphMail({
+            to: record.email,
+            cc: "gary@frontline-ai.co.uk",
+            subject: "Your Frontline AI fact-find request",
+            text: buildDemoBookingCustomerConfirmation(record)
+          });
+
+          fs.appendFileSync(REQUESTS_FILE, JSON.stringify({
+            id: record.id,
+            created_at: new Date().toISOString(),
+            event: "customer_confirmation_sent",
+            provider: customerEmailResult.provider,
+            email_recipient: record.email,
+            cc_recipient: "gary@frontline-ai.co.uk"
+          }) + "\n", "utf8");
+        } catch (customerEmailError) {
+          console.error("[frontline-ai-api] BOOK_DEMO_CUSTOMER_CONFIRMATION_FAILED", customerEmailError && customerEmailError.message ? customerEmailError.message : customerEmailError);
+
+          fs.appendFileSync(REQUESTS_FILE, JSON.stringify({
+            id: record.id,
+            created_at: new Date().toISOString(),
+            event: "customer_confirmation_failed",
+            provider: "microsoft_graph",
+            error: customerEmailError && customerEmailError.message ? customerEmailError.message : String(customerEmailError),
+            email_recipient: record.email,
+            cc_recipient: "gary@frontline-ai.co.uk"
+          }) + "\n", "utf8");
+        }
+      }
+
+      return sendJson(res, 200, {
+        ok: true,
+        emailed: salesEmailSent,
+        id: record.id,
+        slot_label: record.slot_label,
+        slot_start: record.slot_start,
+        message: salesEmailSent ? "Demo booking received." : "Demo booking received, but email notification failed."
+      });
     }
 
     sendJson(res, 404, { ok: false, error: "Not found" });

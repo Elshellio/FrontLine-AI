@@ -212,7 +212,7 @@ textarea{min-height:46px;resize:vertical}
           </div>
 
           <div class="actions">
-            <button id="submitBtn" class="btn blue" type="submit">Request selected fact-find slot →</button>
+            <button id="submitBtn" class="btn blue" type="submit">Request selected fact-find slot</button>
             <span id="formStatus" class="status"></span>
           </div>
         </form>
@@ -336,7 +336,7 @@ function renderSlots(slots){
       slotStartInput.value = selectedSlot.slot_start;
       slotEndInput.value = selectedSlot.slot_end;
       selectedSlotLabel.textContent = selectedSlot.label;
-      summaryText.textContent = selectedSlot.label + " · UK time";
+      summaryText.textContent = selectedSlot.label + " - UK time";
       summary.classList.add("show");
       statusEl.textContent = "";
       statusEl.className = "status";
@@ -404,7 +404,7 @@ form.addEventListener("submit", async (event) => {
     selectedSlotLabel.textContent = "No slot selected";
     summary.classList.remove("show");
     statusEl.className = "status ok";
-    statusEl.textContent = "Fact-find booked. Reference: " + data.id.slice(0,8) + " · " + data.slot_label;
+    statusEl.textContent = "Fact-find booked. Reference: " + data.id.slice(0,8) + " - " + data.slot_label;
     submitBtn.disabled = false;
     await loadSlots();
   } catch (err) {
