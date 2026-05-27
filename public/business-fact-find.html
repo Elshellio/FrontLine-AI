@@ -1005,7 +1005,7 @@ sendReportBtn.addEventListener("click", async () => {
   try{
     await postReportRequest(reportPayload(email, rec, ""));
     reportStatus.className = "reportStatus ok";
-    reportStatus.textContent = "Thanks — your report has been sent.";
+    reportStatus.textContent = "Thanks - your report has been sent.";
     reportBox.classList.remove("show");
   }catch(error){
     reportStatus.className = "reportStatus err";

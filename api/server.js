@@ -408,6 +408,132 @@ function escapeHtml(value) {
     .replace(/"/g, "&quot;");
 }
 
+function normalizeEmailText(value, max = 50000) {
+  return cleanText(value, max).replace(/\\n/g, "\n");
+}
+
+function emailList(items) {
+  return (Array.isArray(items) ? items : [])
+    .filter(Boolean)
+    .slice(0, 6)
+    .map(item => `<li style="margin:0 0 8px">${escapeHtml(item)}</li>`)
+    .join("");
+}
+
+function emailTags(items) {
+  return (Array.isArray(items) ? items : [])
+    .filter(Boolean)
+    .slice(0, 4)
+    .map(item => `<span style="display:inline-block;margin:0 8px 8px 0;padding:7px 10px;border-radius:999px;background:#e9f4ff;color:#075fb7;font-size:12px;font-weight:700">${escapeHtml(item)}</span>`)
+    .join("");
+}
+
+function extractLineValue(text, label) {
+  const source = normalizeEmailText(text, 50000);
+  const pattern = new RegExp(`^${label.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}:\\s*(.+)$`, "mi");
+  const match = source.match(pattern);
+  return match ? match[1].trim() : "";
+}
+
+function buildBusinessFactFindReportEmail(record) {
+  const factFind = record.fact_find && typeof record.fact_find === "object" ? record.fact_find : {};
+  const recommendation = factFind.recommendation && typeof factFind.recommendation === "object" ? factFind.recommendation : {};
+  const answers = factFind.answers && typeof factFind.answers === "object" ? factFind.answers : {};
+  const draftBody = normalizeEmailText(record.draft_body, 50000);
+  const callNotes = normalizeEmailText(record.call_notes, 50000);
+  const extraNotes = normalizeEmailText(record.extra_notes, 1800);
+
+  const focus = recommendation.focus || extractLineValue(draftBody, "Recommended focus") || extractLineValue(callNotes, "Recommended focus") || "Frontline AI recommendation";
+  const why = recommendation.why || extractLineValue(draftBody, "Why this matters") || "Based on the answers, Frontline AI has identified a practical first workflow to review.";
+  const top = Array.isArray(recommendation.top) && recommendation.top.length
+    ? recommendation.top
+    : [extractLineValue(callNotes, "Top improvement areas")].filter(Boolean);
+  const benefits = Array.isArray(recommendation.benefits) && recommendation.benefits.length
+    ? recommendation.benefits
+    : [extractLineValue(callNotes, "Potential benefits")].filter(Boolean);
+  const costSaving = Array.isArray(recommendation.costSaving) && recommendation.costSaving.length
+    ? recommendation.costSaving
+    : [extractLineValue(callNotes, "Potential cost-saving areas")].filter(Boolean);
+  const workflow = recommendation.workflow || extractLineValue(callNotes, "Suggested first workflow") || "";
+  const delivery = recommendation.delivery || extractLineValue(callNotes, "Recommended delivery model") || "";
+  const secondary = Array.isArray(factFind.recommendation?.secondary)
+    ? factFind.recommendation.secondary
+    : String(extractLineValue(callNotes, "Secondary opportunities") || "")
+      .split(",")
+      .map(item => item.trim())
+      .filter(item => item && item !== "None highlighted");
+  const gutFeel = answers.desired_first_improvement || extractLineValue(callNotes, "Gut feel");
+  const gutFeelMatch = extractLineValue(callNotes, "Gut feel match");
+  const bookUrl = "https://frontline-ai.co.uk/book-demo.html?source=business-fact-find&fact_find=1";
+
+  const text = [
+    "Your Frontline AI Business Fact-Find Report",
+    "",
+    "Thanks for completing the Frontline AI Business Fact-Find. Based on your answers, this is the first opportunity we would look at.",
+    "",
+    "Recommended focus:",
+    focus,
+    "",
+    why,
+    "",
+    "Top improvement areas:",
+    top.map(item => "- " + item).join("\n"),
+    "",
+    "Potential benefits:",
+    benefits.map(item => "- " + item).join("\n"),
+    "",
+    "Potential cost-saving areas:",
+    costSaving.map(item => "- " + item).join("\n"),
+    "",
+    workflow ? "Suggested first workflow:\n" + workflow : "",
+    delivery ? "Recommended delivery model:\n" + delivery : "",
+    extraNotes ? "Your notes:\n" + extraNotes : "",
+    "",
+    "Book a call:",
+    bookUrl,
+    "",
+    "Frontline AI"
+  ].filter(Boolean).join("\n");
+
+  const card = (title, body) => body ? `
+    <div style="margin:16px 0;padding:18px;border:1px solid #d9e8f7;border-radius:16px;background:#ffffff">
+      <h3 style="margin:0 0 10px;color:#071a33;font-size:17px;line-height:1.25">${escapeHtml(title)}</h3>
+      ${body}
+    </div>` : "";
+
+  const html = `
+  <div style="margin:0;padding:0;background:#eef4fb;font-family:Arial,'Segoe UI',sans-serif;color:#102033">
+    <div style="max-width:680px;margin:0 auto;padding:24px 14px">
+      <div style="border-radius:20px 20px 0 0;background:#06142a;padding:26px 24px;color:#ffffff">
+        <div style="color:#7dd3ff;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase">Frontline AI</div>
+        <h1 style="margin:10px 0 0;font-size:28px;line-height:1.15">Your Frontline AI Business Fact-Find Report</h1>
+      </div>
+      <div style="border:1px solid #d9e8f7;border-top:0;border-radius:0 0 20px 20px;background:#f8fbff;padding:24px">
+        <p style="margin:0 0 18px;font-size:15px;line-height:1.65">Thanks for completing the Frontline AI Business Fact-Find. Based on your answers, this is the first practical opportunity we would look at first.</p>
+        <div style="margin:0 0 18px;padding:18px;border-radius:16px;background:#e9f4ff;border:1px solid #cce5ff">
+          <div style="color:#075fb7;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.08em">Recommended focus</div>
+          <h2 style="margin:8px 0 8px;color:#071a33;font-size:24px;line-height:1.18">${escapeHtml(focus)}</h2>
+          <p style="margin:0;color:#33465f;font-size:15px;line-height:1.6">${escapeHtml(why)}</p>
+        </div>
+        ${gutFeel ? card("Gut-feel comparison", `<p style="margin:0;color:#33465f;font-size:14px;line-height:1.6"><b>Your gut feel:</b> ${escapeHtml(gutFeel)}<br><b>Frontline AI recommendation:</b> ${escapeHtml(focus)}${gutFeelMatch ? `<br>${escapeHtml(gutFeelMatch)}` : ""}</p>`) : ""}
+        ${card("Top improvement areas", `<ul style="margin:0;padding-left:20px;color:#33465f;font-size:14px;line-height:1.55">${emailList(top)}</ul>`)}
+        ${card("Potential benefits", `<ul style="margin:0;padding-left:20px;color:#33465f;font-size:14px;line-height:1.55">${emailList(benefits)}</ul>`)}
+        ${card("Potential cost-saving areas", `<ul style="margin:0;padding-left:20px;color:#33465f;font-size:14px;line-height:1.55">${emailList(costSaving)}</ul>`)}
+        ${workflow ? card("Suggested first workflow", `<p style="margin:0;color:#33465f;font-size:14px;line-height:1.65">${escapeHtml(workflow)}</p>`) : ""}
+        ${delivery ? card("Recommended delivery model", `<p style="margin:0;color:#33465f;font-size:14px;line-height:1.65">${escapeHtml(delivery)}</p>`) : ""}
+        ${secondary.length ? card("Secondary opportunities", `<div>${emailTags(secondary)}</div>`) : ""}
+        ${extraNotes ? card("Your notes", `<p style="margin:0;color:#33465f;font-size:14px;line-height:1.65;white-space:pre-line">${escapeHtml(extraNotes)}</p>`) : ""}
+        <div style="margin:22px 0 8px;text-align:center">
+          <a href="${bookUrl}" style="display:inline-block;padding:13px 20px;border-radius:999px;background:#1478ff;color:#ffffff;text-decoration:none;font-weight:700">Book a call to talk this through</a>
+        </div>
+        <p style="margin:18px 0 0;color:#6b7c90;font-size:12px;line-height:1.5;text-align:center">Frontline AI</p>
+      </div>
+    </div>
+  </div>`;
+
+  return { text, html };
+}
+
 function cleanEmail(value) {
   return cleanText(value, 254).toLowerCase();
 }
@@ -436,8 +562,7 @@ function graphIsConfigured() {
   return Boolean(
     cleanText(process.env.FRONTLINE_MS_CLIENT_ID, 200) &&
     cleanText(process.env.FRONTLINE_MS_CLIENT_SECRET, 500) &&
-    graphRedirectUri() &&
-    cleanText(process.env.FRONTLINE_SALES_INBOX, 254)
+    graphRedirectUri()
   );
 }
 
@@ -542,15 +667,17 @@ async function graphAccessToken() {
   return stored.access_token;
 }
 
-async function sendMicrosoftGraphMail({ to, subject, text, replyTo }) {
+async function sendMicrosoftGraphMail({ to, subject, text, html, replyTo }) {
   const recipient = cleanEmail(to);
   if (!recipient) throw new Error("MISSING_FRONTLINE_SALES_INBOX");
   const accessToken = await graphAccessToken();
+  const htmlBody = html ? String(html).slice(0, 100000) : "";
+  const textBody = String(text || "").slice(0, 50000);
   const message = {
     subject: cleanText(subject, 255) || "Frontline AI report request",
     body: {
-      contentType: "Text",
-      content: String(text || "").slice(0, 50000)
+      contentType: htmlBody ? "HTML" : "Text",
+      content: htmlBody || textBody
     },
     toRecipients: [{ emailAddress: { address: recipient } }]
   };
@@ -691,12 +818,11 @@ async function sendSalesNotificationEmail({ to, subject, text, replyTo }) {
 
 function validateBusinessFactFindReportRequest(input) {
   const errors = [];
-  const salesInbox = configuredSalesInbox();
   const record = {
     id: crypto.randomUUID(),
     created_at: new Date().toISOString(),
     source: cleanText(input.source, 80) || "business-fact-find-report-request",
-    sales_inbox_configured: Boolean(salesInbox),
+    sales_inbox_configured: Boolean(configuredSalesInbox()),
     visitor_email: cleanEmail(input.email),
     extra_notes: cleanText(input.extra_notes, 1800),
     draft_subject: cleanText(input.draft_subject, 180),
@@ -711,9 +837,8 @@ function validateBusinessFactFindReportRequest(input) {
   if (!record.draft_subject) errors.push("Draft subject is required.");
   if (!record.draft_body) errors.push("Draft body is required.");
   if (record.draft_body.length > 18000) errors.push("Draft body is too long.");
-  if (!salesInbox) errors.push("MISSING_SALES_INBOX_CONFIG");
 
-  return { record, errors, salesInbox };
+  return { record, errors };
 }
 
 function normalizeAssistantQuery(message) {
@@ -1726,23 +1851,17 @@ const server = http.createServer(async (req, res) => {
       if (errors.length) return sendJson(res, 400, { ok: false, errors });
 
       const salesInbox = cleanEmail(process.env.FRONTLINE_SALES_INBOX);
-      if (!salesInbox) {
+      const isCallRequest = /^Frontline AI call request\b/i.test(record.draft_subject) || /^Frontline AI call request\b/i.test(normalizeEmailText(record.draft_body, 500));
+      const emailRecipient = isCallRequest ? salesInbox : record.visitor_email;
+      if (isCallRequest && !salesInbox) {
         return sendJson(res, 500, { ok: false, error: "MISSING_FRONTLINE_SALES_INBOX" });
       }
+      if (!emailRecipient || !isValidEmail(emailRecipient)) {
+        return sendJson(res, 500, { ok: false, error: "MISSING_EMAIL_RECIPIENT" });
+      }
 
-      const salesNotification = [
-        "Frontline AI report request",
-        "",
-        "Requester email:",
-        record.visitor_email,
-        "",
-        "Call notes:",
-        record.call_notes || "Not provided",
-        "",
-        "Full report draft:",
-        "",
-        record.draft_body
-      ].join("\n");
+      const formattedReport = buildBusinessFactFindReportEmail(record);
+      const salesNotification = formattedReport.text;
 
       const graphStatus = {
         configured: graphIsConfigured(),
@@ -1752,6 +1871,8 @@ const server = http.createServer(async (req, res) => {
         fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
           ...record,
           sales_inbox: salesInbox,
+          email_recipient: emailRecipient,
+          email_target: isCallRequest ? "frontline_sales_inbox" : "requester",
           sales_subject: record.draft_subject,
           sales_body: salesNotification
         }) + "\n", "utf8");
@@ -1761,7 +1882,9 @@ const server = http.createServer(async (req, res) => {
           event: "sales_email_failed",
           provider: "microsoft_graph",
           error: graphStatus.configured ? "MICROSOFT_GRAPH_NOT_CONNECTED" : "MICROSOFT_GRAPH_NOT_CONFIGURED",
-          sales_inbox: salesInbox
+          sales_inbox: salesInbox,
+          email_recipient: emailRecipient,
+          email_target: isCallRequest ? "frontline_sales_inbox" : "requester"
         }) + "\n", "utf8");
         return sendJson(res, 500, {
           ok: false,
@@ -1790,15 +1913,18 @@ const server = http.createServer(async (req, res) => {
       fs.appendFileSync(REPORT_REQUESTS_FILE, JSON.stringify({
         ...record,
         sales_inbox: salesInbox,
+        email_recipient: emailRecipient,
+        email_target: isCallRequest ? "frontline_sales_inbox" : "requester",
         sales_subject: record.draft_subject,
         sales_body: logBody
       }) + "\n", "utf8");
 
       try {
         const emailResult = await sendMicrosoftGraphMail({
-          to: salesInbox,
+          to: emailRecipient,
           subject: record.draft_subject,
           text: salesNotification,
+          html: formattedReport.html,
           replyTo: isValidEmail(record.visitor_email) ? record.visitor_email : undefined
         });
 
@@ -1807,7 +1933,9 @@ const server = http.createServer(async (req, res) => {
           created_at: new Date().toISOString(),
           event: "sales_email_sent",
           provider: emailResult.provider,
-          sales_inbox: salesInbox
+          sales_inbox: salesInbox,
+          email_recipient: emailRecipient,
+          email_target: isCallRequest ? "frontline_sales_inbox" : "requester"
         }) + "\n", "utf8");
 
         return sendJson(res, 200, {
@@ -1823,7 +1951,9 @@ const server = http.createServer(async (req, res) => {
           event: "sales_email_failed",
           provider: "microsoft_graph",
           error: emailError && emailError.message ? emailError.message : String(emailError),
-          sales_inbox: salesInbox
+          sales_inbox: salesInbox,
+          email_recipient: emailRecipient,
+          email_target: isCallRequest ? "frontline_sales_inbox" : "requester"
         }) + "\n", "utf8");
 
         return sendJson(res, 500, {
