@@ -1,0 +1,19 @@
+Restaurant Sales Worker cutout manifest
+=====================================
+
+Source draft folder: _cutouts_draft/
+Final PNG folder:    cutouts_png/
+Final WEBP folder:   cutouts_webp/
+
+robot_01.png -> restaurant-worker-01.png -> restaurant-worker-01.webp
+robot_02.png -> restaurant-worker-02.png -> restaurant-worker-02.webp
+robot_03.png -> restaurant-worker-03.png -> restaurant-worker-03.webp
+robot_04.png -> restaurant-worker-04.png -> restaurant-worker-04.webp
+robot_05.png -> restaurant-worker-05.png -> restaurant-worker-05.webp
+cta_trust_01.png -> cta-trust-01.png -> cta-trust-01.webp
+cta_trust_02.png -> cta-trust-02.png -> cta-trust-02.webp
+cta_trust_03.png -> cta-trust-03.png -> cta-trust-03.webp
+cta_trust_04.png -> cta-trust-04.png -> cta-trust-04.webp
+cta_trust_05.png -> cta-trust-05.png -> cta-trust-05.webp
+cta_trust_06.png -> cta-trust-06.png -> cta-trust-06.webp
+cta_trust_07.png -> cta-trust-07.png -> cta-trust-07.webp

@@ -333,3 +333,314 @@ body.frontline-menu-mounted.frontline-home-page{
 
   .frontlineMenuOverlay{display:none!important}
 }
+
+
+/* Keep the sidebar fixed-height friendly without adding a scroll menu bar */
+.flSidebar,
+.frontlineSidebar,
+.frontline-sidebar{
+  overflow:visible !important;
+}
+
+.flSidebarMenu,
+.flSidebarNav,
+.flSidebarLinks{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:6px !important;
+  overflow:visible !important;
+  max-height:none !important;
+}
+
+/* Slightly smaller menu rows so the CTA remains visible */
+.flSidebarMenu a,
+.flSidebarNav a,
+.flSidebarLinks a,
+.flSidebarLink,
+.flSidebarMenuItem,
+.flSidebarNavItem{
+  min-height:35px !important;
+  padding:7px 10px !important;
+  font-size:12.25px !important;
+  line-height:1.08 !important;
+  overflow:visible !important;
+}
+
+/* Allow longer labels to wrap neatly instead of forcing scroll */
+.flSidebarMenu a,
+.flSidebarNav a,
+.flSidebarLinks a,
+.flSidebarLink{
+  white-space:normal !important;
+}
+
+.flSidebarMenu a span,
+.flSidebarNav a span,
+.flSidebarLinks a span,
+.flSidebarLink span,
+.flSidebarMenuItem span,
+.flSidebarNavItem span{
+  line-height:1.08 !important;
+}
+
+/* Keep icons tight */
+.flSidebarMenu img,
+.flSidebarNav img,
+.flSidebarLinks img,
+.flSidebarLink img,
+.flSidebarMenuItem img,
+.flSidebarNavItem img{
+  width:17px !important;
+  height:17px !important;
+}
+
+/* Tighten CTA without hiding it */
+.flSidebarCta,
+.flSidebarCtaBox{
+  margin-top:10px !important;
+  padding:11px !important;
+  overflow:visible !important;
+}
+
+.flSidebarCta h3,
+.flSidebarCtaBox h3{
+  font-size:13px !important;
+  line-height:1.12 !important;
+  margin:0 0 5px !important;
+}
+
+.flSidebarCta p,
+.flSidebarCtaBox p{
+  font-size:10.75px !important;
+  line-height:1.22 !important;
+  margin:0 0 8px !important;
+}
+
+.flSidebarCtaButton{
+  min-height:30px !important;
+  padding:7px 10px !important;
+  font-size:11.25px !important;
+}
+
+
+/* Kill the internal sidebar/menu scrollbar */
+.flSidebar,
+.flSidebarPanel,
+.flSidebarInner,
+.flSidebarBody,
+.flSidebarMenu,
+.flSidebarNav,
+.flSidebarLinks{
+  overflow:visible !important;
+  overflow-y:visible !important;
+  max-height:none !important;
+}
+
+/* Fit the extra menu item by reducing row height and text size */
+.flSidebarNav,
+.flSidebarMenu,
+.flSidebarLinks{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:5px !important;
+}
+
+.flSidebarNav a,
+.flSidebarMenu a,
+.flSidebarLinks a,
+.flSidebarLink,
+.flSidebarMenuItem,
+.flSidebarNavItem{
+  min-height:32px !important;
+  padding:6px 10px !important;
+  font-size:11.5px !important;
+  line-height:1.05 !important;
+  border-radius:10px !important;
+  white-space:normal !important;
+}
+
+.flSidebarNav a span,
+.flSidebarMenu a span,
+.flSidebarLinks a span,
+.flSidebarLink span,
+.flSidebarMenuItem span,
+.flSidebarNavItem span{
+  font-size:11.5px !important;
+  line-height:1.05 !important;
+}
+
+.flSidebarNav img,
+.flSidebarMenu img,
+.flSidebarLinks img,
+.flSidebarLink img,
+.flSidebarMenuItem img,
+.flSidebarNavItem img{
+  width:16px !important;
+  height:16px !important;
+  min-width:16px !important;
+}
+
+/* Tighten header and CTA so the bottom remains visible */
+.flSidebarHeader{
+  padding-bottom:10px !important;
+  margin-bottom:8px !important;
+}
+
+.flSidebarCta,
+.flSidebarCtaBox{
+  margin-top:8px !important;
+  padding:10px !important;
+  overflow:visible !important;
+}
+
+.flSidebarCta h3,
+.flSidebarCtaBox h3{
+  font-size:12px !important;
+  line-height:1.08 !important;
+  margin:0 0 4px !important;
+}
+
+.flSidebarCta p,
+.flSidebarCtaBox p{
+  font-size:10px !important;
+  line-height:1.16 !important;
+  margin:0 0 7px !important;
+}
+
+.flSidebarCtaButton{
+  min-height:28px !important;
+  padding:6px 9px !important;
+  font-size:10.75px !important;
+  line-height:1.05 !important;
+}
+
+/* FRONTLINE_MENU_NEAT_NO_SCROLL_V1 */
+
+/* Remove the ugly internal sidebar scrollbar */
+.flSidebar,
+.flSidebarPanel,
+.flSidebarInner,
+.flSidebarBody,
+.flSidebarMenu,
+.flSidebarNav,
+.flSidebarLinks{
+  overflow:hidden !important;
+  overflow-y:hidden !important;
+  scrollbar-width:none !important;
+  max-height:none !important;
+}
+
+.flSidebar::-webkit-scrollbar,
+.flSidebarPanel::-webkit-scrollbar,
+.flSidebarInner::-webkit-scrollbar,
+.flSidebarBody::-webkit-scrollbar,
+.flSidebarMenu::-webkit-scrollbar,
+.flSidebarNav::-webkit-scrollbar,
+.flSidebarLinks::-webkit-scrollbar{
+  display:none !important;
+  width:0 !important;
+}
+
+/* Make the menu fit neatly without heavy bold text */
+.flSidebarMenu,
+.flSidebarNav,
+.flSidebarLinks{
+  display:flex !important;
+  flex-direction:column !important;
+  gap:4px !important;
+}
+
+.flSidebarMenu a,
+.flSidebarNav a,
+.flSidebarLinks a,
+.flSidebarLink,
+.flSidebarMenuItem,
+.flSidebarNavItem{
+  min-height:30px !important;
+  padding:5px 9px !important;
+  border-radius:10px !important;
+  font-size:11px !important;
+  line-height:1.08 !important;
+  font-weight:600 !important;
+  letter-spacing:0 !important;
+  white-space:normal !important;
+}
+
+.flSidebarMenu a *,
+.flSidebarNav a *,
+.flSidebarLinks a *,
+.flSidebarLink *,
+.flSidebarMenuItem *,
+.flSidebarNavItem *{
+  font-size:11px !important;
+  line-height:1.08 !important;
+  font-weight:600 !important;
+  letter-spacing:0 !important;
+}
+
+/* Keep icons smaller and aligned */
+.flSidebarMenu img,
+.flSidebarNav img,
+.flSidebarLinks img,
+.flSidebarLink img,
+.flSidebarMenuItem img,
+.flSidebarNavItem img{
+  width:15px !important;
+  height:15px !important;
+  min-width:15px !important;
+}
+
+/* Header slightly tighter */
+.flSidebarHeader{
+  padding-bottom:8px !important;
+  margin-bottom:7px !important;
+}
+
+.flSidebarHeader,
+.flSidebarBrand,
+.flSidebarLogo{
+  line-height:1.05 !important;
+}
+
+.flSidebarBrand strong,
+.flSidebarBrand b{
+  font-size:17px !important;
+  font-weight:700 !important;
+}
+
+.flSidebarBrand small{
+  font-size:9.5px !important;
+  letter-spacing:.16em !important;
+}
+
+/* CTA stays visible but not oversized */
+.flSidebarCta,
+.flSidebarCtaBox{
+  margin-top:8px !important;
+  padding:10px !important;
+  overflow:hidden !important;
+}
+
+.flSidebarCta h3,
+.flSidebarCtaBox h3{
+  font-size:12px !important;
+  line-height:1.08 !important;
+  font-weight:700 !important;
+  margin:0 0 4px !important;
+}
+
+.flSidebarCta p,
+.flSidebarCtaBox p{
+  font-size:9.75px !important;
+  line-height:1.18 !important;
+  font-weight:500 !important;
+  margin:0 0 7px !important;
+}
+
+.flSidebarCtaButton{
+  min-height:27px !important;
+  padding:6px 9px !important;
+  font-size:10.5px !important;
+  line-height:1.05 !important;
+  font-weight:700 !important;
+}

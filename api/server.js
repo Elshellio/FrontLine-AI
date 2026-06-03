@@ -1034,6 +1034,52 @@ function isPricingOrNextStepQuery(normalized) {
   ].some(token => normalized.includes(token));
 }
 
+function isRoiQuestion(message) {
+  const normalized = normalizeAssistantQuery(message);
+  return [
+    "make more than it costs",
+    "make more than this costs",
+    "more than it costs",
+    "pay for itself",
+    "pay itself back",
+    "worth the cost",
+    "worth it",
+    "return on investment",
+    "roi",
+    "make money",
+    "profitable"
+  ].some(token => normalized.includes(token));
+}
+
+function buildRoiAnswer(message, relevantDocs = []) {
+  const factFindAction = factFindActionFor(message, relevantDocs, true);
+  const interest = productInterestFromKnowledge(message, relevantDocs);
+  const focus = interest || "the first workflow";
+  const actions = uniqueActions([
+    factFindAction,
+    ["View managed AI services", "/managed-ai-services.html", false],
+    ["View controlled build method", "/controlled-build-method.html", false]
+  ]);
+
+  return {
+    title: "Estimate the commercial upside first",
+    short: "It can, but only if the first build targets a real leak: missed enquiries, slow follow-up, wasted admin time, weak booking conversion or under-tracked ad spend.",
+    why: `Frontline AI should compare the likely recovered revenue or saved time against the cost before recommending ${focus}. The best next step is a short fact-find so we can map the numbers and avoid guessing.`,
+    build: [
+      "Identify where leads, time or bookings are currently being lost",
+      "Estimate the value of one recovered booking, enquiry or saved admin hour",
+      "Choose the smallest useful workflow that can prove value",
+      "Track whether the workflow creates enough return to justify expanding it"
+    ],
+    sources: ["Homepage", "Managed AI Services", "Book Fact-Find page"],
+    source_pages: ["/", "/managed-ai-services.html", "/book-demo.html"],
+    confidence: "medium",
+    actions,
+    links: actions.map(([label, url]) => ({ label, url })),
+    suggested_cta: { label: factFindAction[0], url: factFindAction[1] }
+  };
+}
+
 function productAction(action, primary) {
   if (!action || !action.label || !action.url) return null;
   return [action.label, action.url, Boolean(primary)];
@@ -1491,6 +1537,7 @@ async function askOpenAiAssistant(message, relevantDocs, fallback) {
 
 async function findAssistantAnswerWithKnowledge(message) {
   const relevantDocs = searchApprovedKnowledge(message, 8);
+  if (isRoiQuestion(message)) return buildRoiAnswer(message, relevantDocs);
   const fallback = buildKnowledgeFallbackAnswer(message, relevantDocs);
   const llmAnswer = await askOpenAiAssistant(message, relevantDocs, fallback);
   return llmAnswer || fallback;

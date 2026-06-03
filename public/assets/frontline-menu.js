@@ -9,11 +9,17 @@
   const LINKS = [
     { label: "Home", href: "/", icon: "/assets/optimized/assets__menu-home.webp" },
     { label: "AI Call Handlers & Receptionists", href: "/managed-ai-services.html", icon: "/assets/optimized/assets__menu-workers.webp" },
-    { label: "AI Workers", href: "/#workers", icon: "/assets/optimized/assets__menu-workers.webp" },
+  {
+    label: "Call Flow Designer",
+    href: "/call-flow-designer.html",
+    meta: "Workflow",
+    icon: "/assets/optimized/assets__menu-workers.webp"
+  },
+    { label: "AI Workers", href: "/ai-workers.html", icon: "/assets/optimized/assets__menu-workers.webp" },
     { label: "RAG Assistants", href: "/#how", icon: "/assets/optimized/assets__menu-workers.webp" },
     { label: "Websites", href: "/websites.html", icon: "/assets/optimized/assets__menu-industries.webp" },
     { label: "Custom Builds", href: "/custom-ai-builds.html", icon: "/assets/optimized/assets__menu-controlled-build.webp" },
-    { label: "Advert Competitor Research & Campaign Creation", href: "/ad-engine.html", icon: "/assets/optimized/assets__menu-proof.webp" },
+    { label: "Research, Design & Ads", href: "/ad-engine.html", icon: "/assets/optimized/assets__menu-proof.webp" },
     { label: "Delivery Proof", href: "/#proof", icon: "/assets/optimized/assets__menu-proof.webp" },
     { label: "Controlled Build Process", href: "/controlled-build-method.html", icon: "/assets/optimized/assets__menu-controlled-build.webp" },
     { label: "Change Control", href: "/change-control-procedure.html", icon: "/assets/optimized/assets__menu-change-control.webp" },
@@ -93,10 +99,10 @@
         ${LINKS.map(renderLink).join("")}
       </nav>
       <div class="flSidebarCta">
-        <div class="flSidebarCtaSpark">✦</div>
+        <div class="flSidebarCtaSpark">*</div>
         <b>Create your first <span>AI worker.</span></b>
         <p>Start with reception, sales, booking or follow-up. Add more once the first workflow proves value.</p>
-        <a class="flSidebarCtaButton" href="/book-demo.html">Book Fact-Find <span>→</span></a>
+        <a class="flSidebarCtaButton" href="/book-demo.html">Book Fact-Find</a>
       </div>
     </div>
   `;
@@ -106,7 +112,7 @@
   toggle.type = "button";
   toggle.setAttribute("aria-controls", "frontlineOneSharedMenu");
   toggle.setAttribute("aria-expanded", "false");
-  toggle.innerHTML = "☰ <span>Menu</span>";
+  toggle.innerHTML = "Menu";
 
   const overlay = document.createElement("div");
   overlay.className = "frontlineMenuOverlay";

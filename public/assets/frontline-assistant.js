@@ -4,7 +4,7 @@
 (function(){
   if(document.getElementById("flaiAssistantRoot")) return;
 
-  const openingMessage = "Hi — I can help you work out which AI worker, workflow, website automation or knowledge assistant fits your business. What are you trying to solve?";
+  const openingMessage = "Hi - I can help you work out which AI worker, workflow, website automation or knowledge assistant fits your business. What are you trying to solve?";
 
   const prompts = [
     "I miss too many calls",
@@ -173,7 +173,7 @@
           <h2 class="flai-assistant-title" id="flaiAssistantTitle">Frontline AI Knowledge Assistant</h2>
           <div class="flai-assistant-status">Answers from approved Frontline AI material</div>
         </div>
-        <button class="flai-assistant-close" type="button" aria-label="Close Frontline AI Knowledge Assistant">×</button>
+        <button class="flai-assistant-close" type="button" aria-label="Close Frontline AI Knowledge Assistant">&times;</button>
       </header>
 
       <!-- FRONTLINE_ASSISTANT_TRUST_TOP_LAYOUT_V1 -->
@@ -191,7 +191,7 @@
 
       <form class="flai-assistant-composer">
         <input class="flai-assistant-input" type="text" autocomplete="off" placeholder="Ask about calls, websites, RAG or automation">
-        <button class="flai-assistant-send" type="submit" aria-label="Send message">↗</button>
+        <button class="flai-assistant-send" type="submit" aria-label="Send message">&#8599;</button>
       </form>
     </section>
   `;

@@ -1,0 +1,657 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>AI Workers | Frontline AI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Frontline AI workers for website sales chatbots, AI call handlers, reception, lead capture, booking and RAG assistants.">
+  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260530-sidebar-neat-20260530-064549">
+  <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
+  <style>
+    :root{
+      --bg:#020610;
+      --panel:rgba(6,14,29,.74);
+      --panel2:rgba(10,24,48,.64);
+      --line:rgba(255,255,255,.13);
+      --line2:rgba(91,183,255,.38);
+      --blue:#1478ff;
+      --blue2:#37a7ff;
+      --text:#ffffff;
+      --muted:#aebed2;
+      --soft:#d7e2f2;
+    }
+
+    *{box-sizing:border-box}
+
+    html,body{
+      margin:0;
+      background:var(--bg);
+      color:var(--text);
+      font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;
+    }
+
+    a{text-decoration:none;color:inherit}
+
+    body{
+      background:
+        linear-gradient(180deg,rgba(2,6,16,.90),rgba(2,6,16,.96)),
+        url('/assets/optimized/9.webp') center top/cover no-repeat fixed;
+    }
+
+    .page{
+      min-height:100vh;
+    }
+
+    .main{
+      min-height:100vh;
+    }
+
+    .shell{
+      width:min(1180px,calc(100% - 44px));
+      margin:0 auto;
+    }
+
+    .hero{
+      position:relative;
+      min-height:780px;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+      border-bottom:1px solid var(--line);
+      background:
+        linear-gradient(90deg,rgba(2,6,16,.98) 0%,rgba(2,6,16,.9) 36%,rgba(2,6,16,.35) 66%,rgba(2,6,16,.07) 100%),
+        url('/assets/optimized/7.webp') right center/auto 100% no-repeat;
+    }
+
+    .hero:after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:230px;
+      background:linear-gradient(180deg,transparent,#020610);
+      pointer-events:none;
+    }
+
+    .topbar{
+      position:absolute;
+      top:30px;
+      right:30px;
+      z-index:3;
+      display:flex;
+      gap:12px;
+    }
+
+    .heroContent{
+      position:relative;
+      z-index:2;
+      max-width:800px;
+      padding-top:70px;
+    }
+
+    .kicker{
+      display:inline-flex;
+      align-items:center;
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid var(--line2);
+      background:linear-gradient(180deg,rgba(20,120,255,.18),rgba(255,255,255,.04));
+      color:#b9dcff;
+      font-weight:900;
+      letter-spacing:.14em;
+      text-transform:uppercase;
+      font-size:12px;
+      box-shadow:0 16px 36px rgba(46,168,255,.18);
+    }
+
+    h1,h2,h3,.btn,.kicker,.opText strong,.workerCard b,.categoryCard b{
+      font-family:Calibri,"Segoe UI",Inter,Arial,sans-serif;
+    }
+
+    h1{
+      margin:24px 0 0;
+      font-size:clamp(62px,8vw,112px);
+      line-height:.88;
+      letter-spacing:-.075em;
+      font-weight:900;
+      text-transform:uppercase;
+    }
+
+    .blueText{
+      color:var(--blue2);
+    }
+
+    .lead{
+      margin:24px 0 0;
+      max-width:760px;
+      color:var(--soft);
+      font-size:21px;
+      line-height:1.55;
+    }
+
+    .heroBtns{
+      display:flex;
+      gap:16px;
+      flex-wrap:wrap;
+      margin-top:30px;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:50px;
+      padding:0 22px;
+      border-radius:999px;
+      border:1px solid var(--line2);
+      color:#fff;
+      font-weight:900;
+      background:rgba(255,255,255,.06);
+      box-shadow:0 16px 36px rgba(0,0,0,.28);
+      transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease,background .22s ease;
+    }
+
+    .btn:hover{
+      transform:translateY(-3px);
+      border-color:rgba(112,190,255,.82);
+      box-shadow:0 24px 54px rgba(20,120,255,.20);
+      background:rgba(20,120,255,.13);
+    }
+
+    .btn.blue{
+      background:
+        radial-gradient(circle at 20% 0%,rgba(255,255,255,.32),transparent 32%),
+        linear-gradient(135deg,#1269f5,#2fa8ff);
+      border-color:rgba(91,183,255,.78);
+    }
+
+    .ops{
+      position:relative;
+      z-index:3;
+      margin-top:54px;
+      display:grid;
+      grid-template-columns:repeat(5,1fr);
+      border:1px solid var(--line);
+      border-radius:28px;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 12% 0%,rgba(20,120,255,.18),transparent 32%),
+        linear-gradient(180deg,rgba(8,20,40,.82),rgba(3,8,18,.78));
+      box-shadow:0 32px 90px rgba(0,0,0,.42);
+      backdrop-filter:blur(16px);
+    }
+
+    .op{
+      display:flex;
+      gap:13px;
+      align-items:center;
+      padding:18px;
+      border-right:1px solid var(--line);
+      transition:transform .22s ease,border-color .22s ease,background .22s ease,box-shadow .22s ease;
+    }
+
+    .op:last-child{border-right:0}
+
+    .op:hover{
+      transform:translateY(-5px);
+      background:linear-gradient(180deg,rgba(20,120,255,.13),rgba(20,120,255,.04));
+      box-shadow:0 22px 50px rgba(0,0,0,.35);
+    }
+
+    .opIcon{
+      width:42px;
+      height:42px;
+      object-fit:contain;
+      border-radius:14px;
+      background:rgba(2,6,16,.55);
+      padding:7px;
+      border:1px solid rgba(255,255,255,.12);
+    }
+
+    .opText strong{
+      display:block;
+      font-size:17px;
+      font-weight:900;
+    }
+
+    .opText span{
+      display:block;
+      color:var(--muted);
+      font-size:13px;
+      margin-top:3px;
+    }
+
+    .section{
+      padding:90px 0;
+      border-bottom:1px solid var(--line);
+      background:rgba(2,6,16,.72);
+    }
+
+    .section.alt{
+      background:
+        radial-gradient(circle at 75% 10%,rgba(20,120,255,.16),transparent 28%),
+        linear-gradient(180deg,#020610,#061226);
+    }
+
+    .sectionHead{
+      max-width:850px;
+      margin:0 auto 38px;
+      text-align:center;
+    }
+
+    .sectionHead h2{
+      margin:0;
+      font-size:clamp(38px,5vw,72px);
+      line-height:.98;
+      letter-spacing:-.06em;
+      font-weight:900;
+    }
+
+    .sectionHead p{
+      margin:18px auto 0;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.62;
+    }
+
+    .categoryGrid{
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:20px;
+    }
+
+    .categoryCard{
+      position:relative;
+      overflow:hidden;
+      min-height:430px;
+      border:1px solid var(--line);
+      border-radius:28px;
+      padding:26px;
+      background:
+        radial-gradient(circle at 16% 0%,rgba(91,183,255,.16),transparent 34%),
+        linear-gradient(180deg,rgba(12,26,48,.82),rgba(3,8,18,.9));
+      box-shadow:0 32px 90px rgba(0,0,0,.34);
+      transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+    }
+
+    .categoryCard:hover{
+      transform:translateY(-8px);
+      border-color:rgba(91,183,255,.62);
+      box-shadow:0 40px 120px rgba(0,0,0,.55),0 0 60px rgba(20,120,255,.16);
+    }
+
+    .categoryIcon{
+      width:58px;
+      height:58px;
+      border-radius:20px;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 20% 0%,rgba(255,255,255,.32),transparent 32%),
+        linear-gradient(135deg,#1269f5,#2fa8ff);
+      box-shadow:0 18px 36px rgba(20,120,255,.24);
+      margin-bottom:22px;
+      font-size:26px;
+    }
+
+    .categoryCard small{
+      color:#71b8ff;
+      text-transform:uppercase;
+      letter-spacing:.15em;
+      font-size:11px;
+      font-weight:900;
+    }
+
+    .categoryCard b{
+      display:block;
+      margin-top:8px;
+      font-size:27px;
+      line-height:1.08;
+      font-weight:900;
+    }
+
+    .categoryCard p{
+      margin:14px 0 0;
+      color:var(--muted);
+      line-height:1.6;
+      font-size:16px;
+    }
+
+    .links{
+      display:grid;
+      gap:10px;
+      margin-top:24px;
+    }
+
+    .workerLink{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 15px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.12);
+      background:rgba(255,255,255,.045);
+      color:#eaf4ff;
+      font-weight:900;
+      transition:transform .2s ease,background .2s ease,border-color .2s ease;
+    }
+
+    .workerLink:hover{
+      transform:translateX(7px);
+      background:rgba(20,120,255,.14);
+      border-color:rgba(91,183,255,.42);
+    }
+
+    .workerLink em{
+      font-style:normal;
+      color:#71b8ff;
+    }
+
+    .coming{
+      opacity:.55;
+    }
+
+    .coming em{
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-size:11px;
+      color:#90a3b8;
+    }
+
+    .featurePanel{
+      display:grid;
+      grid-template-columns:.9fr 1.1fr;
+      gap:28px;
+      align-items:center;
+      border:1px solid var(--line2);
+      border-radius:32px;
+      padding:28px;
+      background:
+        linear-gradient(90deg,rgba(20,120,255,.20),rgba(255,255,255,.04)),
+        rgba(3,8,18,.82);
+      box-shadow:0 34px 100px rgba(0,0,0,.44);
+      overflow:hidden;
+    }
+
+    .featureVisual{
+      min-height:360px;
+      border-radius:26px;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 50% 30%,rgba(91,183,255,.12),transparent 34%),
+        linear-gradient(180deg,rgba(255,255,255,.98),rgba(255,255,255,.92));
+      border:1px solid rgba(255,255,255,.72);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.95);
+    }
+
+    .featureVisual img{
+      max-width:76%;
+      height:auto;
+      border-radius:34px;
+      background:#fff;
+      padding:10px;
+      box-shadow:0 22px 46px rgba(16,32,51,.12);
+      filter:drop-shadow(0 26px 34px rgba(16,32,51,.16));
+    }
+
+    .featureCopy h2{
+      margin:0;
+      font-size:clamp(38px,5vw,68px);
+      line-height:.98;
+      letter-spacing:-.06em;
+      font-weight:900;
+    }
+
+    .featureCopy p{
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.62;
+    }
+
+    .pillRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      margin:24px 0 30px;
+    }
+
+    .pill{
+      padding:10px 14px;
+      border-radius:999px;
+      border:1px solid rgba(91,183,255,.28);
+      background:rgba(20,120,255,.10);
+      color:#cfe7ff;
+      font-weight:900;
+      font-size:13px;
+    }
+
+    .cta{
+      padding:74px 0;
+      background:#02050c;
+    }
+
+    .ctaBox{
+      border:1px solid var(--line2);
+      border-radius:30px;
+      padding:42px;
+      background:
+        linear-gradient(90deg,rgba(20,120,255,.25),rgba(255,255,255,.04)),
+        url('/assets/optimized/9.webp') right center/56% auto no-repeat;
+      box-shadow:0 40px 120px rgba(0,0,0,.55);
+    }
+
+    .ctaBox h2{
+      margin:0;
+      max-width:760px;
+      font-size:clamp(36px,5vw,68px);
+      line-height:.98;
+      letter-spacing:-.06em;
+      font-weight:900;
+    }
+
+    .ctaBox p{
+      max-width:680px;
+      color:var(--muted);
+      font-size:18px;
+      line-height:1.62;
+    }
+
+    @media(max-width:1050px){
+      .hero{
+        min-height:820px;
+        background:
+          linear-gradient(180deg,rgba(2,6,16,.98),rgba(2,6,16,.62)),
+          url('/assets/optimized/7.webp') center/cover no-repeat;
+      }
+
+      .ops,
+      .categoryGrid,
+      .featurePanel{
+        grid-template-columns:1fr;
+      }
+
+      .op{
+        border-right:0;
+        border-bottom:1px solid var(--line);
+      }
+
+      .op:last-child{border-bottom:0}
+    }
+
+    @media(max-width:720px){
+      .shell{
+        width:min(100% - 30px,1180px);
+      }
+
+      .topbar{
+        position:relative;
+        top:auto;
+        right:auto;
+        padding-top:24px;
+      }
+
+      h1{
+        font-size:54px;
+      }
+
+      .lead{
+        font-size:18px;
+      }
+
+      .section{
+        padding:66px 0;
+      }
+
+      .btn{
+        width:100%;
+      }
+
+      .ctaBox{
+        padding:28px;
+        background:
+          linear-gradient(180deg,rgba(20,120,255,.20),rgba(255,255,255,.04)),
+          rgba(3,8,18,.92);
+      }
+    }
+  </style>
+</head>
+<body>
+  <script src="/assets/frontline-menu.js?v=20260530-ad-menu-rename-20260530-064731"></script>
+  <script defer src="/assets/frontline-assistant.js?v=20260527-encoding-fix-v1"></script>
+
+  <div class="page">
+    <main class="main">
+      <header class="hero" id="home">
+        <div class="shell">
+          <div class="topbar">
+            <a class="btn" href="/#resources">Resources</a>
+            <a class="btn blue" href="/book-demo.html">Book Fact-Find</a>
+          </div>
+
+          <div class="heroContent">
+            <div class="kicker">AI workers by business job</div>
+            <h1>AI WORKERS.<br><span class="blueText">REAL RESULTS.</span></h1>
+            <p class="lead">Find the right type of AI worker for your business: website sales chatbots, AI call handlers, reception bots and knowledge assistants. Start with the repeated job that leaks the most time or revenue.</p>
+            <div class="heroBtns">
+              <a class="btn blue" href="/book-demo.html">Book Fact-Find</a>
+              <a class="btn" href="#examples">Explore AI Workers</a>
+            </div>
+          </div>
+
+          <div class="ops" aria-label="Frontline AI outcomes">
+            <a class="op" href="#examples">
+              <img class="opIcon" src="/assets/optimized/icon-answer.webp" alt="">
+              <div class="opText"><strong>Answer</strong><span>Every enquiry</span></div>
+            </a>
+            <a class="op" href="#examples">
+              <img class="opIcon" src="/assets/optimized/icon-book.webp" alt="">
+              <div class="opText"><strong>Book</strong><span>More appointments</span></div>
+            </a>
+            <a class="op" href="#examples">
+              <img class="opIcon" src="/assets/optimized/icon-qualify.webp" alt="">
+              <div class="opText"><strong>Qualify</strong><span>Better leads</span></div>
+            </a>
+            <a class="op" href="#examples">
+              <img class="opIcon" src="/assets/optimized/icon-follow-up.webp" alt="">
+              <div class="opText"><strong>Follow up</strong><span>Automatically</span></div>
+            </a>
+            <a class="op" href="#examples">
+              <img class="opIcon" src="/assets/optimized/icon-grow.webp" alt="">
+              <div class="opText"><strong>Grow</strong><span>More capacity</span></div>
+            </a>
+          </div>
+        </div>
+      </header>
+
+      <section class="section alt" id="examples">
+        <div class="shell">
+          <div class="sectionHead">
+            <h2>Choose the worker type. <span class="blueText">Then choose the example.</span></h2>
+            <p>The restaurant worker is a website sales chatbot, not a phone bot. Call handlers, website chatbots and RAG assistants each sit in their own place.</p>
+          </div>
+
+          <div class="categoryGrid">
+            <article class="categoryCard">
+              <div class="categoryIcon">💬</div>
+              <small>Website conversion</small>
+              <b>Website Sales Chatbots</b>
+              <p>For websites that need to answer questions, recommend options, capture details and move visitors towards action.</p>
+              <div class="links">
+                <a class="workerLink" href="/ai-workers/restaurant-sales-worker.html"><span>Restaurant AI Sales Worker</span><em>→</em></a>
+                <div class="workerLink coming"><span>Garage AI Sales Worker</span><em>Coming</em></div>
+                <div class="workerLink coming"><span>Clinic AI Assistant</span><em>Coming</em></div>
+                <div class="workerLink coming"><span>Property AI Assistant</span><em>Coming</em></div>
+              </div>
+            </article>
+
+            <article class="categoryCard">
+              <div class="categoryIcon">☎</div>
+              <small>Phone handling</small>
+              <b>AI Call Handlers</b>
+              <p>For phone answering, missed-call recovery, booking calls, enquiry capture and routing callers to the right next step.</p>
+              <div class="links">
+                <div class="workerLink coming"><span>AI Receptionist</span><em>Coming</em></div>
+                <div class="workerLink coming"><span>Missed Call Recovery Bot</span><em>Coming</em></div>
+                <div class="workerLink coming"><span>Booking Call Handler</span><em>Coming</em></div>
+              </div>
+            </article>
+
+            <article class="categoryCard">
+              <div class="categoryIcon">📚</div>
+              <small>Knowledge support</small>
+              <b>RAG Assistants</b>
+              <p>For document Q&A, internal support, training material, policies, service knowledge and controlled knowledge retrieval.</p>
+              <div class="links">
+                <div class="workerLink coming"><span>Knowledge Base Assistant</span><em>Coming</em></div>
+                <div class="workerLink coming"><span>Staff Support Assistant</span><em>Coming</em></div>
+                <div class="workerLink coming"><span>Website Help Assistant</span><em>Coming</em></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="shell">
+          <div class="featurePanel">
+            <div class="featureVisual">
+              <img src="/assets/ai-workers/restaurant-sales-worker/cutouts_transparent_webp/restaurant-worker-04.webp" alt="Restaurant AI Sales Worker">
+            </div>
+            <div class="featureCopy">
+              <div class="kicker">Featured example</div>
+              <h2>Restaurant AI Sales Worker</h2>
+              <p>This is a website sales chatbot example. It helps diners ask menu questions, choose options, capture booking details and move towards a table booking.</p>
+              <div class="pillRow">
+                <span class="pill">Menu questions</span>
+                <span class="pill">Dish recommendations</span>
+                <span class="pill">Booking details</span>
+                <span class="pill">Follow-up</span>
+              </div>
+              <div class="heroBtns">
+                <a class="btn blue" href="/ai-workers/restaurant-sales-worker.html">View Restaurant Worker</a>
+                <a class="btn" href="/book-demo.html">Book Fact-Find</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta">
+        <div class="shell">
+          <div class="ctaBox">
+            <h2>Not sure which AI worker fits?</h2>
+            <p>Book a free fact-find and we’ll look at your calls, website, enquiries and follow-up process, then suggest the most useful first worker to build.</p>
+            <div class="heroBtns">
+              <a class="btn blue" href="/book-demo.html">Book Fact-Find</a>
+              <a class="btn" href="/websites.html">View Website Builds</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+</body>
+</html>
