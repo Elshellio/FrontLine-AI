@@ -13,8 +13,8 @@ body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0%,#253a
 .tabs{display:flex;gap:12px;margin-bottom:30px}
 button{border:1px solid var(--line);border-radius:999px;padding:13px 22px;font-weight:900;font-size:16px;cursor:pointer;background:rgba(255,255,255,.07);color:var(--muted)}
 button.active{background:var(--gold);color:#08111f}
-h1{display:none;font-size:62px;line-height:.98;letter-spacing:-.06em;margin:0 0 20px}
-p{display:none;font-size:20px;line-height:1.55;color:var(--muted);margin:0}
+.wrap h1{display:none;font-size:62px;line-height:.98;letter-spacing:-.06em;margin:0 0 20px}
+.wrap p{display:none;font-size:20px;line-height:1.55;color:var(--muted);margin:0}
 .checklist{display:grid;gap:12px;margin-top:32px}
 .step{display:grid;grid-template-columns:38px 1fr;align-items:center;gap:14px;border:1px solid var(--line);border-radius:18px;padding:13px 16px;background:rgba(255,255,255,.055);color:var(--muted);transition:.25s}
 .num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);font-weight:900}
@@ -39,7 +39,7 @@ p{display:none;font-size:20px;line-height:1.55;color:var(--muted);margin:0}
 .mini b{font-size:19px}
 .footer{display:flex;justify-content:space-between;align-items:center;margin-top:24px;color:var(--muted)}
 .cta{background:var(--gold);color:#08111f;border-radius:999px;padding:13px 20px;font-weight:950}
-@media(max-width:950px){.wrap{grid-template-columns:1fr;padding:18px}h1{display:none;font-size:44px}.grid{grid-template-columns:1fr}}
+@media(max-width:950px){.wrap{grid-template-columns:1fr;padding:18px}.wrap h1{display:none;font-size:44px}.grid{grid-template-columns:1fr}}
 
 /* FRONTLINE_DEMO_TYPOGRAPHY_POLISH_V1 */
 body{
@@ -54,13 +54,13 @@ body{
 .card{
   padding:30px;
 }
-h1{display:none;
+.wrap h1{display:none;
   font-size:52px;
   line-height:1.04;
   letter-spacing:-.035em;
   max-width:620px;
 }
-p{display:none;
+.wrap p{display:none;
   font-size:18px;
   letter-spacing:0;
   word-spacing:0;
@@ -400,6 +400,202 @@ p,
 }
 
 </style>
+  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260608-menu-cta-identical-v1">
+
+
+
+
+
+
+<style id="FRONTLINE_DEMO_SHARED_MENU_FORMAT_V1">
+  body {
+    min-height: 100vh;
+    background:
+      radial-gradient(circle at 76% 18%, rgba(0,122,255,.14), transparent 34%),
+      radial-gradient(circle at 18% 72%, rgba(128,242,245,.10), transparent 36%),
+      linear-gradient(180deg, #020610 0%, #061727 56%, #020610 100%);
+  }
+
+  .wrap {
+    width: min(980px, calc(100% - 42px));
+    max-width: 980px;
+    min-height: auto;
+    margin: 0 auto;
+    padding: 28px 0 30px;
+    grid-template-columns: minmax(330px, .92fr) minmax(360px, 1fr);
+    gap: 20px;
+    align-items: start;
+  }
+
+  .wrap > .card {
+    padding: 20px;
+    border: 1px solid rgba(147,214,255,.30);
+    background: rgba(13,36,61,.82);
+    box-shadow: 0 18px 54px rgba(0,0,0,.24);
+  }
+
+  .wrap .tabs {
+    gap: 9px;
+    margin-bottom: 14px;
+  }
+
+  .wrap .tabs button {
+    min-height: 34px;
+    padding: 8px 16px;
+    font-size: 12px;
+  }
+
+  #mainTitle {
+    font-size: clamp(24px, 2.25vw, 32px);
+    line-height: 1.06;
+    letter-spacing: -.03em;
+    margin: 14px 0 8px;
+  }
+
+  #mainSub {
+    color: rgba(255,255,255,.76);
+    line-height: 1.45;
+    font-size: 14px;
+  }
+
+  .wrap .globalPresenterFrame,
+  .wrap .screen,
+  .wrap .mediaStage {
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(2,6,16,.70);
+  }
+
+  .wrap .globalPresenterFrame {
+    max-height: 285px;
+  }
+
+  .wrap .mediaStage {
+    min-height: 220px;
+    margin-bottom: 12px;
+  }
+
+  .wrap .mediaStage img,
+  .wrap .mediaStage video {
+    width: 100%;
+    height: 100%;
+    min-height: 220px;
+    object-fit: cover;
+  }
+
+  .wrap .checklist {
+    margin-top: 16px;
+    gap: 7px;
+  }
+
+  .wrap .step {
+    min-height: 36px;
+    padding: 8px 11px;
+    border-radius: 14px;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .wrap .num {
+    width: 27px;
+    height: 27px;
+    font-size: 12px;
+  }
+
+  .wrap .demo-title {
+    margin-bottom: 12px;
+    font-size: 19px;
+  }
+
+  .wrap .presenter {
+    display: none;
+  }
+
+  #screenTitle {
+    font-size: 23px;
+    line-height: 1.08;
+    margin: 12px 0 9px;
+  }
+
+  #screenCopy {
+    font-size: 14px;
+    line-height: 1.42;
+  }
+
+  .wrap .grid {
+    gap: 9px;
+    margin-top: 12px;
+  }
+
+  .wrap .mini {
+    padding: 11px;
+    border-radius: 13px;
+  }
+
+  .wrap .footer {
+    margin-top: 12px;
+  }
+
+  @media (max-width: 999px) {
+    .wrap {
+      width: min(100% - 28px, 720px);
+      grid-template-columns: 1fr;
+      padding-top: 22px;
+    }
+
+    #mainTitle {
+      display: block;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+<style id="FRONTLINE_DEMO_FIXED_SQUARE_MEDIA_V1">
+  .wrap .mediaStage {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    height: auto;
+    min-height: 0;
+    max-height: none;
+    margin: 0 0 14px;
+    display: block;
+    overflow: hidden;
+    border-radius: 16px;
+    background: rgba(2,6,16,.72);
+  }
+
+  .wrap .mediaStage img,
+  .wrap .mediaStage video {
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    display: block;
+  }
+
+  .wrap .screen {
+    overflow: hidden;
+  }
+
+  @media(max-width: 950px) {
+    .wrap .mediaStage {
+      aspect-ratio: 1 / 1;
+      min-height: 0;
+    }
+
+    .wrap .mediaStage img,
+    .wrap .mediaStage video {
+      min-height: 0;
+    }
+  }
+</style>
+
 </head>
 <body>
 <div class="wrap">
@@ -520,11 +716,24 @@ function setStep(i){step=i;render();restart()}
 function setMode(m){mode=m;step=0;render();restart()}
 function next(){step=(step+1)%data[mode].steps.length;render()}
 function restart(){clearInterval(timer);timer=setInterval(next,2350)}
-tabWho.onclick=function(){setMode("who")};tabHow.onclick=function(){setMode("how")};fetch("/api/demo-video-media").then(function(r){return r.json()}).then(function(j){mediaMap=j.media||mediaMap;render();restart()}).catch(function(){render();restart()});
+/* FRONTLINE_DEMO_VIDEO_QUERY_TAB_V1 */
+function initialDemoVideoMode(){
+  try{
+    var params=new URLSearchParams(window.location.search||"");
+    var requested=String(params.get("video")||params.get("tab")||window.location.hash.replace("#","")||"").toLowerCase();
+    if(requested==="how"||requested==="how-it-works") return "how";
+    if(requested==="who"||requested==="who-it-is-for") return "who";
+  }catch(e){}
+  return mode||"who";
+}
+tabWho.onclick=function(){setMode("who");render();restart()};
+tabHow.onclick=function(){setMode("how");render();restart()};
+fetch("/api/demo-video-media").then(function(r){return r.json()}).then(function(j){mediaMap=j.media||mediaMap;setMode(initialDemoVideoMode());render();restart()}).catch(function(){setMode(initialDemoVideoMode());render();restart()});
 /* FRONTLINE_DEMO_MEDIA_GROW_V1 */
 /* FRONTLINE_DEMO_PRESENTER_MEDIA_V1 */
 
 /* FRONTLINE_DEMO_EDITABLE_TEXT_PREVIEW_V2 */
 </script>
+  <script defer src="/assets/frontline-menu.js?v=20260608-menu-cta-identical-v1"></script>
 </body>
 </html>

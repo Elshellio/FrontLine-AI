@@ -3053,32 +3053,8 @@ h1{
   margin-top: 28px;
 }
 
-.homeTrustLine {
-  display: flex;
-  gap: 14px;
-  align-items: center;
-  flex-wrap: wrap;
-  margin-top: 28px;
-  color: rgba(255,255,255,.82);
-  font-weight: 700;
-}
 
-.homeTrustStars {
-  display: inline-flex;
-  gap: 3px;
-}
 
-.homeTrustStars span {
-  display: grid;
-  place-items: center;
-  width: 22px;
-  height: 22px;
-  border-radius: 2px;
-  background: #00b67a;
-  color: #fff;
-  font-size: 15px;
-  line-height: 1;
-}
 
 .homeHeroVideoShell {
   border: 1px solid rgba(147,214,255,.34);
@@ -3088,9 +3064,15 @@ h1{
   padding: 12px;
 }
 
+.homeHeroVideoShell {
+  max-width: 520px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .homeHeroVideoShell video {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 1 / 1;
   object-fit: cover;
   display: block;
   border-radius: 14px;
@@ -3101,7 +3083,8 @@ h1{
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 16px;
-  margin-top: 18px;
+  margin: 18px auto 0;
+  max-width: 660px;
 }
 
 .homeHeroCard {
@@ -3231,7 +3214,7 @@ h1{
 }
 
 </style>
-  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260530-sidebar-neat-20260530-064549">
+  <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260608-menu-cta-identical-v1">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
 <!-- FRONTLINE_HOMEPAGE_IMAGE_OPTIMISE_V1 -->
 </head>
@@ -3244,26 +3227,21 @@ h1{
         <div class="homeVideoCopy">
           <div class="homeVideoEyebrow">AI workers for businesses ready to grow</div>
           <h1>AI workers that answer, book and follow up <span>for real businesses.</span></h1>
-          <p class="homeVideoIntro">Frontline AI gives service businesses practical AI workers for missed calls, enquiries, appointments and follow-up — built around the way your business already works.</p>
+          <p class="homeVideoIntro">Frontline AI gives service businesses practical AI workers for missed calls, enquiries, appointments and follow-up, built around the way your business already works.</p>
 
           <div class="homeVideoBtns">
             <a class="btn blue" href="/book-demo.html">Book Fact-Find</a>
-            <a class="btn" href="/advertising/frontline-ai-demo-videos.html">Watch How It Works</a>
-          </div>
-
-          <div class="homeTrustLine" aria-label="Trust rating">
-            <span class="homeTrustStars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
-            <span>Practical AI for calls, bookings and follow-up</span>
+            <a class="btn" href="/advertising/frontline-ai-demo-videos.html?video=how">Watch How It Works</a>
           </div>
         </div>
 
         <div class="homeVideoPanel">
           <div class="homeHeroVideoShell">
-            <video src="/assets/demo-video-media/1780928319272-mainvideo.mp4" controls playsinline preload="metadata"></video>
+            <video src="/assets/demo-video-media/mainherovideo.mp4" controls playsinline preload="metadata"></video>
           </div>
 
           <div class="homeHeroCards">
-            <a class="homeHeroCard" href="/advertising/frontline-ai-demo-videos.html">
+            <a class="homeHeroCard" href="/advertising/frontline-ai-demo-videos.html?video=who">
               <video src="/assets/demo-video-media/1780933251681-312904184525606.mp4" muted playsinline preload="metadata"></video>
               <span>
                 <strong>Who it is for</strong>
@@ -3272,7 +3250,7 @@ h1{
               </span>
             </a>
 
-            <a class="homeHeroCard" href="/advertising/frontline-ai-demo-videos.html">
+            <a class="homeHeroCard" href="/advertising/frontline-ai-demo-videos.html?video=how">
               <video src="/assets/demo-video-media/1780933942452-1.mp4" muted playsinline preload="metadata"></video>
               <span>
                 <strong>How it works</strong>
@@ -4517,7 +4495,7 @@ h1{
 })();
 </script>
 
-  <script defer src="/assets/frontline-menu.js?v=20260530-ad-menu-rename-20260530-064731"></script>
+  <script defer src="/assets/frontline-menu.js?v=20260608-menu-cta-identical-v1"></script>
   <script defer src="/assets/frontline-assistant.js?v=20260527-encoding-fix-v1"></script>
 
 <script>
