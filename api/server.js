@@ -9,6 +9,8 @@ const PORT = Number(process.env.PORT || 3401);
 const DATA_DIR = process.env.DATA_DIR || "/opt/frontline-ai/data";
 const REQUESTS_FILE = path.join(DATA_DIR, "demo-requests.jsonl");
 const REPORT_REQUESTS_FILE = path.join(DATA_DIR, "business-fact-find-report-requests.jsonl");
+const DEMO_VIDEO_MEDIA_FILE = path.join(DATA_DIR, "demo-video-media.json");
+const DEMO_VIDEO_UPLOAD_DIR = path.join(__dirname, "..", "public", "assets", "demo-video-media");
 const PRODUCT_KNOWLEDGE_FILE = path.join(__dirname, "product-knowledge.json");
 const SITE_KNOWLEDGE_FILE = path.join(__dirname, "site-knowledge.json");
 const FRONTLINE_MS_SCOPES = "offline_access User.Read Mail.Send";
@@ -1724,9 +1726,75 @@ function buildDemoBookingCustomerConfirmation(record) {
   ].join("\n");
 }
 
+
 const server = http.createServer(async (req, res) => {
   try {
     const url = new URL(req.url, "http://127.0.0.1");
+
+
+    if (req.method === "GET" && url.pathname === "/api/demo-video-media") {
+      let media = { who: [], how: [] };
+      try { media = JSON.parse(fs.readFileSync(DEMO_VIDEO_MEDIA_FILE, "utf8")); } catch {}
+      return sendJson(res, 200, { ok: true, media });
+    }
+
+    if (req.method === "POST" && url.pathname === "/api/demo-video-media") {
+      let input = {};
+      try {
+        const raw = await readBody(req, 200_000);
+        input = JSON.parse(raw || "{}");
+      } catch {
+        return sendJson(res, 400, { ok: false, errors: ["Invalid JSON."] });
+      }
+
+      const normaliseGroup = (items) => Array.isArray(items) ? items.map(item => ({
+        label: cleanText(item && item.label, 120),
+        presenter_text: cleanText(item && item.presenter_text, 260),
+        kicker: cleanText(item && item.kicker, 80),
+        headline: cleanText(item && item.headline, 220),
+        body: cleanText(item && item.body, 420),
+        cards: Array.isArray(item && item.cards) ? item.cards.slice(0, 4).map(x => cleanText(x, 120)) : [],
+        duration: Number.isFinite(Number(item && item.duration)) ? Math.max(2, Math.min(20, Number(item.duration))) : 5,
+        media: cleanText(item && item.media, 1000),
+        presenter: cleanText(item && item.presenter, 1000),
+        zoom: Number.isFinite(Number(item && item.zoom)) ? Math.max(1, Math.min(1.35, Number(item.zoom))) : 1,
+        export_url: cleanText(item && item.export_url, 1000)
+      })).filter(item => item.label) : [];
+
+      const media = {
+        who: normaliseGroup(input.media && input.media.who),
+        how: normaliseGroup(input.media && input.media.how)
+      };
+
+      fs.writeFileSync(DEMO_VIDEO_MEDIA_FILE, JSON.stringify(media, null, 2), "utf8");
+      return sendJson(res, 200, { ok: true, media });
+    }
+
+    if (req.method === "POST" && url.pathname === "/api/demo-video-media-upload") {
+      let input = {};
+      try {
+        const raw = await readBody(req, 100_000_000);
+        input = JSON.parse(raw || "{}");
+      } catch {
+        return sendJson(res, 400, { ok: false, errors: ["Invalid upload JSON."] });
+      }
+
+      const originalName = cleanText(input.filename, 180) || "demo-media.mp4";
+      const ext = path.extname(originalName).toLowerCase();
+      const allowed = new Set([".mp4", ".webm", ".mov", ".m4v", ".png", ".jpg", ".jpeg", ".webp"]);
+      if (!allowed.has(ext)) return sendJson(res, 400, { ok: false, errors: ["Unsupported file type."] });
+
+      const rawData = String(input.base64 || input.data || "");
+      const base64 = rawData.replace(/^data:[^;]+;base64,/, "");
+      if (!base64) return sendJson(res, 400, { ok: false, errors: ["Missing file data."] });
+
+      const safeName = originalName.toLowerCase().replace(/[^a-z0-9._-]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+      const finalName = Date.now() + "-" + safeName;
+      fs.mkdirSync(DEMO_VIDEO_UPLOAD_DIR, { recursive: true });
+      fs.writeFileSync(path.join(DEMO_VIDEO_UPLOAD_DIR, finalName), Buffer.from(base64, "base64"));
+
+      return sendJson(res, 200, { ok: true, url: "/assets/demo-video-media/" + finalName });
+    }
 
     if (req.method === "GET" && url.pathname === "/api/health") {
       return sendJson(res, 200, { ok: true, service: "frontline-ai-api", time: new Date().toISOString() });

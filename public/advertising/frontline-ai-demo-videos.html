@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Frontline AI Demo Videos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+:root{--bg:#08111f;--line:rgba(255,255,255,.16);--text:#f7f9ff;--muted:#aeb8c9;--gold:#e4c764;--green:#7ee0ae}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(circle at 20% 0%,#253a60 0,#08111f 34%,#060b14 100%);font-family:Inter,system-ui,Arial,sans-serif;color:var(--text)}
+.wrap{max-width:1420px;margin:0 auto;padding:34px;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.card{background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.04));border:1px solid var(--line);border-radius:30px;padding:34px;box-shadow:0 28px 80px rgba(0,0,0,.35)}
+.tabs{display:flex;gap:12px;margin-bottom:30px}
+button{border:1px solid var(--line);border-radius:999px;padding:13px 22px;font-weight:900;font-size:16px;cursor:pointer;background:rgba(255,255,255,.07);color:var(--muted)}
+button.active{background:var(--gold);color:#08111f}
+h1{display:none;font-size:62px;line-height:.98;letter-spacing:-.06em;margin:0 0 20px}
+p{display:none;font-size:20px;line-height:1.55;color:var(--muted);margin:0}
+.checklist{display:grid;gap:12px;margin-top:32px}
+.step{display:grid;grid-template-columns:38px 1fr;align-items:center;gap:14px;border:1px solid var(--line);border-radius:18px;padding:13px 16px;background:rgba(255,255,255,.055);color:var(--muted);transition:.25s}
+.num{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.1);font-weight:900}
+.step.active{background:linear-gradient(135deg,rgba(228,199,100,.27),rgba(126,224,174,.08));border-color:rgba(228,199,100,.7);color:white;transform:translateX(8px)}
+.step.active .num{background:var(--gold);color:#08111f}
+.note{margin-top:24px;border:1px dashed rgba(228,199,100,.55);border-radius:20px;padding:18px;color:var(--muted);line-height:1.5}
+.demo-title{display:flex;justify-content:space-between;align-items:center;margin-bottom:24px;font-size:24px;font-weight:950}
+.live{font-size:15px;color:var(--muted);font-weight:600}
+.live:before{content:"";display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--green);margin-right:9px;box-shadow:0 0 18px var(--green)}
+.presenter{display:flex;gap:18px;align-items:center;background:#101a28;border:1px solid var(--line);border-radius:24px;padding:20px;margin-bottom:24px}
+.avatar{width:62px;height:62px;border-radius:50%;background:linear-gradient(145deg,var(--gold),#81a8ff);position:relative;flex:0 0 auto}
+.avatar:after{content:"";position:absolute;left:20px;right:20px;bottom:20px;height:5px;border-radius:999px;background:#08111f;animation:talk 1s infinite}
+@keyframes talk{0%,100%{transform:scaleX(.55)}50%{transform:scaleX(1)}}
+.presenter strong{display:block;font-size:19px;line-height:1.35}
+.presenter span{display:block;color:var(--muted);font-size:14px;margin-top:5px}
+.screen{border:1px solid var(--line);background:rgba(255,255,255,.06);border-radius:26px;padding:26px;min-height:370px}
+.kicker{color:var(--gold);font-weight:950;letter-spacing:.12em;text-transform:uppercase;font-size:14px;margin-bottom:12px}
+.screen h2{font-size:40px;line-height:1.05;letter-spacing:-.045em;margin:0 0 18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.mini{border:1px solid var(--line);border-radius:18px;padding:16px;background:rgba(255,255,255,.06)}
+.mini small{display:block;color:var(--muted);margin-bottom:8px}
+.mini b{font-size:19px}
+.footer{display:flex;justify-content:space-between;align-items:center;margin-top:24px;color:var(--muted)}
+.cta{background:var(--gold);color:#08111f;border-radius:999px;padding:13px 20px;font-weight:950}
+@media(max-width:950px){.wrap{grid-template-columns:1fr;padding:18px}h1{display:none;font-size:44px}.grid{grid-template-columns:1fr}}
+
+/* FRONTLINE_DEMO_TYPOGRAPHY_POLISH_V1 */
+body{
+  text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased;
+  font-kerning:normal;
+}
+.wrap{
+  max-width:1320px;
+  gap:24px;
+}
+.card{
+  padding:30px;
+}
+h1{display:none;
+  font-size:52px;
+  line-height:1.04;
+  letter-spacing:-.035em;
+  max-width:620px;
+}
+p{display:none;
+  font-size:18px;
+  letter-spacing:0;
+  word-spacing:0;
+}
+button{
+  font-size:14px;
+  padding:11px 18px;
+}
+.checklist{
+  margin-top:28px;
+  gap:10px;
+}
+.step{
+  min-height:46px;
+  padding:10px 14px;
+  letter-spacing:0;
+  word-spacing:0;
+  font-size:15px;
+}
+.num{
+  width:30px;
+  height:30px;
+}
+.demo-title{
+  font-size:21px;
+  margin-bottom:20px;
+}
+.presenter{
+  padding:16px;
+  border-radius:20px;
+}
+.presenter strong{
+  font-size:17px;
+  line-height:1.42;
+  letter-spacing:0;
+  word-spacing:0;
+}
+.screen{
+  min-height:340px;
+  padding:22px;
+}
+.screen h2{
+  font-size:33px;
+  line-height:1.08;
+  letter-spacing:-.025em;
+  word-spacing:0;
+}
+.kicker{
+  font-size:12px;
+  letter-spacing:.10em;
+}
+.grid{
+  gap:12px;
+  margin-top:20px;
+}
+.mini{
+  padding:14px;
+  min-height:74px;
+}
+.mini small{
+  font-size:12px;
+}
+.mini b{
+  font-size:17px;
+  letter-spacing:0;
+  word-spacing:0;
+}
+.note{
+  font-size:14px;
+  padding:15px 16px;
+}
+.footer{
+  margin-top:20px;
+}
+.cta{
+  font-size:14px;
+  padding:11px 17px;
+}
+@media(max-width:950px){
+  h1{display:none;font-size:40px}
+  .screen h2{font-size:30px}
+}
+
+
+/* FRONTLINE_DEMO_FRESH_PALETTE_V1 */
+:root{
+  --bg:#071a2f;
+  --line:rgba(155,232,255,.28);
+  --text:#f5fbff;
+  --muted:#d0e6f2;
+  --gold:#ffd66b;
+  --green:#77efc7;
+}
+body{
+  background:
+    radial-gradient(circle at 18% 0%, rgba(91,221,255,.34) 0, transparent 28%),
+    radial-gradient(circle at 88% 14%, rgba(119,239,199,.24) 0, transparent 30%),
+    linear-gradient(145deg, #061325 0%, #0a2038 46%, #0d2947 100%);
+}
+.card{
+  background:
+    linear-gradient(180deg, rgba(89,193,255,.18), rgba(125,229,255,.08)),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+  border:1px solid rgba(155,232,255,.34);
+  box-shadow:0 28px 80px rgba(2,18,36,.42);
+}
+button{
+  background:rgba(155,232,255,.12);
+  color:#e7f6ff;
+  border-color:rgba(155,232,255,.28);
+}
+button.active{
+  background:linear-gradient(135deg, #7de8ff, #8ff2d0);
+  color:#072038;
+  border-color:rgba(255,255,255,.36);
+}
+.step{
+  background:rgba(143,220,255,.08);
+  border-color:rgba(155,232,255,.20);
+  color:#d8edf8;
+}
+.step.active{
+  background:linear-gradient(135deg, rgba(125,232,255,.30), rgba(119,239,199,.16));
+  border-color:rgba(155,232,255,.56);
+  box-shadow:0 16px 42px rgba(0,0,0,.18);
+}
+.num{
+  background:rgba(255,255,255,.16);
+}
+.step.active .num{
+  background:#7fe9ff;
+  color:#08223a;
+}
+.note{
+  border-color:rgba(125,232,255,.46);
+  background:rgba(125,232,255,.08);
+  color:#d8edf8;
+}
+.presenter{
+  background:linear-gradient(180deg, rgba(10,44,74,.86), rgba(10,34,58,.78));
+  border-color:rgba(155,232,255,.28);
+}
+.screen{
+  background:
+    radial-gradient(circle at 82% 16%, rgba(125,232,255,.14) 0, transparent 26%),
+    linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.045));
+  border-color:rgba(155,232,255,.26);
+}
+.kicker{
+  color:#95f4df;
+}
+.mini{
+  background:rgba(143,220,255,.08);
+  border-color:rgba(155,232,255,.22);
+}
+.cta{
+  background:linear-gradient(135deg, #7de8ff, #8ff2d0);
+  color:#072038;
+}
+.live,
+.presenter span,
+.footer,
+p,
+.mini small{
+  color:#d0e6f2;
+}
+
+.mediaStage{margin:0 0 18px;border-radius:20px;min-height:260px;overflow:hidden;border:1px solid rgba(255,255,255,.14);background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));display:grid;place-items:center;position:relative}
+.mediaStage.empty{display:none}
+.mediaStage img,.mediaStage video{width:100%;height:100%;min-height:260px;object-fit:cover;display:block;animation:frontlineMediaGrow 2.35s linear forwards;transform-origin:center}
+.mediaStage .presenterCutout{position:absolute;right:18px;bottom:18px;width:96px;height:96px;border-radius:999px;overflow:hidden;border:3px solid rgba(228,199,100,.95);box-shadow:0 18px 45px rgba(0,0,0,.45),0 0 30px rgba(228,199,100,.26);background:#07111f;z-index:4}
+.mediaStage .presenterCutout img{width:100%;height:100%;min-height:0;object-fit:cover;animation:none;transform:none}
+@keyframes frontlineMediaGrow{from{transform:scale(1)}to{transform:scale(var(--mediaZoom,1.08))}}
+@media(max-width:950px){.mediaStage{min-height:360px}.mediaStage img,.mediaStage video{min-height:360px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<section class="card">
+<div class="tabs">
+<button id="tabWho" class="active">Video 1 · Who is it for?</button>
+<button id="tabHow">Video 2 · How does it work?</button>
+</div>
+<h1 id="mainTitle"></h1>
+<p id="mainSub"></p>
+<div id="checklist" class="checklist"></div>
+
+</section>
+
+<section class="card">
+<div class="demo-title"><div id="demoTitle"></div><div class="live">Live demo loop</div></div>
+<div class="presenter"><div class="avatar"></div><div><strong id="presenter"></strong><span>AI presenter placeholder</span></div></div>
+<div class="screen">
+<div class="kicker" id="kicker"></div>
+<div id="mediaStage" class="mediaStage empty"></div>
+<h2 id="screenTitle"></h2>
+<p id="screenCopy"></p>
+<div class="grid" id="grid"></div>
+</div>
+<div class="footer"><div id="count"></div><div class="cta" id="cta"></div></div>
+</section>
+</div>
+
+<script>
+var data={
+who:{title:"Built for service businesses where every enquiry matters.",sub:"A generic master advert for Frontline AI. Sector versions can come later.",demo:"Who Frontline AI helps",cta:"",steps:[
+["Businesses that receive calls and enquiries","If customers call, message, book, ask questions or need follow-up, Frontline AI can help.","Customer enquiries","Calls, forms and messages arrive all day.","Slow response means lost opportunity.",["Inbound|Calls + website","Need|Fast response","Risk|Missed leads","Result|Handled workflow"]],
+["Teams that miss calls when busy","When your team is busy, the first response can still happen instantly.","Missed calls","Busy teams still need every lead captured.","The AI answers, captures the reason for the call and starts the next step.",["Caller|New enquiry","Status|Answered","Captured|Name + number","Next|Callback task"]],
+["Appointment-based services","For appointment businesses, it can offer slots and confirm the booking route.","Appointments","Bookings and callbacks moved forward.","Useful for salons, clinics, consultants and availability-based businesses.",["Request|Book appointment","Option|Today 14:30","Confirm|SMS sent","Saved|Calendar lead"]],
+["Trades and field-service firms","For field-service firms, the AI can collect the job type, location and urgency.","Trades","Job enquiries captured while people are on the tools.","Quote requests, urgent jobs and callbacks can be structured before the team returns the call.",["Job|Repair request","Area|Local customer","Urgency|Today","Notify|Engineer/team"]],
+["Professional service businesses","For professional services, the first enquiry can be qualified before a person picks it up.","Professional services","Initial enquiries collected with context.","The AI asks the basic questions, captures details and routes the enquiry.",["Matter|New enquiry","Details|Captured","Route|Right person","Follow-up|Ready"]],
+["Local firms with manual follow-up","Manual follow-up is where many warm leads go cold.","Follow-up","The follow-up step becomes part of the workflow.","SMS, email, staff alerts and lead logging can happen automatically.",["SMS|Sent","Email|Prepared","Alert|Staff notified","Lead|Logged"]],
+["Businesses ready to automate first response","Frontline AI gives service businesses a practical way to automate first response.","Practical AI","Start with one workflow. Improve it under control.","Answer, capture, route, confirm and follow up.",["Start|One workflow","Improve|Tested changes","Use|Live enquiries","Outcome|More handled leads"]]
+]},
+how:{title:"One enquiry comes in. The workflow starts automatically.",sub:"This version explains the customer-to-business workflow in a simple sequence.",demo:"How the workflow works",cta:"Turn enquiries into workflows",steps:[
+["Customer calls or sends an enquiry","Here is what happens when a customer contacts your business.","Step one","A customer calls, messages or uses your website.","The workflow starts from the first contact.",["Source|Call / website","Time|Out of hours","Customer|Needs help","Status|New enquiry"]],
+["Frontline AI answers instantly","Frontline AI responds immediately, even when your team is busy.","Instant response","The first response is handled straight away.","The AI can answer and begin collecting the right information.",["Response|Instant","Channel|Phone / web","Tone|Helpful","Goal|Move forward"]],
+["It understands what they need","It asks enough to understand the reason for the enquiry.","Intent","The customer need is identified.","Booking, quote request, callback, question or urgent job can each follow a different route.",["Intent|Booking request","Type|New customer","Urgency|Normal","Route|Appointment path"]],
+["It captures the right details","The details your team needs are captured before the handover.","Details","Name, contact details and key notes collected.","No more vague missed-call notes with no context.",["Name|Customer","Phone|Captured","Need|Summarised","Notes|Ready"]],
+["It offers a callback or appointment","If the workflow allows it, the AI can offer a callback or slot.","Next action","The customer is offered a practical next step.","Callback, appointment, quote request, consultation or team handover.",["Option 1|Callback","Option 2|Appointment","Slot|Available","Choice|Confirmed"]],
+["It sends confirmation","The customer receives confirmation so they know it has been handled.","Confirmation","SMS or email confirmation sent.","The customer is reassured and the business looks responsive.",["SMS|Confirmed","Email|Optional","Message|Clear","Customer|Updated"]],
+["It alerts the right person","The right person or team gets the enquiry with context included.","Handover","Staff receive a useful summary.","The notification includes customer, need, urgency and next action.",["Team|Notified","Summary|Included","Priority|Set","Action|Follow up"]],
+["The lead is saved for follow-up","Everything is logged so the enquiry can be followed up properly.","Logged","The lead is saved and ready for follow-up.","The business gets a structured record instead of another missed opportunity.",["Lead|Saved","Status|Open","Owner|Assigned","Outcome|Handled"]]
+]}}
+var mode="who",step=0,timer,mediaMap={who:[],how:[]};
+function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
+function mediaHtml(item){if(!item||!item.media){mediaStage.className="mediaStage empty";return ""}var url=String(item.media||"");var zoom=Number(item.zoom||1.08);if(!isFinite(zoom)||zoom<1)zoom=1.08;if(zoom>1.35)zoom=1.35;mediaStage.className="mediaStage";mediaStage.style.setProperty("--mediaZoom",zoom);var safe=esc(url);var presenterUrl=String(item.presenter||"");var presenterHtml=presenterUrl?'<div class="presenterCutout"><img src="'+esc(presenterUrl)+'" alt=""></div>':'';if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url)){return '<video src="'+safe+'" muted autoplay loop playsinline></video>'+presenterHtml}return '<img src="'+safe+'" alt="">'+presenterHtml}
+function render(){var d=data[mode],s=d.steps[step],m=(mediaMap[mode]||[])[step]||{};mainTitle.textContent=d.title;mainSub.textContent=d.sub;demoTitle.textContent=d.demo;cta.textContent=d.cta;presenter.textContent=s[1];kicker.textContent=s[2];screenTitle.textContent=s[3];screenCopy.textContent=s[4];mediaStage.innerHTML=mediaHtml(m);count.textContent="Step "+(step+1)+" of "+d.steps.length;checklist.innerHTML=d.steps.map(function(x,i){return '<div class="step '+(i===step?'active':'')+'" onclick="setStep('+i+')"><div class="num">'+(i+1)+'</div><div>'+x[0]+'</div></div>'}).join("");grid.innerHTML=s[5].map(function(x){var p=x.split("|");return '<div class="mini"><small>'+p[0]+'</small><b>'+p[1]+'</b></div>'}).join("");tabWho.className=mode==="who"?"active":"";tabHow.className=mode==="how"?"active":""}
+function setStep(i){step=i;render();restart()}
+function setMode(m){mode=m;step=0;render();restart()}
+function next(){step=(step+1)%data[mode].steps.length;render()}
+function restart(){clearInterval(timer);timer=setInterval(next,2350)}
+tabWho.onclick=function(){setMode("who")};tabHow.onclick=function(){setMode("how")};fetch("/api/demo-video-media").then(function(r){return r.json()}).then(function(j){mediaMap=j.media||mediaMap;render();restart()}).catch(function(){render();restart()});
+/* FRONTLINE_DEMO_MEDIA_GROW_V1 */
+/* FRONTLINE_DEMO_PRESENTER_MEDIA_V1 */
+</script>
+</body>
+</html>

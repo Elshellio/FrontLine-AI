@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Frontline AI Demo Media Admin</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#07111f;color:#f7f1dc}
+main{max-width:1180px;margin:0 auto;padding:28px}
+h1{margin:0 0 8px;font-size:34px}
+p{color:#b8c2d6}
+section{margin-top:22px;border:1px solid rgba(255,255,255,.16);border-radius:18px;padding:18px;background:rgba(255,255,255,.06)}
+h2{margin:0 0 14px;color:#e4c764}
+.row{display:grid;grid-template-columns:220px 1fr 170px 1fr 170px 120px;gap:12px;align-items:center;margin:12px 0}
+label{font-weight:700;color:#fff}
+input{width:100%;box-sizing:border-box;border-radius:10px;border:1px solid rgba(255,255,255,.18);background:#0d1a2e;color:#fff;padding:10px}
+input[type=file]{padding:8px}
+input[type=range]{accent-color:#e4c764}
+button{border:0;border-radius:12px;background:#e4c764;color:#07111f;padding:11px 16px;font-weight:900;cursor:pointer}
+.save{margin-top:22px}
+.status{margin-top:14px;color:#7ee0ae;font-weight:700}
+a{color:#e4c764}
+small{color:#b8c2d6}
+.preview{max-width:160px;max-height:90px;border-radius:10px;background:#050b14;border:1px solid rgba(255,255,255,.14)}
+@media(max-width:900px){.row{grid-template-columns:1fr}.preview{max-width:100%}}
+</style>
+</head>
+<body>
+<main>
+<h1>Demo media admin</h1>
+<p>Upload a video/image or paste a URL for each checklist step. Zoom gives the small CapCut-style push-in effect.</p>
+<p><a href="/advertising/frontline-ai-demo-videos.html" target="_blank">Open demo page</a></p>
+<div id="admin"></div>
+<button id="saveBtn" class="save">Save media mapping</button>
+<div id="status" class="status"></div>
+</main>
+<script>
+var media={who:[],how:[]};
+
+function escapeHtml(s){
+  return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+}
+
+function previewHtml(url,zoom){
+  if(!url)return "<small>No media set</small>";
+  var safe=escapeHtml(url);
+  var z=Number(zoom||1);
+  if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url)){
+    return '<video class="preview" src="'+safe+'" muted playsinline controls style="transform:scale('+z+');transform-origin:center"></video>';
+  }
+  return '<img class="preview" src="'+safe+'" style="transform:scale('+z+');transform-origin:center">';
+}
+
+function render(){
+  var html="";
+  [["who","Video 1 · Who is it for?"],["how","Video 2 · How does it work?"]].forEach(function(group){
+    html+='<section><h2>'+group[1]+'</h2>';
+    (media[group[0]]||[]).forEach(function(item,i){
+      var zoom=Number(item.zoom||1);
+      html+='<div class="row">';
+      html+='<label>'+escapeHtml(item.label)+'</label>';
+      html+='<input data-kind="url" data-group="'+group[0]+'" data-index="'+i+'" value="'+escapeHtml(item.media||'')+'" placeholder="/assets/demo-video-media/example.mp4">';
+      html+='<input data-kind="file" data-group="'+group[0]+'" data-index="'+i+'" type="file" accept="video/mp4,video/webm,video/quicktime,image/png,image/jpeg,image/webp">';
+      html+='<input data-kind="presenterUrl" data-group="'+group[0]+'" data-index="'+i+'" value="'+escapeHtml(item.presenter||'')+'" placeholder="Presenter cut-out image URL">';
+      html+='<input data-kind="presenterFile" data-group="'+group[0]+'" data-index="'+i+'" type="file" accept="image/png,image/jpeg,image/webp">';
+      html+='<div><input data-kind="zoom" data-group="'+group[0]+'" data-index="'+i+'" type="range" min="1" max="1.35" step="0.01" value="'+zoom+'"><small>Zoom '+zoom.toFixed(2)+'</small></div>';
+      html+='<div>'+previewHtml(item.media,zoom)+'</div>';
+      html+='</div>';
+    });
+    html+='</section>';
+  });
+  admin.innerHTML=html;
+  bindInputs();
+}
+
+function bindInputs(){
+  document.querySelectorAll("input[data-kind=url]").forEach(function(input){
+    input.oninput=function(){
+      var item=media[input.dataset.group][Number(input.dataset.index)];
+      item.media=input.value.trim();
+    };
+  });
+  document.querySelectorAll("input[data-kind=presenterUrl]").forEach(function(input){
+    input.oninput=function(){
+      var item=media[input.dataset.group][Number(input.dataset.index)];
+      item.presenter=input.value.trim();
+    };
+  });
+  document.querySelectorAll("input[data-kind=presenterUrl]").forEach(function(input){
+    media[input.dataset.group][Number(input.dataset.index)].presenter=input.value.trim();
+  });
+  document.querySelectorAll("input[data-kind=zoom]").forEach(function(input){
+    input.oninput=function(){
+      var item=media[input.dataset.group][Number(input.dataset.index)];
+      item.zoom=Number(input.value);
+      render();
+    };
+  });
+  document.querySelectorAll("input[data-kind=presenterFile]").forEach(function(input){
+    input.onchange=function(){
+      var file=input.files&&input.files[0];
+      if(!file)return;
+      status.textContent="Uploading presenter "+file.name+"...";
+      var reader=new FileReader();
+      reader.onload=function(){
+        fetch("/api/demo-video-media-upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({filename:file.name,base64:reader.result})})
+          .then(function(r){return r.json()})
+          .then(function(j){
+            if(!j.ok)throw new Error((j.errors&&j.errors[0])||"Upload failed");
+            var item=media[input.dataset.group][Number(input.dataset.index)];
+            item.presenter=j.url;
+            status.textContent="Presenter uploaded. Save mapping to keep it assigned.";
+            render();
+          })
+          .catch(function(e){status.textContent=e.message||"Upload failed";});
+      };
+      reader.readAsDataURL(file);
+    };
+  });
+  document.querySelectorAll("input[data-kind=file]").forEach(function(input){
+    input.onchange=function(){
+      var file=input.files&&input.files[0];
+      if(!file)return;
+      status.textContent="Uploading "+file.name+"...";
+      var reader=new FileReader();
+      reader.onload=function(){
+        fetch("/api/demo-video-media-upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({filename:file.name,base64:reader.result})})
+          .then(function(r){return r.json()})
+          .then(function(j){
+            if(!j.ok)throw new Error((j.errors&&j.errors[0])||"Upload failed");
+            var item=media[input.dataset.group][Number(input.dataset.index)];
+            item.media=j.url;
+            status.textContent="Uploaded. Save mapping to keep it assigned.";
+            render();
+          })
+          .catch(function(e){status.textContent=e.message||"Upload failed";});
+      };
+      reader.readAsDataURL(file);
+    };
+  });
+}
+
+function collect(){
+  document.querySelectorAll("input[data-kind=url]").forEach(function(input){
+    media[input.dataset.group][Number(input.dataset.index)].media=input.value.trim();
+  });
+  document.querySelectorAll("input[data-kind=zoom]").forEach(function(input){
+    media[input.dataset.group][Number(input.dataset.index)].zoom=Number(input.value);
+  });
+}
+
+fetch("/api/demo-video-media").then(function(r){return r.json()}).then(function(j){
+  media=j.media||{who:[],how:[]};
+  media.who.forEach(function(x){if(!x.zoom)x.zoom=1});
+  media.how.forEach(function(x){if(!x.zoom)x.zoom=1});
+  render();
+}).catch(function(){
+  status.textContent="Could not load media JSON.";
+});
+
+saveBtn.onclick=function(){
+  collect();
+  status.textContent="Saving...";
+  fetch("/api/demo-video-media",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({media:media})})
+    .then(function(r){return r.json()})
+    .then(function(j){
+      if(!j.ok) throw new Error("Save failed");
+      media=j.media;
+      render();
+      status.textContent="Saved.";
+    })
+    .catch(function(e){status.textContent=e.message||"Save failed.";});
+};
+/* FRONTLINE_DEMO_ADMIN_PRESENTER_MEDIA_V1 */
+</script>
+</body>
+</html>
