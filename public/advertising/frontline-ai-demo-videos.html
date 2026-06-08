@@ -276,6 +276,129 @@ p,
   margin: 0 auto;
 }
 
+
+/* FRONTLINE_DEMO_INDEPENDENT_PRESENTER_V1 */
+.globalPresenter {
+  margin: 22px 0 22px;
+  border: 1px solid rgba(228,199,100,.42);
+  border-radius: 24px;
+  background: linear-gradient(135deg, rgba(228,199,100,.14), rgba(126,224,174,.06));
+  padding: 14px;
+  box-shadow: 0 18px 50px rgba(0,0,0,.28);
+}
+
+.globalPresenter.empty {
+  display: block;
+}
+
+.globalPresenterLabel {
+  color: #e4c764;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  margin: 0 0 10px;
+}
+
+.globalPresenterFrame {
+  border-radius: 18px;
+  overflow: hidden;
+  background: #07111f;
+  aspect-ratio: 16 / 9;
+  display: grid;
+  place-items: center;
+}
+
+.globalPresenterFrame video,
+.globalPresenterFrame img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Presenter is now independent in the left column, not a right-card cutout */
+.mediaStage .presenterCutout {
+  display: none !important;
+}
+
+
+/* FRONTLINE_DEMO_PRESENTER_PLACEHOLDER_VISIBLE_V1 */
+.globalPresenterPlaceholder {
+  width: 100%;
+  height: 100%;
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  padding: 18px;
+  color: #d0e6f2;
+  font-weight: 800;
+  background:
+    radial-gradient(circle at 30% 20%, rgba(126,224,174,.18), transparent 34%),
+    linear-gradient(135deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+}
+
+.globalPresenterPlaceholder span {
+  display: block;
+  max-width: 260px;
+  line-height: 1.35;
+}
+
+.globalPresenterPlaceholder small {
+  display: block;
+  margin-top: 8px;
+  color: rgba(208,230,242,.74);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+
+/* FRONTLINE_DEMO_HIDE_PRESENTER_LABEL_V1 */
+.globalPresenterLabel {
+  display: none !important;
+}
+
+.globalPresenter {
+  margin-top: 18px !important;
+}
+
+
+/* FRONTLINE_DEMO_PRESENTER_CONTAIN_V1 */
+.globalPresenterFrame {
+  background: #07111f !important;
+}
+
+.globalPresenterFrame video,
+.globalPresenterFrame img {
+  object-fit: contain !important;
+  object-position: center center !important;
+  background: #07111f !important;
+}
+
+
+/* FRONTLINE_DEMO_PRESENTER_NATURAL_RATIO_V1 */
+.globalPresenterFrame {
+  aspect-ratio: auto !important;
+  display: block !important;
+  background: #07111f !important;
+}
+
+.globalPresenterFrame video,
+.globalPresenterFrame img {
+  width: 100% !important;
+  height: auto !important;
+  max-height: none !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  display: block !important;
+  background: #07111f !important;
+}
+
+.globalPresenter {
+  overflow: hidden !important;
+}
+
 </style>
 </head>
 <body>
@@ -287,6 +410,7 @@ p,
 </div>
 <h1 id="mainTitle"></h1>
 <p id="mainSub"></p>
+<div id="globalPresenter" class="globalPresenter empty"></div>
 <div id="checklist" class="checklist"></div>
 
 </section>
@@ -326,9 +450,39 @@ how:{title:"One enquiry comes in. The workflow starts automatically.",sub:"This 
 ["It alerts the right person","The right person or team gets the enquiry with context included.","Handover","Staff receive a useful summary.","The notification includes customer, need, urgency and next action.",["Team|Notified","Summary|Included","Priority|Set","Action|Follow up"]],
 ["The lead is saved for follow-up","Everything is logged so the enquiry can be followed up properly.","Logged","The lead is saved and ready for follow-up.","The business gets a structured record instead of another missed opportunity.",["Lead|Saved","Status|Open","Owner|Assigned","Outcome|Handled"]]
 ]}}
-var mode="who",step=0,timer,mediaMap={who:[],how:[]};
+var mode="who",step=0,timer,mediaMap={who:[],how:[]},presenterCurrentUrl="";
 function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function mediaHtml(item){if(!item||!item.media){mediaStage.className="mediaStage empty";return ""}var url=String(item.media||"");var zoom=Number(item.zoom||1.08);if(!isFinite(zoom)||zoom<1)zoom=1.08;if(zoom>1.35)zoom=1.35;mediaStage.className="mediaStage";mediaStage.style.setProperty("--mediaZoom",zoom);var safe=esc(url);var presenterUrl=String(item.presenter||"");var presenterHtml=presenterUrl?'<div class="presenterCutout"><img src="'+esc(presenterUrl)+'" alt=""></div>':'';if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url)){return '<video src="'+safe+'" muted autoplay loop playsinline></video>'+presenterHtml}return '<img src="'+safe+'" alt="">'+presenterHtml}
+function findGlobalPresenterUrl(){
+  var presenters=mediaMap.presenters||{};
+  var configured=presenters[mode]&&presenters[mode].url?String(presenters[mode].url):"";
+  if(configured)return configured;
+  var arr=mediaMap[mode]||[];
+  for(var i=0;i<arr.length;i++){
+    if(arr[i]&&arr[i].presenter)return String(arr[i].presenter);
+  }
+  return "";
+}
+function renderGlobalPresenter(){
+  var box=document.getElementById("globalPresenter");
+  if(!box)return;
+  var url=findGlobalPresenterUrl();
+  if(!url){
+    presenterCurrentUrl="";
+    box.className="globalPresenter empty";
+    box.innerHTML='<div class="globalPresenterLabel">AI presenter</div><div class="globalPresenterFrame"><div class="globalPresenterPlaceholder"><span>Presenter video will appear here</span><small>Upload once in media admin</small></div></div>';
+    return;
+  }
+  if(url===presenterCurrentUrl)return;
+  presenterCurrentUrl=url;
+  var safe=esc(url);
+  var media=/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url)
+    ? '<video src="'+safe+'" muted autoplay loop playsinline controls></video>'
+    : '<img src="'+safe+'" alt="">';
+  box.className="globalPresenter";
+  box.innerHTML='<div class="globalPresenterLabel">AI presenter</div><div class="globalPresenterFrame">'+media+'</div>';
+}
+
 function render(){
   var d=data[mode],s=d.steps[step],m=(mediaMap[mode]||[])[step]||{};
   var presenterText=m.presenter_text||s[1];
@@ -348,6 +502,7 @@ function render(){
   mediaStage.innerHTML=mediaHtml(m);
   count.textContent="Step "+(step+1)+" of "+d.steps.length;
 
+  renderGlobalPresenter();
   checklist.innerHTML=d.steps.map(function(x,i){
     var mm=(mediaMap[mode]||[])[i]||{};
     return '<div class="step '+(i===step?'active':'')+'" onclick="setStep('+i+')"><div class="num">'+(i+1)+'</div><div>'+esc(mm.label||x[0])+'</div></div>';

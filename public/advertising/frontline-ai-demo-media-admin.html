@@ -72,6 +72,17 @@ input[type=range]{accent-color:var(--gold)}
   .editor{grid-template-columns:1fr}
   .grid2{grid-template-columns:1fr}
 }
+
+/* FRONTLINE_DEMO_GLOBAL_PRESENTER_ADMIN_V1 */
+.globalPresenterAdmin {
+  border: 1px solid rgba(228,199,100,.45);
+  background: linear-gradient(135deg, rgba(228,199,100,.12), rgba(126,224,174,.05));
+}
+
+.globalPresenterAdmin h3 {
+  color: var(--gold);
+}
+
 </style>
 </head>
 <body>
@@ -120,6 +131,9 @@ function setStatus(msg,bad){
   statusEl.style.color=bad?"var(--red)":"var(--green)";
 }
 function ensure(){
+  if(!media.presenters)media.presenters={who:{url:""},how:{url:""}};
+  ["who","how"].forEach(function(g){if(!media.presenters[g])media.presenters[g]={url:""};});
+
   ["who","how"].forEach(function(group){
     if(!Array.isArray(media[group]))media[group]=[];
     defaults[group].forEach(function(label,i){
@@ -157,6 +171,24 @@ function field(group,i,key,label,value,area){
 function card(group,i,c,value){
   return '<div><label>Small card '+(c+1)+'</label><input data-kind="card" data-card="'+c+'" data-group="'+group+'" data-index="'+i+'" value="'+esc(value||'')+'" placeholder="Label | Value"></div>';
 }
+
+function globalPresenterHtml(group){
+  var item=(media.presenters&&media.presenters[group])?media.presenters[group]:{url:""};
+  var url=String(item.url||"");
+  var html='<div class="card mediaBox globalPresenterAdmin">';
+  html+='<h3>AI presenter for this video</h3>';
+  html+='<p>This presenter plays independently on the preview. It does not restart when the carousel step changes.</p>';
+  if(url){
+    if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url))html+='<div class="previewWrap"><video src="'+esc(url)+'" muted playsinline controls></video></div>';
+    else html+='<div class="previewWrap"><img src="'+esc(url)+'" alt=""></div>';
+  } else {
+    html+='<div class="previewWrap"><div class="emptyPreview">No presenter selected</div></div>';
+  }
+  html+='<div class="fileRow"><label>Presenter video/image URL</label><input data-kind="globalPresenterUrl" data-group="'+group+'" value="'+esc(url)+'" placeholder="/assets/demo-video-media/presenter.mp4"><input data-kind="globalPresenterFile" data-group="'+group+'" type="file" accept="video/mp4,video/webm,video/quicktime,image/png,image/jpeg,image/webp"></div>';
+  html+='</div>';
+  return html;
+}
+
 function sceneHtml(group,item,i){
   var open=i===0?' open':'';
   var label=item.label||defaults[group][i]||("Scene "+(i+1));
@@ -181,7 +213,7 @@ function sceneHtml(group,item,i){
   html+='<div class="card mediaBox"><h3>Media & preview</h3>';
   html+=mediaPreview(item);
   html+='<div class="fileRow"><label>Main image/video URL</label><input data-kind="url" data-group="'+group+'" data-index="'+i+'" value="'+esc(item.media||'')+'" placeholder="/assets/demo-video-media/example.png"><input data-kind="file" data-field="media" data-group="'+group+'" data-index="'+i+'" type="file" accept="video/mp4,video/webm,video/quicktime,image/png,image/jpeg,image/webp"></div>';
-  html+='<div class="fileRow"><label>Presenter cut-out URL</label><input data-kind="presenterUrl" data-group="'+group+'" data-index="'+i+'" value="'+esc(item.presenter||'')+'" placeholder="/assets/demo-video-media/presenter.png"><input data-kind="file" data-field="presenter" data-group="'+group+'" data-index="'+i+'" type="file" accept="image/png,image/jpeg,image/webp"></div>';
+  html+='<div class="fileRow"><label>Presenter cut-out URL</label><input data-kind="presenterUrl" data-group="'+group+'" data-index="'+i+'" value="'+esc(item.presenter||'')+'" placeholder="/assets/demo-video-media/presenter.png"><input data-kind="file" data-field="presenter" data-group="'+group+'" data-index="'+i+'" type="file" accept="video/mp4,video/webm,video/quicktime,image/png,image/jpeg,image/webp"></div>';
   html+='<div class="zoomRow"><input data-kind="zoom" data-group="'+group+'" data-index="'+i+'" type="range" min="1" max="1.35" step="0.01" value="'+zoom+'"><strong>'+zoom.toFixed(2)+'</strong></div>';
   html+='</div></div></div></div>';
   return html;
@@ -193,6 +225,7 @@ function render(){
     var group=pair[0],title=pair[1];
     var hidden=activeFilter!=="all"&&activeFilter!==group?' hidden':'';
     html+='<section class="group'+hidden+'" data-group="'+group+'"><div class="groupTitle"><h2>'+title+'</h2><small>'+media[group].length+' scenes</small></div>';
+    html+=globalPresenterHtml(group);
     media[group].forEach(function(item,i){html+=sceneHtml(group,item,i)});
     html+='</section>';
   });
@@ -220,6 +253,37 @@ function bindInputs(){
   document.querySelectorAll("input[data-kind=zoom]").forEach(function(input){
     input.oninput=function(){media[input.dataset.group][Number(input.dataset.index)].zoom=Number(input.value);render();};
   });
+
+  document.querySelectorAll("input[data-kind=globalPresenterUrl]").forEach(function(input){
+    input.oninput=function(){
+      if(!media.presenters)media.presenters={};
+      if(!media.presenters[input.dataset.group])media.presenters[input.dataset.group]={url:""};
+      media.presenters[input.dataset.group].url=input.value.trim();
+    };
+  });
+  document.querySelectorAll("input[data-kind=globalPresenterFile]").forEach(function(input){
+    input.oninput=function(){
+      var file=input.files&&input.files[0];
+      if(!file)return;
+      setStatus("Uploading presenter "+file.name+"...");
+      var reader=new FileReader();
+      reader.onload=function(){
+        fetch("/api/demo-video-media-upload",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({filename:file.name,base64:reader.result})})
+          .then(function(r){return r.json()})
+          .then(function(j){
+            if(!j.ok)throw new Error(j.error||"upload failed");
+            if(!media.presenters)media.presenters={};
+            if(!media.presenters[input.dataset.group])media.presenters[input.dataset.group]={url:""};
+            media.presenters[input.dataset.group].url=j.url;
+            setStatus("Presenter uploaded");
+            render();
+          })
+          .catch(function(e){setStatus(e.message||"Presenter upload failed",true)});
+      };
+      reader.readAsDataURL(file);
+    };
+  });
+
   document.querySelectorAll("input[data-kind=file]").forEach(function(input){
     input.onchange=function(){
       var file=input.files&&input.files[0];
@@ -250,7 +314,13 @@ function collect(){
   });
   document.querySelectorAll("input[data-kind=url]").forEach(function(input){media[input.dataset.group][Number(input.dataset.index)].media=input.value.trim();});
   document.querySelectorAll("input[data-kind=presenterUrl]").forEach(function(input){media[input.dataset.group][Number(input.dataset.index)].presenter=input.value.trim();});
+  document.querySelectorAll("input[data-kind=globalPresenterUrl]").forEach(function(input){
+    if(!media.presenters)media.presenters={};
+    if(!media.presenters[input.dataset.group])media.presenters[input.dataset.group]={url:""};
+    media.presenters[input.dataset.group].url=input.value.trim();
+  });
   document.querySelectorAll("input[data-kind=zoom]").forEach(function(input){media[input.dataset.group][Number(input.dataset.index)].zoom=Number(input.value);});
+  /* FRONTLINE_DEMO_GLOBAL_PRESENTER_SAVE_FIX_V1 */
 }
 document.querySelectorAll(".filters button").forEach(function(btn){
   btn.onclick=function(){

@@ -1761,12 +1761,22 @@ const server = http.createServer(async (req, res) => {
         export_url: cleanText(item && item.export_url, 1000)
       })).filter(item => item.label) : [];
 
-      const media = {
-        who: normaliseGroup(input.media && input.media.who),
-        how: normaliseGroup(input.media && input.media.how)
-      };
+      const normalisePresenter = (item) => ({
+          url: cleanText(item && item.url, 1000)
+        });
 
-      fs.writeFileSync(DEMO_VIDEO_MEDIA_FILE, JSON.stringify(media, null, 2), "utf8");
+        const media = {
+          who: normaliseGroup(input.media && input.media.who),
+          how: normaliseGroup(input.media && input.media.how),
+          presenters: {
+            who: normalisePresenter(input.media && input.media.presenters && input.media.presenters.who),
+            how: normalisePresenter(input.media && input.media.presenters && input.media.presenters.how)
+          }
+        };
+
+        // FRONTLINE_DEMO_MEDIA_PRESENTERS_API_V3
+
+        fs.writeFileSync(DEMO_VIDEO_MEDIA_FILE, JSON.stringify(media, null, 2), "utf8");
       return sendJson(res, 200, { ok: true, media });
     }
 
