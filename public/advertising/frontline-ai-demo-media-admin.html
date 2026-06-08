@@ -103,6 +103,11 @@ input[type=range]{accent-color:var(--gold)}
 /* FRONTLINE_DEMO_ADMIN_ACCORDION_EDITOR_V1 */
 var media={who:[],how:[]};
 var activeFilter="all";
+var adminEl=document.getElementById("admin");
+var statusEl=document.getElementById("status");
+var saveButton=document.getElementById("saveBtn");
+var expandAllButton=document.getElementById("expandAllBtn");
+var collapseAllButton=document.getElementById("collapseAllBtn");
 
 var defaults={
   who:["Service businesses","Busy teams","Appointment-based services","Trades and field-service firms","Professional service businesses","Local firms with manual follow-up","Businesses ready to automate first response"],
@@ -110,7 +115,10 @@ var defaults={
 };
 
 function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
-function setStatus(msg,bad){status.textContent=msg;status.style.color=bad?"var(--red)":"var(--green)"}
+function setStatus(msg,bad){
+  statusEl.textContent=msg;
+  statusEl.style.color=bad?"var(--red)":"var(--green)";
+}
 function ensure(){
   ["who","how"].forEach(function(group){
     if(!Array.isArray(media[group]))media[group]=[];
@@ -188,7 +196,7 @@ function render(){
     media[group].forEach(function(item,i){html+=sceneHtml(group,item,i)});
     html+='</section>';
   });
-  admin.innerHTML=html;
+  adminEl.innerHTML=html;
   bindInputs();
 }
 function toggleScene(head){head.parentNode.classList.toggle("open")}
@@ -252,20 +260,31 @@ document.querySelectorAll(".filters button").forEach(function(btn){
     render();
   };
 });
-expandAllBtn.onclick=function(){document.querySelectorAll(".scene").forEach(function(x){x.classList.add("open")})};
-collapseAllBtn.onclick=function(){document.querySelectorAll(".scene").forEach(function(x){x.classList.remove("open")})};
-saveBtn.onclick=function(){
+expandAllButton.onclick=function(){document.querySelectorAll(".scene").forEach(function(x){x.classList.add("open")})};
+collapseAllButton.onclick=function(){document.querySelectorAll(".scene").forEach(function(x){x.classList.remove("open")})};
+
+saveButton.onclick=function(){
   collect();
   setStatus("Saving...");
+  saveButton.disabled=true;
   fetch("/api/demo-video-media",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({media:media})})
-    .then(function(r){return r.json()})
+    .then(function(r){
+      if(!r.ok)throw new Error("Save failed HTTP "+r.status);
+      return r.json();
+    })
     .then(function(j){
       if(!j.ok)throw new Error("Save failed");
+      return fetch("/api/demo-video-media?verify="+Date.now(),{cache:"no-store"});
+    })
+    .then(function(r){return r.json();})
+    .then(function(j){
       media=j.media||media;
-      setStatus("Saved.");
+      var first=(media.who&&media.who[0])?media.who[0]:{};
+      setStatus("Saved. First headline: "+(first.headline||"(blank)"));
       render();
     })
-    .catch(function(e){setStatus(e.message||"Save failed",true);});
+    .catch(function(e){setStatus(e.message||"Save failed",true);})
+    .finally(function(){saveButton.disabled=false;});
 };
 fetch("/api/demo-video-media").then(function(r){return r.json()}).then(function(j){
   media=j.media||media;
@@ -273,6 +292,8 @@ fetch("/api/demo-video-media").then(function(r){return r.json()}).then(function(
   render();
   setStatus("Ready");
 }).catch(function(){ensure();render();setStatus("Could not load saved media",true)});
+
+/* FRONTLINE_DEMO_ADMIN_FIX_SAVE_V1 */
 </script>
 </body>
 </html>
