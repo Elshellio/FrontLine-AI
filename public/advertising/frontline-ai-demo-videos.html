@@ -288,7 +288,38 @@ how:{title:"One enquiry comes in. The workflow starts automatically.",sub:"This 
 var mode="who",step=0,timer,mediaMap={who:[],how:[]};
 function esc(s){return String(s||"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;")}
 function mediaHtml(item){if(!item||!item.media){mediaStage.className="mediaStage empty";return ""}var url=String(item.media||"");var zoom=Number(item.zoom||1.08);if(!isFinite(zoom)||zoom<1)zoom=1.08;if(zoom>1.35)zoom=1.35;mediaStage.className="mediaStage";mediaStage.style.setProperty("--mediaZoom",zoom);var safe=esc(url);var presenterUrl=String(item.presenter||"");var presenterHtml=presenterUrl?'<div class="presenterCutout"><img src="'+esc(presenterUrl)+'" alt=""></div>':'';if(/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url)){return '<video src="'+safe+'" muted autoplay loop playsinline></video>'+presenterHtml}return '<img src="'+safe+'" alt="">'+presenterHtml}
-function render(){var d=data[mode],s=d.steps[step],m=(mediaMap[mode]||[])[step]||{};mainTitle.textContent=d.title;mainSub.textContent=d.sub;demoTitle.textContent=d.demo;cta.textContent=d.cta;presenter.textContent=s[1];kicker.textContent=s[2];screenTitle.textContent=s[3];screenCopy.textContent=s[4];mediaStage.innerHTML=mediaHtml(m);count.textContent="Step "+(step+1)+" of "+d.steps.length;checklist.innerHTML=d.steps.map(function(x,i){return '<div class="step '+(i===step?'active':'')+'" onclick="setStep('+i+')"><div class="num">'+(i+1)+'</div><div>'+x[0]+'</div></div>'}).join("");grid.innerHTML=s[5].map(function(x){var p=x.split("|");return '<div class="mini"><small>'+p[0]+'</small><b>'+p[1]+'</b></div>'}).join("");tabWho.className=mode==="who"?"active":"";tabHow.className=mode==="how"?"active":""}
+function render(){
+  var d=data[mode],s=d.steps[step],m=(mediaMap[mode]||[])[step]||{};
+  var presenterText=m.presenter_text||s[1];
+  var kickerText=m.kicker||s[2];
+  var headline=m.headline||s[3];
+  var body=m.body||s[4];
+  var cards=(Array.isArray(m.cards)&&m.cards.some(Boolean))?m.cards:s[5];
+
+  mainTitle.textContent=d.title;
+  mainSub.textContent=d.sub;
+  demoTitle.textContent=d.demo;
+  cta.textContent=d.cta;
+  presenter.textContent=presenterText;
+  kicker.textContent=kickerText;
+  screenTitle.textContent=headline;
+  screenCopy.textContent=body;
+  mediaStage.innerHTML=mediaHtml(m);
+  count.textContent="Step "+(step+1)+" of "+d.steps.length;
+
+  checklist.innerHTML=d.steps.map(function(x,i){
+    var mm=(mediaMap[mode]||[])[i]||{};
+    return '<div class="step '+(i===step?'active':'')+'" onclick="setStep('+i+')"><div class="num">'+(i+1)+'</div><div>'+esc(mm.label||x[0])+'</div></div>';
+  }).join("");
+
+  grid.innerHTML=cards.map(function(x){
+    var p=String(x||"").split("|");
+    return '<div class="mini"><small>'+esc(p[0]||"")+'</small><b>'+esc(p[1]||p[0]||"")+'</b></div>';
+  }).join("");
+
+  tabWho.className=mode==="who"?"active":"";
+  tabHow.className=mode==="how"?"active":"";
+}
 function setStep(i){step=i;render();restart()}
 function setMode(m){mode=m;step=0;render();restart()}
 function next(){step=(step+1)%data[mode].steps.length;render()}
@@ -296,6 +327,8 @@ function restart(){clearInterval(timer);timer=setInterval(next,2350)}
 tabWho.onclick=function(){setMode("who")};tabHow.onclick=function(){setMode("how")};fetch("/api/demo-video-media").then(function(r){return r.json()}).then(function(j){mediaMap=j.media||mediaMap;render();restart()}).catch(function(){render();restart()});
 /* FRONTLINE_DEMO_MEDIA_GROW_V1 */
 /* FRONTLINE_DEMO_PRESENTER_MEDIA_V1 */
+
+/* FRONTLINE_DEMO_EDITABLE_TEXT_PREVIEW_V2 */
 </script>
 </body>
 </html>
