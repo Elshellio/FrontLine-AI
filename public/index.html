@@ -2982,6 +2982,254 @@ h1{
   }
 }
 
+
+/* FRONTLINE_HOME_VIDEO_HERO_V1 */
+.homeVideoHero {
+  position: relative;
+  min-height: 860px;
+  padding: 74px 0 42px;
+  background:
+    radial-gradient(circle at 72% 24%, rgba(0,122,255,.18), transparent 34%),
+    radial-gradient(circle at 22% 72%, rgba(128,242,245,.10), transparent 36%),
+    linear-gradient(180deg, rgba(2,6,16,.98), rgba(2,6,16,.74) 58%, #020610 100%),
+    url('/assets/optimized/7.webp') center/cover no-repeat;
+  overflow: hidden;
+}
+
+.homeVideoHero::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 220px;
+  background: linear-gradient(180deg, transparent, #020610);
+  pointer-events: none;
+}
+
+.homeVideoHeroInner {
+  position: relative;
+  z-index: 2;
+  width: min(1180px, calc(100% - 56px));
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(360px, 0.9fr) minmax(520px, 1.25fr);
+  gap: 52px;
+  align-items: center;
+}
+
+.homeVideoEyebrow {
+  color: #2da7ff;
+  text-transform: uppercase;
+  letter-spacing: .16em;
+  font-weight: 900;
+  font-size: 13px;
+  margin-bottom: 18px;
+}
+
+.homeVideoHero h1 {
+  margin: 0;
+  max-width: 640px;
+  font-size: clamp(46px, 5.2vw, 78px);
+  line-height: .98;
+  letter-spacing: -.055em;
+  color: #fff;
+}
+
+.homeVideoHero h1 span {
+  color: #147dff;
+}
+
+.homeVideoIntro {
+  margin: 24px 0 0;
+  max-width: 590px;
+  color: rgba(255,255,255,.82);
+  font-size: 18px;
+  line-height: 1.58;
+}
+
+.homeVideoBtns {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 28px;
+}
+
+.homeTrustLine {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 28px;
+  color: rgba(255,255,255,.82);
+  font-weight: 700;
+}
+
+.homeTrustStars {
+  display: inline-flex;
+  gap: 3px;
+}
+
+.homeTrustStars span {
+  display: grid;
+  place-items: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 2px;
+  background: #00b67a;
+  color: #fff;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.homeHeroVideoShell {
+  border: 1px solid rgba(147,214,255,.34);
+  border-radius: 20px;
+  background: rgba(8,24,43,.72);
+  box-shadow: 0 24px 80px rgba(0,0,0,.45), 0 0 36px rgba(28,127,255,.12);
+  padding: 12px;
+}
+
+.homeHeroVideoShell video {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  background: #030814;
+}
+
+.homeHeroCards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.homeHeroCard {
+  display: grid;
+  grid-template-columns: 92px 1fr;
+  gap: 14px;
+  align-items: center;
+  min-height: 104px;
+  padding: 10px;
+  border: 1px solid rgba(147,214,255,.30);
+  border-radius: 16px;
+  background: rgba(13,36,61,.82);
+  text-decoration: none;
+  color: #fff;
+  transition: transform .18s ease, border-color .18s ease, background .18s ease;
+}
+
+.homeHeroCard:hover {
+  transform: translateY(-2px);
+  border-color: rgba(126,237,236,.78);
+  background: rgba(23,63,91,.92);
+}
+
+.homeHeroCard video {
+  width: 92px;
+  height: 70px;
+  object-fit: cover;
+  border-radius: 10px;
+  background: #020610;
+}
+
+.homeHeroCard strong {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.homeHeroCard span {
+  display: block;
+  color: rgba(255,255,255,.72);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.homeHeroCard small {
+  display: inline-block;
+  margin-top: 8px;
+  color: #8ff4ef;
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.homeHeroOutcomeBar {
+  position: relative;
+  z-index: 2;
+  width: min(980px, calc(100% - 56px));
+  margin: 40px auto 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border: 1px solid rgba(147,214,255,.26);
+  border-radius: 18px;
+  overflow: hidden;
+  background: rgba(4,13,26,.74);
+}
+
+.homeHeroOutcomeBar div {
+  padding: 18px 22px;
+  border-right: 1px solid rgba(147,214,255,.18);
+}
+
+.homeHeroOutcomeBar div:last-child {
+  border-right: 0;
+}
+
+.homeHeroOutcomeBar b {
+  display: block;
+  color: #fff;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.homeHeroOutcomeBar span {
+  color: rgba(255,255,255,.68);
+  font-size: 13px;
+}
+
+@media (max-width: 1050px) {
+  .homeVideoHero {
+    padding-top: 42px;
+    min-height: auto;
+  }
+
+  .homeVideoHeroInner {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .homeHeroOutcomeBar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .homeVideoHeroInner,
+  .homeHeroOutcomeBar {
+    width: min(100% - 30px, 1180px);
+  }
+
+  .homeHeroCards {
+    grid-template-columns: 1fr;
+  }
+
+  .homeHeroOutcomeBar {
+    grid-template-columns: 1fr;
+  }
+
+  .homeHeroOutcomeBar div {
+    border-right: 0;
+    border-bottom: 1px solid rgba(147,214,255,.18);
+  }
+
+  .homeHeroOutcomeBar div:last-child {
+    border-bottom: 0;
+  }
+}
+
 </style>
   <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260530-sidebar-neat-20260530-064549">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
@@ -2990,47 +3238,60 @@ h1{
 <body>
 <div class="page">
 <main class="main">
-    <header class="hero" id="home">
-      <div class="shell">
-        <div class="topbar">
-          <a class="btn" href="#resources">Resources</a>
-          <a class="btn blue" href="/book-demo.html">Book Fact-Find</a>
-        </div>
 
-        <div class="heroContent">
-          <div class="kicker">AI workers for businesses ready to grow</div>
-          <h1>AI WORKERS.<br><span class="blueText">REAL RESULTS.</span></h1>
-          <p class="lead">You know AI could help your business - but where do you start? Frontline AI finds the first practical job AI should do for you, then builds an AI worker around it: answering enquiries, qualifying leads, booking appointments and following up customers.</p>
-          <div class="heroBtns">
+    <header class="homeVideoHero hero" id="home">
+      <div class="homeVideoHeroInner">
+        <div class="homeVideoCopy">
+          <div class="homeVideoEyebrow">AI workers for businesses ready to grow</div>
+          <h1>AI workers that answer, book and follow up <span>for real businesses.</span></h1>
+          <p class="homeVideoIntro">Frontline AI gives service businesses practical AI workers for missed calls, enquiries, appointments and follow-up — built around the way your business already works.</p>
+
+          <div class="homeVideoBtns">
             <a class="btn blue" href="/book-demo.html">Book Fact-Find</a>
-            <a class="btn" href="#workers">Explore AI Workers</a>
+            <a class="btn" href="/advertising/frontline-ai-demo-videos.html">Watch How It Works</a>
+          </div>
+
+          <div class="homeTrustLine" aria-label="Trust rating">
+            <span class="homeTrustStars"><span>★</span><span>★</span><span>★</span><span>★</span><span>★</span></span>
+            <span>Practical AI for calls, bookings and follow-up</span>
           </div>
         </div>
 
-        <div class="ops" aria-label="Frontline AI outcomes">
-          <div class="op modalTrigger" data-modal="outcomeAnswer" tabindex="0" role="button" aria-label="Explore AI answering every enquiry">
-            <img class="opIcon" src="/assets/optimized/icon-answer.webp" alt="">
-            <div class="opText"><strong>Answer</strong><span>Every enquiry</span></div>
+        <div class="homeVideoPanel">
+          <div class="homeHeroVideoShell">
+            <video src="/assets/demo-video-media/1780928319272-mainvideo.mp4" controls playsinline preload="metadata"></video>
           </div>
-          <div class="op modalTrigger" data-modal="outcomeBook" tabindex="0" role="button" aria-label="Explore AI appointment booking">
-            <img class="opIcon" src="/assets/optimized/icon-book.webp" alt="">
-            <div class="opText"><strong>Book</strong><span>More appointments</span></div>
-          </div>
-          <div class="op modalTrigger" data-modal="outcomeQualify" tabindex="0" role="button" aria-label="Explore AI lead qualification">
-            <img class="opIcon" src="/assets/optimized/icon-qualify.webp" alt="">
-            <div class="opText"><strong>Qualify</strong><span>Better leads</span></div>
-          </div>
-          <div class="op modalTrigger" data-modal="outcomeFollow" tabindex="0" role="button" aria-label="Explore AI follow up">
-            <img class="opIcon" src="/assets/optimized/icon-follow-up.webp" alt="">
-            <div class="opText"><strong>Follow up</strong><span>Automatically</span></div>
-          </div>
-          <div class="op modalTrigger" data-modal="outcomeGrow" tabindex="0" role="button" aria-label="Explore AI growth capacity">
-            <img class="opIcon" src="/assets/optimized/icon-grow.webp" alt="">
-            <div class="opText"><strong>Grow</strong><span>More capacity</span></div>
+
+          <div class="homeHeroCards">
+            <a class="homeHeroCard" href="/advertising/frontline-ai-demo-videos.html">
+              <video src="/assets/demo-video-media/1780933251681-312904184525606.mp4" muted playsinline preload="metadata"></video>
+              <span>
+                <strong>Who it is for</strong>
+                <span>See which businesses benefit first.</span>
+                <small>Watch section</small>
+              </span>
+            </a>
+
+            <a class="homeHeroCard" href="/advertising/frontline-ai-demo-videos.html">
+              <video src="/assets/demo-video-media/1780933942452-1.mp4" muted playsinline preload="metadata"></video>
+              <span>
+                <strong>How it works</strong>
+                <span>From first enquiry to saved lead.</span>
+                <small>Watch section</small>
+              </span>
+            </a>
           </div>
         </div>
       </div>
+
+      <div class="homeHeroOutcomeBar" aria-label="Frontline AI outcomes">
+        <div><b>Answer</b><span>Every enquiry</span></div>
+        <div><b>Book</b><span>More appointments</span></div>
+        <div><b>Follow up</b><span>Automatically</span></div>
+        <div><b>Grow</b><span>More capacity</span></div>
+      </div>
     </header>
+
 
         <section class="section" id="capacity">
       <div class="shell">
