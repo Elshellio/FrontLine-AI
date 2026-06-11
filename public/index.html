@@ -819,7 +819,7 @@ h1{
   position:relative;
   z-index:3;
   width:112px;
-  height:112px;
+  height:96px;
   flex-basis:112px;
   border-radius:28px;
   padding:16px;
@@ -1061,7 +1061,7 @@ h1{
   backdrop-filter:blur(14px);
 }
 .websiteMainPreview{
-  min-height:230px;
+  min-height:205px;
   border-radius:22px;
   padding:18px;
   display:flex;
@@ -3213,6 +3213,285 @@ h1{
   }
 }
 
+
+/* MANAGED_AI_SERVICE_REFRESH_V1 */
+.managedServiceRefresh{
+  position:relative;
+  overflow:hidden;
+}
+.managedServiceHero{
+  display:grid;
+  grid-template-columns:minmax(0, 1fr) minmax(320px, 480px);
+  gap:34px;
+  align-items:stretch;
+}
+.managedServiceIntro{
+  min-height:420px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.managedServiceIntro h2{
+  max-width:720px;
+  margin:16px 0 18px;
+  font-size:clamp(42px,5.2vw,76px);
+  line-height:.98;
+  letter-spacing:-.06em;
+}
+.managedServiceIntro p{
+  max-width:680px;
+  margin:0;
+  color:rgba(238,246,255,.78);
+  font-size:20px;
+  line-height:1.55;
+}
+.managedServiceActions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:30px;
+}
+.managedServiceProof{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:28px;
+  color:rgba(238,246,255,.76);
+  font-size:14px;
+}
+.managedServiceProof span{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+}
+.managedServiceProof span:before{
+  content:"";
+  display:inline-grid;
+  place-items:center;
+  width:20px;
+  height:20px;
+  border:1px solid rgba(60,165,255,.72);
+  border-radius:999px;
+  color:#3aa7ff;
+  font-weight:900;
+}
+.managedServiceVideoCard{
+  width:100%;
+  max-width:480px;
+  justify-self:end;
+  border:1px solid rgba(60,165,255,.45);
+  border-radius:26px;
+  padding:20px;
+  background:
+    radial-gradient(circle at 78% 22%, rgba(24,132,255,.18), transparent 38%),
+    linear-gradient(145deg, rgba(7,20,42,.94), rgba(2,7,18,.92));
+  box-shadow:0 36px 110px rgba(0,0,0,.46), inset 0 1px 0 rgba(255,255,255,.14);
+}
+.managedServiceVideoLabel{
+  margin:0 0 14px;
+  color:#fff;
+  font-size:25px;
+  font-weight:900;
+  letter-spacing:-.03em;
+}
+.managedServiceVideoFrame{
+  position:relative;
+  aspect-ratio:1 / 1;
+  min-height:0;
+  border-radius:20px;
+  overflow:hidden;
+  background:#030814;
+  border:1px solid rgba(255,255,255,.10);
+}
+.managedServiceVideoFrame video{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.managedServiceVideoFallback{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  text-align:center;
+  padding:28px;
+  background:
+    linear-gradient(90deg, rgba(2,6,16,.22), rgba(2,6,16,.82)),
+    url('/assets/new-services-images/buildwf/ai-reception.png') center/cover no-repeat;
+}
+.managedPlayIcon{
+  display:grid;
+  place-items:center;
+  width:86px;
+  height:86px;
+  margin:0 auto 18px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#2aa8ff,#1267ff);
+  box-shadow:0 0 42px rgba(37,140,255,.55);
+  color:#fff;
+  font-size:32px;
+}
+.managedServiceVideoFallback b{
+  display:block;
+  color:#fff;
+  font-size:22px;
+}
+.managedServiceVideoFallback small{
+  display:block;
+  max-width:360px;
+  margin-top:8px;
+  color:rgba(238,246,255,.74);
+}
+.managedServiceVideoCard p{
+  margin:16px 4px 4px;
+  color:rgba(238,246,255,.76);
+  line-height:1.5;
+}
+.managedServiceTiles{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(185px,1fr));
+  gap:16px;
+  margin-top:34px;
+}
+.managedServiceTile{
+  cursor:pointer;
+  min-height:205px;
+  border:1px solid rgba(60,165,255,.32);
+  border-radius:20px;
+  padding:12px;
+  background:linear-gradient(180deg, rgba(9,24,48,.92), rgba(3,9,22,.96));
+  box-shadow:0 20px 70px rgba(0,0,0,.30), inset 0 1px 0 rgba(255,255,255,.10);
+  transition:transform .22s ease,border-color .22s ease,box-shadow .22s ease;
+}
+.managedServiceTile:hover{
+  transform:translateY(-5px);
+  border-color:rgba(91,183,255,.66);
+  box-shadow:0 30px 90px rgba(0,0,0,.42),0 0 44px rgba(20,120,255,.18);
+}
+.managedServiceTile img{
+  display:block;
+  width:100%;
+  height:96px;
+  object-fit:cover;
+  object-position:center top;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.10);
+}
+.managedServiceTile div{
+  padding:14px 4px 2px;
+}
+.managedServiceTile b{
+  display:block;
+  color:#fff;
+  font-size:20px;
+  letter-spacing:-.03em;
+}
+.managedServiceTile p{
+  margin:8px 0 0;
+  color:rgba(238,246,255,.72);
+  font-size:14px;
+  line-height:1.45;
+}
+.managedServiceIncluded{
+  display:grid;
+  grid-template-columns:minmax(280px,.85fr) 1.15fr;
+  gap:28px;
+  margin-top:28px;
+  padding:30px;
+  border:1px solid rgba(60,165,255,.34);
+  border-radius:24px;
+  background:
+    radial-gradient(circle at 88% 50%, rgba(28,139,255,.22), transparent 32%),
+    linear-gradient(135deg, rgba(7,23,48,.94), rgba(2,7,18,.96));
+  box-shadow:0 26px 90px rgba(0,0,0,.36), inset 0 1px 0 rgba(255,255,255,.10);
+}
+.managedServiceIncluded small{
+  color:#63b7ff;
+  font-weight:900;
+  letter-spacing:.18em;
+}
+.managedServiceIncluded h3{
+  max-width:560px;
+  margin:10px 0 0;
+  color:#fff;
+  font-size:30px;
+  line-height:1.1;
+  letter-spacing:-.04em;
+}
+.managedServiceIncluded ul{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(220px,1fr));
+  gap:14px 24px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+.managedServiceIncluded li{
+  position:relative;
+  padding-left:34px;
+  color:rgba(238,246,255,.84);
+  font-size:16px;
+  line-height:1.45;
+}
+.managedServiceIncluded li:before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:-1px;
+  display:grid;
+  place-items:center;
+  width:22px;
+  height:22px;
+  border:1px solid rgba(60,165,255,.75);
+  border-radius:999px;
+  color:#3aa7ff;
+  font-weight:900;
+}
+@media (max-width:1100px){
+  .managedServiceHero{grid-template-columns:1fr}
+  .managedServiceIntro{min-height:auto}
+  .managedServiceTiles{grid-template-columns:repeat(3,1fr)}
+  .managedServiceIncluded{grid-template-columns:1fr}
+}
+@media (max-width:680px){
+  .managedServiceTiles{grid-template-columns:1fr}
+  .managedServiceIncluded ul{grid-template-columns:1fr}
+  .managedServiceVideoFrame{min-height:230px}
+}
+
+
+/* managed-ai-square-video-checks-v1 */
+
+.managedServiceProof span,
+.managedServiceIncluded li{
+  position:relative;
+}
+.managedServiceProof span:after{
+  content:"";
+  position:absolute;
+  left:6px;
+  top:8px;
+  width:7px;
+  height:4px;
+  border-left:2px solid #3aa7ff;
+  border-bottom:2px solid #3aa7ff;
+  transform:rotate(-45deg);
+}
+.managedServiceIncluded li:after{
+  content:"";
+  position:absolute;
+  left:7px;
+  top:7px;
+  width:7px;
+  height:4px;
+  border-left:2px solid #3aa7ff;
+  border-bottom:2px solid #3aa7ff;
+  transform:rotate(-45deg);
+}
+
 </style>
   <link rel="stylesheet" href="/assets/frontline-menu.css?v=20260608-menu-cta-identical-v1">
   <link rel="stylesheet" href="/assets/frontline-assistant.css?v=20260520-frontline-assistant-v1">
@@ -3385,123 +3664,109 @@ h1{
       </div>
     </section>
 
-    <section class="section monthlyServiceSection" id="industries">
+    <section class="section monthlyServiceSection managedServiceRefresh" id="industries">
       <div class="shell">
-        <div class="sectionHead">
-          <h2>Cloud AI support for <span class="blueText">service businesses.</span></h2>
-          <p>For businesses that do not need a full custom build, Frontline AI can provide a supported monthly service: enquiry handling, missed lead recovery, customer follow-up and a cloud dashboard with ongoing support. Book a call for pricing.</p>
+        <div class="managedServiceHero">
+          <div class="managedServiceIntro">
+            <div class="kicker">MANAGED AI SERVICE</div>
+            <h2>Managed AI support for <span class="blueText">service businesses.</span></h2>
+            <p>We set up and support AI call handling, enquiry capture, missed lead recovery, customer follow-up and practical workflow automation for growing service businesses.</p>
+            <div class="managedServiceActions">
+              <a class="btn blue" href="/book-demo.html">Book a call</a>
+              <a class="btn" href="#managed-service-examples">See examples</a>
+            </div>
+            <div class="managedServiceProof" aria-label="Managed service proof points">
+              <span>UK based support</span>
+              <span>Secure & compliant</span>
+              <span>No lock-in contracts</span>
+            </div>
+          </div>
+
+          <div class="managedServiceVideoCard">
+            <div class="managedServiceVideoLabel">How the managed service works</div>
+            <div class="managedServiceVideoFrame">
+              <video controls preload="metadata" poster="/assets/new-services-images/buildwf/ai-reception.png">
+                <source src="/assets/main-page/managed-ai-service.mp4" type="video/mp4">
+              </video>
+              <div class="managedServiceVideoFallback">
+                <span class="managedPlayIcon">▶</span>
+                <b>Short explainer video</b>
+                <small>Upload your finished video as /assets/main-page/managed-ai-service.mp4</small>
+              </div>
+            </div>
+            <p>A short overview of how Frontline AI handles enquiries, follow-up and team handoff.</p>
+          </div>
         </div>
 
-        <div class="cards monthlyServiceGrid">
-          <article class="card monthlyServiceCard legalProductCard modalTrigger" data-modal="industryLegal" tabindex="0" role="button" aria-label="Explore LawFlow Pro for legal firms">
-            <div class="cardImage"><img src="/assets/optimized/10.webp" alt="Legal AI intake support"><div class="legalProductBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/lawflow-pro/generated/01-lawflow-pro-crest.png" alt=""></span></div></div>
-            <div class="cardText">
-              <small>AI Intake</small>
-              <b>LawFlow Pro</b>
-              <p>Capture enquiries, callback requests and intake details before they are lost.</p>
-              <a class="monthlyServiceCardLink" href="/lawflow-pro.html" target="_blank" rel="noopener">Explore LawFlow Pro</a>
-            </div>
+        <div class="managedServiceTiles allServiceTiles" id="managed-service-examples">
+          <article class="managedServiceTile modalTrigger" data-modal="industryLegal" tabindex="0" role="button" aria-label="Explore LawFlow Pro">
+            <img src="/assets/optimized/10.webp" alt="Legal AI intake support">
+            <div><b>LawFlow Pro</b><p>Legal intake, callbacks and enquiry capture.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryGarages" tabindex="0" role="button" aria-label="Explore GaragePro for garages">
-            <div class="cardImage"><img src="/assets/optimized/11.webp" alt="Garage AI service advisor"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/b09412f9-86be-47f6-8ccb-8d4f8c20bf1f.png" alt=""></span></div></div>
-            <div class="cardText">
-              <small>AI Service Advisor</small>
-              <b>GaragePro</b>
-              <p>Recover missed calls, booking requests and service enquiries from busy workshops.</p>
-              <a class="monthlyServiceCardLink" href="/garagepro.html">Explore GaragePro</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryGarages" tabindex="0" role="button" aria-label="Explore GaragePro">
+            <img src="/assets/optimized/11.webp" alt="Garage AI service advisor">
+            <div><b>GaragePro</b><p>Workshop calls, service bookings and MOT enquiries.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryClinics" tabindex="0" role="button" aria-label="Explore AI support for clinics">
-            <div class="cardImage"><img src="/assets/new-services-images/clinics.png" alt="Clinic AI coordinator"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/clinics-icon.png" alt="Clinics icon"></span></div></div>
-            <div class="cardText">
-              <small>AI Coordinator</small>
-              <b>Clinics</b>
-              <p>Support appointment enquiries, patient callbacks and follow-up requests.</p>
-              <a class="monthlyServiceCardLink" href="/clinics.html">Who is this for?</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryClinics" tabindex="0" role="button" aria-label="Explore Clinics">
+            <img src="/assets/new-services-images/clinics.png" alt="Clinic AI coordinator">
+            <div><b>Clinics</b><p>Appointment enquiries, callbacks and follow-up.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryHospitality" tabindex="0" role="button" aria-label="Explore TableBoss for hospitality businesses">
-            <div class="cardImage"><img src="/assets/optimized/13.webp" alt="Hospitality AI concierge"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/3a40e8be-6e1a-4570-a815-177e932d236f.png" alt=""></span></div></div>
-            <div class="cardText">
-              <small>AI Concierge</small>
-              <b>TableBoss</b>
-              <p>Handle booking questions, event enquiries and follow-up while staff are busy.</p>
-              <a class="monthlyServiceCardLink" href="/tableboss.html">Explore TableBoss</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryHospitality" tabindex="0" role="button" aria-label="Explore TableBoss">
+            <img src="/assets/optimized/13.webp" alt="Hospitality AI concierge">
+            <div><b>TableBoss</b><p>Booking questions, event enquiries and follow-up.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industryEstateAgents" tabindex="0" role="button" aria-label="Explore PropertyDesk for estate agents">
-            <div class="cardImage"><img src="/assets/optimized/14.webp" alt="Estate agent AI enquiry handler"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/464416a7-87b4-4cd3-98dc-8eb084ed7faa.png" alt=""></span></div></div>
-            <div class="cardText">
-              <small>AI Enquiry Handler</small>
-              <b>PropertyDesk</b>
-              <p>Capture viewing requests, valuation leads and property enquiries quickly.</p>
-              <a class="monthlyServiceCardLink" href="/propertydesk.html">Explore PropertyDesk</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryEstateAgents" tabindex="0" role="button" aria-label="Explore PropertyDesk">
+            <img src="/assets/optimized/14.webp" alt="Estate agent AI enquiry handler">
+            <div><b>PropertyDesk</b><p>Viewing requests, valuation leads and enquiries.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard productServiceCard modalTrigger" data-modal="industrySalon" tabindex="0" role="button" aria-label="Explore SalonBoss for salons">
-            <div class="cardImage"><img src="/assets/newbplu/salonboss.png" alt="SalonBoss salon appointment service artwork"><div class="productCardBrand" aria-hidden="true"><span class="productLogoTile"><img src="/assets/product-library/images/shopify/8fb5be49-3394-4f67-a0e0-6764e983effe.png" alt=""></span></div></div>
-            <div class="cardText">
-              <small>AI Booking Service - Salons</small>
-              <b>SalonBoss</b>
-              <p>Capture appointment enquiries, recover missed calls, send reminders and keep repeat customers moving.</p>
-              <a class="monthlyServiceCardLink" href="/salonboss.html">Explore SalonBoss</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industrySalon" tabindex="0" role="button" aria-label="Explore SalonBoss">
+            <img src="/assets/newbplu/salonboss.png" alt="SalonBoss salon appointment service artwork">
+            <div><b>SalonBoss</b><p>Appointments, reminders and missed call recovery.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryPlumbers" tabindex="0" role="button" aria-label="Explore PlumberPro for plumbing businesses">
-            <div class="cardImage"><img src="/assets/newbplu/plumberpro.png" alt="PlumberPro AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/plumberpro-icon.png" alt="PlumberPro icon"></span></div>
-            <div class="cardText">
-              <small>AI Service Desk</small>
-              <b>PlumberPro</b>
-              <p>Capture emergency leaks, boiler issues, quote requests and same-day callouts.</p>
-              <a class="monthlyServiceCardLink" href="/plumberpro.html">Explore PlumberPro</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryPlumbers" tabindex="0" role="button" aria-label="Explore PlumberPro">
+            <img src="/assets/newbplu/plumberpro.png" alt="PlumberPro AI service artwork">
+            <div><b>PlumberPro</b><p>Leaks, boilers, quotes and urgent callouts.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryLocksmiths" tabindex="0" role="button" aria-label="Explore LockSmithPro for locksmiths">
-            <div class="cardImage"><img src="/assets/new-services-images/locksmith.png" alt="LockSmithPro AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/locksmithpro-icon.png" alt="LockSmithPro icon"></span></div>
-            <div class="cardText">
-              <small>AI Emergency Handler</small>
-              <b>LockSmithPro</b>
-              <p>Route lockouts, urgent access issues, key problems and same-day callouts.</p>
-              <a class="monthlyServiceCardLink" href="/locksmithpro.html">Explore LockSmithPro</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryLocksmiths" tabindex="0" role="button" aria-label="Explore LockSmithPro">
+            <img src="/assets/new-services-images/locksmith.png" alt="LockSmithPro AI service artwork">
+            <div><b>LockSmithPro</b><p>Lockouts, access issues and same-day callouts.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryMaintenance" tabindex="0" role="button" aria-label="Explore MaintenanceDesk for maintenance teams">
-            <div class="cardImage"><img src="/assets/new-services-images/maintenance.png" alt="MaintenanceDesk AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/maintenancedesk-icon.png" alt="MaintenanceDesk icon"></span></div>
-            <div class="cardText">
-              <small>AI Emergency Service</small>
-              <b>MaintenanceDesk</b>
-              <p>Handle out-of-hours building repairs, tenant issues and urgent maintenance requests.</p>
-              <a class="monthlyServiceCardLink" href="/maintenancedesk.html">Explore MaintenanceDesk</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryMaintenance" tabindex="0" role="button" aria-label="Explore MaintenanceDesk">
+            <img src="/assets/new-services-images/maintenance.png" alt="MaintenanceDesk AI service artwork">
+            <div><b>MaintenanceDesk</b><p>Repairs, tenant issues and urgent maintenance.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryBuilders" tabindex="0" role="button" aria-label="Explore BuilderDesk for builders">
-            <div class="cardImage"><img src="/assets/newbplu/builderdesk.png" alt="BuilderDesk AI quote assistant artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/builderdesk-icon.png" alt="BuilderDesk icon"></span></div>
-            <div class="cardText">
-              <small>AI Quote Assistant</small>
-              <b>BuilderDesk</b>
-              <p>Qualify job enquiries, site visits, quotes, project details and follow-up.</p>
-              <a class="monthlyServiceCardLink" href="/builderdesk.html">Explore BuilderDesk</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryBuilders" tabindex="0" role="button" aria-label="Explore BuilderDesk">
+            <img src="/assets/newbplu/builderdesk.png" alt="BuilderDesk AI quote assistant artwork">
+            <div><b>BuilderDesk</b><p>Job enquiries, site visits, quotes and follow-up.</p></div>
           </article>
 
-          <article class="card monthlyServiceCard tradeServiceCard modalTrigger" data-modal="industryElectricians" tabindex="0" role="button" aria-label="Explore ElectricianDesk for electricians">
-            <div class="cardImage"><img src="/assets/new-services-images/electrician.png" alt="ElectricianDesk AI service artwork"><span class="productLogoTile tradeServiceIcon"><img src="/assets/product-library/electriciandesk-icon.png" alt="ElectricianDesk icon"></span></div>
-            <div class="cardText">
-              <small>AI Service Router</small>
-              <b>ElectricianDesk</b>
-              <p>Capture urgent faults, installation enquiries, safety checks and callback requests.</p>
-              <a class="monthlyServiceCardLink" href="/electriciandesk.html">Explore ElectricianDesk</a>
-            </div>
+          <article class="managedServiceTile modalTrigger" data-modal="industryElectricians" tabindex="0" role="button" aria-label="Explore ElectricianDesk">
+            <img src="/assets/new-services-images/electrician.png" alt="ElectricianDesk AI service artwork">
+            <div><b>ElectricianDesk</b><p>Faults, installations, safety checks and callbacks.</p></div>
           </article>
+        </div>
+
+        <div class="managedServiceIncluded">
+          <div>
+            <small>WHAT'S INCLUDED</small>
+            <h3>One supported AI layer for calls, enquiries and follow-up.</h3>
+          </div>
+          <ul>
+            <li>AI enquiry and call handling</li>
+            <li>Missed lead recovery</li>
+            <li>Follow-up by SMS or email</li>
+            <li>Simple cloud dashboard</li>
+            <li>Setup, support and ongoing refinement</li>
+          </ul>
         </div>
       </div>
     </section>

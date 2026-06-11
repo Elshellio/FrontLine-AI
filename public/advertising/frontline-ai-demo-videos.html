@@ -317,6 +317,31 @@ p,
   display: block;
 }
 
+
+/* FRONTLINE_DEMO_PRESENTER_SOUND_PLAY_BUTTON_V1 */
+.globalPresenterActions {
+  margin-top: 12px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.globalPresenterPlaySound {
+  border: 1px solid rgba(228,199,100,.46);
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: rgba(228,199,100,.16);
+  color: #fff5d6;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.globalPresenterSoundHint {
+  color: var(--muted);
+  font-size: 13px;
+}
+
 /* Presenter is now independent in the left column, not a right-card cutout */
 .mediaStage .presenterCutout {
   display: none !important;
@@ -672,12 +697,31 @@ function renderGlobalPresenter(){
   if(url===presenterCurrentUrl)return;
   presenterCurrentUrl=url;
   var safe=esc(url);
-  var media=/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url)
-    ? '<video src="'+safe+'" muted autoplay loop playsinline controls></video>'
+  var isVideo=/\.(mp4|webm|mov|m4v)(\?|$)/i.test(url);
+  var media=isVideo
+    ? '<video class="globalPresenterVideo" src="'+safe+'" playsinline controls preload="metadata"></video>'
     : '<img src="'+safe+'" alt="">';
+  var actions=isVideo
+    ? '<div class="globalPresenterActions"><button type="button" class="globalPresenterPlaySound" data-presenter-play-sound>Play with sound</button><span class="globalPresenterSoundHint">Click to start the presenter video with audio.</span></div>'
+    : '';
   box.className="globalPresenter";
-  box.innerHTML='<div class="globalPresenterLabel">AI presenter</div><div class="globalPresenterFrame">'+media+'</div>';
+  box.innerHTML='<div class="globalPresenterLabel">AI presenter</div><div class="globalPresenterFrame">'+media+'</div>'+actions;
 }
+
+function playGlobalPresenterWithSound(){
+  var video=document.querySelector("#globalPresenter .globalPresenterVideo");
+  if(!video)return;
+  video.muted=false;
+  video.volume=1;
+  var playPromise=video.play();
+  if(playPromise&&typeof playPromise.catch==="function")playPromise.catch(function(){});
+}
+
+document.addEventListener("click",function(ev){
+  if(ev.target&&ev.target.closest&&ev.target.closest("[data-presenter-play-sound]")){
+    playGlobalPresenterWithSound();
+  }
+});
 
 function render(){
   var d=data[mode],s=d.steps[step],m=(mediaMap[mode]||[])[step]||{};
